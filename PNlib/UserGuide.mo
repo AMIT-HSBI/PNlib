@@ -163,9 +163,6 @@ This conflict can be solved by prioritization of the transitions. If T1 takes pr
 <b>IMPORTANT:</b>
 <ul>
 <li> the PNlib works only with Dymola
-<li> the file random.c has to be located in the current work directory!
-<li> if an xHPN model is connected to Matlab/Simulink, the file random.c has to be located in the Source directory of Dymola
-e.g. C:\Program Files (x86)\Dymola 2012 FD01\Source
 </ul></li>
 </p>
 <p>
@@ -551,10 +548,6 @@ a set of Matlab m-files utilities [Dynasim201]. All markings which should be ava
 prefix output on the highest level. This is achieved by creating a connector of the output connector
 at the top of the place icon. In the case of discrete places it is an orange IntegerOutput connector and in the case of continuous places
 it is a blue RealOutput connector. In the figure above the markings of P1, P3, P5, and P6 are available in Matlab.
-</p>
-<p>
-<b>IMPORTANT:</b> the file random.c has to be located in the Source directory of Dymola
-e.g. C:\Program Files (x86)\Dymola 2012 FD01\Source
 </p>
 <p>
 <img src=\"Resources/Images/simulink.png\">
