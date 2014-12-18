@@ -2,15 +2,6 @@ within PNlib.Models;
 package Senseo "Model of a Senseo coffee machine"
 
 
-
-
-
-
-
-
-
-
-
 annotation (Documentation(info="<html>
 <h1>Background</h1>
 <p>
