@@ -128,21 +128,17 @@ equation
   //calculation of discrete mark change
   disMarkChange=firingSumIn.disFiringSum-firingSumOut.disFiringSum;
   disMarksInOut=disMarksOut.anytrue or disMarksIn.anytrue;
-  when disMarksInOut then
-      reinit(t_,t_+disMarkChange);
-  end when;
-  when reStart then
-         //restart the marking
-      reinit(t_,reStartMarks);
+  when {disMarksInOut, reStart} then
+    reinit(t_, if reStart then reStartMarks else t_ + disMarkChange);
   end when;
   //Conversion of tokens to level concentrations
   levelCon=t*settings1.M/N;
   for i in 1:nOut loop
-     preFireOut[i]=if disTransitionOut[i] then fireOut[i] else pre(fireOut[i]);
+    preFireOut[i]=if disTransitionOut[i] then fireOut[i] else pre(fireOut[i]);
   end for;
-   for i in 1:nIn loop
-       preFireIn[i]= if disTransitionIn[i] then fireIn[i] else pre(fireIn[i]);
-   end for;
+  for i in 1:nIn loop
+    preFireIn[i]= if disTransitionIn[i] then fireIn[i] else pre(fireIn[i]);
+  end for;
   //****MAIN END****//
   //****ANIMATION BEGIN****//
   //scaling of tokens for animation
