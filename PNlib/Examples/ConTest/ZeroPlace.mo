@@ -1,5 +1,7 @@
 within PNlib.Examples.ConTest;
 model ZeroPlace
+  extends Modelica.Icons.Example;
+
   inner PNlib.Settings settings1 annotation(Placement(transformation(extent = {{-64, 64}, {-44, 84}})));
   PNlib.TC T1(nOut = 1) annotation(Placement(transformation(extent = {{-72, 6}, {-52, 26}})));
   PNlib.PC P1(nIn = 1, nOut = 1) annotation(Placement(transformation(extent = {{-38, 6}, {-18, 26}})));

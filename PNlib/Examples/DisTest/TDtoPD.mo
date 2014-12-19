@@ -1,5 +1,7 @@
 within PNlib.Examples.DisTest;
 model TDtoPD
+  extends Modelica.Icons.Example;
+
   PNlib.PD P1(nOut = 0, nIn = 1) annotation(Placement(visible = true, transformation(origin = {40, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PNlib.TD T1(nOut = 1) annotation(Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner PNlib.Settings settings1 annotation(Placement(visible = true, transformation(origin = {60, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

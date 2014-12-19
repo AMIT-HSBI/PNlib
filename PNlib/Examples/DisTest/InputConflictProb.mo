@@ -1,5 +1,7 @@
 within PNlib.Examples.DisTest;
 model InputConflictProb
+  extends Modelica.Icons.Example;
+
   PNlib.PD P1(maxTokens = 2, nIn = 2, nOut = 1, enablingType = 2) annotation(Placement(transformation(extent = {{34, 4}, {54, 24}})));
   PNlib.TD T1(nIn = 1) annotation(Placement(transformation(extent = {{78, 4}, {98, 24}})));
   PNlib.TD T2(nIn = 1, nOut = 1) annotation(Placement(transformation(extent = {{-14, 48}, {6, 68}})));

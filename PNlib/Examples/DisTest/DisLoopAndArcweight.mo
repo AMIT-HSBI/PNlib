@@ -1,5 +1,7 @@
 within PNlib.Examples.DisTest;
 model DisLoopAndArcweight
+  extends Modelica.Icons.Example;
+
   PNlib.PD P1(nOut = 1, nIn = 1, startTokens = 2) annotation(Placement(transformation(extent = {{-10, -26}, {10, -6}})));
   PNlib.TD T1(nIn = 1, nOut = 1, arcWeightIn = {2}, arcWeightOut = {3}) annotation(Placement(transformation(extent = {{10, 26}, {-10, 46}})));
   inner PNlib.Settings settings1 annotation(Placement(transformation(extent = {{42, 68}, {62, 88}})));

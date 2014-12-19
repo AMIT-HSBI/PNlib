@@ -1,5 +1,7 @@
 within PNlib.Examples.DisTest;
 model EightConflictProb
+  extends Modelica.Icons.Example;
+
   PNlib.PD P1(startTokens = 1, enablingType = 2, nOut = 8) annotation(Placement(transformation(extent = {{-90, -4}, {-70, 16}})));
   PNlib.TD T1(nIn = 1) annotation(Placement(transformation(extent = {{2, 76}, {22, 96}})));
   PNlib.TD T2(nIn = 1) annotation(Placement(transformation(extent = {{30, 60}, {50, 80}})));

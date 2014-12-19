@@ -1,5 +1,7 @@
 within PNlib.Examples.ConTest;
 model Speed
+  extends Modelica.Icons.Example;
+
   inner PNlib.Settings settings1 annotation(Placement(transformation(extent = {{-52, 60}, {-32, 80}})));
   PNlib.TC T1(nOut = 1, maximumSpeed = 2) annotation(Placement(transformation(extent = {{-48, -6}, {-28, 14}})));
   PNlib.PC P1(nIn = 2, nOut = 1) annotation(Placement(transformation(extent = {{4, -6}, {24, 14}})));

@@ -1,5 +1,7 @@
 within PNlib.Examples.ConTest;
 model TCtoPC
+  extends Modelica.Icons.Example;
+
   inner PNlib.Settings settings1 annotation(Placement(transformation(extent = {{-62, 50}, {-42, 70}})));
   PNlib.TC T1(nOut = 1) annotation(Placement(transformation(extent = {{-58, -16}, {-38, 4}})));
   PNlib.PC P1(nIn = 1) annotation(Placement(transformation(extent = {{-6, -16}, {14, 4}})));

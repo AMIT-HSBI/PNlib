@@ -1,5 +1,7 @@
 within PNlib.Examples.ConTest;
 model ConflictLoop
+  extends Modelica.Icons.Example;
+
   PNlib.TC T1(nOut = 1, nIn = 2, arcWeightOut = {3}, arcWeightIn = {2, 1}) annotation(Placement(transformation(extent = {{-74, -40}, {-54, -20}})));
   PNlib.TC T2(nIn = 1, nOut = 1, maximumSpeed = 4) annotation(Placement(transformation(extent = {{4, -10}, {24, 10}})));
   PNlib.TC T3(nIn = 1, nOut = 1, maximumSpeed = 2) annotation(Placement(transformation(extent = {{6, -62}, {26, -42}})));

@@ -1,5 +1,7 @@
 within PNlib.Examples.ConTest;
 model ConLoopAndArcweight
+  extends Modelica.Icons.Example;
+
   inner PNlib.Settings settings1 annotation(Placement(transformation(extent = {{-68, 56}, {-48, 76}})));
   PNlib.PC P1(nOut = 1, nIn = 1, startMarks = 1) annotation(Placement(transformation(extent = {{22, -44}, {42, -24}})));
   PNlib.TC T1(nIn = 1, nOut = 2, arcWeightIn = {3}, arcWeightOut = {2, 2}) annotation(Placement(transformation(extent = {{10, -10}, {-10, 10}}, rotation = 0, origin = {30, 22})));
