@@ -40,7 +40,7 @@ protected
   Real prelimSpeedIn[nIn] "preliminary speed of input transitions";
   Real prelimSpeedOut[nOut] "preliminary speed of output transitions";
   Real tokenscale "only for place animation and display";
-  Real t_(start = startMarks) "marking";
+  Real t_(start=startMarks, fixed=true) "marking";
   Boolean disMarksInOut "discrete marks change";
   Boolean preFireIn[nIn] "pre-value of fireIn";
   Boolean preFireOut[nOut] "pre-value of fireOut";
