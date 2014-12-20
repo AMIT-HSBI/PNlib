@@ -88,7 +88,7 @@ Summarized, an xHPN comprises of:
 </ul></li>
 </p>
 <p>
-A formal definition of the xHPN-formalism and the corresponding processes is given in [Proﬂ et al.2012].
+A formal definition of the xHPN-formalism and the corresponding processes is given in [Pro√ü et al.2012].
 </p>
 <p>
 <h2>Possible conflicts in xHPNs</h2>
@@ -118,7 +118,7 @@ If the enabling is performed at random, one of the transitions is enabled accord
 <p>
 Another conflict can occur between a continuous place and two or more continuous transitions when the input speed is not sufficient to fire all output transitions with the instantaneous speed
 (type-2-output-conflict) or when the output speed is not sufficient to fire all input transitions with the instantaneous speed (type-2-input-conflict).
- This conflict is solved by sharing the speeds proportional to the assigned maximum speeds (see [Proﬂ2012]).
+ This conflict is solved by sharing the speeds proportional to the assigned maximum speeds (see [Pro√ü2012]).
 </p>
 <h4>Example</h4>
 <p>
@@ -483,7 +483,7 @@ maximumSpeed = <b>if</b> time&le;6.5 <b>then</b> 2.6 <b>else</b> 1.7.
 Based on the current markings of the places, it is checked in the transition model by an algorithmic procedure if the transition can become active.
 discrete transition waits then as long as the delay is passed and a stochastic transition waits till the next putative firing time is reached.
 Based on this information the places enable some of the active transition to fire.
-At this point, several conflicts can occur which have to be resolved appropriately by the methods mentioned in [Proﬂ2012] to get a successful and reliable simulation.
+At this point, several conflicts can occur which have to be resolved appropriately by the methods mentioned in [Pro√ü2012] to get a successful and reliable simulation.
 When a transition is enabled by all its connected places, it is firable and reports this via the connector variable fire to the connected places.
 The places recalculate then their markings based on this information.
 </p>
@@ -542,7 +542,7 @@ All display and animation options are realized with the DynamicSelect annotation
 <h2>Connection to Matlab/Simulink</h2>
 <p>
 To simulate the established xHPN model several times with different parameter settings and use the arising simulation results
-for parameter estimation, sensitivity analysis, deterministic and stochastic hybrid simulation, or process optimization (see [Proﬂ2012]),
+for parameter estimation, sensitivity analysis, deterministic and stochastic hybrid simulation, or process optimization (see [Pro√ü2012]),
 the Modelica models in Dymola are connected to Matlab/Simulink. This is realized with the aid of a Dymola interface in Simulink and
 a set of Matlab m-files utilities [Dynasim201]. All markings which should be available in Matlab have to be declared with the
 prefix output on the highest level. This is achieved by creating a connector of the output connector

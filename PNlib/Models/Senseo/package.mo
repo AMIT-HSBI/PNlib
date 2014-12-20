@@ -6,8 +6,8 @@ annotation (Documentation(info="<html>
 <h1>Background</h1>
 <p>
 A model of a Senseo coffee machine is presented. The main feature of a Senseo coffee machine is that the coffee is placed in the machine
-in a pre-portioned form by so-called coffee pads. One pad is generally used to make one cup of coffee (125컈l) and two pads reach for two cups at 125 ml or one big cup at 250 ml.
-After a warm-up time of about 60 seconds and the insertion of a coffee pad, the coffee can be made. In this warm-up phase, the water is heated at 90캜 and then pressed with a pressure
+in a pre-portioned form by so-called coffee pads. One pad is generally used to make one cup of coffee (125째ml) and two pads reach for two cups at 125 ml or one big cup at 250 ml.
+After a warm-up time of about 60 seconds and the insertion of a coffee pad, the coffee can be made. In this warm-up phase, the water is heated at 90째C and then pressed with a pressure
 of about 1.4 bar within 40 seconds through the pad. In contrast to a normal coffee machine that boils the water continuously and transports it by its own buoyancy (hot bubbles) up into the filter,
 the Senseo machine heats a portion of water completely in a heating chamber and pumps it then through the pad. To ensure that the heating chamber in the machine is always filled with water,
 a float is placed in the removable water tank which allows measuring the minimal capacity.
@@ -45,7 +45,7 @@ If the minimum level is exceeded, the heater is turned off. If there is sufficie
     <td>If there is enough water in the tank, the water in the heating camber is heated. The heating speed (h<sub>s</sub>) depends on the power of the Senseo machine (P<sub>senseo</sub>),
     the specific heat capacity of water (c), and the amount of water to be heated in the heating camber (W<sub>HC</sub>):<br>
       h<sub>s</sub>=P<sub>senseo</sub>/(c&middot;W<sub>HC</sub> ).<br>
-      The maximum temperature of the water is 90캜.</td>
+      The maximum temperature of the water is 90째C.</td>
     <td>The place <i>water_tank</i> is connected to the transition <i>heating</i> by a test arc with the weight 0.35.
         The continuous transitions heating has a maximum speed of <i>Psenso/(c*waterHC.t)</i>, where <i>waterHC.t</i> is the current marking of the place <i>waterHC</i>.
         The maximum capacity of place <i>TW</i> is set to 90.</td>
@@ -57,7 +57,7 @@ If the minimum level is exceeded, the heater is turned off. If there is sufficie
   </tr>
   <tr>
     <td>6</td>
-    <td>When the water reaches a temperature of 90캜, the user can chose if he wants one or two cups of coffee.
+    <td>When the water reaches a temperature of 90째C, the user can chose if he wants one or two cups of coffee.
         In 70% he chooses one cup and in 30% two cups.</td>
     <td>The place <i>TW</i> is connected to the transition <i>T2</i> by a test arc with a weight of 90.
         The place <i>decision1</i> gets one token and a random procedure is performed to decide if <i>T3</i> or <i>T4</i> fires.

@@ -12,7 +12,7 @@ extends Modelica.Icons.Contact;
     <tr>
       <td valign=top>Library officer</td>
       <td valign=top>
-      <a>S. Proﬂ</a><br>
+      <a>S. Pro√ü</a><br>
       <a>mailto: sabrina.pross@fh-bielefeld.de</a><br>
       <td valign=top>University of Applied Sciences Bielefeld</td><br>
         <a>Department of engineering and mathematics</a><br>
@@ -34,5 +34,5 @@ extends Modelica.Icons.Contact;
       </td>
     </tr>
   </table>
- <\html>"));
+ </html>"));
 end Contact;

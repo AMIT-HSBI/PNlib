@@ -15,7 +15,7 @@ revisions="<html>
       <td valign=\"top\">1.0.0</td>
       <td valign=\"top\">1</td>
       <td valign=\"top\">2012-05-15</td>
-      <td valign=\"top\">S. Proﬂ</td>
+      <td valign=\"top\">S. Pro√ü</td>
       <td valign=\"top\"></td>
     </tr>
 </table>
