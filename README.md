@@ -33,11 +33,11 @@ This Modelica package is free software and the use is completely at your own ris
 it can be redistributed and/or modified under the terms of the [Modelica License 2](https://modelica.org/licenses/ModelicaLicense2).
 
 ## Development and contribution
-Library officer:  [Sarina Pro&szlig;](mailto: sabrina.pross@fh-bielefeld.de)
-
-Contributor: [Lennart Ochel](mailto: lennart.ochel@fh-bielefeld.de), [Timo Kleine-Döpke](mailto: timo.kleine-doepke@fh-bielefeld.de), [Bernhard Bachmann](mailto: bernhard.bachmann@fh-bielefeld.de)
-
     University of Applied Sciences Bielefeld
     Department of engineering and mathematics
     33609 Bielefeld - Germany
     http://www.fh-bielefeld.de/ammo
+* [Sabrina Pro&szlig;](mailto: sabrina.pross@fh-bielefeld.de)
+* [Lennart Ochel](mailto: lennart.ochel@fh-bielefeld.de)
+* [Timo Kleine-Döpke](mailto: timo.kleine-doepke@fh-bielefeld.de)
+* [Bernhard Bachmann](mailto: bernhard.bachmann@fh-bielefeld.de)

@@ -2,16 +2,15 @@ within PNlib;
 model UserGuide
  extends Modelica.Icons.Information;
   annotation (Documentation(info="<html>
-<p>
 <h1>Extended Hybrid Petri Nets (xHPN)</h1>
 <p>
 The xHPN formalism comprises of three different processes, called <b>transitions</b>: discrete, stochastic, and continuous transition,
 two different states, called <b>places</b>: discrete and continuous places, and four different <b>arcs</b>: normal, inhibition, test, and read arc. The icons of the formalism are shown
 in the following figure.
 </p>
-<p>
-  <img src=\"Resources/Images/iconsxHPNklein.png\">
-</p>
+
+<p><img src=\"Resources/Images/iconsxHPNklein.png\"><\p>
+
 <p>
 Discrete places contain an integer quantity, called <b>tokens</b> or <b>marks</b> while continuous places contain a non-negative real quantity.
 These marks initiate transitions to <b>fire</b> according to specific conditions. These firings lead to changes of the marks in the connected places.
@@ -32,11 +31,10 @@ Places and transitions are connected by <b>normal arcs</b> which are weighted by
 on the current markings of the places and/or time. Places can also be connected to transitions by <b>test</b>, <b>inhibition</b>, and <b>read arcs</b>. Then their markings do not change during
 the firing process.
 In the case of test and inhibitor arcs, the markings are only read to influence the time of firing while read arcs only indicate the usage of the marking in the transition,
-e.g. for firing conditions or speed functions.
+e.g. for firing conditions or speed functions. </p>
 <p>
 If a place is connected to a transition by a test arc, the marking of the place must be greater than the arc weight to enable firing. If a place is connected to a transition by an inhibitor
 arc, the marking of the place must be less than the arc weight to enable firing. In both cases the markings of the places are not changed by fining.
-</p>
 </p>
 <h3>Example: Arcs of xHPNs</h3>
 <p>
@@ -45,61 +43,51 @@ Transition T1 is active with regard to a concrete marking m because the token nu
 However, T2 is not active because the marking of P5 is less than the arc weight (m(P5)=1&lt;f(P5&rarr;T2)=2). T3 is also not active because the token number of P8 is
 greater than the weight of the inhibitor arc (m(P8)=3&gt;f(P8&rarr;T3)=2). However, T4 is active because the marking of P11 is less than the arc weight (m(P11)=1&lt;f(P11&rarr;T4)=2).
 </p>
-<p>
-  <img src=\"Resources/Images/arcsforma.png\">
-</p>
+
+<p><img src=\"Resources/Images/arcsforma.png\"><\p>
+
 <p>
 The <b>conversion</b> of a discrete to a continuous marking is realized by connecting a discrete transition to a continuous place and the conversion from a continuous to a discrete marking is
 realized by connecting a continuous place to a discrete transition. However, the conversion is always performed by discrete transitions, discrete places can only influence the time
-when continuous transitions fire but their marking cannot be changed during the firing process.
-</p>
+when continuous transitions fire but their marking cannot be changed during the firing process.</p>
+
 <h3>Example: Basic concepts of hybrid Petri nets</h3>
-<p>
-The figure shows examples of these two basic principles:
+<p>The figure shows examples of these two basic principles:</p>
 <ul>
-<li> T1 can only fire when P1 has more than zero marks and P3 has at least one mark,
-<li> T2 can only fire when P4 has at least one mark and P6 has at least 5.4 marks,
-<li> T3 fires by removing one mark from P7 and adding 1.8 marks to P8
-<li> T4 fires by removing 0.8 marks from P9 and adding one mark to P10.
-</ul></li>
-<p>
-<p>
-  <img src=\"Resources/Images/hybridPNklein.png\">
-</p>
+<li>T1 can only fire when P1 has more than zero marks and P3 has at least one mark,</li>
+<li>T2 can only fire when P4 has at least one mark and P6 has at least 5.4 marks,</li>
+<li>T3 fires by removing one mark from P7 and adding 1.8 marks to P8</li>
+<li>T4 fires by removing 0.8 marks from P9 and adding one mark to P10.</li>
+</ul>
+
+<p><img src=\"Resources/Images/hybridPNklein.png\"><\p>
+
 <p>
 It is important to mention that a discrete transition fires always in a discrete manner by removing and adding marks after a delay is passed regardless of whether a
 discrete or a continuous place is connected to it. However, a continuous transition fires always by a continuous flow so that a discrete place can only be connected to
 continuous transition if it is input as well as output of the transition with arcs of same weight. In this way the continuous transition can only be <b>influenced</b> by a discrete
-place but the discrete marking cannot be changed by continuous firing.
-</p>
-<p>
-Summarized, an xHPN comprises of:
+place but the discrete marking cannot be changed by continuous firing.</p>
+<p>Summarized, an xHPN comprises of:</p>
 <ul>
-<li>        discrete and continuous places,
-<li>        discrete, stochastic, and continuous transitions,
-<li>        places can be connected to transitions by normal, test, inhibitor, and read arcs while transitions can only be connected to places by normal arcs,
-<li>        arc weights can be functions depending on markings and/or time,
-<li>        discrete place must be input as well as output of continuous transitions with arcs of same weights,
-<li>        places can be provided with minimum and maximum capacities,
-<li>        discrete transitions can be provided with delays,
-<li>        stochastic transitions can be provided with hazard functions depending on markings,
-<li>        continuous transitions can be provided with maximum speed function depending on markings and/or time, and
-<li>        all transitions can be provided with additional firing conditions depending on all possible model variables.
-</ul></li>
-</p>
-<p>
-A formal definition of the xHPN-formalism and the corresponding processes is given in [Proß et al.2012].
-</p>
-<p>
+<li>        discrete and continuous places,</li>
+<li>        discrete, stochastic, and continuous transitions,</li>
+<li>        places can be connected to transitions by normal, test, inhibitor, and read arcs while transitions can only be connected to places by normal arcs,</li>
+<li>        arc weights can be functions depending on markings and/or time,</li>
+<li>        discrete place must be input as well as output of continuous transitions with arcs of same weights,</li>
+<li>        places can be provided with minimum and maximum capacities,</li>
+<li>        discrete transitions can be provided with delays,</li>
+<li>        stochastic transitions can be provided with hazard functions depending on markings,</li>
+<li>        continuous transitions can be provided with maximum speed function depending on markings and/or time, and</li>
+<li>        all transitions can be provided with additional firing conditions depending on all possible model variables.</li>
+</ul>
+<p>A formal definition of the xHPN-formalism and the corresponding processes is given in [Proß et al.2012].</p>
 <h2>Possible conflicts in xHPNs</h2>
 <h3>Type-1-Conflict</h3>
-<p>
-Several conflicts can occur when the places have to enable their connected active transitions. Possibly, a discrete place or a continuous place connected to discrete
+<p>Several conflicts can occur when the places have to enable their connected active transitions. Possibly, a discrete place or a continuous place connected to discrete
 transitions has not enough marks to enable all output transitions simultaneously or cannot receive marks from all active input transitions due to the maximum capacity.
 Then an actual conflict arises that has to be resolved. This can be either done by providing the transitions with <b>priorities</b> or <b>probabilities</b>.
 In the first case, a deterministic process decides which place enables which transitions and in the second case the enabling is performed at random;
-thereby transitions assigned with a high probability are chosen preferentially.
-</p>
+thereby transitions assigned with a high probability are chosen preferentially.</p>
 <h4>Example</h4>
 <p>
 Both transitions of the Petri net example are active because of</br>
@@ -109,24 +97,21 @@ m(P1)=2&ge;f(P1&arr;T2)=2.</br>
 But P1 can only enable one of them due to its token number. Hence, P1 has a actual conflict. If the enabling is performed by priorities and T2 has priority 1 and T1 has priority 2,
 P1 enables T2. T2 is firable and fires by removing two tokens from P1 and adding one to P3.
 If the enabling is performed at random, one of the transitions is enabled according to their assigned probabilities, e.g. T1 has the probability 0.7 and T2 has the probability 0.3.
+</p>
 
-</p>
-<p>
-  <img src=\"Resources/Images/type1klein.png\">
-</p>
+<p><img src=\"Resources/Images/type1klein.png\"><\p><\p>
+
 <h3>Type-2-Conflict</h3>
-<p>
-Another conflict can occur between a continuous place and two or more continuous transitions when the input speed is not sufficient to fire all output transitions with the instantaneous speed
+<p>Another conflict can occur between a continuous place and two or more continuous transitions when the input speed is not sufficient to fire all output transitions with the instantaneous speed
 (type-2-output-conflict) or when the output speed is not sufficient to fire all input transitions with the instantaneous speed (type-2-input-conflict).
- This conflict is solved by sharing the speeds proportional to the assigned maximum speeds (see [Proß2012]).
-</p>
+ This conflict is solved by sharing the speeds proportional to the assigned maximum speeds (see [Proß2012]).</p>
 <h4>Example</h4>
 <p>
 The left Petri net has no actual conflict but P2 and P3 of the right Petri net have an actual conflict. Their input speed is not sufficient to fire T5 and T6 with the respective speed.
 </p>
-<p>
-  <img src=\"Resources/Images/type2.png\">
-</p>
+
+<p><img src=\"Resources/Images/type2.png\"><\p>
+
 <h3>Type-3-Conflict</h3>
 <p>
 If a conflict occurs between a place and continuous as well as discrete/stochastic transitions, the discrete/stochastic transitions take always priority
@@ -142,9 +127,9 @@ At time 1, m(P4)=1 and the delay of T5 is passed; hence, P4 has an actual confli
 If m(P4)&lt;f(P4&rarr;T5) or m(P4)>f(P4&rarr;T5), there is no conflict. It is solved by the rule that T5 takes priority over T4 and fires.
 This rule is intuitively logical because the firing of a continuous transition is a continuous flow and the firing of a discrete transition is an extreme change of the Petri net marking.
 </p>
-<p>
-  <img src=\"Resources/Images/type3.png\">
-</p>
+
+<p><img src=\"Resources/Images/type3.png\"><\p>
+
 <h3>Type-4-Conflict</h3>
 <p>
 A last conflict can occur when a discrete place has not enough marks to enable all connected continuous transitions. This is solved by prioritization of the involved transitions.
@@ -155,64 +140,57 @@ The figure shows a hybrid Petri net; place P3 has a type-4-conflict. At time 0, 
 This conflict can be solved by prioritization of the transitions. If T1 takes priority over T2, T1 becomes active and fires and if T2 takes priority over T1,
  T2 becomes active and fires. Therefore, all continuous output transitions of a discrete place have to be provided with priorities.
 </p>
-<p>
-  <img src=\"Resources/Images/type4.png\">
-</p>
+
+<p><img src=\"Resources/Images/type4.png\"><\p>
+
 <h1> PNlib: A Modelica Library for Modeling xHPN </h1>
-<p>
-<b>IMPORTANT:</b>
+<p><b>IMPORTANT:</b></p>
 <ul>
-<li> the PNlib works only with Dymola
-</ul></li>
-</p>
-<p>
-The advanced Petri Net library, called PNlib, enables the modeling of extended hybrid Petri Nets (xHPN).
-It comprises
+<li>the PNlib works only with Dymola</li>
+</ul>
+<p>The advanced Petri Net library, called PNlib, enables the modeling of extended hybrid Petri Nets (xHPN).
+It comprises</p>
 <ul>
-<li> a discrete (PD) and a continuous place (PC),
-<li> a discrete (TD), a stochastic (TS), and a continuous transitions (TC), and
-<li> a test (TA), an inhibitor (IA), and a read arcs (RA).
-</ul></li>
-<p>
-The main package PNlib is divided into the following sub-packages:
+<li> a discrete (PD) and a continuous place (PC),</li>
+<li> a discrete (TD), a stochastic (TS), and a continuous transitions (TC), and</li>
+<li> a test (TA), an inhibitor (IA), and a read arcs (RA).</li>
+</ul>
+<p>The main package PNlib is divided into the following sub-packages:</p>
 <ul>
-<li>Interfaces: contains the connectors of the Petri net component models.
-<li>Blocks: contains blocks with specific procedures that are used in the Petri net component
-models.
-<li>Functions: contains functions with specific algorithmic procedures which are used in
-the Petri net component models.
-<li>Constants: contains constants which are used in the Petri net component models.
-<li>Models: contains several examples and offers the possibility to structure further Petri net
-models.
-</ul></li>
+<li>Interfaces: contains the connectors of the Petri net component models.</li>
+<li>Blocks: contains blocks with specific procedures that are used in the Petri net component models.</li>
+<li>Functions: contains functions with specific algorithmic procedures which are used in the Petri net component models.</li>
+<li>Constants: contains constants which are used in the Petri net component models.</li>
+<li>Models: contains several examples and offers the possibility to structure further Petri net models.</li>
+</ul>
 <p>
 Additionally, the package contains the component <b>settings</b> which enables the setting of
-global parameters for the display and animation of a Petri net model:
+global parameters for the display and animation of a Petri net model:</p>
 <ul>
-<li> showPlaceName: displays the names of places,
-<li> showTransitionName: displays the names of transitions,
-<li> showDelay: displays the delays of discrete transitions,
-<li> showCapacity: displays the minimum and maximum capacities of places,
-<li> showWeightTIarc: displays the arc weights of test and inhibitor arcs,
-<li> animateMarking: animates the current marking in the places; the change of
-<li> tokens/marks is displayed in the places during animation,
-<li> animatePlace: animates the color of places. Places change their degree of redness
+<li> showPlaceName: displays the names of places,</li>
+<li> showTransitionName: displays the names of transitions,</li>
+<li> showDelay: displays the delays of discrete transitions,</li>
+<li> showCapacity: displays the minimum and maximum capacities of places,</li>
+<li> showWeightTIarc: displays the arc weights of test and inhibitor arcs,</li>
+<li> animateMarking: animates the current marking in the places; the change of</li>
+<li> tokens/marks is displayed in the places during animation,</li>
+<li> animatePlace: animates the color of places. Places change their degree of redness</li>
 according to the amount of tokens/marks; thereby, the redness degree is scaled by the
-parameter scale from 0 to 100,
+parameter scale from 0 to 100,</li>
 <li> antimateTransition: animates the color of transitions. Transitions change their color
 to yellow when they fire; thereby, discrete transitions blink yellow for specified time units
-(timeFire) while continuous transitions are yellow the whole time when they fire,
+(timeFire) while continuous transitions are yellow the whole time when they fire,</li>
 <li> animatePutFireTime: animates the putative firing time of stochastic transitions; the
-putative firing time is displayed under the transition during animation,
+putative firing time is displayed under the transition during animation,</li>
 <li> animateHazardFunc: animates the hazard function of stochastic transitions; the hazard
-function is displayed under the transition during animation,
+function is displayed under the transition during animation,</li>
 <li> animateSpeed: animates the instantaneous speed of continuous transitions; the
-instantaneous speed is displayed under the transition during animation,
+instantaneous speed is displayed under the transition during animation,</li>
 <li> animateWeightTIarc: animates the weights of threshold and inhibition arcs; the
-weights are displayed under the arc during animation,
+weights are displayed under the arc during animation,</li>
 <li> animateTIarc: animates the color of test and inhibitor arcs; the arc is green when the
-weight is satisfied and red otherwise,
-</ul></li>
+weight is satisfied and red otherwise,</li>
+</ul>
 <p>
 Places, transitions, and arcs are represented by the icons depicted in the figure. Thereby, the
 discrete place is represented by a circle and the continuous place by a double circle. The
@@ -221,26 +199,21 @@ stochastic transitions, and white for continuous transitions. The test arc is re
 dashed arc, the inhibitor arc by an arc with a white circle at its end, and the read arc by an arc
 with a black square at its end.
 </p>
-<p>
-  <img src=\"Resources/Images/iconsklein.png\">
-</p>
-<p>
+
+<p><img src=\"Resources/Images/iconsklein.png\"><\p>
+
 <h2>Connectors</h2>
-</p>
-<li> The PNlib contains four different connectors: PlaceOut, PlaceIn, TransitionOut, and TransitionIn.
+<p> The PNlib contains four different connectors: PlaceOut, PlaceIn, TransitionOut, and TransitionIn.
 The connectors PlaceOut and PlaceIn are part of place models and connect them to output and input transitions, respectively.
 Similar, TransitionOut and TransitionIn are connectors of the transition model and connect them to output and input places, respectively.
-The figure shows which connector belongs to with Petri net component model.
-<p>
-  <img src=\"Resources/Images/connectorsklein.png\">
-</p>
-The connectors of the Petri net component models are vectors to enable the connection to an arbitrary number of input and output components.
-Therefore, the dimension parameters nIn and nOut are declared in the place and transition models with the connectorSizing annotation.
-<p>
+The figure shows which connector belongs to with Petri net component model.</p>
+
+<p><img src=\"Resources/Images/connectorsklein.png\"><\p>
+
+<p>The connectors of the Petri net component models are vectors to enable the connection to an arbitrary number of input and output components.
+Therefore, the dimension parameters nIn and nOut are declared in the place and transition models with the connectorSizing annotation.</p>
 <h2>Places</h2>
-</p>
-<li> Parameters and modification possibilities of discrete (d) and continuous (c) places:
-<p>
+<p>Parameters and modification possibilities of discrete (d) and continuous (c) places:</p>
 <table border=1 cellspacing=0 cellpadding=5>
   <tr>
     <th>Name</th>
@@ -313,34 +286,27 @@ Therefore, the dimension parameters nIn and nOut are declared in the place and t
     <td>when the reStart condition is fulfilled, the marking is set to reStartTokens/Marks</td>
   </tr>
 </table>
-</p>
-<p>
-If the type-1-conflict is resolved by priorities, the corresponding priorities of the transitions are given by the indices of the connections,
+<p>If the type-1-conflict is resolved by priorities, the corresponding priorities of the transitions are given by the indices of the connections,
 i.e. the transition connected to the place with the index 1 has also the priority 1, the transition connected to the place with the index 2 has also the priority 2 etc.
 Otherwise, if the probabilistic enabling type is chosen, the corresponding probabilities for the transitions have to be entered as a vector
 (numbers separated by commas within braces). Thereby, the first vector element corresponds to the connection with the index 1, the second to the connection with the index 2 etc.
 The input of enabling probabilities as vectors in the place model, and not at the corresponding arcs, is necessary due to the fact that properties cannot be assigned to
-connections according to the Modelica Specification 3.2.
-</p>
+connections according to the Modelica Specification 3.2.</p>
 <h3>Example: Input of enabling probabilities</h3>
-<p>
-Place P1 is connected to the transitions T1, T2, and T3 and the connection to T1 is indexed by 1, the connection to T2 is indexed by 2,
+<p>Place P1 is connected to the transitions T1, T2, and T3 and the connection to T1 is indexed by 1, the connection to T2 is indexed by 2,
 and the connection to T3 is indexed by 3. Thus, the corresponding connect-equations are
 connect(P1.outTransition[1], T1.inPlaces[1]);
 connect(P1.outTransition[2], T2.inPlaces[1]);
 connect(P1.outTransition[3], T3.inPlaces[1]);
 The enabling probabilities 0.3 for T1, 0.25 for T2, and 0.45 for T3 have to be entered by the parameter vector
-enablingProbOut={0.3,0.25,0.45}.
-</p>
-<p>
-  <img src=\"Resources/Images/enablingprobklein.png\">
-</p>
+enablingProbOut={0.3,0.25,0.45}.</p>
+
+<p><img src=\"Resources/Images/enablingprobklein.png\"><\p>
+
 <h3>Implementation</h3>
-<p>
-The main process in the place model is the recalculation of the marking after firing
+<p>The main process in the place model is the recalculation of the marking after firing
 a connected transition. In the case of the discrete place model, this is realized by the
-discrete equation
-</p>
+discrete equation</p>
 <pre>
 <b>when</b> tokeninout <b>or<\b>  <b>pre</b>(reStart) <b>then</b>
   t = <b>if</b> tokeninout <b>then</b> <b>pre</b>(t) + firingSumIn - firingSumOut <b>else<\b> reStartTokens;
@@ -376,7 +342,6 @@ when the condition reStart becomes true.
 <p>
 Parameters and modification possibilities of discrete (d), stochastic (s), and continuous (c) transitions
 </p>
-<p>
 <table border=1 cellspacing=0 cellpadding=6>
   <tr>
     <th>Name</th>
@@ -435,7 +400,6 @@ Parameters and modification possibilities of discrete (d), stochastic (s), and c
     <td>Firing condition</td>
   </tr>
 </table>
-</p>
 <p>
 It has to be distinguished between the following input types: scalar, vector, scalar function, vector function, and condition expression.
 The input of the different types is demonstrated by the examples. The input of arc weights as vectors in the transition model and not at the respective arcs is necessary
@@ -452,32 +416,33 @@ arcWeightIn = {2*P1.t,4} and arcWeightOut = {2,1,5*P1.t},
 </p>
 <p>
 whereby the expression P1.t accesses the current token number of P1. Thus, the weights of the arcs (P1-T1) and (T1-P5) are functions which depend on the token number of P1.
-Transitions can also be provided with additional conditions that have to be satisfied to permit the activation. The condition
+Transitions can also be provided with additional conditions that have to be satisfied to permit the activation. The condition</p>
 <p>
 firingCon = time>9.7
 </p>
 <p>
 causes that the transition cannot be activated as long as time is less than 9.7.
 </p>
-<p>
-  <img src=\"Resources/Images/inputarcweightsklein.png\">
-</p>
+
+<p><img src=\"Resources/Images/inputarcweightsklein.png\"><\p>
+
 <h3>Example: Input of maximum speed functions</h3>
 <p>
 The figure shows two continuous Petri nets. Transition T1 has a maximum speed function which depends on the makings of P1 and P2.
 The input of this function to the property dialog or as modification equation is performed by the expression
-/<p>
+</p>
 <p>
 maximumSpeed = 0.75*P1.t*P2.t,
 </p>
 <p>
 whereby P1.t and P2.t accesses the marks of P1 and P2, respectively. Transition T2 has a maximum speed function that depends on time and can be entered by the expression
+</p>
 <p>
 maximumSpeed = <b>if</b> time&le;6.5 <b>then</b> 2.6 <b>else</b> 1.7.
 </p>
-<p>
-  <img src=\"Resources/Images/inputmaximumspeedklein.png\">
-</p>
+
+<p><img src=\"Resources/Images/inputmaximumspeedklein.png\"><\p>
+
 <h3>Implementation</h3>
 <p>
 Based on the current markings of the places, it is checked in the transition model by an algorithmic procedure if the transition can become active.
@@ -493,13 +458,12 @@ xHPNs comprise four different kinds of arcs: normal, test, inhibitor, and read a
 to arcs that are generated by connect equations. Due to that fact, the test, inhibitor, and read arcs are realized by component models which are interposed between places
 and transitions (see figure); the normal arc is simply generated by the connect equation. Test and inhibitor arc can be normal arcs simultaneously.
 </p>
-<p>
- <img src=\"Resources/Images/arcsklein.png\">
-</p>
+
+<p><img src=\"Resources/Images/arcsklein.png\"><\p>
+
 <p>
 Parameters of test and inhibitor arcs (read arcs have no parameters)
 </p>
-<p>
 <table border=1 cellspacing=0 cellpadding=6>
   <tr>
     <th>Name</th>
@@ -522,8 +486,8 @@ Parameters of test and inhibitor arcs (read arcs have no parameters)
     <td>no or yes</td>
     <td>If yes is chosen then is the arc also a normal arc to change the marking by firing (called double arc)</td>
   </tr>
-  </table>
-</p>
+</table>
+
 <h2>Animation</h2>
 <p>
 A possibility to represent the simulation results of an xHPN model is an animation.
@@ -533,9 +497,9 @@ The settings-box provides several display and animation options mentioned before
 The animation toolbar allows the control of the animation. An animation offers a way to analyze the marking evolutions of large and complex xHPNs.
 The figure shows four selected points in time of the animation of an xHPN example.
 </p>
-<p>
-<img src=\"Resources/Images/animationklein.png\">
-</p>
+
+<p><img src=\"Resources/Images/animationklein.png\"><\p>
+
 <p>
 All display and animation options are realized with the DynamicSelect annotation.
 </p>
@@ -549,8 +513,8 @@ prefix output on the highest level. This is achieved by creating a connector of 
 at the top of the place icon. In the case of discrete places it is an orange IntegerOutput connector and in the case of continuous places
 it is a blue RealOutput connector. In the figure above the markings of P1, P3, P5, and P6 are available in Matlab.
 </p>
-<p>
-<img src=\"Resources/Images/simulink.png\">
-</p>
+
+<p><img src=\"Resources/Images/simulink.png\"><\p>
+
 </html>"));
 end UserGuide;
