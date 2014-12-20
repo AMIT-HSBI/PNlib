@@ -22,6 +22,8 @@ Download [PNlib v1.0 (2012-05-15)](../../archive/v1.0.zip)
 
 #### Release notes
 
+* Version v1.1 (2014-12-19)
+  * Adaption of version 1.0 to Modelica 3.3.
 * [Version v1.0 (2012-05-15)](../../archive/v1.0.zip)
   * Initial release.
 
@@ -33,10 +35,9 @@ it can be redistributed and/or modified under the terms of the [Modelica License
 ## Development and contribution
 Library officer:  [Sarina Pro&szlig;](mailto: sabrina.pross@fh-bielefeld.de)
 
-Contributor: [Bernhard Bachmann](mailto: bernhard.bachmann@fh-bielefeld.de)
+Contributor: [Lennart Ochel](mailto: lennart.ochel@fh-bielefeld.de), [Timo Kleine-Döpke](mailto: timo.kleine-doepke@fh-bielefeld.de), [Bernhard Bachmann](mailto: bernhard.bachmann@fh-bielefeld.de)
 
     University of Applied Sciences Bielefeld
     Department of engineering and mathematics
-	33609 Bielefeld
-	Germany
-	http://www.fh-bielefeld.de/ammo
+    33609 Bielefeld - Germany
+    http://www.fh-bielefeld.de/ammo
