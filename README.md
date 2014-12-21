@@ -23,14 +23,9 @@ Download [PNlib v1.0 (2012-05-15)](../../archive/v1.0.zip)
 #### Release notes
 
 * Version v1.1 (2014-12-19)
-  * Adaption of version 1.0 to Modelica 3.3.
+  * This is basically an adaption of PNlib version 1.0 to Modelica 3.3 to remove tool dependencies (e.g. impure instead of __Dymola_pure annotation).
 * [Version v1.0 (2012-05-15)](../../archive/v1.0.zip)
   * Initial release.
-
-## Compatibility
-The library is only compatible with tools that support Modelica 3.3 (e.g. impure functions are used). The library works with following tools:
-* Dymola 2015
-* Other tools are not tested yet
 
 ## License
 
