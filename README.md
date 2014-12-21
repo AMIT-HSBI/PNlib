@@ -27,6 +27,11 @@ Download [PNlib v1.0 (2012-05-15)](../../archive/v1.0.zip)
 * [Version v1.0 (2012-05-15)](../../archive/v1.0.zip)
   * Initial release.
 
+## Compatibility
+The library is only compatible with tools that support Modelica 3.3 (e.g. impure functions are used). The library works with following tools:
+* Dymola 2015
+* Other tools are not tested yet
+
 ## License
 
 This Modelica package is free software and the use is completely at your own risk;
@@ -37,7 +42,9 @@ it can be redistributed and/or modified under the terms of the [Modelica License
     Department of engineering and mathematics
     33609 Bielefeld - Germany
     http://www.fh-bielefeld.de/ammo
-* [Sabrina Pro&szlig;](mailto: sabrina.pross@fh-bielefeld.de)
-* [Lennart Ochel](mailto: lennart.ochel@fh-bielefeld.de)
-* [Timo Kleine-Döpke](mailto: timo.kleine-doepke@fh-bielefeld.de)
-* [Bernhard Bachmann](mailto: bernhard.bachmann@fh-bielefeld.de)
+* Sabrina Pro&szlig;
+* Lennart Ochel
+* Timo Kleine-Döpke
+* Bernhard Bachmann
+
+You may report feedback, issues or feature-requests using the [Issues](../../issues) button.
