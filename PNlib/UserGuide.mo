@@ -9,7 +9,7 @@ two different states, called <b>places</b>: discrete and continuous places, and 
 in the following figure.
 </p>
 
-<p><img src=\"Resources/Images/iconsxHPNklein.png\"><\p>
+<p><img src=\"Resources/Images/iconsxHPNklein.png\"></p>
 
 <p>
 Discrete places contain an integer quantity, called <b>tokens</b> or <b>marks</b> while continuous places contain a non-negative real quantity.
@@ -44,7 +44,7 @@ However, T2 is not active because the marking of P5 is less than the arc weight 
 greater than the weight of the inhibitor arc (m(P8)=3&gt;f(P8&rarr;T3)=2). However, T4 is active because the marking of P11 is less than the arc weight (m(P11)=1&lt;f(P11&rarr;T4)=2).
 </p>
 
-<p><img src=\"Resources/Images/arcsforma.png\"><\p>
+<p><img src=\"Resources/Images/arcsforma.png\"></p>
 
 <p>
 The <b>conversion</b> of a discrete to a continuous marking is realized by connecting a discrete transition to a continuous place and the conversion from a continuous to a discrete marking is
@@ -60,7 +60,7 @@ when continuous transitions fire but their marking cannot be changed during the 
 <li>T4 fires by removing 0.8 marks from P9 and adding one mark to P10.</li>
 </ul>
 
-<p><img src=\"Resources/Images/hybridPNklein.png\"><\p>
+<p><img src=\"Resources/Images/hybridPNklein.png\"></p>
 
 <p>
 It is important to mention that a discrete transition fires always in a discrete manner by removing and adding marks after a delay is passed regardless of whether a
@@ -99,7 +99,7 @@ P1 enables T2. T2 is firable and fires by removing two tokens from P1 and adding
 If the enabling is performed at random, one of the transitions is enabled according to their assigned probabilities, e.g. T1 has the probability 0.7 and T2 has the probability 0.3.
 </p>
 
-<p><img src=\"Resources/Images/type1klein.png\"><\p><\p>
+<p><img src=\"Resources/Images/type1klein.png\"></p></p>
 
 <h3>Type-2-Conflict</h3>
 <p>Another conflict can occur between a continuous place and two or more continuous transitions when the input speed is not sufficient to fire all output transitions with the instantaneous speed
@@ -110,7 +110,7 @@ If the enabling is performed at random, one of the transitions is enabled accord
 The left Petri net has no actual conflict but P2 and P3 of the right Petri net have an actual conflict. Their input speed is not sufficient to fire T5 and T6 with the respective speed.
 </p>
 
-<p><img src=\"Resources/Images/type2.png\"><\p>
+<p><img src=\"Resources/Images/type2.png\"></p>
 
 <h3>Type-3-Conflict</h3>
 <p>
@@ -128,7 +128,7 @@ If m(P4)&lt;f(P4&rarr;T5) or m(P4)>f(P4&rarr;T5), there is no conflict. It is so
 This rule is intuitively logical because the firing of a continuous transition is a continuous flow and the firing of a discrete transition is an extreme change of the Petri net marking.
 </p>
 
-<p><img src=\"Resources/Images/type3.png\"><\p>
+<p><img src=\"Resources/Images/type3.png\"></p>
 
 <h3>Type-4-Conflict</h3>
 <p>
@@ -141,7 +141,7 @@ This conflict can be solved by prioritization of the transitions. If T1 takes pr
  T2 becomes active and fires. Therefore, all continuous output transitions of a discrete place have to be provided with priorities.
 </p>
 
-<p><img src=\"Resources/Images/type4.png\"><\p>
+<p><img src=\"Resources/Images/type4.png\"></p>
 
 <h1> PNlib: A Modelica Library for Modeling xHPN </h1>
 <p><b>IMPORTANT:</b></p>
@@ -200,7 +200,7 @@ dashed arc, the inhibitor arc by an arc with a white circle at its end, and the 
 with a black square at its end.
 </p>
 
-<p><img src=\"Resources/Images/iconsklein.png\"><\p>
+<p><img src=\"Resources/Images/iconsklein.png\"></p>
 
 <h2>Connectors</h2>
 <p> The PNlib contains four different connectors: PlaceOut, PlaceIn, TransitionOut, and TransitionIn.
@@ -208,7 +208,7 @@ The connectors PlaceOut and PlaceIn are part of place models and connect them to
 Similar, TransitionOut and TransitionIn are connectors of the transition model and connect them to output and input places, respectively.
 The figure shows which connector belongs to with Petri net component model.</p>
 
-<p><img src=\"Resources/Images/connectorsklein.png\"><\p>
+<p><img src=\"Resources/Images/connectorsklein.png\"></p>
 
 <p>The connectors of the Petri net component models are vectors to enable the connection to an arbitrary number of input and output components.
 Therefore, the dimension parameters nIn and nOut are declared in the place and transition models with the connectorSizing annotation.</p>
@@ -301,7 +301,7 @@ connect(P1.outTransition[3], T3.inPlaces[1]);
 The enabling probabilities 0.3 for T1, 0.25 for T2, and 0.45 for T3 have to be entered by the parameter vector
 enablingProbOut={0.3,0.25,0.45}.</p>
 
-<p><img src=\"Resources/Images/enablingprobklein.png\"><\p>
+<p><img src=\"Resources/Images/enablingprobklein.png\"></p>
 
 <h3>Implementation</h3>
 <p>The main process in the place model is the recalculation of the marking after firing
@@ -424,7 +424,7 @@ firingCon = time>9.7
 causes that the transition cannot be activated as long as time is less than 9.7.
 </p>
 
-<p><img src=\"Resources/Images/inputarcweightsklein.png\"><\p>
+<p><img src=\"Resources/Images/inputarcweightsklein.png\"></p>
 
 <h3>Example: Input of maximum speed functions</h3>
 <p>
@@ -441,7 +441,7 @@ whereby P1.t and P2.t accesses the marks of P1 and P2, respectively. Transition 
 maximumSpeed = <b>if</b> time&le;6.5 <b>then</b> 2.6 <b>else</b> 1.7.
 </p>
 
-<p><img src=\"Resources/Images/inputmaximumspeedklein.png\"><\p>
+<p><img src=\"Resources/Images/inputmaximumspeedklein.png\"></p>
 
 <h3>Implementation</h3>
 <p>
@@ -459,7 +459,7 @@ to arcs that are generated by connect equations. Due to that fact, the test, inh
 and transitions (see figure); the normal arc is simply generated by the connect equation. Test and inhibitor arc can be normal arcs simultaneously.
 </p>
 
-<p><img src=\"Resources/Images/arcsklein.png\"><\p>
+<p><img src=\"Resources/Images/arcsklein.png\"></p>
 
 <p>
 Parameters of test and inhibitor arcs (read arcs have no parameters)
@@ -498,7 +498,7 @@ The animation toolbar allows the control of the animation. An animation offers a
 The figure shows four selected points in time of the animation of an xHPN example.
 </p>
 
-<p><img src=\"Resources/Images/animationklein.png\"><\p>
+<p><img src=\"Resources/Images/animationklein.png\"></p>
 
 <p>
 All display and animation options are realized with the DynamicSelect annotation.
@@ -514,7 +514,7 @@ at the top of the place icon. In the case of discrete places it is an orange Int
 it is a blue RealOutput connector. In the figure above the markings of P1, P3, P5, and P6 are available in Matlab.
 </p>
 
-<p><img src=\"Resources/Images/simulink.png\"><\p>
+<p><img src=\"Resources/Images/simulink.png\"></p>
 
 </html>"));
 end UserGuide;
