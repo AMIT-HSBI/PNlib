@@ -86,7 +86,7 @@ public
   testValue=testValue,
   testValueint=testValueInt,
   normalArc=normalArc) "connector for input places"                                                                                              annotation (Placement(transformation(extent={{
-            -56,-10},{-40,10}}, rotation=0),visible=DynamicSelect(true,if nIn==0 then false else true)));
+            -56,-10},{-40,10}}, rotation=0)));
 
   PNlib.Interfaces.TransitionOut outPlaces[nOut](
   each active=delayPassed,
@@ -104,7 +104,7 @@ public
   maxTokensint=maxTokensInt,
   disPlace=disPlaceOut,
   enable=enableOut) "connector for output places"                                                                annotation (Placement(transformation(extent={
-            {40,-10},{56,10}}, rotation=0),visible=DynamicSelect(true,if nOut==0 then false else true)));
+            {40,-10},{56,10}}, rotation=0)));
 equation
   //****MAIN BEGIN****//
   //reset active when delay passed
