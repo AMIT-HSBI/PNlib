@@ -1,5 +1,5 @@
 within PNlib.Models;
-model FlushToilet "Model of a flunsh toilet"
+model FlushToilet "Model of a flush toilet"
 
   PD Lever(nIn=1,
     maxTokens=1,
