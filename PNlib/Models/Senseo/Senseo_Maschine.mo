@@ -4,7 +4,7 @@ model Senseo_Maschine
   parameter Real Psenseo=1.450 "power of senseo machine [kW]";
   parameter Real c=4.182 "specific heat capacity [kJ/(kg*K)]";
   parameter Real k=0.01177 "proportionality factor for cooling water";
-  parameter Real TE=20 "Enviroment temperatur [°C]";
+  parameter Real TE=20 "Environment temperature [°C]";
   parameter Real TC=10 "Temperature of new water [°C]";
 
   PNlib.TC heating(

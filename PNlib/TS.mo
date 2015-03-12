@@ -143,7 +143,7 @@ equation
    //****ERROR MESSENGES END****//
 algorithm
    //****MAIN BEGIN****//
-  //generate random putative fire time accoring to Next-Reaction method of Gibson and Bruck
+  //generate random putative fire time according to Next-Reaction method of Gibson and Bruck
   when active then    //17.06.11 Reihenfolge getauscht!
      putFireTime:=time +Functions.Random.randomexp(h);
      hold:=h;
