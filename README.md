@@ -22,7 +22,10 @@ Download [PNlib v1.0 (2012-05-15)](../../archive/v1.0.zip)
 
 #### Release notes
 
-* [Version v1.0 (2012-05-15)](../../archive/v1.0.zip)
+* [Version v1.1](../../archive/v1.1.zip) (2015-01-13)
+  * This is basically an adaption of PNlib version 1.0 to Modelica 3.3 to remove tool dependencies (e.g. impure instead of __Dymola_pure annotation).
+  * New function PNlib.Functions.Random.initRandom is introduced to make stochastic simulations reproducible.
+* [Version v1.0](../../archive/v1.0.zip) (2012-05-15)
   * Initial release.
 
 ## License
@@ -31,12 +34,13 @@ This Modelica package is free software and the use is completely at your own ris
 it can be redistributed and/or modified under the terms of the [Modelica License 2](https://modelica.org/licenses/ModelicaLicense2).
 
 ## Development and contribution
-Library officer:  [Sarina Pro&szlig;](mailto: sabrina.pross@fh-bielefeld.de)
-
-Contributor: [Bernhard Bachmann](mailto: bernhard.bachmann@fh-bielefeld.de)
-
     University of Applied Sciences Bielefeld
     Department of engineering and mathematics
-	33609 Bielefeld
-	Germany
-	http://www.fh-bielefeld.de/ammo
+    33609 Bielefeld - Germany
+    http://www.fh-bielefeld.de/ammo
+* Sabrina Pro&szlig;
+* Lennart Ochel
+* Timo Kleine-Döpke
+* Bernhard Bachmann
+
+You may report feedback, issues or feature-requests using the [Issues](../../issues) button.
