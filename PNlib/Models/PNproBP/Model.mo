@@ -69,7 +69,7 @@ model Model "Top Model"
         origin={270,108})));
   PD Order(nIn=2, nOut=1) "The customer gives the order"
     annotation (Placement(transformation(extent={{376,56},{396,76}})));
-  PD No_Order(nIn=2) "no order "
+  PD No_Order(nIn=2) "no order"
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
         origin={392,114})));
