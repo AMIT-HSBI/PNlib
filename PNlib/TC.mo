@@ -84,7 +84,7 @@ public
    decreasingFactor=decreasingFactorIn,
    testValue=testValue,
    testValueint=testValueInt,
-   normalArc=normalArc) "connector for input places"  annotation (Placement(transformation(extent={{ -56,-10},{-40,10}}, rotation=0),visible=DynamicSelect(true,if nIn==0 then false else true)));
+   normalArc=normalArc) "connector for input places"  annotation (Placement(transformation(extent={{ -56,-10},{-40,10}}, rotation=0)));
   Interfaces.TransitionOut[nOut] outPlaces(each active=activation.active,
   each fire=fire,
   each enabledByInPlaces = true,
@@ -101,7 +101,7 @@ public
   emptied=emptied,
   disPlace=disPlaceOut,
   speedSum=speedSumOut,decreasingFactor=decreasingFactorOut)
-    "connector for output places"                                                          annotation (Placement(transformation(extent={{40,-10},{56,10}}, rotation=0),visible=DynamicSelect(true,if nOut==0 then false else true)));
+    "connector for output places"                                                          annotation (Placement(transformation(extent={{40,-10},{56,10}}, rotation=0)));
 equation
    //****MAIN BEGIN****//
     //firing process

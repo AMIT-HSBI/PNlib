@@ -72,7 +72,7 @@ public
   arcWeightint=arcWeightIn,
   active=activeIn,
   enabledByInPlaces=enabledByInPlaces) "connector for input transitions"
-                       annotation (Placement(transformation(extent={{-114,-10},{-98,10}}, rotation=0),visible=DynamicSelect(true,if nIn==0 then false else true),
+                       annotation (Placement(transformation(extent={{-114,-10},{-98,10}}, rotation=0),
     iconTransformation(extent={{-116,-10},{-100,10}})));
   PNlib.Interfaces.PlaceOut outTransition[nOut](
   each t=pret,
@@ -93,7 +93,7 @@ public
   each testValue=-1,
   each testValueint=-1,
   each normalArc=2) "connector for output transitions"
-                         annotation (Placement(transformation(extent={{100,-10},{116,10}}, rotation=0),visible=DynamicSelect(true,if nOut==0 then false else true)));
+                         annotation (Placement(transformation(extent={{100,-10},{116,10}}, rotation=0)));
   Modelica.Blocks.Interfaces.IntegerOutput pd_t=t
     "connector for Simulink connection"                                               annotation (Placement(
         transformation(extent={{-36,68},{-16,88}}), iconTransformation(
