@@ -118,7 +118,7 @@ Additionally, the head of the stickman is green when the machine is on and red w
 he when water is refilled the respective rectangle is blue.
 </p>
 <p>
-  <img src=\"Resources/Images/senseotop.png\">
+  <img src=\"modelica://PNlib/Resources/Images/senseotop.png\">
 </p>
 <p>
 The xHPN model ans the corresponding processes listed in the table are divided for the Modelica model into five sub-models, also called wrappers, which represent the following processes:
@@ -134,7 +134,7 @@ The xHPN model ans the corresponding processes listed in the table are divided f
 These xHPN-sub-model are represented in following figure.
 </p>
 <p>
-  <img src=\"Resources/Images/senseo.png\">
+  <img src=\"modelica://PNlib/Resources/Images/senseo.png\">
 </p>
 <p>
 The following figure shows one possible result for simulating the Senseo machine 5 hours.
@@ -142,7 +142,7 @@ It has to mentioned that every simulation result is different due to the include
 choosing one or two coffees, stopping the machine or producing another coffee).
 </p>
 <p>
-  <img src=\"Resources/Images/senseoresults.png\">
+  <img src=\"modelica://PNlib/Resources/Images/senseoresults.png\">
 </p>
 </html>"));
 end Senseo;
