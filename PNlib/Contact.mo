@@ -2,12 +2,24 @@ within PNlib;
 model Contact
 extends Modelica.Icons.Contact;
  annotation (Documentation(info="<html>
- <p>This package is developed an maintained by the following contributors</p>
+ <h1>Contact</h1>
+ <p>This package is developed and maintained by the following contributors</p>
   <table border=1 cellspacing=0 cellpadding=2>
     <tr>
       <th></th>
       <th>Name</th>
       <th>Affiliation</th>
+    </tr>
+    <tr>
+      <td valign=top>Library officer</td>
+      <td valign=top>
+      <a>Lennart Ochel</a><br>
+      <a>mailto: lennart.ochel@fh-bielefeld.de</a><br>
+      <td valign=top>University of Applied Sciences Bielefeld</td><br>
+        <a>Department of engineering and mathematics</a><br>
+        33609 Bielefeld<br>
+        Germany
+      </td>
     </tr>
     <tr>
       <td valign=top>Library officer</td>
