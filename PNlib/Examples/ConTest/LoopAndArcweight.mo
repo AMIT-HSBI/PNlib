@@ -1,5 +1,5 @@
 within PNlib.Examples.ConTest;
-model ConLoopAndArcweight
+model LoopAndArcweight
   extends Modelica.Icons.Example;
 
   inner PNlib.Settings settings1 annotation(Placement(transformation(extent={{-40,20},
@@ -23,4 +23,4 @@ equation
   annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent={{-40,-40},
             {40,40}}),                                                                                   graphics), experiment(StartTime=0.0, StopTime=10.0),
     Icon(coordinateSystem(extent={{-40,-40},{40,40}})));
-end ConLoopAndArcweight;
+end LoopAndArcweight;
