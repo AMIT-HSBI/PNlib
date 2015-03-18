@@ -11,7 +11,7 @@ protected
   Boolean pretestChange[nIn];
   Boolean ttest[nIn];
   Boolean prettest[nIn];
-  Real ttest2[nIn];
+  discrete Real ttest2[nIn];
 equation
   preabove=pre(above);
   pretestChange=pre(testChange);

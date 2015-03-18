@@ -15,14 +15,14 @@ block enablingInDis "enabling process of discrete input transitions"
 protected
   Boolean TEin[nIn] "enabled input transitions";
   Integer remTAin[nIn] "remaining active input transitions";
-  Real cumEnablingProb[nIn] "cumulated, scaled enabling probabilities";
+  discrete Real cumEnablingProb[nIn] "cumulated, scaled enabling probabilities";
   Integer arcWeightSum "arc weight sum";
   Integer nremTAin "number of remaining active input transitions";
   Integer nTAin "number ofactive input transitions";
   Integer k "iteration index";
   Integer posTE "possible enabled transition";
-  Real randNum "uniform distributed random number";
-  Real sumEnablingProbTAin
+  discrete Real randNum "uniform distributed random number";
+  discrete Real sumEnablingProbTAin
     "sum of the enabling probabilities of the active input transitions";
   Boolean endWhile;
 
