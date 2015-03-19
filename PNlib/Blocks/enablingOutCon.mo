@@ -17,7 +17,8 @@ protected
   Boolean TEout[nOut] "enabled output transitions";
   Boolean disTAout[nOut] "discret active output transitions";
   Integer remTAout[nOut] "remaining active output transitions";
-  discrete Real cumEnablingProb[nOut] "cumulated, scaled enabling probabilities";
+  discrete Real cumEnablingProb[nOut]
+    "cumulated, scaled enabling probabilities";
   discrete Real arcWeightSum "arc weight sum";
   Integer nremTAout "number of remaining active output transitions";
   Integer nTAout "number of active output transitions";
