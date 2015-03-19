@@ -10,8 +10,7 @@ model PCtoTC
             10}})));
 equation
   connect(P1.outTransition[1], T1.inPlaces[1]) annotation(Line(points={{10.8,0},
-          {25.2,0}},                                                                               color = {0, 0, 0}, smooth = Smooth.None));
+          {25.2,0}}, color = {0, 0, 0}, smooth = Smooth.None));
   annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent={{-40,-40},
-            {40,40}}),                                                                                   graphics), experiment(StartTime=0.0, StopTime=10.0),
-    Icon(coordinateSystem(extent={{-40,-40},{40,40}})));
+            {40,40}}), graphics), experiment(StartTime=0.0, StopTime=10.0));
 end PCtoTC;
