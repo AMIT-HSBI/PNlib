@@ -17,14 +17,15 @@ protected
   Boolean TEout[nOut] "enabled output transitions";
   Boolean disTAout[nOut] "discret active output transitions";
   Integer remTAout[nOut] "remaining active output transitions";
-  Real cumEnablingProb[nOut] "cumulated, scaled enabling probabilities";
-  Real arcWeightSum "arc weight sum";
+  discrete Real cumEnablingProb[nOut]
+    "cumulated, scaled enabling probabilities";
+  discrete Real arcWeightSum "arc weight sum";
   Integer nremTAout "number of remaining active output transitions";
   Integer nTAout "number of active output transitions";
   Integer k "iteration index";
   Integer posTE "possible enabled transition";
-  Real randNum "uniform distributed random number";
-  Real sumEnablingProbTAout
+  discrete Real randNum "uniform distributed random number";
+  discrete Real sumEnablingProbTAout
     "sum of the enabling probabilities of the active output transitions";
   Boolean endWhile;
 algorithm

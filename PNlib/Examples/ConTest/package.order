@@ -1,8 +1,8 @@
-PCalone
-TCalone
+SinglePC
+SingleTC
 TCtoPC
 PCtoTC
-ConLoopAndArcweight
+LoopAndArcweight
 ZeroPlace
 Speed
 Conflict

@@ -16,14 +16,14 @@ protected
   Boolean TEin[nIn] "enabled input transitions";
   Boolean disTAin[nIn] "discret active input transitions";
   Integer remTAin[nIn] "remaining active input transitions";
-  Real cumEnablingProb[nIn] "cumulated, scaled enabling probabilities";
-  Real arcWeightSum "arc weight sum";
+  discrete Real cumEnablingProb[nIn] "cumulated, scaled enabling probabilities";
+  discrete Real arcWeightSum "arc weight sum";
   Integer nremTAin "number of remaining active input transitions";
   Integer nTAin "number ofactive input transitions";
   Integer k "iteration index";
   Integer posTE "possible enabled transition";
-  Real randNum "uniform distributed random number";
-  Real sumEnablingProbTAin
+  discrete Real randNum "uniform distributed random number";
+  discrete Real sumEnablingProbTAin
     "sum of the enabling probabilities of the active input transitions";
   Boolean endWhile;
 algorithm
