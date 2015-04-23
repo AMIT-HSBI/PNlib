@@ -61,7 +61,7 @@ protected
   //Check test values of test arcs
   Blocks.testArcEvent testArcEvent(nIn=nIn,tIn=tIn,testValue=testValue);
   //firing process
-  Blocks.allTrue fire_(vec=enableIn or not disPlaceIn);
+  Boolean fire_ = Functions.OddsAndEnds.allTrue(enableIn or not disPlaceIn);
   //****BLOCKS END****//
 public
   Interfaces.TransitionIn[nIn] inPlaces(each active=activation.active,
@@ -105,7 +105,7 @@ public
 equation
    //****MAIN BEGIN****//
     //firing process
-   fire=fire_.alltrue and activation.active and not maximumSpeed<=0;
+   fire=fire_ and activation.active and not maximumSpeed<=0;
    //instantaneous speed calculation
    instantaneousSpeed=min(min(min(decreasingFactorIn),min(decreasingFactorOut))*maximumSpeed,prelimSpeed);
   //****MAIN END****//

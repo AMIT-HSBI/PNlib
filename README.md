@@ -4,9 +4,9 @@ Free library for Modeling xHPN
 ## Library description
 
 The advanced Petri Net library, called PNlib, enables the modeling of extended hybrid Petri Nets (xHPN). It comprises
- * a discrete (PD) and a continuous place (PC),
- * a discrete (TD), a stochastic (TS), and a continuous transitions (TC), and
- * a test (TA), an inhibitor (IA), and a read arcs (RA).
+ * discrete (PD) and continuous places (PC),
+ * discrete (TD), stochastic (TS), and continuous transitions (TC), and
+ * test (TA), inhibitor (IA), and read arcs (RA).
 
 The main package PNlib is divided into the following sub-packages:
 
@@ -18,7 +18,7 @@ The main package PNlib is divided into the following sub-packages:
 
 ## Current release
 
-Download [PNlib v1.0 (2012-05-15)](../../archive/v1.0.zip)
+Download [PNlib v1.1 (2015-01-13)](../../archive/v1.1.zip)
 
 #### Release notes
 
@@ -27,6 +27,11 @@ Download [PNlib v1.0 (2012-05-15)](../../archive/v1.0.zip)
   * New function PNlib.Functions.Random.initRandom is introduced to make stochastic simulations reproducible.
 * [Version v1.0](../../archive/v1.0.zip) (2012-05-15)
   * Initial release.
+
+## Compatibility
+
+* Works partly in OpenModelica 1.9.3 ([trend](https://test.openmodelica.org/libraries/history/PNlib-trend.svg), [coverage](https://test.openmodelica.org/libraries/PNlib/BuildModelRecursive.html))
+* Works in Dymola 2015
 
 ## License
 

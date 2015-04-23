@@ -57,9 +57,9 @@ protected
   //activation process
   Blocks.activationDis activation(testValue=testValue,testValueInt=testValueInt,normalArc=normalArc,nIn=nIn,nOut=nOut,tIn=tIn, tOut=tOut,tIntIn=tIntIn, tIntOut=tIntOut, arcType=arcType,arcWeightIn=arcWeightIn,arcWeightIntIn=arcWeightIntIn, arcWeightOut=arcWeightOut, arcWeightIntOut=arcWeightIntOut, minTokens=minTokens, maxTokens=maxTokens, minTokensInt=minTokensInt, maxTokensInt=maxTokensInt,firingCon=firingCon,disPlaceIn=disPlaceIn,disPlaceOut=disPlaceOut);
   //Is the transition enabled by all input places?
-  Blocks.allTrue enabledByInPlaces(vec=enableIn);
+  Boolean enabledByInPlaces = Functions.OddsAndEnds.allTrue(enableIn);
    //Is the transition enabled by all output places?
-  Blocks.allTrue enabledByOutPlaces(vec=enableOut);
+  Boolean enabledByOutPlaces = Functions.OddsAndEnds.allTrue(enableOut);
   //****BLOCKS END****//
 public
   PNlib.Interfaces.TransitionIn inPlaces[nIn](
@@ -87,7 +87,7 @@ public
   arcWeight=arcWeightOut,
   arcWeightint=arcWeightIntOut,
   each fire=fire,
-  each enabledByInPlaces=enabledByInPlaces.alltrue,
+  each enabledByInPlaces=enabledByInPlaces,
   each disTransition=true,
   each instSpeed=0,
   each prelimSpeed=0,
@@ -111,7 +111,7 @@ equation
    //delay passed?
    delayPassed= active and time>=firingTime;
    //firing process
-   fire=if nOut==0 then enabledByInPlaces.alltrue else enabledByOutPlaces.alltrue;
+   fire=if nOut==0 then enabledByInPlaces else enabledByOutPlaces;
    //****MAIN END****//
     //****ANIMATION BEGIN****//
     when fire then
