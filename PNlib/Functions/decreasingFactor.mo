@@ -1,5 +1,5 @@
-within PNlib.Blocks;
-block decreasingFactor "calculation of decreasing factors"
+within PNlib.Functions;
+function decreasingFactor "calculation of decreasing factors"
   parameter input Integer nIn "number of input transitions";
   parameter input Integer nOut "number of output transitions";
   input Real t "marking";

@@ -69,9 +69,9 @@ protected
   //firing sum calculation
   Blocks.firingSumCon firingSumIn(fire=preFireIn,arcWeight=arcWeightIn,instSpeed=instSpeedIn,disTransition=disTransitionIn);
   Blocks.firingSumCon firingSumOut(fire=preFireOut,arcWeight=arcWeightOut,instSpeed=instSpeedOut,disTransition=disTransitionOut);
-  //decreasing factor calculation
-  Blocks.decreasingFactor decreasingFactor(nIn=nIn,nOut=nOut,t=t_,minMarks=minMarks,maxMarks=maxMarks,speedIn= firingSumIn.conFiringSum,speedOut= firingSumOut.conFiringSum,maxSpeedIn=maxSpeedIn,maxSpeedOut=maxSpeedOut,prelimSpeedIn=prelimSpeedIn,prelimSpeedOut=prelimSpeedOut,arcWeightIn=arcWeightIn,arcWeightOut=arcWeightOut,firingIn=fireIn and not disTransitionIn,firingOut=fireOut and not disTransitionOut);
   //****BLOCKS END****//
+  Real decFactorIn[nIn] "decreasing factors for input transitions";
+  Real decFactorOut[nOut] "decreasing factors for output transitions";
 public
   Interfaces.PlaceIn inTransition[nIn](each t=t_,
   each tint=1,
@@ -79,7 +79,7 @@ public
   each maxTokensint=1,
   enable=enableIn.TEin_,
   each emptied = emptying.anytrue,
-  decreasingFactor = decreasingFactor.decFactorIn,
+  decreasingFactor = decFactorIn,
   each disPlace =  false,
   each speedSum= firingSumOut.conFiringSum,
   fire=fireIn,
@@ -98,7 +98,7 @@ public
   each minTokensint=1,
   enable=enableOut.TEout_,
   each fed=feeding.anytrue,
-  decreasingFactor=decreasingFactor.decFactorOut,
+  decreasingFactor=decFactorOut,
   each disPlace=false,
   each arcType=1,
   each speedSum=firingSumIn.conFiringSum,
@@ -121,7 +121,8 @@ public
         rotation=90,
         origin={0,108})));
 equation
-  //****MAIN END****//
+  //decreasing factor calculation
+  (decFactorIn, decFactorOut) = Functions.decreasingFactor(nIn=nIn,nOut=nOut,t=t_,minMarks=minMarks,maxMarks=maxMarks,speedIn= firingSumIn.conFiringSum,speedOut= firingSumOut.conFiringSum,maxSpeedIn=maxSpeedIn,maxSpeedOut=maxSpeedOut,prelimSpeedIn=prelimSpeedIn,prelimSpeedOut=prelimSpeedOut,arcWeightIn=arcWeightIn,arcWeightOut=arcWeightOut,firingIn=fireIn and not disTransitionIn,firingOut=fireOut and not disTransitionOut);
   //calculation of continuous mark change
   conMarkChange=firingSumIn.conFiringSum-firingSumOut.conFiringSum;
   der(t_)=conMarkChange;
