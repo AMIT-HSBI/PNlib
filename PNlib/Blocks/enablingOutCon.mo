@@ -34,14 +34,14 @@ algorithm
     disTAout:=TAout and disTransition;
     arcWeightSum := Functions.OddsAndEnds.conditionalSum(arcWeight, disTAout);
                                                                    //arc weight sum of all active output transitions
-    if t - arcWeightSum >= minMarks or arcWeightSum==0 then  //Place has no actual conflict; all active output transitions are enabled
+    if t - arcWeightSum >= minMarks or Functions.OddsAndEnds.isEqual(arcWeightSum, 0.0) then  //Place has no actual conflict; all active output transitions are enabled
       TEout:=TAout;
     else                          //Place has an actual conflict;
       TEout:=TAout and not disTransition;
       if enablingType==1 then     //deterministic enabling according to priorities
         arcWeightSum:=0;
         for i in 1: nOut loop
-          if disTAout[i] and ((t-(arcWeightSum+arcWeight[i])>=minMarks) or arcWeight[i]==0) then
+          if disTAout[i] and ((t-(arcWeightSum+arcWeight[i])>=minMarks) or Functions.OddsAndEnds.isEqual(arcWeight[i], 0.0)) then
             TEout[i]:=true;
             arcWeightSum:=arcWeightSum + arcWeight[i];
           end if;
@@ -78,7 +78,7 @@ algorithm
                 k:=k + 1;
               end if;
           end while;
-          if (t-(arcWeightSum + arcWeight[posTE]) >= minMarks) or  arcWeight[i]==0 then
+          if (t-(arcWeightSum + arcWeight[posTE]) >= minMarks) or  Functions.OddsAndEnds.isEqual(arcWeight[i], 0.0) then
              arcWeightSum:=arcWeightSum + arcWeight[posTE];
              TEout[posTE]:=true;
           end if;
