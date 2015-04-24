@@ -27,14 +27,16 @@ protected
   Real modSpeedIn;
   Real modSpeedOut;
   Real minMarksMod;
-  anyTrue anyFireOut(vec=firingOut);
-  anyTrue anyFireIn(vec=firingIn);
+  Integer numFireOut;
+  Integer numFireIn;
   Boolean stop;
 algorithm
   decFactorIn:=fill(-1, nIn);
   decFactorOut:=fill(-1, nOut);
   modSpeedIn:=speedIn;
   modSpeedOut:=speedOut;
+  numFireOut := Functions.OddsAndEnds.numTrue(firingOut);
+  numFireIn := Functions.OddsAndEnds.numTrue(firingIn);
   stop:=false;
   maxSpeedSumIn:=0;
   maxSpeedSumOut:=0;
@@ -45,7 +47,7 @@ algorithm
   minMarksMod:=minMarks;
   //-----------------------------------------------------------------------------------------------------------//
   //decreasing factor of input transitions
-if anyFireOut.numtrue>0 and anyFireIn.numtrue>1 then
+if numFireOut>0 and numFireIn>1 then
 //     for i in 1:nIn loop
 //       if firingIn[i] then
 //          prelimSpeedSumIn:=prelimSpeedSumIn + arcWeightIn[i]*prelimSpeedIn[i];
@@ -91,7 +93,7 @@ end if;
   //-----------------------------------------------------------------------------------------------------------//
   //decreasing factor of output transitions
   stop:=false;
-   if anyFireOut.numtrue>1 and anyFireIn.numtrue>0 then
+   if numFireOut>1 and numFireIn>0 then
     prelimSpeedSumOut:=Functions.OddsAndEnds.conditionalSum(arcWeightOut.*prelimSpeedOut, firingOut);
     maxSpeedSumOut:=Functions.OddsAndEnds.conditionalSum(arcWeightOut .*maxSpeedOut, firingOut);
     if maxSpeedSumOut>0 then
