@@ -9,17 +9,9 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ConTest.T
   "PNlib.Examples.ConTest.TCtoPC_diff.csv", 0.01, 0.0001,
   {
     "P1.t",
-    "P2.t",
-    "P3.t",
     "T1.fire",
     "T1.instantaneousSpeed",
-    "T1.maximumSpeed",
-    "T2.fire",
-    "T2.instantaneousSpeed",
-    "T2.maximumSpeed",
-    "T3.fire",
-    "T3.instantaneousSpeed",
-    "T3.maximumSpeed"
+    "T1.maximumSpeed"
   }); getErrorString();
 
 // Result:

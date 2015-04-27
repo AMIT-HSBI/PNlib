@@ -10,7 +10,6 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ConTest.S
   {
     "P1.t",
     "P2.t",
-    "P3.t",
     "T1.fire",
     "T1.instantaneousSpeed",
     "T1.maximumSpeed",
