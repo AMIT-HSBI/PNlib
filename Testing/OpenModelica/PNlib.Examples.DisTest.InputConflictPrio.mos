@@ -1,0 +1,59 @@
+// name: PNlib.Examples.DisTest.InputConflictPrio
+// keywords: PNlib, discrete
+// status: correct
+
+loadFile("../../PNlib/package.mo"); getErrorString();
+simulate(PNlib.Examples.DisTest.InputConflictPrio); getErrorString();
+res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.InputConflictPrio_res.mat",
+  "../../ReferenceFiles/PNlib.Examples.DisTest.InputConflictPrio.mat",
+  "PNlib.Examples.DisTest.InputConflictPrio_diff.csv", 0.01, 0.0001,
+  {
+    "P1.t",
+    "P2.t",
+    "P3.t",
+    "T1.fire",
+    "T1.instantaneousSpeed",
+    "T1.maximumSpeed",
+    "T2.fire",
+    "T2.instantaneousSpeed",
+    "T2.maximumSpeed",
+    "T3.fire",
+    "T3.instantaneousSpeed",
+    "T3.maximumSpeed"
+  }); getErrorString();
+
+// Result:
+// true
+// "Notification: Automatically loaded package Modelica 3.2.1 due to uses annotation.
+// Notification: Automatically loaded package Complex 3.2.1 due to uses annotation.
+// Notification: Automatically loaded package ModelicaServices 3.2.1 due to uses annotation.
+// "
+// record SimulationResult
+//     resultFile = "PNlib.Examples.DisTest.InputConflictPrio_res.mat",
+//     simulationOptions = "startTime = 0.0, stopTime = 10.0, numberOfIntervals = 500, tolerance = 1e-06, method = 'dassl', fileNamePrefix = 'PNlib.Examples.DisTest.InputConflictPrio', options = '', outputFormat = 'mat', variableFilter = '.*', cflags = '', simflags = ''",
+//     messages = ""
+// end SimulationResult;
+// "Warning: The initial conditions are not fully specified. Use +d=initialization for more information.
+// "
+// {"Files not Equal!"}
+// "Error: Could not read variable T1.fire in file PNlib.Examples.DisTest.InputConflictPrio.mat.
+// Warning: Get data of variable T1.fire from file PNlib.Examples.DisTest.InputConflictPrio.mat failed!
+// Error: Could not read variable T1.instantaneousSpeed in file PNlib.Examples.DisTest.InputConflictPrio.mat.
+// Warning: Get data of variable T1.instantaneousSpeed from file PNlib.Examples.DisTest.InputConflictPrio.mat failed!
+// Error: Could not read variable T1.maximumSpeed in file PNlib.Examples.DisTest.InputConflictPrio.mat.
+// Warning: Get data of variable T1.maximumSpeed from file PNlib.Examples.DisTest.InputConflictPrio.mat failed!
+// Error: Could not read variable T2.fire in file PNlib.Examples.DisTest.InputConflictPrio.mat.
+// Warning: Get data of variable T2.fire from file PNlib.Examples.DisTest.InputConflictPrio.mat failed!
+// Error: Could not read variable T2.instantaneousSpeed in file PNlib.Examples.DisTest.InputConflictPrio.mat.
+// Warning: Get data of variable T2.instantaneousSpeed from file PNlib.Examples.DisTest.InputConflictPrio.mat failed!
+// Error: Could not read variable T2.maximumSpeed in file PNlib.Examples.DisTest.InputConflictPrio.mat.
+// Warning: Get data of variable T2.maximumSpeed from file PNlib.Examples.DisTest.InputConflictPrio.mat failed!
+// Error: Could not read variable T3.fire in file PNlib.Examples.DisTest.InputConflictPrio.mat.
+// Warning: Get data of variable T3.fire from file PNlib.Examples.DisTest.InputConflictPrio.mat failed!
+// Error: Could not read variable T3.instantaneousSpeed in file PNlib.Examples.DisTest.InputConflictPrio.mat.
+// Warning: Get data of variable T3.instantaneousSpeed from file PNlib.Examples.DisTest.InputConflictPrio.mat failed!
+// Error: Could not read variable T3.maximumSpeed in file PNlib.Examples.DisTest.InputConflictPrio.mat.
+// Warning: Get data of variable T3.maximumSpeed from file PNlib.Examples.DisTest.InputConflictPrio.mat failed!
+// Warning: Files not Equal
+// "
+// endResult
