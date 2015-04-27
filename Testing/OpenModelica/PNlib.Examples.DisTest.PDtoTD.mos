@@ -15,4 +15,11 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.P
   }); getErrorString();
 
 // Result:
+// Error processing file: PNlib.Examples.DisTest.PDtoTD.mos
+// [PNlib/Testing/OpenModelica/PNlib.Examples.DisTest.PDtoTD.mos:12:5-12:5:writable] Error: Missing token: RBRACE
+//
+// # Error encountered! Exiting...
+// # Please check the error message and the flags.
+//
+// Execution failed!
 // endResult
