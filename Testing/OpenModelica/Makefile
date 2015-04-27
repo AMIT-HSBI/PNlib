@@ -23,6 +23,7 @@ FAILINGTESTFILES = \
 PNlib.Examples.ConTest.Conflict.mos \
 PNlib.Examples.ConTest.ConflictLoop.mos \
 PNlib.Examples.DisTest.ConflictProb.mos \
+PNlib.Examples.DisTest.EightConflictProb.mos \
 PNlib.Examples.DisTest.InputConflictProb.mos \
 PNlib.Examples.DisTest.OutputConflictProb.mos \
 PNlib.Examples.DisTest.SixConflictProb.mos \
