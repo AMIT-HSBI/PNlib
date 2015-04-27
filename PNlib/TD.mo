@@ -10,13 +10,13 @@ model TD "Discrete Transition"
                                      annotation(Dialog(enable = true, group = "Arc Weights"));
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
+protected
+  outer PNlib.Settings settings1 "global settings for animation and display";
   Integer showTransitionName=settings1.showTransitionName
     "only for transition animation and display (Do not change!)";
   Integer showDelay=settings1.showDelay
     "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
-protected
-  outer PNlib.Settings settings1 "global settings for animation and display";
   Real tIn[nIn] "tokens of input places";
   Real tOut[nOut] "tokens of output places";
   Real testValue[nIn] "test values of input arcs";
@@ -42,8 +42,6 @@ protected
     "Integer test values of input arcs (for generating events!)";
   Integer normalArc[nIn]
     "1=no,2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
-  Boolean active "Is the transition active?";
-  Boolean fire "Does the transition fire?";
   Boolean disPlaceIn[nIn]
     "Are the input places discrete or continuous? true=discrete";
   Boolean disPlaceOut[nOut]
@@ -62,6 +60,8 @@ protected
   Boolean enabledByOutPlaces = Functions.OddsAndEnds.allTrue(enableOut);
   //****BLOCKS END****//
 public
+  Boolean active "Is the transition active?";
+  Boolean fire "Does the transition fire?";
   PNlib.Interfaces.TransitionIn inPlaces[nIn](
   each active=delayPassed,
   arcWeight=arcWeightIn,
