@@ -116,8 +116,8 @@ equation
   color=if settings1.animatePlace==1 then if tokenscale<100 then {255,255-2.55*tokenscale,255-2.55*tokenscale} else {255,0,0} else {255,255,255};
   //****ANIMATION END****//
   //****ERROR MESSENGES BEGIN****//
-  assert(abs(sum(enablingProbIn)-1)<1e-6 or nIn==0 or enablingType==1,"The sum of input enabling probabilities has to be equal to 1");
-  assert(abs(sum(enablingProbOut)-1)<1e-6 or nOut==0 or enablingType==1,"The sum of output enabling probabilities has to be equal to 1");
+  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbIn), 1.0, 1e-6) or nIn==0 or enablingType==1,"The sum of input enabling probabilities has to be equal to 1");
+  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbOut), 1.0, 1e-6) or nOut==0 or enablingType==1,"The sum of output enabling probabilities has to be equal to 1");
   assert(startTokens>=minTokens and startTokens<=maxTokens,"minTokens<=startTokens<=maxTokens");
   //****ERROR MESSENGES END****//
   annotation (defaultComponentName = "P1",Icon(graphics={Ellipse(

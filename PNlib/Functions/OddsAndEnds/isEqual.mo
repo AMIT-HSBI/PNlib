@@ -3,7 +3,7 @@ function isEqual "Determine if two Real scalars are numerically identical"
   extends Modelica.Icons.Function;
   input Real s1 "First scalar";
   input Real s2 "Second scalar";
-  input Real eps(min=0) = 0
+  input Real eps(min=0) = 1e-8
     "The two scalars are identical if abs(s1-s2) <= eps";
   output Boolean result "= true, if scalars are identical";
 algorithm
