@@ -1,0 +1,39 @@
+// name: PNlib.Examples.DisTest.EightConflictProb
+// keywords: PNlib, discrete
+// status: correct
+
+loadFile("../../PNlib/package.mo"); getErrorString();
+simulate(PNlib.Examples.DisTest.EightConflictProb); getErrorString();
+res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.EightConflictProb_res.mat",
+  "../../ReferenceFiles/PNlib.Examples.DisTest.EightConflictProb.mat",
+  "PNlib.Examples.DisTest.EightConflictProb_diff.csv", 0.01, 0.0001,
+  {
+    "P1.t",
+    "T1.fire",
+    "T1.instantaneousSpeed",
+    "T1.maximumSpeed",
+    "T2.fire",
+    "T2.instantaneousSpeed",
+    "T2.maximumSpeed",
+    "T3.fire",
+    "T3.instantaneousSpeed",
+    "T3.maximumSpeed",
+    "T4.fire",
+    "T4.instantaneousSpeed",
+    "T4.maximumSpeed",
+    "T5.fire",
+    "T5.instantaneousSpeed",
+    "T5.maximumSpeed",
+    "T6.fire",
+    "T6.instantaneousSpeed",
+    "T6.maximumSpeed",
+    "T7.fire",
+    "T7.instantaneousSpeed",
+    "T7.maximumSpeed",
+    "T8.fire",
+    "T8.instantaneousSpeed",
+    "T8.maximumSpeed"
+  }); getErrorString();
+
+// Result:
+// endResult
