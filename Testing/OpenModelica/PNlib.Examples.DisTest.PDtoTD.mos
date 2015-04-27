@@ -8,18 +8,32 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.P
   "../../ReferenceFiles/PNlib.Examples.DisTest.PDtoTD.mat",
   "PNlib.Examples.DisTest.PDtoTD_diff.csv", 0.01, 0.0001,
   {
-    "P1.t"
+    "P1.t",
     "T1.fire",
     "T1.instantaneousSpeed",
     "T1.maximumSpeed"
   }); getErrorString();
 
 // Result:
-// Error processing file: PNlib.Examples.DisTest.PDtoTD.mos
-// [PNlib/Testing/OpenModelica/PNlib.Examples.DisTest.PDtoTD.mos:12:5-12:5:writable] Error: Missing token: RBRACE
-//
-// # Error encountered! Exiting...
-// # Please check the error message and the flags.
-//
-// Execution failed!
+// true
+// "Notification: Automatically loaded package Modelica 3.2.1 due to uses annotation.
+// Notification: Automatically loaded package Complex 3.2.1 due to uses annotation.
+// Notification: Automatically loaded package ModelicaServices 3.2.1 due to uses annotation.
+// "
+// record SimulationResult
+//     resultFile = "PNlib.Examples.DisTest.PDtoTD_res.mat",
+//     simulationOptions = "startTime = 0.0, stopTime = 10.0, numberOfIntervals = 500, tolerance = 1e-06, method = 'dassl', fileNamePrefix = 'PNlib.Examples.DisTest.PDtoTD', options = '', outputFormat = 'mat', variableFilter = '.*', cflags = '', simflags = ''",
+//     messages = ""
+// end SimulationResult;
+// "Warning: The initial conditions are not fully specified. Use +d=initialization for more information.
+// "
+// {"Files not Equal!"}
+// "Error: Could not read variable T1.fire in file PNlib.Examples.DisTest.PDtoTD.mat.
+// Warning: Get data of variable T1.fire from file PNlib.Examples.DisTest.PDtoTD.mat failed!
+// Error: Could not read variable T1.instantaneousSpeed in file PNlib.Examples.DisTest.PDtoTD.mat.
+// Warning: Get data of variable T1.instantaneousSpeed from file PNlib.Examples.DisTest.PDtoTD.mat failed!
+// Error: Could not read variable T1.maximumSpeed in file PNlib.Examples.DisTest.PDtoTD.mat.
+// Warning: Get data of variable T1.maximumSpeed from file PNlib.Examples.DisTest.PDtoTD.mat failed!
+// Warning: Files not Equal
+// "
 // endResult
