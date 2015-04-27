@@ -8,9 +8,8 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.S
   "../../ReferenceFiles/PNlib.Examples.DisTest.SingleTD.mat",
   "PNlib.Examples.DisTest.SingleTD_diff.csv", 0.01, 0.0001,
   {
-    "T1.fire",
-    "T1.instantaneousSpeed",
-    "T1.maximumSpeed"
+    "T1.active",
+    "T1.fire"
   }); getErrorString();
 
 // Result:
@@ -27,12 +26,6 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.S
 // "Warning: The initial conditions are not fully specified. Use +d=initialization for more information.
 // "
 // {"Files not Equal!"}
-// "Error: Could not read variable T1.fire in file PNlib.Examples.DisTest.SingleTD.mat.
-// Warning: Get data of variable T1.fire from file PNlib.Examples.DisTest.SingleTD.mat failed!
-// Error: Could not read variable T1.instantaneousSpeed in file PNlib.Examples.DisTest.SingleTD.mat.
-// Warning: Get data of variable T1.instantaneousSpeed from file PNlib.Examples.DisTest.SingleTD.mat failed!
-// Error: Could not read variable T1.maximumSpeed in file PNlib.Examples.DisTest.SingleTD.mat.
-// Warning: Get data of variable T1.maximumSpeed from file PNlib.Examples.DisTest.SingleTD.mat failed!
-// Warning: Files not Equal
+// "Warning: Files not Equal
 // "
 // endResult

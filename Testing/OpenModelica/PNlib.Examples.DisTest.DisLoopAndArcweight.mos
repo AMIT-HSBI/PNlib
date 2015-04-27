@@ -10,8 +10,8 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.D
   {
     "P1.t",
     "T1.fire",
-    "T1.instantaneousSpeed",
-    "T1.maximumSpeed"
+    "T1.active",
+    "T1.fire"
   }); getErrorString();
 
 // Result:
@@ -28,12 +28,6 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.D
 // "Warning: The initial conditions are not fully specified. Use +d=initialization for more information.
 // "
 // {"Files not Equal!"}
-// "Error: Could not read variable T1.fire in file PNlib.Examples.DisTest.DisLoopAndArcweight.mat.
-// Warning: Get data of variable T1.fire from file PNlib.Examples.DisTest.DisLoopAndArcweight.mat failed!
-// Error: Could not read variable T1.instantaneousSpeed in file PNlib.Examples.DisTest.DisLoopAndArcweight.mat.
-// Warning: Get data of variable T1.instantaneousSpeed from file PNlib.Examples.DisTest.DisLoopAndArcweight.mat failed!
-// Error: Could not read variable T1.maximumSpeed in file PNlib.Examples.DisTest.DisLoopAndArcweight.mat.
-// Warning: Get data of variable T1.maximumSpeed from file PNlib.Examples.DisTest.DisLoopAndArcweight.mat failed!
-// Warning: Files not Equal
+// "Warning: Files not Equal
 // "
 // endResult

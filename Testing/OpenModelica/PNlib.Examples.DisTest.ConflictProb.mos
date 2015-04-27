@@ -11,15 +11,12 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.C
     "P1.t",
     "P2.t",
     "P3.t",
+    "T1.active",
     "T1.fire",
-    "T1.instantaneousSpeed",
-    "T1.maximumSpeed",
+    "T2.active",
     "T2.fire",
-    "T2.instantaneousSpeed",
-    "T2.maximumSpeed",
-    "T3.fire",
-    "T3.instantaneousSpeed",
-    "T3.maximumSpeed"
+    "T3.active",
+    "T3.fire"
   }); getErrorString();
 
 // Result:
@@ -41,24 +38,6 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.C
 // "Warning: Resultfile and Reference have different end time points!
 // Reffile[528]=10.000000
 // File[108]=2.000000
-// Error: Could not read variable T1.fire in file PNlib.Examples.DisTest.ConflictProb.mat.
-// Warning: Get data of variable T1.fire from file PNlib.Examples.DisTest.ConflictProb.mat failed!
-// Error: Could not read variable T1.instantaneousSpeed in file PNlib.Examples.DisTest.ConflictProb.mat.
-// Warning: Get data of variable T1.instantaneousSpeed from file PNlib.Examples.DisTest.ConflictProb.mat failed!
-// Error: Could not read variable T1.maximumSpeed in file PNlib.Examples.DisTest.ConflictProb.mat.
-// Warning: Get data of variable T1.maximumSpeed from file PNlib.Examples.DisTest.ConflictProb.mat failed!
-// Error: Could not read variable T2.fire in file PNlib.Examples.DisTest.ConflictProb.mat.
-// Warning: Get data of variable T2.fire from file PNlib.Examples.DisTest.ConflictProb.mat failed!
-// Error: Could not read variable T2.instantaneousSpeed in file PNlib.Examples.DisTest.ConflictProb.mat.
-// Warning: Get data of variable T2.instantaneousSpeed from file PNlib.Examples.DisTest.ConflictProb.mat failed!
-// Error: Could not read variable T2.maximumSpeed in file PNlib.Examples.DisTest.ConflictProb.mat.
-// Warning: Get data of variable T2.maximumSpeed from file PNlib.Examples.DisTest.ConflictProb.mat failed!
-// Error: Could not read variable T3.fire in file PNlib.Examples.DisTest.ConflictProb.mat.
-// Warning: Get data of variable T3.fire from file PNlib.Examples.DisTest.ConflictProb.mat failed!
-// Error: Could not read variable T3.instantaneousSpeed in file PNlib.Examples.DisTest.ConflictProb.mat.
-// Warning: Get data of variable T3.instantaneousSpeed from file PNlib.Examples.DisTest.ConflictProb.mat failed!
-// Error: Could not read variable T3.maximumSpeed in file PNlib.Examples.DisTest.ConflictProb.mat.
-// Warning: Get data of variable T3.maximumSpeed from file PNlib.Examples.DisTest.ConflictProb.mat failed!
 // Warning: Files not Equal
 // "
 // endResult
