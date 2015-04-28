@@ -46,6 +46,8 @@ model Model "Top model"
     hmax=15000,
     text="duration")
     annotation (Placement(transformation(extent={{14,54},{48,88}})));
+  inner Settings settings1
+    annotation (Placement(transformation(extent={{-122,-122},{-102,-102}})));
 equation
   when reStart then
     orders__=orders_.levelSensor_;
@@ -115,11 +117,6 @@ equation
   annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-125,-125},
             {125,125}}),
                       graphics={
-        Rectangle(
-          extent={{-124,126},{126,-126}},
-          lineColor={0,0,0},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
         Rectangle(
           extent={{-110,120},{114,92}},
           lineColor={0,0,255},
