@@ -26,7 +26,6 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.T
 // end SimulationResult;
 // "Warning: The initial conditions are not fully specified. Use +d=initialization for more information.
 // "
-// {"Files not Equal!"}
-// "Warning: Files not Equal
-// "
+// {"Files Equal!"}
+// ""
 // endResult
