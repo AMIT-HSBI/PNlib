@@ -54,7 +54,11 @@ algorithm
             end if;
           end for;
           nTAin:=nremTAin;          //number of active input transitions
-          sumEnablingProbTAin:=sum(enablingProb[remTAin[1:nremTAin]]);  //enabling probability sum of all active input transitions
+          //sumEnablingProbTAin:=sum(enablingProb[remTAin[1:nremTAin]]);  //enabling probability sum of all active input transitions
+          sumEnablingProbTAin := 0;
+          for j in 1:nremTAin loop
+            sumEnablingProbTAin := sumEnablingProbTAin + enablingProb[remTAin[j]];
+          end for;
           cumEnablingProb:=zeros(nIn);      //cumulative, scaled enabling probabilities
           cumEnablingProb[1]:=enablingProb[remTAin[1]]/sumEnablingProbTAin;
           for j in 2:nremTAin loop
@@ -83,7 +87,11 @@ algorithm
             if nremTAin > 0 then
               remTAin:=Functions.OddsAndEnds.deleteElementInt(remTAin,k);
               cumEnablingProb:=zeros(nIn);
-              sumEnablingProbTAin:=sum(enablingProb[remTAin[1:nremTAin]]);
+              //sumEnablingProbTAin:=sum(enablingProb[remTAin[1:nremTAin]]);
+              sumEnablingProbTAin := 0;
+              for j in 1:nremTAin loop
+                sumEnablingProbTAin := sumEnablingProbTAin + enablingProb[remTAin[j]];
+              end for;
               if sumEnablingProbTAin>0 then
                 cumEnablingProb[1]:=enablingProb[remTAin[1]]/sumEnablingProbTAin;
                 for j in 2:nremTAin loop

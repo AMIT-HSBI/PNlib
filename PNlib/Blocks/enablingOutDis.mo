@@ -59,7 +59,11 @@ algorithm
               end for;
               nTAout:=nremTAout;          //number of active output transitions
               if nTAout>0 then
-                sumEnablingProbTAout:=sum(enablingProb[remTAout[1:nremTAout]]);  //enabling probability sum of all active output transitions
+                //sumEnablingProbTAout:=sum(enablingProb[remTAout[1:nremTAout]]);  //enabling probability sum of all active output transitions
+                sumEnablingProbTAout := 0;
+                for j in 1:nremTAout loop
+                  sumEnablingProbTAout := sumEnablingProbTAout + enablingProb[remTAout[j]];
+                end for;
                 cumEnablingProb:=zeros(nOut);      //cumulative, scaled enabling probabilities
                 cumEnablingProb[1]:=enablingProb[remTAout[1]]/sumEnablingProbTAout;
                 for j in 2:nremTAout loop
@@ -86,7 +90,11 @@ algorithm
                   if nremTAout > 0 then
                     remTAout:=Functions.OddsAndEnds.deleteElementInt(remTAout,k);
                     cumEnablingProb:=zeros(nOut);
-                    sumEnablingProbTAout:=sum(enablingProb[remTAout[1:nremTAout]]);
+                    //sumEnablingProbTAout:=sum(enablingProb[remTAout[1:nremTAout]]);
+                    sumEnablingProbTAout := 0;
+                    for j in 1:nremTAout loop
+                      sumEnablingProbTAout := sumEnablingProbTAout + enablingProb[remTAout[j]];
+                    end for;
                     if sumEnablingProbTAout>0 then
                       cumEnablingProb[1]:=enablingProb[remTAout[1]]/sumEnablingProbTAout;
                       for j in 2:nremTAout loop
