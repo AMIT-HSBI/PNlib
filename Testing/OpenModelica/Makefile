@@ -1,4 +1,4 @@
-TEST = rtest -v
+TEST = ./rtest -v
 
 TESTFILES = \
 PNlib.Examples.ConTest.LoopAndArcweight.mos \
@@ -43,7 +43,7 @@ test:
 	@echo
 	@echo Running tests...
 	@echo
-	@echo OPENMODELICAHOME=" $(OPENMODELICAHOME) "
+	@echo "OPENMODELICAHOME = $(OPENMODELICAHOME)"
 	@$(TEST) $(TESTFILES)
 
 # Cleans all files that are not listed as dependencies

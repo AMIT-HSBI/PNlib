@@ -22,8 +22,8 @@ if ($cwd =~ m/(.*)PNlib\/(.+)$/) {
 
 system "$OPENMODELICAHOME/bin/omc-diff -v1.4";
 if ($?) {
-  print "$OPENMODELICAHOME/bin/omc-diff seems to be missing or of an incompatible version.";
-  print "Compile omc-diff and run rtest again.";
+  print "$OPENMODELICAHOME/bin/omc-diff seems to be missing or of an incompatible version.\n";
+  print "Compile omc-diff and run rtest again.\n";
   exit 2;
 }
 
