@@ -1,6 +1,8 @@
 TEST = ./rtest -v
 
 TESTFILES = \
+PNlib.Examples.ConTest.Conflict.mos \
+PNlib.Examples.ConTest.ConflictLoop.mos \
 PNlib.Examples.ConTest.LoopAndArcweight.mos \
 PNlib.Examples.ConTest.PCtoTC.mos \
 PNlib.Examples.ConTest.SinglePC.mos \
@@ -17,11 +19,10 @@ PNlib.Examples.DisTest.SinglePD.mos \
 PNlib.Examples.DisTest.SingleTD.mos \
 PNlib.Examples.DisTest.TDtoPD.mos \
 
+
 # test that currently fail. Move up when fixed.
 # Run make failingtest
 FAILINGTESTFILES = \
-PNlib.Examples.ConTest.Conflict.mos \
-PNlib.Examples.ConTest.ConflictLoop.mos \
 PNlib.Examples.DisTest.ConflictProb.mos \
 PNlib.Examples.DisTest.EightConflictProb.mos \
 PNlib.Examples.DisTest.InputConflictProb.mos \
