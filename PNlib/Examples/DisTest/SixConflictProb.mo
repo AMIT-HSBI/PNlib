@@ -14,6 +14,8 @@ model SixConflictProb
             -30}})));
   inner PNlib.Settings settings1
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
+initial equation
+  PNlib.Functions.Random.initRandom(1);
 equation
   connect(P1.outTransition[1], T1.inPlaces[1]) annotation(Line(points={{-29.2,
           -0.833333},{-20,-0.833333},{-20,40},{-14.8,40}},
