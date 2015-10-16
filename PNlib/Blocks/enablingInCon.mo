@@ -61,9 +61,9 @@ algorithm
             cumEnablingProb[j]:=cumEnablingProb[j-1]+enablingProb[remTAin[j]]/sumEnablingProbTAin;
           end for;
           //muss hier stehen sonst immer fast gleiche Zufallszahl => immer gleiches enabling
-          randNum := PNlib.Functions.Random.random()/32767;
+          randNum := PNlib.Functions.Random.random()/PNlib.Constants.rand_max;
           for i in 1:nTAin loop
-            randNum := PNlib.Functions.Random.random()/32767;
+            randNum := PNlib.Functions.Random.random()/PNlib.Constants.rand_max;
                                               //uniform distributed random number
             endWhile:=false;
             k:=1;
