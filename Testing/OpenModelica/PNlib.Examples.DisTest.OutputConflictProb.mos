@@ -26,17 +26,12 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.O
 // Notification: Automatically loaded package ModelicaServices 3.2.1 due to uses annotation.
 // "
 // record SimulationResult
-//     resultFile = "",
+//     resultFile = "PNlib.Examples.DisTest.OutputConflictProb_res.mat",
 //     simulationOptions = "startTime = 0.0, stopTime = 10.0, numberOfIntervals = 500, tolerance = 1e-06, method = 'dassl', fileNamePrefix = 'PNlib.Examples.DisTest.OutputConflictProb', options = '', outputFormat = 'mat', variableFilter = '.*', cflags = '', simflags = ''",
-//     messages = "Simulation execution failed for model: PNlib.Examples.DisTest.OutputConflictProb
-// assert            | debug   | Unhandled Assertion-Error
-// "
+//     messages = ""
 // end SimulationResult;
 // "Warning: The initial conditions are not fully specified. Use +d=initialization for more information.
 // "
-// {"Files not Equal!","P2.t"}
-// "Warning: Resultfile and Reference have different end time points!
-// Reffile[528]=10.000000
-// File[108]=2.000000
-// "
+// {"Files Equal!"}
+// ""
 // endResult
