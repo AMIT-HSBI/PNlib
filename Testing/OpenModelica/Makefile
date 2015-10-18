@@ -11,23 +11,24 @@ PNlib.Examples.ConTest.Speed.mos \
 PNlib.Examples.ConTest.TCtoPC.mos \
 PNlib.Examples.ConTest.ZeroPlace.mos \
 PNlib.Examples.DisTest.ConflictPrio.mos \
+PNlib.Examples.DisTest.ConflictProb.mos \
 PNlib.Examples.DisTest.DisLoopAndArcweight.mos \
+PNlib.Examples.DisTest.EightConflictProb.mos \
 PNlib.Examples.DisTest.InputConflictPrio.mos \
+PNlib.Examples.DisTest.InputConflictProb.mos \
 PNlib.Examples.DisTest.OutputConflictPrio.mos \
+PNlib.Examples.DisTest.OutputConflictProb.mos \
 PNlib.Examples.DisTest.PDtoTD.mos \
 PNlib.Examples.DisTest.SinglePD.mos \
 PNlib.Examples.DisTest.SingleTD.mos \
+PNlib.Examples.DisTest.SixConflictProb.mos \
 PNlib.Examples.DisTest.TDtoPD.mos \
 
 
 # test that currently fail. Move up when fixed.
 # Run make failingtest
 FAILINGTESTFILES = \
-PNlib.Examples.DisTest.ConflictProb.mos \
-PNlib.Examples.DisTest.EightConflictProb.mos \
-PNlib.Examples.DisTest.InputConflictProb.mos \
-PNlib.Examples.DisTest.OutputConflictProb.mos \
-PNlib.Examples.DisTest.SixConflictProb.mos \
+
 
 # Dependency files that are not .mo .mos or Makefile
 # Add them here or they will be cleaned.
