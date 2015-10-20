@@ -11,7 +11,8 @@ model TC "Continuous Transition"
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   Boolean fire "Does the transition fire?";
-   Real instantaneousSpeed "instantaneous speed";
+  Real instantaneousSpeed "instantaneous speed";
+  Real actualSpeed = if fire then instantaneousSpeed else 0.0;
   Integer showTransitionName=settings1.showTransitionName
     "only for transition animation and display (Do not change!)";
   Integer animateSpeed=settings1.animateSpeed
