@@ -18,6 +18,8 @@ model Senseo_Model "Top Model"
     annotation (Placement(transformation(extent={{-24,44},{-4,64}})));
   Counter_real counter_real(text="Temperature", hmax=90)
     annotation (Placement(transformation(extent={{66,42},{104,80}})));
+initial equation
+  Functions.Random.initRandom(1);
 equation
   connect(senseo_Maschine.amount_cups_, amount_cups.levelSensor)
     annotation (Line(

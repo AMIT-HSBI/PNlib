@@ -48,6 +48,8 @@ model Model "Top model"
     annotation (Placement(transformation(extent={{14,54},{48,88}})));
   inner Settings settings1
     annotation (Placement(transformation(extent={{-122,-122},{-102,-102}})));
+initial equation
+  Functions.Random.initRandom(1);
 equation
   when reStart then
     orders__=orders_.levelSensor_;

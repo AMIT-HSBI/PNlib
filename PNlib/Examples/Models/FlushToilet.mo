@@ -138,6 +138,8 @@ model FlushToilet "Model of a flush toilet"
         extent={{-10.5,-3.5},{10.5,3.5}},
         rotation=90,
         origin={-37.5,70.5})));
+initial equation
+  Functions.Random.initRandom(1);
 equation
   connect(pushing.outPlaces[1], Lever.inTransition[1])  annotation (Line(
       points={{-62,63.2},{-62,56.8}},
