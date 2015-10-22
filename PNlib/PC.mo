@@ -28,10 +28,7 @@ model PC "Continuous Place"
     "only for place animation and display (Do not change!)";
   Real color[3] "only for place animation and display (Do not change!)";
   parameter Boolean showTokenFlow = settings.showTokenFlow annotation(Dialog(enable = true, group = "Token flow"));
-  Real tInflowSum = tokenFlow.tInflowSum if showTokenFlow;
-  Real tInflow[nIn] = tokenFlow.tInflow if showTokenFlow;
-  Real tOutflowSum = tokenFlow.tOutflowSum if showTokenFlow;
-  Real tOutflow[nOut] = tokenFlow.tOutflow if showTokenFlow;
+  Blocks.tokenFlowCon tokenFlow(nIn=nIn, nOut=nOut, conFiringSumIn=firingSumIn.conFiringSum, conFiringSumOut=firingSumOut.conFiringSum, fireIn=fireIn, fireOut=fireOut, arcWeightIn=arcWeightIn, arcWeightOut=arcWeightOut, instSpeedIn=instSpeedIn, instSpeedOut=instSpeedOut) if showTokenFlow;
 protected
   outer PNlib.Settings settings "global settings for animation and display";
   Real disMarkChange "discrete mark change";
@@ -77,7 +74,6 @@ protected
   //****BLOCKS END****//
   Real decFactorIn[nIn] "decreasing factors for input transitions";
   Real decFactorOut[nOut] "decreasing factors for output transitions";
-  Blocks.tokenFlowCon tokenFlow(nIn=nIn, nOut=nOut, conFiringSumIn=firingSumIn.conFiringSum, conFiringSumOut=firingSumOut.conFiringSum, fireIn=fireIn, fireOut=fireOut, arcWeightIn=arcWeightIn, arcWeightOut=arcWeightOut, instSpeedIn=instSpeedIn, instSpeedOut=instSpeedOut) if showTokenFlow;
 public
   Interfaces.PlaceIn inTransition[nIn](each t=t_,
   each tint=1,
