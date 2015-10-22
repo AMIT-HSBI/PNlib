@@ -15,7 +15,7 @@ model EightConflictProb
   PNlib.TD T7(nIn = 1) annotation(Placement(transformation(extent={{20,-40},{40,
             -20}})));
   PNlib.TD T8(nIn = 1) annotation(Placement(transformation(extent={{0,-30},{20,-10}})));
-  inner PNlib.Settings settings1
+  inner PNlib.Settings settings
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
 initial equation
   PNlib.Functions.Random.initRandom(1);

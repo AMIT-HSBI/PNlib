@@ -13,7 +13,7 @@ model OutputConflictPrio
             -10}})));
   PNlib.TD T3(nOut = 1) annotation(Placement(transformation(extent={{-60,-10},{-40,
             10}})));
-  inner PNlib.Settings settings1 annotation(Placement(transformation(extent={{-60,20},
+  inner PNlib.Settings settings annotation(Placement(transformation(extent={{-60,20},
             {-40,40}})));
 equation
   connect(T3.outPlaces[1], P1.inTransition[1]) annotation(Line(points={{-45.2,0},

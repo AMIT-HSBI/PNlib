@@ -14,7 +14,7 @@ model InputConflictProb
             {-30,30}})));
   PNlib.PD P3(startTokens = 5, enablingType = 1, nOut = 1) annotation(Placement(transformation(extent={{-50,-30},
             {-30,-10}})));
-  inner PNlib.Settings settings1 annotation(Placement(transformation(extent={{40,20},
+  inner PNlib.Settings settings annotation(Placement(transformation(extent={{40,20},
             {60,40}})));
 initial equation
   PNlib.Functions.Random.initRandom(1);

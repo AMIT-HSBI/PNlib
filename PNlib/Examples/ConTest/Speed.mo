@@ -2,7 +2,7 @@ within PNlib.Examples.ConTest;
 model Speed
   extends Modelica.Icons.Example;
 
-  inner PNlib.Settings settings1 annotation(Placement(transformation(extent={{60,20},
+  inner PNlib.Settings settings annotation(Placement(transformation(extent={{60,20},
             {80,40}})));
   PNlib.TC T1(nOut = 1, maximumSpeed = 2) annotation(Placement(transformation(extent={{-40,10},
             {-20,30}})));

@@ -11,10 +11,10 @@ model TD "Discrete Transition"
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
 protected
-  outer PNlib.Settings settings1 "global settings for animation and display";
-  Integer showTransitionName=settings1.showTransitionName
+  outer PNlib.Settings settings "global settings for animation and display";
+  Integer showTransitionName=settings.showTransitionName
     "only for transition animation and display (Do not change!)";
-  Integer showDelay=settings1.showDelay
+  Integer showDelay=settings.showDelay
     "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
   Real tIn[nIn] "tokens of input places";
@@ -118,7 +118,7 @@ equation
      fireTime=time;
      ani=true;
    end when;
-   color=if (fireTime+settings1.timeFire>=time and settings1.animateTransition==1 and ani) then {255,255,0} else {0,0,0};
+   color=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255,255,0} else {0,0,0};
    //****ANIMATION END****//
    //****ERROR MESSENGES BEGIN****//
    for i in 1:nIn loop

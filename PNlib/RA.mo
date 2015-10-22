@@ -28,7 +28,7 @@ model RA "Read Arc"
             {48,36}}),                                                                           iconTransformation(extent={{28,16},
             {48,36}})));
 protected
-  outer PNlib.Settings settings1 "global settings for animation and display";
+  outer PNlib.Settings settings "global settings for animation and display";
   annotation (defaultComponentName = "RA1",Icon(coordinateSystem(preserveAspectRatio=true, extent={{-98,4},
             {28,48}}),
                    graphics={

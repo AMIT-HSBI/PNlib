@@ -126,7 +126,7 @@ model Model "Top Model"
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-334,-66})));
-  inner Settings settings1(scale=10, showCapacity=2)
+  inner Settings settings(scale=10, showCapacity=2)
     annotation (Placement(transformation(extent={{-420,166},{-386,200}})));
   PNproBP.Parallel Consulting(
     nIn=2,

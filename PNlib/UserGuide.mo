@@ -267,7 +267,7 @@ Therefore, the dimension parameters nIn and nOut are declared in the place and t
   <tr>
     <td>N</td>
     <td>scalar</td>
-    <td>settings1.N</td>
+    <td>settings.N</td>
     <td>integers (d)</td>
     <td>Amount of levels for stochastic simulation</td>
   </tr>

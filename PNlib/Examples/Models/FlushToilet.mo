@@ -109,7 +109,7 @@ model FlushToilet "Model of a flush toilet"
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-62,-118})));
-  inner Settings settings1(scale=5, timeFire=0.1,
+  inner Settings settings(scale=5, timeFire=0.1,
     animateMarking=1,
     animatePlace=1,
     animateTransition=1,

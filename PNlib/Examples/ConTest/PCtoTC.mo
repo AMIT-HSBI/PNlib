@@ -2,7 +2,7 @@ within PNlib.Examples.ConTest;
 model PCtoTC
   extends Modelica.Icons.Example;
 
-  inner PNlib.Settings settings1 annotation(Placement(transformation(extent={{20,20},
+  inner PNlib.Settings settings annotation(Placement(transformation(extent={{20,20},
             {40,40}})));
   PNlib.PC P1(nOut = 1, startMarks = 1) annotation(Placement(transformation(extent={{-10,-10},
             {10,10}})));
