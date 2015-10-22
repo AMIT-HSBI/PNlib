@@ -4,24 +4,30 @@
 
 loadFile("../../PNlib/package.mo"); getErrorString();
 simulate(PNlib.Examples.DisTest.SixConflictProb); getErrorString();
+
+vars := {
+  "P1.t",
+  "T1.active",
+  "T1.fire",
+  "T2.active",
+  "T2.fire",
+  "T3.active",
+  "T3.fire",
+  "T4.active",
+  "T4.fire",
+  "T5.active",
+  "T5.fire",
+  "T6.active",
+  "T6.fire"
+};
+
 res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.SixConflictProb_res.mat",
   "../../ReferenceFiles/PNlib.Examples.DisTest.SixConflictProb.mat",
-  "PNlib.Examples.DisTest.SixConflictProb_diff.csv", 0.01, 0.0001,
-  {
-    "P1.t",
-    "T1.active",
-    "T1.fire",
-    "T2.active",
-    "T2.fire",
-    "T3.active",
-    "T3.fire",
-    "T4.active",
-    "T4.fire",
-    "T5.active",
-    "T5.fire",
-    "T6.active",
-    "T6.fire"
-  }); getErrorString();
+  "PNlib.Examples.DisTest.SixConflictProb_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.DisTest.SixConflictProb_res.mat", "PNlib.Examples.DisTest.SixConflictProb_minimal.mat", vars, 0); getErrorString();
+end if;
 
 // Result:
 // true
@@ -36,6 +42,8 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.S
 // end SimulationResult;
 // "Warning: The initial conditions are not fully specified. Use +d=initialization for more information.
 // "
+// {"P1.t","T1.active","T1.fire","T2.active","T2.fire","T3.active","T3.fire","T4.active","T4.fire","T5.active","T5.fire","T6.active","T6.fire"}
 // {"Files Equal!"}
 // ""
+//
 // endResult

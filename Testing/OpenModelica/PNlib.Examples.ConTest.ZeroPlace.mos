@@ -4,19 +4,25 @@
 
 loadFile("../../PNlib/package.mo"); getErrorString();
 simulate(PNlib.Examples.ConTest.ZeroPlace); getErrorString();
+
+vars := {
+  "P1.t",
+  "P2.t",
+  "T1.fire",
+  "T1.instantaneousSpeed",
+  "T1.maximumSpeed",
+  "T2.fire",
+  "T2.instantaneousSpeed",
+  "T2.maximumSpeed"
+};
+
 res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ConTest.ZeroPlace_res.mat",
   "../../ReferenceFiles/PNlib.Examples.ConTest.ZeroPlace.mat",
-  "PNlib.Examples.ConTest.ZeroPlace_diff.csv", 0.01, 0.0001,
-  {
-    "P1.t",
-    "P2.t",
-    "T1.fire",
-    "T1.instantaneousSpeed",
-    "T1.maximumSpeed",
-    "T2.fire",
-    "T2.instantaneousSpeed",
-    "T2.maximumSpeed"
-  }); getErrorString();
+  "PNlib.Examples.ConTest.ZeroPlace_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.ConTest.ZeroPlace_res.mat", "PNlib.Examples.ConTest.ZeroPlace_minimal.mat", vars, 0); getErrorString();
+end if;
 
 // Result:
 // true
@@ -32,6 +38,8 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ConTest.Z
 // "Warning: The initial conditions are not fully specified. Use +d=initialization for more information.
 // Warning: There are iteration variables with default zero start attribute. Use +d=initialization for more information.
 // "
+// {"P1.t","P2.t","T1.fire","T1.instantaneousSpeed","T1.maximumSpeed","T2.fire","T2.instantaneousSpeed","T2.maximumSpeed"}
 // {"Files Equal!"}
 // ""
+//
 // endResult

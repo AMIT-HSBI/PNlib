@@ -4,21 +4,27 @@
 
 loadFile("../../PNlib/package.mo"); getErrorString();
 simulate(PNlib.Examples.DisTest.InputConflictProb); getErrorString();
+
+vars := {
+  "P1.t",
+  "P2.t",
+  "P3.t",
+  "T1.fire",
+  "T1.active",
+  "T1.fire",
+  "T2.active",
+  "T2.fire",
+  "T3.active",
+  "T3.fire"
+};
+
 res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.InputConflictProb_res.mat",
   "../../ReferenceFiles/PNlib.Examples.DisTest.InputConflictProb.mat",
-  "PNlib.Examples.DisTest.InputConflictProb_diff.csv", 0.01, 0.0001,
-  {
-    "P1.t",
-    "P2.t",
-    "P3.t",
-    "T1.fire",
-    "T1.active",
-    "T1.fire",
-    "T2.active",
-    "T2.fire",
-    "T3.active",
-    "T3.fire"
-  }); getErrorString();
+  "PNlib.Examples.DisTest.InputConflictProb_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.DisTest.InputConflictProb_res.mat", "PNlib.Examples.DisTest.InputConflictProb_minimal.mat", vars, 0); getErrorString();
+end if;
 
 // Result:
 // true
@@ -33,6 +39,8 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.I
 // end SimulationResult;
 // "Warning: The initial conditions are not fully specified. Use +d=initialization for more information.
 // "
+// {"P1.t","P2.t","P3.t","T1.fire","T1.active","T1.fire","T2.active","T2.fire","T3.active","T3.fire"}
 // {"Files Equal!"}
 // ""
+//
 // endResult
