@@ -1,0 +1,46 @@
+// name: PNlib.Examples.ExtTest.IAwithPCtoTC
+// keywords: PNlib, continuous
+// status: correct
+
+loadFile("../../PNlib/package.mo"); getErrorString();
+simulate(PNlib.Examples.ExtTest.IAwithPCtoTC); getErrorString();
+
+vars := {
+  "P1.t",
+  "P2.t",
+  "P3.t",
+  "T1.fire",
+  "T1.instantaneousSpeed",
+  "T1.maximumSpeed",
+  "T2.fire",
+  "T2.instantaneousSpeed",
+  "T2.maximumSpeed"
+};
+
+res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ExtTest.IAwithPCtoTC_res.mat",
+  "../../ReferenceFiles/PNlib.Examples.ExtTest.IAwithPCtoTC.mat",
+  "PNlib.Examples.ExtTest.IAwithPCtoTC_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.ExtTest.IAwithPCtoTC_res.mat", "PNlib.Examples.ExtTest.IAwithPCtoTC_minimal.mat", vars, 0); getErrorString();
+end if;
+
+// Result:
+// true
+// "Notification: Automatically loaded package Modelica 3.2.1 due to uses annotation.
+// Notification: Automatically loaded package Complex 3.2.1 due to uses annotation.
+// Notification: Automatically loaded package ModelicaServices 3.2.1 due to uses annotation.
+// "
+// record SimulationResult
+//     resultFile = "PNlib.Examples.ExtTest.IAwithPCtoTC_res.mat",
+//     simulationOptions = "startTime = 0.0, stopTime = 10.0, numberOfIntervals = 500, tolerance = 1e-06, method = 'dassl', fileNamePrefix = 'PNlib.Examples.ExtTest.IAwithPCtoTC', options = '', outputFormat = 'mat', variableFilter = '.*', cflags = '', simflags = ''",
+//     messages = ""
+// end SimulationResult;
+// "Warning: The initial conditions are not fully specified. Use +d=initialization for more information.
+// Warning: There are iteration variables with default zero start attribute. Use +d=initialization for more information.
+// "
+// {"P1.t","P2.t","P3.t","T1.fire","T1.instantaneousSpeed","T1.maximumSpeed","T2.fire","T2.instantaneousSpeed","T2.maximumSpeed"}
+// {"Files Equal!"}
+// ""
+//
+// endResult
