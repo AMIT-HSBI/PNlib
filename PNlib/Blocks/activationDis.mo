@@ -36,10 +36,8 @@ algorithm
         active:=false;
       end if;
     else  //continuous
-      if (arcType[i]==1 or normalArc[i]==2) and not (tIn[i]-arcWeightIn[i]>= minTokens[i]) then
-        if not (tIn[i]+Constants.eps-arcWeightIn[i]>= minTokens[i]) then
-          active:=false;
-        end if;
+      if (arcType[i]==1 or normalArc[i]==2) and not (tIn[i]-arcWeightIn[i]-minTokens[i] >= -Constants.eps) then
+        active:=false;
       elseif arcType[i]==2 and not (tIn[i] > testValue[i]) then
         active:=false;
       elseif arcType[i]==3 and not (tIn[i] < testValue[i]) then
@@ -50,11 +48,11 @@ algorithm
   //check output places
   for i in 1:nOut loop
    if disPlaceOut[i] then //discrete
-      if not (tIntOut[i]+arcWeightIntOut[i]<=maxTokensInt[i]) then
+      if not (tIntOut[i]+arcWeightIntOut[i] <= maxTokensInt[i]) then
        active:=false;
       end if;
    else  //continuous
-      if not (tOut[i]+arcWeightOut[i]<=maxTokens[i]) then
+      if not (tOut[i]+arcWeightOut[i]-maxTokens[i] <= Constants.eps) then
        active:=false;
       end if;
    end if;
