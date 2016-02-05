@@ -8,8 +8,9 @@ The advanced Petri Net library, called PNlib, enables the modeling of extended h
  * discrete (TD), stochastic (TS), and continuous transitions (TC), and
  * test (TA), inhibitor (IA), and read arcs (RA).
 
-The main package PNlib is divided into the following sub-packages:
+![iconsxHPN](PNlib/Resources/Images/iconsxHPN.png "xHPN: Extended Hybrid Petri Nets")
 
+The main package PNlib is divided into the following sub-packages:
  * Interfaces: contains the connectors of the Petri net component models.
  * Blocks: contains blocks with specific procedures that are used in the Petri net component models.
  * Functions: contains functions with specific algorithmic procedures which are used in the Petri net component models.
@@ -35,7 +36,7 @@ Download [PNlib v1.2 (2015-10-19)](../../archive/v1.2.zip)
 ## Compatibility
 
 * Works in OpenModelica 1.9.4 ([trend](https://test.openmodelica.org/libraries/history/PNlib-trend.svg), [coverage](https://test.openmodelica.org/libraries/PNlib/BuildModelRecursive.html))
-* Works in Dymola 2015
+* Works in Dymola 2016
 
 ## License
 
