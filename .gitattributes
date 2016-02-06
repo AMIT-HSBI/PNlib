@@ -3,12 +3,12 @@
 
 # Explicitly declare text files we want to always be normalized and converted
 # to native line endings on checkout.
-*.c text
-*.h text
-*.mo text
-*.mos text
-*.order text
+*.mo text eol=lf
+*.mos text eol=lf
+*.order text eol=lf
+Testing/OpenModelica/rtest text eol=lf
 
 # Denote all files that are truly binary and should not be modified.
-*.png binary
 *.jpg binary
+*.mat binary
+*.png binary
