@@ -56,7 +56,7 @@ test:
 
 # Cleans all files that are not listed as dependencies
 clean:
-	@echo $(DEPENDENCIES) | sed 's/ /\\|/g' > deps.tmp
+	@echo $(DEPENDENCIES) | sed 's/ /\\\|/g' > deps.tmp
 	@rm -f $(CLEAN)
 
 # Run this if you want to list out the files (dependencies).
@@ -66,7 +66,7 @@ clean:
 # then add them to the DEPENDENCIES. You can find the
 # list in deps.txt
 getdeps:
-	@echo $(DEPENDENCIES) | sed 's/ /\\|/g' > deps.tmp
+	@echo $(DEPENDENCIES) | sed 's/ /\\\|/g' > deps.tmp
 	@echo $(CLEAN) | sed -r 's/deps.txt|deps.tmp//g' | sed 's/ / \\\n/g' > deps.txt
 	@echo Dependency list saved in deps.txt.
 	@echo Copy the list from deps.txt and add it to the Makefile @DEPENDENCIES
