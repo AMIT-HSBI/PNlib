@@ -1,5 +1,5 @@
 within PNlib.Examples.HybTest;
-model InputConflictTyp3
+model InputConflictType3
   extends Modelica.Icons.Example;
   PNlib.PC P1(nIn = 2, nOut = 1, maxMarks=2) annotation(Placement(transformation(extent={{10,-10},{30,10}})));
   PNlib.TC T1(nIn = 1) annotation(Placement(transformation(extent = {{40, -10}, {60, 10}})));
@@ -15,4 +15,4 @@ equation
   connect(T3.outPlaces[1], P1.inTransition[2]) annotation(Line(points={{-5.2,-20},{0,-20},{0,0.5},{9.2,0.5}},color = {0, 0, 0}, smooth = Smooth.None));
   connect(T1.inPlaces[1], P1.outTransition[1]) annotation(Line(points={{45.2,0},{30.8,0}}, color = {0, 0, 0}, smooth = Smooth.None));
   annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-60, -40}, {60, 40}}), graphics), experiment(StartTime = 0.0, StopTime = 10.0));
-end InputConflictTyp3;
+end InputConflictType3;
