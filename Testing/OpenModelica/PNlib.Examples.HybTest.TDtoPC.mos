@@ -1,5 +1,5 @@
 // name: PNlib.Examples.HybTest.TDtoPC
-// keywords: PNlib, continuous
+// keywords: PNlib, hybrid
 // status: correct
 
 loadFile("../../PNlib/package.mo"); getErrorString();
@@ -35,5 +35,5 @@ end if;
 // {"P1.t","T1.active","T1.fire"}
 // {"Files Equal!"}
 // ""
-// 
+//
 // endResult

@@ -1,0 +1,49 @@
+// name: PNlib.Examples.HybTest.SixConflictProb
+// keywords: PNlib, hybrid
+// status: correct
+
+loadFile("../../PNlib/package.mo"); getErrorString();
+simulate(PNlib.Examples.HybTest.SixConflictProb); getErrorString();
+
+vars := {
+  "P1.t",
+  "T1.active",
+  "T1.fire",
+  "T2.active",
+  "T2.fire",
+  "T3.active",
+  "T3.fire",
+  "T4.active",
+  "T4.fire",
+  "T5.active",
+  "T5.fire",
+  "T6.active",
+  "T6.fire"
+};
+
+res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.HybTest.SixConflictProb_res.mat",
+  "../../ReferenceFiles/PNlib.Examples.HybTest.SixConflictProb.mat",
+  "PNlib.Examples.HybTest.SixConflictProb_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.HybTest.SixConflictProb_res.mat", "../../ReferenceFiles/PNlib.Examples.HybTest.SixConflictProb_minimal.mat", vars, 0); getErrorString();
+end if;
+
+// Result:
+// true
+// "Notification: Automatically loaded package Modelica 3.2.1 due to uses annotation.
+// Notification: Automatically loaded package Complex 3.2.1 due to uses annotation.
+// Notification: Automatically loaded package ModelicaServices 3.2.1 due to uses annotation.
+// "
+// record SimulationResult
+//     resultFile = "PNlib.Examples.HybTest.SixConflictProb_res.mat",
+//     simulationOptions = "startTime = 0.0, stopTime = 10.0, numberOfIntervals = 500, tolerance = 1e-06, method = 'dassl', fileNamePrefix = 'PNlib.Examples.HybTest.SixConflictProb', options = '', outputFormat = 'mat', variableFilter = '.*', cflags = '', simflags = ''",
+//     messages = ""
+// end SimulationResult;
+// "Warning: The initial conditions are not fully specified. Use +d=initialization for more information.
+// "
+// {"P1.t","T1.active","T1.fire","T2.active","T2.fire","T3.active","T3.fire","T4.active","T4.fire","T5.active","T5.fire","T6.active","T6.fire"}
+// {"Files Equal!"}
+// ""
+// 
+// endResult
