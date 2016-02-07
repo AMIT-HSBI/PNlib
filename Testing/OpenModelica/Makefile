@@ -26,6 +26,23 @@ PNlib.Examples.ExtTest.IAwithPCtoTC.mos \
 PNlib.Examples.ExtTest.IAwithPDtoTD.mos \
 PNlib.Examples.ExtTest.TAwithPCtoTC.mos \
 PNlib.Examples.ExtTest.TAwithPDtoTD.mos \
+PNlib.Examples.HybTest.ConflictPrio.mos \
+PNlib.Examples.HybTest.PCtoTD.mos \
+PNlib.Examples.HybTest.TDtoPC.mos \
+
+# TODO
+# PNlib.Examples.HybTest.ConflictTyp3.mo \
+# PNlib.Examples.HybTest.ConflictTyp4.mo \
+# PNlib.Examples.HybTest.EightConflictProb.mo \
+# PNlib.Examples.HybTest.HybLoopAndArcweight.mo \
+# PNlib.Examples.HybTest.InputConflictPrio.mo \
+# PNlib.Examples.HybTest.InputConflictProb.mo \
+# PNlib.Examples.HybTest.InputConflictTyp3.mo \
+# PNlib.Examples.HybTest.OutputConflictPrio.mo \
+# PNlib.Examples.HybTest.OutputConflictProb.mo \
+# PNlib.Examples.HybTest.OutputConflictTyp3.mo \
+# PNlib.Examples.HybTest.SixConflictProb.mo \
+# PNlib.Examples.HybTest.TCwithPD.mo \
 
 
 # These tests are OS dependent. Move up when fixed.
@@ -34,6 +51,7 @@ FAILINGTESTFILES = \
 PNlib.Examples.DisTest.ConflictProb.mos \
 PNlib.Examples.DisTest.InputConflictProb.mos \
 PNlib.Examples.DisTest.OutputConflictProb.mos \
+PNlib.Examples.HybTest.ConflictProb.mos \
 
 
 # Dependency files that are not .mo .mos or Makefile
