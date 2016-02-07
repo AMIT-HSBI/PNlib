@@ -12,9 +12,9 @@ vars := {
 res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.SinglePD_res.mat",
   "../../ReferenceFiles/PNlib.Examples.DisTest.SinglePD.mat",
   "PNlib.Examples.DisTest.SinglePD_diff.csv", 0.01, 0.0001, vars); getErrorString();
-  
+
 if res[1] <> "Files Equal!" then
-  filterSimulationResults("PNlib.Examples.DisTest.SinglePD_res.mat", "PNlib.Examples.DisTest.SinglePD_minimal.mat", vars, 0); getErrorString();
+  filterSimulationResults("PNlib.Examples.DisTest.SinglePD_res.mat", "../../ReferenceFiles/PNlib.Examples.DisTest.SinglePD_minimal.mat", vars, 0); getErrorString();
 end if;
 
 // Result:

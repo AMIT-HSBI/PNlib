@@ -22,7 +22,7 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.C
   "PNlib.Examples.DisTest.ConflictPrio_diff.csv", 0.01, 0.0001, vars); getErrorString();
 
 if res[1] <> "Files Equal!" then
-  filterSimulationResults("PNlib.Examples.DisTest.ConflictPrio_res.mat", "PNlib.Examples.DisTest.ConflictPrio_minimal.mat", vars, 0); getErrorString();
+  filterSimulationResults("PNlib.Examples.DisTest.ConflictPrio_res.mat", "../../ReferenceFiles/PNlib.Examples.DisTest.ConflictPrio_minimal.mat", vars, 0); getErrorString();
 end if;
 
 // Result:

@@ -20,7 +20,7 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ExtTest.D
   "PNlib.Examples.ExtTest.DoubleArcwithPTtoTD_diff.csv", 0.01, 0.0001, vars); getErrorString();
 
 if res[1] <> "Files Equal!" then
-  filterSimulationResults("PNlib.Examples.ExtTest.DoubleArcwithPTtoTD_res.mat", "PNlib.Examples.ExtTest.DoubleArcwithPTtoTD_minimal.mat", vars, 0); getErrorString();
+  filterSimulationResults("PNlib.Examples.ExtTest.DoubleArcwithPTtoTD_res.mat", "../../ReferenceFiles/PNlib.Examples.ExtTest.DoubleArcwithPTtoTD_minimal.mat", vars, 0); getErrorString();
 end if;
 
 // Result:

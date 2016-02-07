@@ -16,7 +16,7 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ConTest.S
   "PNlib.Examples.ConTest.SingleTC_diff.csv", 0.01, 0.0001, vars); getErrorString();
 
 if res[1] <> "Files Equal!" then
-  filterSimulationResults("PNlib.Examples.ConTest.SingleTC_res.mat", "PNlib.Examples.ConTest.SingleTC_minimal.mat", vars, 0); getErrorString();
+  filterSimulationResults("PNlib.Examples.ConTest.SingleTC_res.mat", "../../ReferenceFiles/PNlib.Examples.ConTest.SingleTC_minimal.mat", vars, 0); getErrorString();
 end if;
 
 // Result:
