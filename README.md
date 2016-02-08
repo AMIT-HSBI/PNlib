@@ -10,11 +10,11 @@ The advanced Petri Net library, called PNlib, enables the modeling of extended h
 ![iconsxHPN](PNlib/Resources/Images/iconsxHPN.png "xHPN: Extended Hybrid Petri Nets")
 
 The main package PNlib is divided into the following sub-packages:
- * Interfaces: contains the connectors of the Petri net component models.
- * Blocks: contains blocks with specific procedures that are used in the Petri net component models.
- * Functions: contains functions with specific algorithmic procedures which are used in the Petri net component models.
- * Constants: contains constants which are used in the Petri net component models.
- * Models: contains several examples and offers the possibility to structure further Petri net models.
+ * _Interfaces_: contains the connectors of the Petri net component models.
+ * _Blocks_: contains blocks with specific procedures that are used in the Petri net component models.
+ * _Functions_: contains functions with specific algorithmic procedures which are used in the Petri net component models.
+ * _Constants_: contains constants which are used in the Petri net component models.
+ * _Examples_: contains several examples and unit tests.
 
 ## Current release
 Download [PNlib v1.2 (2015-10-19)](../../archive/v1.2.zip)

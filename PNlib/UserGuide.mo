@@ -144,24 +144,25 @@ This conflict can be solved by prioritization of the transitions. If T1 takes pr
 <p><img src=\"modelica://PNlib/Resources/Images/type4.png\"></p>
 
 <h1> PNlib: A Modelica Library for Modeling xHPN </h1>
-<p><b>IMPORTANT:</b></p>
+<p>Compatibility</p>
 <ul>
-<li>the PNlib works only with Dymola</li>
+<li>PNlib works with OpenModelica 1.9.4</li>
+<li>PNlib works with OpenModelica Dymola 2016</li>
 </ul>
 <p>The advanced Petri Net library, called PNlib, enables the modeling of extended hybrid Petri Nets (xHPN).
 It comprises</p>
 <ul>
 <li> a discrete (PD) and a continuous place (PC),</li>
-<li> a discrete (TD), a stochastic (TS), and a continuous transitions (TC), and</li>
+<li> a discrete (TD), a stochastic (TS), and a continuous transition (TC), and</li>
 <li> a test (TA), an inhibitor (IA), and a read arcs (RA).</li>
 </ul>
 <p>The main package PNlib is divided into the following sub-packages:</p>
 <ul>
-<li>Interfaces: contains the connectors of the Petri net component models.</li>
-<li>Blocks: contains blocks with specific procedures that are used in the Petri net component models.</li>
-<li>Functions: contains functions with specific algorithmic procedures which are used in the Petri net component models.</li>
-<li>Constants: contains constants which are used in the Petri net component models.</li>
-<li>Models: contains several examples and offers the possibility to structure further Petri net models.</li>
+<li><i>Interfaces</i>: contains the connectors of the Petri net component models.</li>
+<li><i>Blocks</i>: contains blocks with specific procedures that are used in the Petri net component models.</li>
+<li><i>Functions</i>: contains functions with specific algorithmic procedures which are used in the Petri net component models.</li>
+<li><i>Constants</i>: contains constants which are used in the Petri net component models.</li>
+<li><i>Examples</i>: contains several examples and unit tests.</li>
 </ul>
 <p>
 Additionally, the package contains the component <b>settings</b> which enables the setting of
