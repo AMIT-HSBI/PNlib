@@ -41,7 +41,7 @@ it can be redistributed and/or modified under the terms of the [Modelica License
 ## Development and contribution
     University of Applied Sciences Bielefeld
     Department of engineering and mathematics
-    33609 Bielefeld - Germany
+    33619 Bielefeld - Germany
     http://www.fh-bielefeld.de/ammo
 * Sabrina Pro&szlig;
 * Lennart Ochel
