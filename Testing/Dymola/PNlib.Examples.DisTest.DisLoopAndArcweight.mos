@@ -1,0 +1,25 @@
+// name: PNlib.Examples.DisTest.DisLoopAndArcweight
+// keywords: PNlib, discrete
+// status: correct
+
+vars := {
+  "P1.t",
+  "T1.fire",
+  "T1.active",
+  "T1.fire"
+};
+
+res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.DisLoopAndArcweight_res.mat",
+  "../../ReferenceFiles/PNlib.Examples.DisTest.DisLoopAndArcweight.mat",
+  "PNlib.Examples.DisTest.DisLoopAndArcweight_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.DisTest.DisLoopAndArcweight_res.mat", "../../ReferenceFiles/PNlib.Examples.DisTest.DisLoopAndArcweight_Dymola_minimal.mat", vars, 0); getErrorString();
+end if;
+
+// Result:
+// {"P1.t","T1.fire","T1.active","T1.fire"}
+// {"Files Equal!"}
+// ""
+// 
+// endResult

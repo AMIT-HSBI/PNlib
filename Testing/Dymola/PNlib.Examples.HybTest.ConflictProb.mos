@@ -1,0 +1,42 @@
+// name: PNlib.Examples.HybTest.ConflictProb
+// keywords: PNlib, hybrid
+// status: correct
+
+vars := {
+  "P1.t",
+  "P2.t",
+  "P3.t",
+  "T1.active",
+  "T1.fire",
+  "T2.active",
+  "T2.fire",
+  "T3.active",
+  "T3.fire"
+};
+
+res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.HybTest.ConflictProb_res.mat",
+  "../../ReferenceFiles/PNlib.Examples.HybTest.ConflictProb.mat",
+  "PNlib.Examples.HybTest.ConflictProb_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.HybTest.ConflictProb_res.mat", "../../ReferenceFiles/PNlib.Examples.HybTest.ConflictProb_Dymola_minimal.mat", vars, 0); getErrorString();
+end if;
+
+// Result:
+// true
+// "Notification: Automatically loaded package Modelica 3.2.1 due to uses annotation.
+// Notification: Automatically loaded package Complex 3.2.1 due to uses annotation.
+// Notification: Automatically loaded package ModelicaServices 3.2.1 due to uses annotation.
+// "
+// record SimulationResult
+//     resultFile = "PNlib.Examples.HybTest.ConflictProb_res.mat",
+//     simulationOptions = "startTime = 0.0, stopTime = 10.0, numberOfIntervals = 500, tolerance = 1e-06, method = 'dassl', fileNamePrefix = 'PNlib.Examples.HybTest.ConflictProb', options = '', outputFormat = 'mat', variableFilter = '.*', cflags = '', simflags = ''",
+//     messages = ""
+// end SimulationResult;
+// "Warning: The initial conditions are not fully specified. Use +d=initialization for more information.
+// "
+// {"P1.t","P2.t","P3.t","T1.active","T1.fire","T2.active","T2.fire","T3.active","T3.fire"}
+// {"Files Equal!"}
+// ""
+//
+// endResult

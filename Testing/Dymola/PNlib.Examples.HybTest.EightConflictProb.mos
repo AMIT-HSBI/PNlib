@@ -1,0 +1,38 @@
+// name: PNlib.Examples.HybTest.EightConflictProb
+// keywords: PNlib, hybrid
+// status: correct
+
+vars := {
+  "P1.t",
+  "T1.active",
+  "T1.fire",
+  "T2.active",
+  "T2.fire",
+  "T3.active",
+  "T3.fire",
+  "T4.active",
+  "T4.fire",
+  "T5.active",
+  "T5.fire",
+  "T6.active",
+  "T6.fire",
+  "T7.active",
+  "T7.fire",
+  "T8.active",
+  "T8.fire"
+};
+
+res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.HybTest.EightConflictProb_res.mat",
+  "../../ReferenceFiles/PNlib.Examples.HybTest.EightConflictProb.mat",
+  "PNlib.Examples.HybTest.EightConflictProb_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.HybTest.EightConflictProb_res.mat", "../../ReferenceFiles/PNlib.Examples.HybTest.EightConflictProb_Dymola_minimal.mat", vars, 0); getErrorString();
+end if;
+
+// Result:
+// {"P1.t","T1.active","T1.fire","T2.active","T2.fire","T3.active","T3.fire","T4.active","T4.fire","T5.active","T5.fire","T6.active","T6.fire","T7.active","T7.fire","T8.active","T8.fire"}
+// {"Files Equal!"}
+// ""
+// 
+// endResult

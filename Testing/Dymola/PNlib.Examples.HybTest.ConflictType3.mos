@@ -1,0 +1,32 @@
+// name: PNlib.Examples.HybTest.ConflictType3
+// keywords: PNlib, hybrid
+// status: correct
+
+vars := {
+  "P1.t",
+  "P2.t",
+  "P3.t",
+  "T1.fire",
+  "T1.instantaneousSpeed",
+  "T1.maximumSpeed",
+  "T2.active",
+  "T2.fire",
+  "T3.fire",
+  "T3.instantaneousSpeed",
+  "T3.maximumSpeed"
+};
+
+res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.HybTest.ConflictType3_res.mat",
+  "../../ReferenceFiles/PNlib.Examples.HybTest.ConflictType3.mat",
+  "PNlib.Examples.HybTest.ConflictType3_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.HybTest.ConflictType3_res.mat", "../../ReferenceFiles/PNlib.Examples.HybTest.ConflictType3_Dymola_minimal.mat", vars, 0); getErrorString();
+end if;
+
+// Result:
+// {"P1.t","P2.t","P3.t","T1.fire","T1.instantaneousSpeed","T1.maximumSpeed","T2.active","T2.fire","T3.fire","T3.instantaneousSpeed","T3.maximumSpeed"}
+// {"Files Equal!"}
+// ""
+//
+// endResult
