@@ -1,6 +1,6 @@
 within PNlib;
 model PC "Continuous Place"
-  Real t=if t_<0 then 0 else t_ "marking";
+  Real t "marking";
   parameter Integer nIn=0 "number of input transitions" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut=0 "number of output transitions" annotation(Dialog(connectorSizing=true));
    //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
@@ -142,6 +142,7 @@ equation
   for i in 1:nIn loop
     preFireIn[i]= if disTransitionIn[i] then fireIn[i] else pre(fireIn[i]);
   end for;
+  t = noEvent(if t_ < minMarks then minMarks elseif t_ > maxMarks then maxMarks else t_);
   //****MAIN END****//
   //****ANIMATION BEGIN****//
   //scaling of tokens for animation
