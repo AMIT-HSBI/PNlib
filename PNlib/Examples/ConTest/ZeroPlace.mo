@@ -2,7 +2,7 @@ within PNlib.Examples.ConTest;
 model ZeroPlace
   extends Modelica.Icons.Example;
 
-  inner PNlib.Settings settings1 annotation(Placement(transformation(extent={{40,20},
+  inner PNlib.Settings settings annotation(Placement(transformation(extent={{40,20},
             {60,40}})));
   PNlib.TC T1(nOut = 1) annotation(Placement(transformation(extent={{-60,-10},{
             -40,10}})));

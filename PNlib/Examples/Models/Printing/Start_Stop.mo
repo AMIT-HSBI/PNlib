@@ -36,7 +36,7 @@ model Start_Stop "starting and stop the printing machine"
   PD Counter_Orders(nIn=1)    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={-32,34})));
+        origin={-22,48})));
   TD stopping(
     nIn=2,
     nOut=1,
@@ -92,6 +92,11 @@ model Start_Stop "starting and stop the printing machine"
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-24,0})));
+  Modelica.Blocks.Math.IntegerToReal integerToReal annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-38,28})));
 equation
   reStart = if Stop2.t>0 then true else false;
   when Stop.t>0 then
@@ -127,10 +132,6 @@ equation
       points={{-90.8,1.38778e-015},{-94,1.38778e-015},{-94,66},{80,66},{
           80,-0.5},{64.8,-0.5}},
       color={0,0,0},
-      smooth=Smooth.None));
-  connect(Counter_Orders.pd_t, orders_)       annotation (Line(
-      points={{-32,23.4},{-32,20},{-54,20},{-54,48}},
-      color={255,127,0},
       smooth=Smooth.None));
   connect(starting.outPlaces[2], rollen_wechsel_)
                                                  annotation (Line(
@@ -172,10 +173,21 @@ equation
       smooth=Smooth.None));
   connect(shutDown.outPlaces[2], Counter_Orders.inTransition[1])
     annotation (Line(
-      points={{3.2,-0.5},{-4,-0.5},{-4,34},{-21.2,34}},
+      points={{3.2,-0.5},{-4,-0.5},{-4,48},{-11.2,48}},
       color={0,0,0},
       smooth=Smooth.None));
-  annotation (Diagram(graphics), Icon(graphics={Rectangle(
+  connect(Counter_Orders.pd_t, integerToReal.u) annotation (Line(
+      points={{-22,37.4},{-22,38},{-22,38},{-22,28},{-22,28},{-26,28},{-26,28}},
+
+      color={255,127,0},
+      smooth=Smooth.None));
+  connect(integerToReal.y, orders_) annotation (Line(
+      points={{-49,28},{-54,28},{-54,48}},
+      color={0,0,127},
+      smooth=Smooth.None));
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,
+            -100},{100,100}}),
+                      graphics), Icon(graphics={Rectangle(
           extent={{-80,60},{80,-80}},
           lineColor={0,0,0},
           fillColor=DynamicSelect({255,0,0},color),

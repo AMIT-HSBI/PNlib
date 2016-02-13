@@ -15,15 +15,15 @@ block preliminarySpeed
     "places that causes weakly output activation";
   output Real prelimSpeed "preliminary speed";
 algorithm
-  prelimSpeed:=maximumSpeed;
+  prelimSpeed := maximumSpeed;
   for i in 1:nIn loop
-    if weaklyInputActiveVec[i] and (1/arcWeightIn[i])*speedSumIn[i]<prelimSpeed then
-       prelimSpeed:=(1/arcWeightIn[i])*speedSumIn[i];
+    if weaklyInputActiveVec[i] and speedSumIn[i] < prelimSpeed*arcWeightIn[i] then
+       prelimSpeed := speedSumIn[i]/arcWeightIn[i];
     end if;
    end for;
    for i in 1:nOut loop
-     if weaklyOutputActiveVec[i] and (1/arcWeightOut[i])*speedSumOut[i]<prelimSpeed then
-        prelimSpeed:=(1/arcWeightOut[i])*speedSumOut[i];
+     if weaklyOutputActiveVec[i] and speedSumOut[i] < prelimSpeed*arcWeightOut[i] then
+        prelimSpeed := speedSumOut[i]/arcWeightOut[i];
      end if;
    end for;
 end preliminarySpeed;

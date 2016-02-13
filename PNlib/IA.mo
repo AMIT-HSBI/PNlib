@@ -6,7 +6,7 @@ model IA "Inhibitor Arc"
   parameter Integer normalArc=1 "double arc: inhibitor and normal arc?" annotation(Dialog(enable = true, group = "Inhibitor Arc"),choices(choice=1 "No",
                  choice=2 "Yes",__Dymola_radioButtons=true));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
-  Integer animateWeightTIarc=settings1.animateWeightTIarc
+  Integer animateWeightTIarc=settings.animateWeightTIarc
     "only for transition animation and display (Do not change!)";
   Integer testColor[3]
     "only for transition animation and display (Do not change!)";
@@ -40,7 +40,7 @@ model IA "Inhibitor Arc"
             {48,36}}),                                                                           iconTransformation(extent={{28,16},
             {48,36}})));
 protected
-  outer PNlib.Settings settings1 "global settings for animation and display";
+  outer PNlib.Settings settings "global settings for animation and display";
   Integer testValueInt "integer test value (for generating events!)";
 equation
   if outTransition.disPlace then
@@ -49,9 +49,9 @@ equation
      testValueInt=1;
   end if;
   //****ANIMATION BEGIN****//
-  if inPlace.t<testValue and settings1.animateTIarc==1 then
+  if inPlace.t<testValue and settings.animateTIarc==1 then
     testColor={0,255,0};
-  elseif  settings1.animateTIarc==1 then
+  elseif  settings.animateTIarc==1 then
     testColor={255,0,0};
   else
     testColor={255,255,255};

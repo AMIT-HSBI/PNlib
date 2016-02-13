@@ -69,10 +69,8 @@ algorithm
         for j in 2:nremTAout loop
           cumEnablingProb[j]:=cumEnablingProb[j-1]+enablingProb[remTAout[j]]/sumEnablingProbTAout;
         end for;
-        //muss hier stehen sonst immer fast gleiche Zufallszahl => immer gleiches enabling
-        randNum := PNlib.Functions.Random.random()/32767;
         for i in 1:nTAout loop
-          randNum := PNlib.Functions.Random.random()/32767;
+          randNum := PNlib.Functions.Random.random()/PNlib.Constants.rand_max;
                                             //uniform distributed random number
           endWhile:=false;
           k:=1;

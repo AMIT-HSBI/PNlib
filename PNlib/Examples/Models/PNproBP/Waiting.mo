@@ -66,7 +66,7 @@ model Waiting
             annotation (Placement(transformation(extent={{48,74},{68,94}})));
   Boolean ani "for transition animation";
 protected
-  outer Settings settings1 "global settings for animation and display";
+  outer Settings settings "global settings for animation and display";
   discrete Real fireTime;
 public
   PD P2(nOut=1, nIn=1)
@@ -486,7 +486,7 @@ equation
      fireTime=time;
      ani=true;
   end when;
-  fireColor=if (fireTime+settings1.timeFire>=time and settings1.animateTransition==1 and ani) then {255,255,0} else {128,255,0};
+  fireColor=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255,255,0} else {128,255,0};
 
   connect(Puffer.outTransition[1], T1.inPlaces[1]) annotation (Line(
       points={{-49.2,13.0417},{-30,13.0417},{-30,84},{-14.8,84}},

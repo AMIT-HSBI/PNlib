@@ -4,16 +4,22 @@
 
 loadFile("../../PNlib/package.mo"); getErrorString();
 simulate(PNlib.Examples.ConTest.LoopAndArcweight); getErrorString();
+
+vars := {
+  "P1.t",
+  "P2.t",
+  "T1.fire",
+  "T1.instantaneousSpeed",
+  "T1.maximumSpeed"
+};
+
 res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ConTest.LoopAndArcweight_res.mat",
   "../../ReferenceFiles/PNlib.Examples.ConTest.LoopAndArcweight.mat",
-  "PNlib.Examples.ConTest.LoopAndArcweight_diff.csv", 0.01, 0.0001,
-  {
-    "P1.t",
-    "P2.t",
-    "T1.fire",
-    "T1.instantaneousSpeed",
-    "T1.maximumSpeed"
-  }); getErrorString();
+  "PNlib.Examples.ConTest.LoopAndArcweight_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.ConTest.LoopAndArcweight_res.mat", "../../ReferenceFiles/PNlib.Examples.ConTest.LoopAndArcweight_minimal.mat", vars, 0); getErrorString();
+end if;
 
 // Result:
 // true
@@ -29,6 +35,8 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ConTest.L
 // "Warning: The initial conditions are not fully specified. Use +d=initialization for more information.
 // Warning: There are iteration variables with default zero start attribute. Use +d=initialization for more information.
 // "
+// {"P1.t","P2.t","T1.fire","T1.instantaneousSpeed","T1.maximumSpeed"}
 // {"Files Equal!"}
 // ""
+//
 // endResult

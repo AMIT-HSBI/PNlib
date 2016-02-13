@@ -66,7 +66,7 @@ model Parallel
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   Boolean ani "for transition animation";
 protected
-  outer Settings settings1 "global settings for animation and display";
+  outer Settings settings "global settings for animation and display";
   discrete Real fireTime;
 equation
   fire=T1.fire or T2.fire or T3.fire or T4.fire or T5.fire or T6.fire;
@@ -74,7 +74,7 @@ equation
      fireTime=time;
      ani=true;
   end when;
-  fireColor=if (fireTime+settings1.timeFire>=time and settings1.animateTransition==1 and ani) then {255,255,0} else {128,255,0};
+  fireColor=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255,255,0} else {128,255,0};
 
   connect(puffern.outPlaces[1], Puffer.inTransition[1]) annotation (Line(
       points={{-85.2,14},{-70.8,14}},

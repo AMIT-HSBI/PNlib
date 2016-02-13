@@ -55,3 +55,4 @@ dsmodel.c
 dymosim.exe
 dymosim.exp
 dymosim.lib
+*.bak-mo

@@ -134,7 +134,7 @@ model Senseo_Maschine
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-144,-74})));
-  inner PNlib.Settings settings1
+  inner PNlib.Settings settings
     annotation (Placement(transformation(extent={{156,-158},{182,-132}})));
   PNlib.PD ready(
     maxTokens=1,

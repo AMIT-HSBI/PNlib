@@ -1,6 +1,6 @@
 within PNlib;
 model PC "Continuous Place"
-  Real t=if t_<0 then 0 else t_ "marking";
+  Real t "marking";
   parameter Integer nIn=0 "number of input transitions" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut=0 "number of output transitions" annotation(Dialog(connectorSizing=true));
    //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
@@ -9,7 +9,7 @@ model PC "Continuous Place"
   parameter Real maxMarks=PNlib.Constants.inf "maximum capacity"       annotation(Dialog(enable = true, group = "Marks"));
    Boolean reStart=false "restart condition"       annotation(Dialog(enable = true, group = "Marks"));
   parameter Real reStartMarks=0 "number of marks at restart"       annotation(Dialog(enable = true, group = "Marks"));
-  parameter Integer N=settings1.N "N+1=amount of levels" annotation(Dialog(enable = true, group = "Level Concentrations"));
+  parameter Integer N=settings.N "N+1=amount of levels" annotation(Dialog(enable = true, group = "Level Concentrations"));
   parameter Integer enablingType=1
     "resolution type of actual conflict (type-1-conflict)"                                annotation(Dialog(enable = true, group = "Enabling"),choices(choice=1
         "Priority",    choice=2 "Probability",__Dymola_radioButtons=true));
@@ -20,15 +20,17 @@ model PC "Continuous Place"
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   Real levelCon
     "conversion of tokens to level concentration according to M and N of the settings box";
-  Integer showPlaceName=settings1.showPlaceName
+  Integer showPlaceName=settings.showPlaceName
     "only for place animation and display (Do not change!)";
-  Integer showCapacity=settings1.showCapacity
+  Integer showCapacity=settings.showCapacity
     "only for place animation and display (Do not change!)";
-  Integer animateMarking=settings1.animateMarking
+  Integer animateMarking=settings.animateMarking
     "only for place animation and display (Do not change!)";
   Real color[3] "only for place animation and display (Do not change!)";
+  parameter Boolean showTokenFlow = settings.showTokenFlow annotation(Dialog(enable = true, group = "Token flow"));
+  Blocks.tokenFlowCon tokenFlow(nIn=nIn, nOut=nOut, conFiringSumIn=firingSumIn.conFiringSum, conFiringSumOut=firingSumOut.conFiringSum, fireIn=fireIn, fireOut=fireOut, arcWeightIn=arcWeightIn, arcWeightOut=arcWeightOut, instSpeedIn=instSpeedIn, instSpeedOut=instSpeedOut) if showTokenFlow;
 protected
-  outer PNlib.Settings settings1 "global settings for animation and display";
+  outer PNlib.Settings settings "global settings for animation and display";
   Real disMarkChange "discrete mark change";
   Real conMarkChange "continuous mark change";
   Real arcWeightIn[nIn] "weights of input arcs";
@@ -69,9 +71,9 @@ protected
   //firing sum calculation
   Blocks.firingSumCon firingSumIn(fire=preFireIn,arcWeight=arcWeightIn,instSpeed=instSpeedIn,disTransition=disTransitionIn);
   Blocks.firingSumCon firingSumOut(fire=preFireOut,arcWeight=arcWeightOut,instSpeed=instSpeedOut,disTransition=disTransitionOut);
-  //decreasing factor calculation
-  Blocks.decreasingFactor decreasingFactor(nIn=nIn,nOut=nOut,t=t_,minMarks=minMarks,maxMarks=maxMarks,speedIn= firingSumIn.conFiringSum,speedOut= firingSumOut.conFiringSum,maxSpeedIn=maxSpeedIn,maxSpeedOut=maxSpeedOut,prelimSpeedIn=prelimSpeedIn,prelimSpeedOut=prelimSpeedOut,arcWeightIn=arcWeightIn,arcWeightOut=arcWeightOut,firingIn=fireIn and not disTransitionIn,firingOut=fireOut and not disTransitionOut);
   //****BLOCKS END****//
+  Real decFactorIn[nIn] "decreasing factors for input transitions";
+  Real decFactorOut[nOut] "decreasing factors for output transitions";
 public
   Interfaces.PlaceIn inTransition[nIn](each t=t_,
   each tint=1,
@@ -79,7 +81,7 @@ public
   each maxTokensint=1,
   enable=enableIn.TEin_,
   each emptied = emptying.anytrue,
-  decreasingFactor = decreasingFactor.decFactorIn,
+  decreasingFactor = decFactorIn,
   each disPlace =  false,
   each speedSum= firingSumOut.conFiringSum,
   fire=fireIn,
@@ -98,7 +100,7 @@ public
   each minTokensint=1,
   enable=enableOut.TEout_,
   each fed=feeding.anytrue,
-  decreasingFactor=decreasingFactor.decFactorOut,
+  decreasingFactor=decFactorOut,
   each disPlace=false,
   each arcType=1,
   each speedSum=firingSumIn.conFiringSum,
@@ -121,7 +123,8 @@ public
         rotation=90,
         origin={0,108})));
 equation
-  //****MAIN END****//
+  //decreasing factor calculation
+  (decFactorIn, decFactorOut) = Functions.decreasingFactor(nIn=nIn,nOut=nOut,t=t_,minMarks=minMarks,maxMarks=maxMarks,speedIn= firingSumIn.conFiringSum,speedOut= firingSumOut.conFiringSum,maxSpeedIn=maxSpeedIn,maxSpeedOut=maxSpeedOut,prelimSpeedIn=prelimSpeedIn,prelimSpeedOut=prelimSpeedOut,arcWeightIn=arcWeightIn,arcWeightOut=arcWeightOut,firingIn=fireIn and not disTransitionIn,firingOut=fireOut and not disTransitionOut);
   //calculation of continuous mark change
   conMarkChange=firingSumIn.conFiringSum-firingSumOut.conFiringSum;
   der(t_)=conMarkChange;
@@ -132,18 +135,19 @@ equation
     reinit(t_, if reStart then reStartMarks else t_ + disMarkChange);
   end when;
   //Conversion of tokens to level concentrations
-  levelCon=t*settings1.M/N;
+  levelCon=t*settings.M/N;
   for i in 1:nOut loop
     preFireOut[i]=if disTransitionOut[i] then fireOut[i] else pre(fireOut[i]);
   end for;
   for i in 1:nIn loop
     preFireIn[i]= if disTransitionIn[i] then fireIn[i] else pre(fireIn[i]);
   end for;
+  t = noEvent(if t_ < minMarks then minMarks elseif t_ > maxMarks then maxMarks else t_);
   //****MAIN END****//
   //****ANIMATION BEGIN****//
   //scaling of tokens for animation
-  tokenscale= t*settings1.scale;
-  color=if settings1.animatePlace==1 then if tokenscale<100 then {255,255-2.55*tokenscale,255-2.55*tokenscale} else {255,0,0} else {255,255,255};
+  tokenscale= t*settings.scale;
+  color=if settings.animatePlace==1 then if tokenscale<100 then {255,255-2.55*tokenscale,255-2.55*tokenscale} else {255,0,0} else {255,255,255};
   //****ANIMATION END****//
   //****ERROR MESSENGES BEGIN****//
   assert(Functions.OddsAndEnds.isEqual(sum(enablingProbIn), 1.0, 1e-6) or nIn==0 or enablingType==1,"The sum of input enabling probabilities has to be equal to 1");

@@ -40,7 +40,7 @@ model XOR
   Integer fireColor[3] "for animation";
    Boolean ani "for transition animation";
 protected
-  outer Settings settings1 "global settings for animation and display";
+  outer Settings settings "global settings for animation and display";
   discrete Real fireTime;
 equation
   fire=T1.fire or T2.fire;
@@ -48,7 +48,7 @@ equation
      fireTime=time;
      ani=true;
   end when;
-  fireColor=if (fireTime+settings1.timeFire>=time and settings1.animateTransition==1 and ani) then {255,255,0} else {85,170,255};
+  fireColor=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255,255,0} else {85,170,255};
   connect(T3.outPlaces[1], P1.inTransition[1]) annotation (Line(
       points={{-73.2,0},{-68,0},{-62.8,0}},
       color={0,0,0},

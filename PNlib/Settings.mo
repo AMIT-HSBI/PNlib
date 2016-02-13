@@ -35,7 +35,8 @@ model Settings "Global Settings for Animation and Display"
                  choice=2 "off",__Dymola_radioButtons=true));
   parameter Integer N=10 "N+1=amount of levels" annotation(Dialog(enable = true, group = "Level Concentrations"));
   parameter Real M=1 "maximum concentration"  annotation(Dialog(enable = true, group = "Level Concentrations"));
-  annotation(defaultComponentName = "settings1",defaultComponentPrefixes = "inner",missingInnerMessage = "The settings object is missing",
+  parameter Boolean showTokenFlow = false annotation(Dialog(enable = true, group = "Token flow"));
+  annotation(defaultComponentName = "settings",defaultComponentPrefixes = "inner",missingInnerMessage = "The settings object is missing",
               Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,-100},
             {100,100}}),
                        graphics={Rectangle(

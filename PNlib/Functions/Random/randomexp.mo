@@ -9,11 +9,11 @@ protected
 algorithm
   zg := 0;
   h_lambda := lambda;
-  while zg / 32767 < 10 ^ (-10) loop
+  while zg / PNlib.Constants.rand_max < 10 ^ (-10) loop
     zg := random();
   end while;
   if lambda <= 0 then
     h_lambda := 10 ^ (-10);
   end if;
-  delay := -Modelica.Math.log(zg / 32767) * 1 / h_lambda;
+  delay := -Modelica.Math.log(zg / PNlib.Constants.rand_max) * 1 / h_lambda;
 end randomexp;

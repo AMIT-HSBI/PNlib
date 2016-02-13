@@ -6,7 +6,7 @@ model DisLoopAndArcweight
             {10,-10}})));
   PNlib.TD T1(nIn = 1, nOut = 1, arcWeightIn = {2}, arcWeightOut = {3}) annotation(Placement(transformation(extent={{8,10},{
             -12,30}})));
-  inner PNlib.Settings settings1 annotation(Placement(transformation(extent={{20,40},
+  inner PNlib.Settings settings annotation(Placement(transformation(extent={{20,40},
             {40,60}})));
 equation
   connect(P1.outTransition[1], T1.inPlaces[1]) annotation(Line(points={{10.8,-20},

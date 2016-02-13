@@ -19,7 +19,7 @@ equation
 algorithm
   for i in 1:nIn loop
     above[i]:=tIn[i] > testValue[i];
-     when above[i]<>preabove[i] and not initial() then
+     when above[i]<>preabove[i] then
        testChange[i]:=true;
        ttest[i]:=preabove[i];
        ttest2[i]:=tIn[i];

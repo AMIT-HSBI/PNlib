@@ -2,7 +2,6 @@ activationCon
 activationDis
 anyTrue
 anyChange
-decreasingFactor
 enablingInCon
 enablingInDis
 enablingOutCon
@@ -11,3 +10,4 @@ firingSumCon
 firingSumDis
 preliminarySpeed
 testArcEvent
+tokenFlowCon

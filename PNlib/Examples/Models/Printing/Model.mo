@@ -46,8 +46,10 @@ model Model "Top model"
     hmax=15000,
     text="duration")
     annotation (Placement(transformation(extent={{14,54},{48,88}})));
-  inner Settings settings1
+  inner Settings settings
     annotation (Placement(transformation(extent={{-122,-122},{-102,-102}})));
+initial equation
+  Functions.Random.initRandom(1);
 equation
   when reStart then
     orders__=orders_.levelSensor_;

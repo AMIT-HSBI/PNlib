@@ -4,14 +4,20 @@
 
 loadFile("../../PNlib/package.mo"); getErrorString();
 simulate(PNlib.Examples.DisTest.PDtoTD); getErrorString();
+
+vars := {
+  "P1.t",
+  "T1.active",
+  "T1.fire"
+};
+
 res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.PDtoTD_res.mat",
   "../../ReferenceFiles/PNlib.Examples.DisTest.PDtoTD.mat",
-  "PNlib.Examples.DisTest.PDtoTD_diff.csv", 0.01, 0.0001,
-  {
-    "P1.t",
-    "T1.active",
-    "T1.fire"
-  }); getErrorString();
+  "PNlib.Examples.DisTest.PDtoTD_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.DisTest.PDtoTD_res.mat", "../../ReferenceFiles/PNlib.Examples.DisTest.PDtoTD_minimal.mat", vars, 0); getErrorString();
+end if;
 
 // Result:
 // true
@@ -26,6 +32,8 @@ res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.P
 // end SimulationResult;
 // "Warning: The initial conditions are not fully specified. Use +d=initialization for more information.
 // "
+// {"P1.t","T1.active","T1.fire"}
 // {"Files Equal!"}
 // ""
+//
 // endResult

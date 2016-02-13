@@ -69,16 +69,16 @@ continuous transition if it is input as well as output of the transition with ar
 place but the discrete marking cannot be changed by continuous firing.</p>
 <p>Summarized, an xHPN comprises of:</p>
 <ul>
-<li>        discrete and continuous places,</li>
-<li>        discrete, stochastic, and continuous transitions,</li>
-<li>        places can be connected to transitions by normal, test, inhibitor, and read arcs while transitions can only be connected to places by normal arcs,</li>
-<li>        arc weights can be functions depending on markings and/or time,</li>
-<li>        discrete place must be input as well as output of continuous transitions with arcs of same weights,</li>
-<li>        places can be provided with minimum and maximum capacities,</li>
-<li>        discrete transitions can be provided with delays,</li>
-<li>        stochastic transitions can be provided with hazard functions depending on markings,</li>
-<li>        continuous transitions can be provided with maximum speed function depending on markings and/or time, and</li>
-<li>        all transitions can be provided with additional firing conditions depending on all possible model variables.</li>
+<li>discrete and continuous places,</li>
+<li>discrete, stochastic, and continuous transitions,</li>
+<li>places can be connected to transitions by normal, test, inhibitor, and read arcs while transitions can only be connected to places by normal arcs,</li>
+<li>arc weights can be functions depending on markings and/or time,</li>
+<li>discrete place must be input as well as output of continuous transitions with arcs of same weights,</li>
+<li>places can be provided with minimum and maximum capacities,</li>
+<li>discrete transitions can be provided with delays,</li>
+<li>stochastic transitions can be provided with hazard functions depending on markings,</li>
+<li>continuous transitions can be provided with maximum speed function depending on markings and/or time, and</li>
+<li>all transitions can be provided with additional firing conditions depending on all possible model variables.</li>
 </ul>
 <p>A formal definition of the xHPN-formalism and the corresponding processes is given in [Proß et al.2012].</p>
 <h2>Possible conflicts in xHPNs</h2>
@@ -144,37 +144,38 @@ This conflict can be solved by prioritization of the transitions. If T1 takes pr
 <p><img src=\"modelica://PNlib/Resources/Images/type4.png\"></p>
 
 <h1> PNlib: A Modelica Library for Modeling xHPN </h1>
-<p><b>IMPORTANT:</b></p>
+<p>Compatibility</p>
 <ul>
-<li>the PNlib works only with Dymola</li>
+<li>PNlib works with OpenModelica 1.9.4</li>
+<li>PNlib works with OpenModelica Dymola 2016</li>
 </ul>
 <p>The advanced Petri Net library, called PNlib, enables the modeling of extended hybrid Petri Nets (xHPN).
 It comprises</p>
 <ul>
-<li> a discrete (PD) and a continuous place (PC),</li>
-<li> a discrete (TD), a stochastic (TS), and a continuous transitions (TC), and</li>
-<li> a test (TA), an inhibitor (IA), and a read arcs (RA).</li>
+<li>a discrete (PD) and a continuous place (PC),</li>
+<li>a discrete (TD), a stochastic (TS), and a continuous transition (TC), and</li>
+<li>a test (TA), an inhibitor (IA), and a read arcs (RA).</li>
 </ul>
 <p>The main package PNlib is divided into the following sub-packages:</p>
 <ul>
-<li>Interfaces: contains the connectors of the Petri net component models.</li>
-<li>Blocks: contains blocks with specific procedures that are used in the Petri net component models.</li>
-<li>Functions: contains functions with specific algorithmic procedures which are used in the Petri net component models.</li>
-<li>Constants: contains constants which are used in the Petri net component models.</li>
-<li>Models: contains several examples and offers the possibility to structure further Petri net models.</li>
+<li><i>Interfaces</i>: contains the connectors of the Petri net component models.</li>
+<li><i>Blocks</i>: contains blocks with specific procedures that are used in the Petri net component models.</li>
+<li><i>Functions</i>: contains functions with specific algorithmic procedures which are used in the Petri net component models.</li>
+<li><i>Constants</i>: contains constants which are used in the Petri net component models.</li>
+<li><i>Examples</i>: contains several examples and unit tests.</li>
 </ul>
 <p>
 Additionally, the package contains the component <b>settings</b> which enables the setting of
 global parameters for the display and animation of a Petri net model:</p>
 <ul>
-<li> showPlaceName: displays the names of places,</li>
-<li> showTransitionName: displays the names of transitions,</li>
-<li> showDelay: displays the delays of discrete transitions,</li>
-<li> showCapacity: displays the minimum and maximum capacities of places,</li>
-<li> showWeightTIarc: displays the arc weights of test and inhibitor arcs,</li>
-<li> animateMarking: animates the current marking in the places; the change of</li>
-<li> tokens/marks is displayed in the places during animation,</li>
-<li> animatePlace: animates the color of places. Places change their degree of redness</li>
+<li>showPlaceName: displays the names of places,</li>
+<li>showTransitionName: displays the names of transitions,</li>
+<li>showDelay: displays the delays of discrete transitions,</li>
+<li>showCapacity: displays the minimum and maximum capacities of places,</li>
+<li>showWeightTIarc: displays the arc weights of test and inhibitor arcs,</li>
+<li>animateMarking: animates the current marking in the places; the change of</li>
+<li>tokens/marks is displayed in the places during animation,</li>
+<li>animatePlace: animates the color of places. Places change their degree of redness</li>
 according to the amount of tokens/marks; thereby, the redness degree is scaled by the
 parameter scale from 0 to 100,</li>
 <li> antimateTransition: animates the color of transitions. Transitions change their color
@@ -267,7 +268,7 @@ Therefore, the dimension parameters nIn and nOut are declared in the place and t
   <tr>
     <td>N</td>
     <td>scalar</td>
-    <td>settings1.N</td>
+    <td>settings.N</td>
     <td>integers (d)</td>
     <td>Amount of levels for stochastic simulation</td>
   </tr>

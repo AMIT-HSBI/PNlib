@@ -1,0 +1,34 @@
+// name: PNlib.Examples.HybTest.SixConflictProb
+// keywords: PNlib, hybrid
+// status: correct
+
+vars := {
+  "P1.t",
+  "T1.active",
+  "T1.fire",
+  "T2.active",
+  "T2.fire",
+  "T3.active",
+  "T3.fire",
+  "T4.active",
+  "T4.fire",
+  "T5.active",
+  "T5.fire",
+  "T6.active",
+  "T6.fire"
+};
+
+res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.HybTest.SixConflictProb_res.mat",
+  "../../ReferenceFiles/PNlib.Examples.HybTest.SixConflictProb.mat",
+  "PNlib.Examples.HybTest.SixConflictProb_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.HybTest.SixConflictProb_res.mat", "../../ReferenceFiles/PNlib.Examples.HybTest.SixConflictProb_Dymola_minimal.mat", vars, 0); getErrorString();
+end if;
+
+// Result:
+// {"P1.t","T1.active","T1.fire","T2.active","T2.fire","T3.active","T3.fire","T4.active","T4.fire","T5.active","T5.fire","T6.active","T6.fire"}
+// {"Files Equal!"}
+// ""
+// 
+// endResult

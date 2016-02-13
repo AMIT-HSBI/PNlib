@@ -14,7 +14,7 @@ model ConflictLoop
             {50,30}})));
   PNlib.PC P3(nIn = 1, nOut = 1, startMarks = 1) annotation(Placement(transformation(extent={{30,-30},
             {50,-10}})));
-  inner PNlib.Settings settings1 annotation(Placement(transformation(extent={{30,50},
+  inner PNlib.Settings settings annotation(Placement(transformation(extent={{30,50},
             {50,70}})));
 equation
   connect(T1.outPlaces[1], P1.inTransition[1]) annotation(Line(points={{-45.2,0},
