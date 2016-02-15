@@ -124,7 +124,7 @@ public
         origin={0,108})));
 equation
   //decreasing factor calculation
-  (decFactorIn, decFactorOut) = Functions.decreasingFactor(nIn=nIn,nOut=nOut,t=t_,minMarks=minMarks,maxMarks=maxMarks,speedIn= firingSumIn.conFiringSum,speedOut= firingSumOut.conFiringSum,maxSpeedIn=maxSpeedIn,maxSpeedOut=maxSpeedOut,prelimSpeedIn=prelimSpeedIn,prelimSpeedOut=prelimSpeedOut,arcWeightIn=arcWeightIn,arcWeightOut=arcWeightOut,firingIn=fireIn and not disTransitionIn,firingOut=fireOut and not disTransitionOut);
+  (decFactorIn, decFactorOut) = Functions.decreasingFactor(nIn=nIn, nOut=nOut, t=t_, minMarks=minMarks, maxMarks=maxMarks, speedIn=firingSumIn.conFiringSum, speedOut=firingSumOut.conFiringSum, maxSpeedIn=maxSpeedIn, maxSpeedOut=maxSpeedOut, prelimSpeedIn=prelimSpeedIn, prelimSpeedOut=prelimSpeedOut, arcWeightIn=arcWeightIn, arcWeightOut=arcWeightOut, firingIn=Functions.ArrayUtils.arrayAnd(fireIn, Functions.ArrayUtils.arrayNot(disTransitionIn)), firingOut=Functions.ArrayUtils.arrayAnd(fireOut, Functions.ArrayUtils.arrayNot(disTransitionOut)));
   //calculation of continuous mark change
   conMarkChange=firingSumIn.conFiringSum-firingSumOut.conFiringSum;
   der(t_)=conMarkChange;
