@@ -33,6 +33,7 @@ PNlib.Examples.ExtTest.IAwithPDtoTD.mos \
 PNlib.Examples.ExtTest.TATest.mos \
 PNlib.Examples.ExtTest.TAwithPCtoTC.mos \
 PNlib.Examples.ExtTest.TAwithPDtoTD.mos \
+PNlib.Examples.ExtTest.TAwithWeaklyActivation.mos \
 PNlib.Examples.ExtTest.TSTest.mos \
 PNlib.Examples.HybTest.ConflictPrio.mos \
 PNlib.Examples.HybTest.ConflictProb.mos \
