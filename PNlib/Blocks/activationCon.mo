@@ -32,54 +32,61 @@ block activationCon "activation process of continuous transitions"
   output Boolean weaklyOutputActiveVec[nOut]
     "places that causes weakly output activation";
 algorithm
-  active:=true;
-  weaklyInputActiveVec:=fill(false, nIn);
-  weaklyOutputActiveVec:=fill(false, nOut);
+  active := true;
+  weaklyInputActiveVec := fill(false, nIn);
+  weaklyOutputActiveVec := fill(false, nOut);
+
   //check input places
   for i in 1:nIn loop
     if disPlaceIn[i] then //discrete place
-      if arcType[i]==1 and not (tIntIn[i]-arcWeightIntIn[i]  >= minTokensInt[i]) then //normal arc
-        active:=false;
-      elseif arcType[i]==2 and not (tIntIn[i] > testValueInt[i]) then //test arc
-        active:=false;
-      elseif arcType[i]==3 and not (tIntIn[i] < testValueInt[i]) then //inhibition arc
-        active:=false;
+      if arcType[i]==1 and (tIntIn[i]-arcWeightIntIn[i]  < minTokensInt[i]) then //normal arc
+        active := false;
+      elseif arcType[i]==2 and (tIntIn[i] < testValueInt[i]) then //test arc
+        active := false;
+      elseif arcType[i]==3 and (tIntIn[i] >= testValueInt[i]) then //inhibition arc
+        active := false;
       end if;
     else  //continuous place
       if arcType[i]==1 or normalArc[i]==2 then  //normal arc or double arc
-         if not (tIn[i]>minTokens[i] or (tIn[i]<=minTokens[i] and fed[i])) then
-            active:=false;
-         elseif tIn[i]<=minTokens[i] and fed[i] then  //weakly input active??
+        if tIn[i] <= minTokens[i] then
+          if fed[i] then //weakly input active??
             weaklyInputActiveVec[i]:=true;
-         end if;
+          else
+            active := false;
+          end if;
+        end if;
       end if;
       if arcType[i]==2 then //test arc
-          if not (tIn[i] > testValue[i]) then
-            active:=false;
+          if tIn[i] <= testValue[i] then
+            active := false;
           end if;
-           if testChange[i] and fed[i] and normalArc[i]==2 then  //weakly input active??
-             weaklyInputActiveVec[i]:=true;
-           end if;
-      elseif arcType[i]==3 and not (tIn[i] < testValue[i]) then  //inhibitor arc
-        active:=false;
+          if testChange[i] and fed[i] and normalArc[i]==2 then  //weakly input active??
+            weaklyInputActiveVec[i] := true;
+          end if;
+      elseif arcType[i]==3 and (tIn[i] >= testValue[i]) then  //inhibitor arc
+        active := false;
       end if;
     end if;
   end for;
+
   //output places
   for i in 1:nOut loop
-     if disPlaceOut[i] then  //discrete place
-       if not (tIntOut[i]+arcWeightIntOut[i]<=maxTokensInt[i]) then
-        active:=false;
-       end if;
-     else  //continuous place
-      if not (tOut[i]<maxTokens[i] or (tOut[i]>=maxTokens[i] and emptied[i])) then
-        active:=false;
-      elseif tOut[i]>=maxTokens[i] and emptied[i] then
-        weaklyOutputActiveVec[i]:=true;
+    if disPlaceOut[i] then  //discrete place
+      if tIntOut[i]+arcWeightIntOut[i] > maxTokensInt[i] then
+        active := false;
       end if;
-     end if;
+    else  //continuous place
+      if tOut[i] >= maxTokens[i] then
+        if emptied[i] then
+          weaklyOutputActiveVec[i] := true;
+        else
+          active := false;
+        end if;
+      end if;
+    end if;
   end for;
-  active:=active and firingCon;
-  weaklyOutputActiveVec:=weaklyOutputActiveVec and fill(firingCon,nOut);
-  weaklyInputActiveVec:=weaklyInputActiveVec and fill(firingCon,nIn);
+
+  active := active and firingCon;
+  weaklyOutputActiveVec := weaklyOutputActiveVec and fill(firingCon,nOut);
+  weaklyInputActiveVec := weaklyInputActiveVec and fill(firingCon,nIn);
 end activationCon;
