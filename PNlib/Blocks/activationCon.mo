@@ -48,12 +48,10 @@ algorithm
       end if;
     else  //continuous place
       if arcType[i]==1 or normalArc[i]==2 then  //normal arc or double arc
-        if tIn[i] <= minTokens[i] then
-          if fed[i] then //weakly input active??
-            weaklyInputActiveVec[i]:=true;
-          else
-            active := false;
-          end if;
+        if tIn[i]<=minTokens[i] and (not fed[i]) then
+          active := false;
+        elseif tIn[i]<=minTokens[i] and fed[i] then  //weakly input active??
+          weaklyInputActiveVec[i] := true;
         end if;
       end if;
       if arcType[i]==2 then //test arc
