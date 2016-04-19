@@ -17,18 +17,7 @@ The main package PNlib is divided into the following sub-packages:
  * _Examples_: contains several examples and unit tests.
 
 ## Current release
-Download [PNlib v1.2 (2015-10-19)](../../archive/v1.2.zip)
-
-#### Release notes
-* [Version v1.2](../../archive/v1.2.zip) (2015-10-19)
-  * Added support for 64-bit systems
-  * Revised some internal algorithm to archive less complex equation system structure
-  * Minor bug fixes
-* [Version v1.1](../../archive/v1.1.zip) (2015-01-13)
-  * This is basically an adaptation of PNlib version 1.0 to Modelica 3.3 to remove tool dependencies (e.g. impure instead of __Dymola_pure annotation).
-  * New function PNlib.Functions.Random.initRandom is introduced to make stochastic simulations reproducible.
-* [Version v1.0](../../archive/v1.0.zip) (2012-05-15)
-  * Initial release.
+Download [PNlib v1.3 (2016-04-19)](../../archive/v1.3.zip)
 
 ## Compatibility
 * Works in OpenModelica 1.9.4 ([trend](https://test.openmodelica.org/libraries/history/PNlib-trend.svg), [coverage](https://test.openmodelica.org/libraries/PNlib/BuildModelRecursive.html))
