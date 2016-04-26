@@ -36,7 +36,7 @@ algorithm
         active:=false;
       end if;
     else  //continuous
-      if (arcType[i]==1 or normalArc[i]==2) and not (tIn[i]-arcWeightIn[i]-minTokens[i] >= -Constants.eps) then
+      if (arcType[i]==1 or normalArc[i]==2) and not (tIn[i]-arcWeightIn[i]-minTokens[i] >= -Constants.almost_eps) then
         active:=false;
       elseif arcType[i]==2 and not (tIn[i] > testValue[i]) then
         active:=false;
@@ -52,7 +52,7 @@ algorithm
        active:=false;
       end if;
    else  //continuous
-      if not (tOut[i]+arcWeightOut[i]-maxTokens[i] <= Constants.eps) then
+      if not (tOut[i]+arcWeightOut[i]-maxTokens[i] <= Constants.almost_eps) then
        active:=false;
       end if;
    end if;

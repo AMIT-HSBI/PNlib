@@ -3,7 +3,7 @@ block enablingOutCon
   "enabling process of output transitions (continuous places)"
   parameter input Integer nOut "number of output transitions";
   input Real arcWeight[:] "arc weights of output transitions";
-  input Real t_ "current marks";
+  input Real t "current marks";
   input Real minMarks "minimum capacity";
   input Boolean TAout[:] "active output transitions with passed delay";
   input Integer enablingType "resolution of actual conflicts";
@@ -12,8 +12,6 @@ block enablingOutCon
   input Boolean delayPassed "Does any delayPassed of a output transition";
   output Boolean TEout_[nOut] "enabled output transitions";
 protected
-  Real t=t_+Constants.eps
-    "numeric to realize the correct simulation of some specific hybrid petri nets";
   Boolean TEout[nOut] "enabled output transitions";
   Boolean disTAout[nOut] "discret active output transitions";
   Integer remTAout[nOut] "remaining active output transitions";
@@ -29,12 +27,14 @@ protected
     "sum of the enabling probabilities of the active output transitions";
   Boolean endWhile;
 algorithm
+  TEout:=fill(false, nOut);
+
   when delayPassed then
     if nOut>0 then
     disTAout:=TAout and disTransition;
     arcWeightSum := Functions.OddsAndEnds.conditionalSum(arcWeight, disTAout);
                                                                    //arc weight sum of all active output transitions
-    if t - arcWeightSum >= minMarks or Functions.OddsAndEnds.isEqual(arcWeightSum, 0.0) then  //Place has no actual conflict; all active output transitions are enabled
+    if t - arcWeightSum -minMarks >= -Constants.almost_eps or Functions.OddsAndEnds.isEqual(arcWeightSum, 0.0) then  //Place has no actual conflict; all active output transitions are enabled
       TEout:=TAout;
     else                          //Place has an actual conflict;
       TEout:=TAout and not disTransition;
@@ -76,7 +76,7 @@ algorithm
                 k:=k + 1;
               end if;
           end while;
-          if (t-(arcWeightSum + arcWeight[posTE]) >= minMarks) or  Functions.OddsAndEnds.isEqual(arcWeight[i], 0.0) then
+          if (t-(arcWeightSum + arcWeight[posTE])-minMarks >= -Constants.almost_eps) or  Functions.OddsAndEnds.isEqual(arcWeight[i], 0.0) then
              arcWeightSum:=arcWeightSum + arcWeight[posTE];
              TEout[posTE]:=true;
           end if;
@@ -98,7 +98,6 @@ algorithm
        end if;
       end if;
     else
-      TEout:=fill(false, nOut);
       disTAout:=fill(false, nOut);
       remTAout:=fill(0, nOut);
       cumEnablingProb:=fill(0.0, nOut);

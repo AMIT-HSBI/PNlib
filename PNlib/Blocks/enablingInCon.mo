@@ -27,11 +27,13 @@ protected
     "sum of the enabling probabilities of the active input transitions";
   Boolean endWhile;
 algorithm
+  TEin:=fill(false, nIn);
+
   when delayPassed then
     if nIn>0 then
       disTAin:=TAein and disTransition;
       arcWeightSum:=Functions.OddsAndEnds.conditionalSum(arcWeight,disTAin);  //arc weight sum of all active input transitions which are already enabled by their input places
-      if t + arcWeightSum <= maxMarks or Functions.OddsAndEnds.isEqual(arcWeightSum, 0.0) then  //Place has no actual conflict; all active input transitions are enabled
+      if t + arcWeightSum -maxMarks <= Constants.almost_eps or Functions.OddsAndEnds.isEqual(arcWeightSum, 0.0) then  //Place has no actual conflict; all active input transitions are enabled
         TEin:=TAein;
       else                          //Place has an actual conflict
         TEin:=TAein and not disTransition;
@@ -66,16 +68,16 @@ algorithm
             endWhile:=false;
             k:=1;
             while k<=nremTAin and not endWhile loop
-                if randNum <= cumEnablingProb[k] then
-                   posTE:=remTAin[k];
-                   endWhile:=true;
-                else
-                  k:=k + 1;
-                end if;
+              if randNum <= cumEnablingProb[k] then
+                posTE:=remTAin[k];
+                endWhile:=true;
+              else
+                k:=k + 1;
+              end if;
             end while;
-            if t+arcWeightSum + arcWeight[posTE] <= maxMarks or Functions.OddsAndEnds.isEqual(arcWeight[i], 0.0) then
-               arcWeightSum:=arcWeightSum + arcWeight[posTE];
-               TEin[posTE]:=true;
+            if t+arcWeightSum + arcWeight[posTE] -maxMarks <= Constants.almost_eps or Functions.OddsAndEnds.isEqual(arcWeight[i], 0.0) then
+              arcWeightSum:=arcWeightSum + arcWeight[posTE];
+              TEin[posTE]:=true;
             end if;
             nremTAin:=nremTAin - 1;
             if nremTAin > 0 then
@@ -85,17 +87,16 @@ algorithm
               if sumEnablingProbTAin>0 then
                 cumEnablingProb[1]:=enablingProb[remTAin[1]]/sumEnablingProbTAin;
                 for j in 2:nremTAin loop
-                    cumEnablingProb[j]:=cumEnablingProb[j-1]+enablingProb[remTAin[j]]/sumEnablingProbTAin;
+                  cumEnablingProb[j]:=cumEnablingProb[j-1]+enablingProb[remTAin[j]]/sumEnablingProbTAin;
                 end for;
               else
-                  cumEnablingProb[1:nremTAin]:=fill(1/nremTAin, nremTAin);
+                cumEnablingProb[1:nremTAin]:=fill(1/nremTAin, nremTAin);
               end if;
             end if;
-        end for;
-       end if;
+          end for;
+        end if;
       end if;
-   else
-      TEin:=fill(false, nIn);
+    else
       disTAin:=fill(false, nIn);
       remTAin:=fill(0, nIn);
       cumEnablingProb:=fill(0.0, nIn);
