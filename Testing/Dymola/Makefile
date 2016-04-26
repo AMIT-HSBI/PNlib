@@ -1,4 +1,5 @@
 TEST = ./../OpenModelica/rtest -v
+DYMOLA = Dymola
 
 TESTFILES = \
 PNlib.Examples.ConTest.Conflict.mos \
@@ -12,13 +13,11 @@ PNlib.Examples.ConTest.TCtoPC.mos \
 PNlib.Examples.ConTest.ZeroPlace.mos \
 PNlib.Examples.DisTest.ConflictPrio.mos \
 PNlib.Examples.DisTest.DisLoopAndArcweight.mos \
-PNlib.Examples.DisTest.EightConflictProb.mos \
 PNlib.Examples.DisTest.InputConflictPrio.mos \
 PNlib.Examples.DisTest.OutputConflictPrio.mos \
 PNlib.Examples.DisTest.PDtoTD.mos \
 PNlib.Examples.DisTest.SinglePD.mos \
 PNlib.Examples.DisTest.SingleTD.mos \
-PNlib.Examples.DisTest.SixConflictProb.mos \
 PNlib.Examples.DisTest.TDtoPD.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPCtoTC.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPTtoTD.mos \
@@ -29,15 +28,12 @@ PNlib.Examples.ExtTest.TAwithPDtoTD.mos \
 PNlib.Examples.HybTest.ConflictPrio.mos \
 PNlib.Examples.HybTest.ConflictType3.mos \
 PNlib.Examples.HybTest.ConflictType4.mos \
-PNlib.Examples.HybTest.EightConflictProb.mos \
 PNlib.Examples.HybTest.HybLoopAndArcweight.mos \
 PNlib.Examples.HybTest.InputConflictPrio.mos \
-PNlib.Examples.HybTest.InputConflictProb.mos \
 PNlib.Examples.HybTest.InputConflictType3.mos \
 PNlib.Examples.HybTest.OutputConflictPrio.mos \
 PNlib.Examples.HybTest.OutputConflictType3.mos \
 PNlib.Examples.HybTest.PCtoTD.mos \
-PNlib.Examples.HybTest.SixConflictProb.mos \
 PNlib.Examples.HybTest.TCwithPD.mos \
 PNlib.Examples.HybTest.TDtoPC.mos \
 
@@ -46,10 +42,15 @@ PNlib.Examples.HybTest.TDtoPC.mos \
 # Run make failingtest
 FAILINGTESTFILES = \
 PNlib.Examples.DisTest.ConflictProb.mos \
+PNlib.Examples.DisTest.EightConflictProb.mos \
 PNlib.Examples.DisTest.InputConflictProb.mos \
 PNlib.Examples.DisTest.OutputConflictProb.mos \
+PNlib.Examples.DisTest.SixConflictProb.mos \
 PNlib.Examples.HybTest.ConflictProb.mos \
+PNlib.Examples.HybTest.EightConflictProb.mos \
+PNlib.Examples.HybTest.InputConflictProb.mos \
 PNlib.Examples.HybTest.OutputConflictProb.mos \
+PNlib.Examples.HybTest.SixConflictProb.mos \
 
 
 # Dependency files that are not .mo  or Makefile
@@ -72,8 +73,8 @@ test:
 	@echo Running tests...
 	@echo
 	@echo "OPENMODELICAHOME = $(OPENMODELICAHOME)"
-	@echo -n "Using " && which Dymola
-	@Dymola /noWindow run-tests.mos
+	@echo -n "Using " && which $(DYMOLA)
+	@$(DYMOLA) /noWindow run-tests.mos
 	@$(TEST) $(TESTFILES)
 
 # Cleans all files that are not listed as dependencies
@@ -98,10 +99,10 @@ failingtest:
 	@echo Running tests...
 	@echo
 	@echo "OPENMODELICAHOME = $(OPENMODELICAHOME)"
-	@echo -n "Using " && which Dymola
+	@echo -n "Using " && which $(DYMOLA)
 	@echo "openModel(\"../../PNlib/package.mo\");" > run-tests.mos
 	@echo "cd(\"../Testing/Dymola/\");" >> run-tests.mos
 	@for test in $(FAILINGTESTFILES) ; do echo "simulateModel(\"$${test%.*}\", resultFile=\"$${test%.*}_res\");" >> run-tests.mos ;	done
 	@echo "exit();" >> run-tests.mos
-	@Dymola /noWindow run-tests.mos
+	@$(DYMOLA) /noWindow run-tests.mos
 	@$(TEST) $(FAILINGTESTFILES)
