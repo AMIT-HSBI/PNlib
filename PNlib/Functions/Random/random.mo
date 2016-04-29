@@ -4,6 +4,7 @@ impure function random
   output Integer x;
 
   external "C" x = _random() annotation(Include = "#include <stdlib.h>
+                                                   #include <time.h>
                                                    int _random()
                                                    {
                                                      static int called=0;
