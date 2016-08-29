@@ -31,13 +31,17 @@ algorithm
 
   when delayPassed then
     if nOut>0 then
-    disTAout:=TAout and disTransition;
+    // hack for Dymola 2017
+    // disTAout := TAout and disTransition;
+    disTAout := Functions.OddsAndEnds.boolAnd(TAout, disTransition);
     arcWeightSum := Functions.OddsAndEnds.conditionalSum(arcWeight, disTAout);
                                                                    //arc weight sum of all active output transitions
     if t - arcWeightSum -minMarks >= -Constants.almost_eps or Functions.OddsAndEnds.isEqual(arcWeightSum, 0.0) then  //Place has no actual conflict; all active output transitions are enabled
       TEout:=TAout;
     else                          //Place has an actual conflict;
-      TEout:=TAout and not disTransition;
+      // hack for Dymola 2017
+      // TEout := TAout and not disTransition;
+      TEout := Functions.OddsAndEnds.boolAnd(TAout, not disTransition);
       if enablingType==1 then     //deterministic enabling according to priorities
         arcWeightSum:=0;
         for i in 1: nOut loop
@@ -111,5 +115,9 @@ algorithm
       endWhile:=false;
     end if;
   end when;
-  TEout_:=TEout and TAout;
+  // hack for Dymola 2017
+  // TEout_ := TEout and TAout;
+  for i in 1:nOut loop
+    TEout_[i] := TEout[i] and TAout[i];
+  end for;
 end enablingOutCon;

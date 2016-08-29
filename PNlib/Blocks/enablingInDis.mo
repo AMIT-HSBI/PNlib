@@ -107,5 +107,7 @@ algorithm
       endWhile:=false;
    end if;
   end when;
-  TEin_:=TEin and active;
+  // hack for Dymola 2017
+  // TEin_ := TEin and active;
+  TEin_ := Functions.OddsAndEnds.boolAnd(TEin, active);
 end enablingInDis;
