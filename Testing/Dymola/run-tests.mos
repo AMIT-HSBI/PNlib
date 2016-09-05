@@ -8,6 +8,7 @@ simulateModel("PNlib.Examples.ConTest.SinglePC", stopTime=1, resultFile="PNlib.E
 simulateModel("PNlib.Examples.ConTest.SingleTC", stopTime=1, resultFile="PNlib.Examples.ConTest.SingleTC_res");
 simulateModel("PNlib.Examples.ConTest.Speed", stopTime=10, resultFile="PNlib.Examples.ConTest.Speed_res");
 simulateModel("PNlib.Examples.ConTest.TCtoPC", stopTime=10, resultFile="PNlib.Examples.ConTest.TCtoPC_res");
+simulateModel("PNlib.Examples.ConTest.ZeroArcWeight", stopTime=12, resultFile="PNlib.Examples.ConTest.ZeroArcWeight_res");
 simulateModel("PNlib.Examples.ConTest.ZeroPlace", stopTime=10, resultFile="PNlib.Examples.ConTest.ZeroPlace_res");
 simulateModel("PNlib.Examples.DisTest.ConflictPrio", stopTime=10, resultFile="PNlib.Examples.DisTest.ConflictPrio_res");
 simulateModel("PNlib.Examples.DisTest.DisLoopAndArcweight", stopTime=10, resultFile="PNlib.Examples.DisTest.DisLoopAndArcweight_res");
