@@ -62,7 +62,7 @@ protected
   //Check test values of test arcs
   Blocks.testArcEvent testArcEvent(nIn=nIn,tIn=tIn,testValue=testValue);
   //firing process
-  Boolean fire_ = Functions.OddsAndEnds.allTrue(enableIn or not disPlaceIn);
+  Boolean fire_ = Functions.OddsAndEnds.allTrue(/* hack for Dymola 2017 */ Functions.OddsAndEnds.boolOr(enableIn, not disPlaceIn));
   //****BLOCKS END****//
 public
   Interfaces.TransitionIn[nIn] inPlaces(each active=activation.active,

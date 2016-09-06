@@ -1,5 +1,7 @@
 allTrue
 anyTrue
+boolAnd
+boolOr
 boolToInt
 compare
 compareReal

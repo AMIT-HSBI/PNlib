@@ -31,12 +31,16 @@ algorithm
 
   when delayPassed then
     if nIn>0 then
-      disTAin:=TAein and disTransition;
+      // hack for Dymola 2017
+      //disTAin := TAein and disTransition;
+      disTAin := Functions.OddsAndEnds.boolAnd(TAein, disTransition);
       arcWeightSum:=Functions.OddsAndEnds.conditionalSum(arcWeight,disTAin);  //arc weight sum of all active input transitions which are already enabled by their input places
       if t + arcWeightSum -maxMarks <= Constants.almost_eps or Functions.OddsAndEnds.isEqual(arcWeightSum, 0.0) then  //Place has no actual conflict; all active input transitions are enabled
         TEin:=TAein;
       else                          //Place has an actual conflict
-        TEin:=TAein and not disTransition;
+        // hack for Dymola 2017
+        // TEin := TAein and not disTransition;
+        TEin := Functions.OddsAndEnds.boolAnd(TAein, not disTransition);
         if enablingType==1 then     //deterministic enabling according to priorities
           arcWeightSum:=0;
           for i in 1:nIn loop
@@ -110,5 +114,9 @@ algorithm
       endWhile:=false;
     end if;
   end when;
-  TEin_:=TEin and active;
+  // hack for Dymola 2017
+  // TEin_ := TEin and active;
+  for i in 1:nIn loop
+    TEin_[i] := TEin[i] and active[i];
+  end for;
 end enablingInCon;

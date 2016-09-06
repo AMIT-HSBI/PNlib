@@ -85,6 +85,15 @@ algorithm
   end for;
 
   active := active and firingCon;
-  weaklyOutputActiveVec := weaklyOutputActiveVec and fill(firingCon,nOut);
-  weaklyInputActiveVec := weaklyInputActiveVec and fill(firingCon,nIn);
+  // hack for Dymola 2017
+  // weaklyOutputActiveVec := weaklyOutputActiveVec and fill(firingCon, nOut);
+  for i in 1:nOut loop
+    weaklyOutputActiveVec[i] := weaklyOutputActiveVec[i] and firingCon;
+  end for;
+
+  // hack for Dymola 2017
+  //weaklyInputActiveVec := weaklyInputActiveVec and fill(firingCon, nIn);
+  for i in 1:nIn loop
+    weaklyInputActiveVec[i] := weaklyInputActiveVec[i] and firingCon;
+  end for;
 end activationCon;

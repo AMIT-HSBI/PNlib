@@ -107,5 +107,9 @@ algorithm
       endWhile:=false;
    end if;
   end when;
-  TEin_:=TEin and active;
+  // hack for Dymola 2017
+  // TEin_ := TEin and active;
+  for i in 1:nIn loop
+    TEin_[i] := TEin[i] and active[i];
+  end for;
 end enablingInDis;

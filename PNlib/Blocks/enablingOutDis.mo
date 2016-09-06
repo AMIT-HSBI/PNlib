@@ -26,9 +26,9 @@ protected
     "sum of the enabling probabilities of the active output transitions";
   Boolean endWhile;
 algorithm
+  TEout:=fill(false, nOut);
   when delayPassed or activeCon then
       if nOut>0 then
-        TEout:=fill(false,nOut);
           arcWeightSum:=Functions.OddsAndEnds.conditionalSumInt(arcWeight,TAout);  //arc weight sum of all active output transitions
           if (t - arcWeightSum >= minTokens) then  //Place has no actual conflict; all active output transitions are enabled
             TEout:=TAout;
@@ -106,7 +106,6 @@ algorithm
             end if;
       end if;
       else
-        TEout:=fill(false, nOut);
         remTAout:=fill(0, nOut);
         cumEnablingProb:=fill(0.0, nOut);
         arcWeightSum:=0;
@@ -119,5 +118,9 @@ algorithm
         endWhile:=false;
       end if;
   end when;
-  TEout_:=TEout and TAout;
+  // hack for Dymola 2017
+  // TEout_ := TEout and TAout;
+  for i in 1:nOut loop
+    TEout_[i] := TEout[i] and TAout[i];
+  end for;
 end enablingOutDis;
