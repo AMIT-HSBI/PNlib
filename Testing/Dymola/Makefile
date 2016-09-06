@@ -10,6 +10,7 @@ PNlib.Examples.ConTest.SinglePC.mos \
 PNlib.Examples.ConTest.SingleTC.mos \
 PNlib.Examples.ConTest.Speed.mos \
 PNlib.Examples.ConTest.TCtoPC.mos \
+PNlib.Examples.ConTest.ZeroArcWeight.mos \
 PNlib.Examples.ConTest.ZeroPlace.mos \
 PNlib.Examples.DisTest.ConflictPrio.mos \
 PNlib.Examples.DisTest.DisLoopAndArcweight.mos \

@@ -1,0 +1,26 @@
+// name: PNlib.Examples.ConTest.ZeroArcWeight
+// keywords: PNlib, continuous
+// status: correct
+
+vars := {
+  "P1.t",
+  "P2.t",
+  "P3.t",
+  "T1.fire",
+  "T1.instantaneousSpeed",
+  "T1.maximumSpeed"
+};
+res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ConTest.ZeroArcWeight_res.mat",
+  "../../ReferenceFiles/PNlib.Examples.ConTest.ZeroArcWeight.mat",
+  "PNlib.Examples.ConTest.ZeroArcWeight_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.ConTest.ZeroArcWeight_res.mat", "../../ReferenceFiles/PNlib.Examples.ConTest.ZeroArcWeight_Dymola_minimal.mat", vars, 0); getErrorString();
+end if;
+
+// Result:
+// {"P1.t","P2.t","P3.t","T1.fire","T1.instantaneousSpeed","T1.maximumSpeed"}
+// {"Files Equal!"}
+// ""
+// 
+// endResult
