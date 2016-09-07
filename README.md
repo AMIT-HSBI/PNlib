@@ -20,8 +20,8 @@ The main package PNlib is divided into the following sub-packages:
 Download [PNlib v1.3 (2016-04-19)](../../archive/v1.3.zip)
 
 ## Compatibility
-* Works in OpenModelica 1.9.4 ([trend](https://test.openmodelica.org/libraries/history/PNlib/PNlib-trend.svg), [coverage](https://test.openmodelica.org/libraries/PNlib/BuildModelRecursive.html))
-* Works in Dymola 2016
+* Works in OpenModelica (latest release) ([trend](https://test.openmodelica.org/libraries/history/PNlib/PNlib-trend.svg), [coverage](https://test.openmodelica.org/libraries/PNlib/BuildModelRecursive.html))
+* Works in Dymola 2017
 
 ## License
 This Modelica package is free software and the use is completely at your own risk;
