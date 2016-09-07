@@ -47,8 +47,6 @@ protected
     "Integer test values of input arcs (for generating events!)";
   Integer normalArc[nIn]
     "1=no,2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
-  Boolean active "Is the transition active?";
-  Boolean fire "Does the transition fire?";
   Boolean delayPassed "Is the delay passed?";
   Boolean ani "for transition animation";
   Boolean disPlaceIn[nIn]
@@ -69,6 +67,8 @@ protected
   Blocks.anyTrue tokenChange(vec=tokenInOut);
   //****BLOCKS END****//
 public
+  Boolean active "Is the transition active?";
+  Boolean fire "Does the transition fire?";
   PNlib.Interfaces.TransitionIn inPlaces[nIn](
   each active=delayPassed,
   arcWeight=arcWeightIn,

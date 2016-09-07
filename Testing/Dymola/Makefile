@@ -31,6 +31,7 @@ PNlib.Examples.ExtTest.IAwithPCtoTC.mos \
 PNlib.Examples.ExtTest.IAwithPDtoTD.mos \
 PNlib.Examples.ExtTest.TAwithPCtoTC.mos \
 PNlib.Examples.ExtTest.TAwithPDtoTD.mos \
+PNlib.Examples.ExtTest.TSTest.mos \
 PNlib.Examples.HybTest.ConflictPrio.mos \
 PNlib.Examples.HybTest.ConflictProb.mos \
 PNlib.Examples.HybTest.ConflictType3.mos \
@@ -74,8 +75,8 @@ test:
 	@echo Running tests...
 	@echo
 	@echo "OPENMODELICAHOME = $(OPENMODELICAHOME)"
-	@echo -n "Using " && which $(DYMOLA)
-	@$(DYMOLA) /noWindow run-tests.mos
+	#@echo -n "Using " && which $(DYMOLA)
+	#@$(DYMOLA) /noWindow run-tests.mos
 	@$(TEST) $(TESTFILES)
 
 # Cleans all files that are not listed as dependencies
