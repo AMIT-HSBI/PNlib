@@ -18,7 +18,10 @@ model TS "Stochastic Transition"
   Integer animateHazardFunc=settings.animateHazardFunc
     "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
+  parameter Integer localSeed = PNlib.Functions.Random.counter() "Local seed to initialize random number generator"  annotation(Dialog(enable = true, group = "Random Number Generator"));
 protected
+  discrete Integer state128[4] "state of random number generator";
+  Real r128 "random number";
   outer PNlib.Settings settings "global settings for animation and display";
   discrete Real fireTime "for transition animation";
   discrete Real hold "old value of hazard function";
@@ -145,17 +148,24 @@ algorithm
    //****MAIN BEGIN****//
   //generate random putative fire time according to Next-Reaction method of Gibson and Bruck
   when active then    //17.06.11 Reihenfolge getauscht!
-     putFireTime:=time +Functions.Random.randomexp(h);
-     hold:=h;
+    (r128, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(
+      pre(state128));
+    putFireTime := time + Functions.Random.randomexp(h, r128);
+    hold:=h;
   elsewhen (active and (h>hold or h<hold)) then  ///  and tokenChange.anytrue
      putFireTime := if h > 0 then time + hold/h*(putFireTime - time) else PNlib.Constants.inf;
      hold:=h;
   end when;
    //****MAIN END****//
 initial equation
-                 //to initialize the random generator otherwise the first random number is always the same in every simulation run
-    hold=h;
-    putFireTime = PNlib.Functions.Random.randomexp(h);
+  //to initialize the random generator otherwise the first random number is always the same in every simulation run
+  hold=h;
+  putFireTime = PNlib.Functions.Random.randomexp(h, r128);
+initial algorithm
+  // Generate initial state from localSeed and globalSeed
+  state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, settings.globalSeed);
+  (r128, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(
+      state128);
   annotation (defaultComponentName = "T1",Icon(graphics={Rectangle(
           extent={{-40,100},{40,-100}},
           lineColor={0,0,0},

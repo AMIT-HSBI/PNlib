@@ -2,7 +2,9 @@ within PNlib.Examples.DisTest;
 model EightConflictProb
   extends Modelica.Icons.Example;
 
-  PNlib.PD P1(startTokens = 1, enablingType = 2, nOut = 8) annotation(Placement(transformation(extent={{-50,-10},
+  PNlib.PD P1(startTokens = 1, enablingType = 2, nOut = 8,
+    localSeedIn=1,
+    localSeedOut=2)                                        annotation(Placement(transformation(extent={{-50,-10},
             {-30,10}})));
   PNlib.TD T1(nIn = 1) annotation(Placement(transformation(extent={{-20,30},{0,50}})));
   PNlib.TD T2(nIn = 1) annotation(Placement(transformation(extent={{0,10},{20,30}})));
@@ -17,8 +19,6 @@ model EightConflictProb
   PNlib.TD T8(nIn = 1) annotation(Placement(transformation(extent={{0,-30},{20,-10}})));
   inner PNlib.Settings settings
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
-initial equation
-  PNlib.Functions.Random.initRandom(1);
 equation
   connect(P1.outTransition[1], T1.inPlaces[1]) annotation(Line(points={{-29.2,-0.875},
           {-20,-0.875},{-20,40},{-14.8,40}}, color = {0, 0, 0}, smooth = Smooth.None));

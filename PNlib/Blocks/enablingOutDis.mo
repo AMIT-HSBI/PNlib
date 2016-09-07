@@ -10,8 +10,11 @@ block enablingOutDis "enabling process of output transitions"
   input Boolean disTransition[:] "discrete output transition";
   input Boolean delayPassed "Does any delayPassed of a output transition";
   input Boolean activeCon "change of activation of output transitions";
+  parameter input Integer localSeed "Local seed to initialize random number generator";
+  parameter input Integer globalSeed "Global seed to initialize random number generator";
   output Boolean TEout_[nOut] "enabled output transitions";
 protected
+  discrete Integer state128[4] "state of random number generator";
   Boolean TEout[nOut] "enabled output transitions";
   Integer remTAout[nOut] "remaining active output transitions";
   discrete Real cumEnablingProb[nOut] "cumulated, scaled enabling probabilities";
@@ -23,6 +26,11 @@ protected
   discrete Real randNum "uniform distributed random number";
   discrete Real sumEnablingProbTAout "sum of the enabling probabilities of the active output transitions";
   Boolean endWhile;
+initial algorithm
+  // Generate initial state from localSeed and globalSeed
+  state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, globalSeed);
+  (randNum, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(
+      state128);
 algorithm
   TEout := fill(false, nOut);
   when delayPassed or activeCon then
@@ -64,7 +72,7 @@ algorithm
               cumEnablingProb[j] := cumEnablingProb[j-1]+enablingProb[remTAout[j]]/sumEnablingProbTAout;
             end for;
             for i in 1:nTAout loop
-              randNum := PNlib.Functions.Random.random()/PNlib.Constants.rand_max;  //uniform distributed random number
+              (randNum, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(pre(state128)) "uniform distributed random number";
               endWhile := false;
               k := 1;
               while k<=nremTAout and not endWhile loop
@@ -112,6 +120,7 @@ algorithm
       k := 0;
       posTE := 0;
       randNum := 0;
+      state128 := pre(state128);
       sumEnablingProbTAout := 0.0;
       endWhile := false;
     end if;

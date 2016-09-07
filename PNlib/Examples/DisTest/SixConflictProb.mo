@@ -2,7 +2,9 @@ within PNlib.Examples.DisTest;
 model SixConflictProb
   extends Modelica.Icons.Example;
 
-  PNlib.PD P1(startTokens = 1, enablingType = 2, nOut = 6) annotation(Placement(transformation(extent={{-50,-10},
+  PNlib.PD P1(startTokens = 1, enablingType = 2, nOut = 6,
+    localSeedIn=1,
+    localSeedOut=2)                                        annotation(Placement(transformation(extent={{-50,-10},
             {-30,10}})));
   PNlib.TD T1(nIn = 1) annotation(Placement(transformation(extent={{-20,30},{0,50}})));
   PNlib.TD T2(nIn = 1) annotation(Placement(transformation(extent={{0,20},{20,40}})));
@@ -14,8 +16,6 @@ model SixConflictProb
             -30}})));
   inner PNlib.Settings settings
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
-initial equation
-  PNlib.Functions.Random.initRandom(1);
 equation
   connect(P1.outTransition[1], T1.inPlaces[1]) annotation(Line(points={{-29.2,
           -0.833333},{-20,-0.833333},{-20,40},{-14.8,40}},

@@ -10,8 +10,11 @@ block enablingInCon "enabling process of input transitions (continuous places)"
   input Boolean disTransition[nIn] "discrete transition?";
   input Boolean delayPassed "Does any delayPassed of a output transition";
   input Boolean active[nIn] "Are the input transitions active?";
+  parameter input Integer localSeed "Local seed to initialize random number generator";
+  parameter input Integer globalSeed "Global seed to initialize random number generator";
   output Boolean TEin_[nIn] "enabled input transitions";
 protected
+  discrete Integer state128[4] "state of random number generator";
   Boolean TEin[nIn] "enabled input transitions";
   Boolean disTAin[nIn] "discret active input transitions";
   Integer remTAin[nIn] "remaining active input transitions";
@@ -24,9 +27,13 @@ protected
   discrete Real randNum "uniform distributed random number";
   discrete Real sumEnablingProbTAin "sum of the enabling probabilities of the active input transitions";
   Boolean endWhile;
+initial algorithm
+  // Generate initial state from localSeed and globalSeed
+  state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, globalSeed);
+  (randNum, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(
+      state128);
 algorithm
   TEin:=fill(false, nIn);
-
   when delayPassed then
     if nIn>0 then
       // hack for Dymola 2017
@@ -65,8 +72,7 @@ algorithm
             cumEnablingProb[j]:=cumEnablingProb[j-1]+enablingProb[remTAin[j]]/sumEnablingProbTAin;
           end for;
           for i in 1:nTAin loop
-            randNum := PNlib.Functions.Random.random()/PNlib.Constants.rand_max;
-            //uniform distributed random number
+            (randNum, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(pre(state128)) "uniform distributed random number";
             endWhile:=false;
             k:=1;
             while k<=nremTAin and not endWhile loop
@@ -99,17 +105,18 @@ algorithm
         end if;
       end if;
     else
-      disTAin:=fill(false, nIn);
-      remTAin:=fill(0, nIn);
-      cumEnablingProb:=fill(0.0, nIn);
-      arcWeightSum:=0.0;
-      nremTAin:=0;
-      nTAin:=0;
-      k:=0;
-      posTE:=0;
-      randNum:=0.0;
-      sumEnablingProbTAin:=0.0;
-      endWhile:=false;
+      disTAin := fill(false, nIn);
+      remTAin := fill(0, nIn);
+      cumEnablingProb := fill(0.0, nIn);
+      arcWeightSum := 0.0;
+      nremTAin := 0;
+      nTAin := 0;
+      k := 0;
+      posTE := 0;
+      randNum := 0.0;
+      state128 := pre(state128);
+      sumEnablingProbTAin := 0.0;
+      endWhile := false;
     end if;
   end when;
   // hack for Dymola 2017

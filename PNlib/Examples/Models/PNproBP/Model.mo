@@ -261,10 +261,7 @@ model Model "Top Model"
     annotation (Placement(transformation(extent={{-5,-5},{5,5}},
         rotation=90,
         origin={71,5})));
-initial equation
-  Functions.Random.initRandom(1);
 equation
-
   connect(RaiseRequest.outPlaces[1], Request.inTransition[1])    annotation (
       Line(
       points={{-385.2,100},{-358.8,100}},

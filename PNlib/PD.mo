@@ -25,6 +25,8 @@ model PD "Discrete Place"
   Integer animateMarking=settings.animateMarking
     "only for place animation and display (Do not change!)";
   Real color[3] "only for place animation and display (Do not change!)";
+  parameter Integer localSeedIn = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for input conflicts"  annotation(Dialog(enable = true, group = "Random Number Generator"));
+  parameter Integer localSeedOut = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for output conflicts"  annotation(Dialog(enable = true, group = "Random Number Generator"));
 protected
   outer PNlib.Settings settings "global settings for animation and display";
   Real tokenscale "only for place animation and display";
@@ -50,8 +52,8 @@ protected
   Blocks.firingSumDis firingSumIn(fire=fireIn and disTransitionIn, arcWeight=arcWeightIn);
   Blocks.firingSumDis firingSumOut(fire=fireOut and disTransitionOut, arcWeight=arcWeightOut);
   //Enabling process
-  Blocks.enablingOutDis enableOut(delayPassed=delayPassedOut.anytrue,activeCon=activeConOut.anychange,nOut=nOut,arcWeight=arcWeightOut, t=pret, minTokens=minTokens, TAout=activeOut,enablingType=enablingType,enablingProb=enablingProbOut,disTransition=disTransitionOut);
-  Blocks.enablingInDis enableIn(delayPassed=delayPassedIn.anytrue,active=activeIn,nIn=nIn,arcWeight=arcWeightIn, t=pret, maxTokens=maxTokens, TAein=enabledByInPlaces,enablingType=enablingType,enablingProb=enablingProbIn,disTransition=disTransitionIn);
+  Blocks.enablingOutDis enableOut(delayPassed=delayPassedOut.anytrue,activeCon=activeConOut.anychange,nOut=nOut,arcWeight=arcWeightOut, t=pret, minTokens=minTokens, TAout=activeOut,enablingType=enablingType,enablingProb=enablingProbOut,disTransition=disTransitionOut, localSeed=localSeedOut, globalSeed=settings.globalSeed);
+  Blocks.enablingInDis enableIn(delayPassed=delayPassedIn.anytrue,active=activeIn,nIn=nIn,arcWeight=arcWeightIn, t=pret, maxTokens=maxTokens, TAein=enabledByInPlaces,enablingType=enablingType,enablingProb=enablingProbIn,disTransition=disTransitionIn, localSeed=localSeedIn, globalSeed=settings.globalSeed);
   //****BLOCKS END****//
 
 public

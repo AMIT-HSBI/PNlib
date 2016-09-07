@@ -29,6 +29,8 @@ model PC "Continuous Place"
   Real color[3] "only for place animation and display (Do not change!)";
   parameter Boolean showTokenFlow = settings.showTokenFlow annotation(Dialog(enable = true, group = "Token flow"));
   Blocks.tokenFlowCon tokenFlow(nIn=nIn, nOut=nOut, conFiringSumIn=firingSumIn.conFiringSum, conFiringSumOut=firingSumOut.conFiringSum, fireIn=fireIn, fireOut=fireOut, arcWeightIn=arcWeightIn, arcWeightOut=arcWeightOut, instSpeedIn=instSpeedIn, instSpeedOut=instSpeedOut) if showTokenFlow;
+  parameter Integer localSeedIn = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for input conflicts"  annotation(Dialog(enable = true, group = "Random Number Generator"));
+  parameter Integer localSeedOut = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for output conflicts"  annotation(Dialog(enable = true, group = "Random Number Generator"));
 protected
   outer PNlib.Settings settings "global settings for animation and display";
   Real disMarkChange "discrete mark change";
@@ -56,8 +58,8 @@ protected
     "Are the input transitions enabled by all their input places?";
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
   //enabling discrete transitions
-  Blocks.enablingInCon enableIn(active=activeIn,delayPassed=delayPassedIn.anytrue,nIn=nIn,arcWeight=arcWeightIn, t=t_, maxMarks=maxMarks,TAein=enabledByInPlaces,enablingType=enablingType, enablingProb=enablingProbIn,disTransition=disTransitionIn);
-  Blocks.enablingOutCon enableOut(delayPassed=delayPassedOut.anytrue, nOut=nOut,arcWeight=arcWeightOut, t=t_, minMarks=minMarks, TAout=activeOut, enablingType=enablingType, enablingProb=enablingProbOut,disTransition=disTransitionOut);
+  Blocks.enablingInCon enableIn(active=activeIn, delayPassed=delayPassedIn.anytrue, nIn=nIn, arcWeight=arcWeightIn, t=t_, maxMarks=maxMarks,TAein=enabledByInPlaces,enablingType=enablingType, enablingProb=enablingProbIn, disTransition=disTransitionIn, localSeed=localSeedIn, globalSeed=settings.globalSeed);
+  Blocks.enablingOutCon enableOut(delayPassed=delayPassedOut.anytrue, nOut=nOut,arcWeight=arcWeightOut, t=t_, minMarks=minMarks, TAout=activeOut, enablingType=enablingType, enablingProb=enablingProbOut, disTransition=disTransitionOut, localSeed=localSeedOut, globalSeed=settings.globalSeed);
   //Does any delay passed of a connected transition?
   Blocks.anyTrue delayPassedOut(vec=activeOut and disTransitionOut);
   Blocks.anyTrue delayPassedIn(vec=activeIn and disTransitionIn);

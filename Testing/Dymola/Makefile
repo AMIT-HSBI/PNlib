@@ -13,12 +13,17 @@ PNlib.Examples.ConTest.TCtoPC.mos \
 PNlib.Examples.ConTest.ZeroArcWeight.mos \
 PNlib.Examples.ConTest.ZeroPlace.mos \
 PNlib.Examples.DisTest.ConflictPrio.mos \
+PNlib.Examples.DisTest.ConflictProb.mos \
 PNlib.Examples.DisTest.DisLoopAndArcweight.mos \
+PNlib.Examples.DisTest.EightConflictProb.mos \
 PNlib.Examples.DisTest.InputConflictPrio.mos \
+PNlib.Examples.DisTest.InputConflictProb.mos \
 PNlib.Examples.DisTest.OutputConflictPrio.mos \
+PNlib.Examples.DisTest.OutputConflictProb.mos \
 PNlib.Examples.DisTest.PDtoTD.mos \
 PNlib.Examples.DisTest.SinglePD.mos \
 PNlib.Examples.DisTest.SingleTD.mos \
+PNlib.Examples.DisTest.SixConflictProb.mos \
 PNlib.Examples.DisTest.TDtoPD.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPCtoTC.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPTtoTD.mos \
@@ -27,14 +32,19 @@ PNlib.Examples.ExtTest.IAwithPDtoTD.mos \
 PNlib.Examples.ExtTest.TAwithPCtoTC.mos \
 PNlib.Examples.ExtTest.TAwithPDtoTD.mos \
 PNlib.Examples.HybTest.ConflictPrio.mos \
+PNlib.Examples.HybTest.ConflictProb.mos \
 PNlib.Examples.HybTest.ConflictType3.mos \
 PNlib.Examples.HybTest.ConflictType4.mos \
+PNlib.Examples.HybTest.EightConflictProb.mos \
 PNlib.Examples.HybTest.HybLoopAndArcweight.mos \
 PNlib.Examples.HybTest.InputConflictPrio.mos \
+PNlib.Examples.HybTest.InputConflictProb.mos \
 PNlib.Examples.HybTest.InputConflictType3.mos \
 PNlib.Examples.HybTest.OutputConflictPrio.mos \
+PNlib.Examples.HybTest.OutputConflictProb.mos \
 PNlib.Examples.HybTest.OutputConflictType3.mos \
 PNlib.Examples.HybTest.PCtoTD.mos \
+PNlib.Examples.HybTest.SixConflictProb.mos \
 PNlib.Examples.HybTest.TCwithPD.mos \
 PNlib.Examples.HybTest.TDtoPC.mos \
 
@@ -42,16 +52,6 @@ PNlib.Examples.HybTest.TDtoPC.mos \
 # These tests are OS dependent. Move up when fixed.
 # Run make failingtest
 FAILINGTESTFILES = \
-PNlib.Examples.DisTest.ConflictProb.mos \
-PNlib.Examples.DisTest.EightConflictProb.mos \
-PNlib.Examples.DisTest.InputConflictProb.mos \
-PNlib.Examples.DisTest.OutputConflictProb.mos \
-PNlib.Examples.DisTest.SixConflictProb.mos \
-PNlib.Examples.HybTest.ConflictProb.mos \
-PNlib.Examples.HybTest.EightConflictProb.mos \
-PNlib.Examples.HybTest.InputConflictProb.mos \
-PNlib.Examples.HybTest.OutputConflictProb.mos \
-PNlib.Examples.HybTest.SixConflictProb.mos \
 
 
 # Dependency files that are not .mo  or Makefile
