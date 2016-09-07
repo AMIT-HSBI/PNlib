@@ -28,14 +28,14 @@ algorithm
 
   when delayPassed then
     if nOut>0 then
-    // hack for Dymola 2017
-    // disTAout := TAout and disTransition;
-    disTAout := Functions.OddsAndEnds.boolAnd(TAout, disTransition);
-    arcWeightSum := Functions.OddsAndEnds.conditionalSum(arcWeight, disTAout);
-                                                                   //arc weight sum of all active output transitions
-    if t - arcWeightSum -minMarks >= -Constants.almost_eps or Functions.OddsAndEnds.isEqual(arcWeightSum, 0.0) then  //Place has no actual conflict; all active output transitions are enabled
-      TEout:=TAout;
-    else                          //Place has an actual conflict;
+      // hack for Dymola 2017
+      // disTAout := TAout and disTransition;
+      disTAout := Functions.OddsAndEnds.boolAnd(TAout, disTransition);
+      arcWeightSum := Functions.OddsAndEnds.conditionalSum(arcWeight, disTAout);
+      //arc weight sum of all active output transitions
+      if t - arcWeightSum -minMarks >= -Constants.almost_eps or Functions.OddsAndEnds.isEqual(arcWeightSum, 0.0) then  //Place has no actual conflict; all active output transitions are enabled
+        TEout:=TAout;
+      else                          //Place has an actual conflict;
       // hack for Dymola 2017
       // TEout := TAout and not disTransition;
       TEout := Functions.OddsAndEnds.boolAnd(TAout, not disTransition);
@@ -66,20 +66,20 @@ algorithm
         end for;
         for i in 1:nTAout loop
           randNum := PNlib.Functions.Random.random()/PNlib.Constants.rand_max;
-                                            //uniform distributed random number
+          //uniform distributed random number
           endWhile:=false;
           k:=1;
           while k<=nremTAout and not endWhile loop
-              if randNum <= cumEnablingProb[k] then
-                 posTE:=remTAout[k];
-                 endWhile:=true;
-              else
-                k:=k + 1;
-              end if;
+            if randNum <= cumEnablingProb[k] then
+              posTE:=remTAout[k];
+              endWhile:=true;
+            else
+              k:=k + 1;
+            end if;
           end while;
           if (t-(arcWeightSum + arcWeight[posTE])-minMarks >= -Constants.almost_eps) or  Functions.OddsAndEnds.isEqual(arcWeight[i], 0.0) then
-             arcWeightSum:=arcWeightSum + arcWeight[posTE];
-             TEout[posTE]:=true;
+            arcWeightSum:=arcWeightSum + arcWeight[posTE];
+            TEout[posTE]:=true;
           end if;
           nremTAout:=nremTAout - 1;
           if nremTAout > 0 then
@@ -91,12 +91,12 @@ algorithm
               for j in 2:nremTAout loop
                 cumEnablingProb[j]:=cumEnablingProb[j-1]+enablingProb[remTAout[j]]/sumEnablingProbTAout;
               end for;
-            else
+              else
                 cumEnablingProb[1:nremTAout]:=fill(1/nremTAout, nremTAout);
+              end if;
             end if;
-          end if;
-        end for;
-       end if;
+          end for;
+        end if;
       end if;
     else
       disTAout:=fill(false, nOut);

@@ -7,7 +7,7 @@ algorithm
   firingSum := 0;
   for i in 1:size(fire,1) loop
     if fire[i] then
-       firingSum := firingSum + arcWeight[i];
+      firingSum := firingSum + arcWeight[i];
     end if;
   end for;
 end firingSumDis;

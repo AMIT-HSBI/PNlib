@@ -53,12 +53,12 @@ algorithm
         end if;
       end if;
       if arcType[i]==2 then //test arc
-          if tIn[i] <= testValue[i] then
-            active := false;
-          end if;
-          if testChange[i] and fed[i] and normalArc[i]==2 then  //weakly input active??
-            weaklyInputActiveVec[i] := true;
-          end if;
+        if tIn[i] <= testValue[i] then
+          active := false;
+        end if;
+        if testChange[i] and fed[i] and normalArc[i]==2 then  //weakly input active??
+          weaklyInputActiveVec[i] := true;
+        end if;
       elseif arcType[i]==3 and (tIn[i] >= testValue[i]) then  //inhibitor arc
         active := false;
       end if;

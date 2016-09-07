@@ -42,19 +42,19 @@ algorithm
       elseif arcType[i]==3 and not (tIn[i] < testValue[i]) then
         active:=false;
       end if;
-   end if;
+    end if;
   end for;
   //check output places
   for i in 1:nOut loop
-   if disPlaceOut[i] then //discrete
+    if disPlaceOut[i] then //discrete
       if not (tIntOut[i]+arcWeightIntOut[i] <= maxTokensInt[i]) then
-       active:=false;
+        active:=false;
       end if;
-   else  //continuous
+    else  //continuous
       if not (tOut[i]+arcWeightOut[i]-maxTokens[i] <= Constants.almost_eps) then
-       active:=false;
+        active:=false;
       end if;
-   end if;
+    end if;
   end for;
   active:=active and firingCon;
 end activationDis;

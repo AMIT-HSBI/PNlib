@@ -7,9 +7,9 @@ algorithm
   anytrue:=false;
   numtrue:=0;
   for i in 1:size(vec, 1) loop
-      anytrue:=anytrue or vec[i];
-      if vec[i] then
-        numtrue:=numtrue+1;
-      end if;
+    anytrue:=anytrue or vec[i];
+    if vec[i] then
+      numtrue:=numtrue+1;
+    end if;
   end for;
 end anyTrue;
