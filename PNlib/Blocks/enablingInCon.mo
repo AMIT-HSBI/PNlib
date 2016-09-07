@@ -4,8 +4,7 @@ block enablingInCon "enabling process of input transitions (continuous places)"
   input Real arcWeight[nIn] "arc weights of input transitions";
   input Real t "current marking";
   input Real maxMarks "maximum capacity";
-  input Boolean TAein[nIn]
-    "active input transitions which are already enabled by their input places";
+  input Boolean TAein[nIn] "active input transitions which are already enabled by their input places";
   input Integer enablingType "resolution of actual conflicts";
   input Real enablingProb[nIn] "enabling probabilites of input transitions";
   input Boolean disTransition[nIn] "discrete transition?";
@@ -23,8 +22,7 @@ protected
   Integer k "iteration index";
   Integer posTE "possible enabled transition";
   discrete Real randNum "uniform distributed random number";
-  discrete Real sumEnablingProbTAin
-    "sum of the enabling probabilities of the active input transitions";
+  discrete Real sumEnablingProbTAin "sum of the enabling probabilities of the active input transitions";
   Boolean endWhile;
 algorithm
   TEin:=fill(false, nIn);

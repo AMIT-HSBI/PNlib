@@ -4,8 +4,7 @@ block enablingInDis "enabling process of discrete input transitions"
   input Integer arcWeight[:] "arc weights of input transitions";
   input Integer t "current token number";
   input Integer maxTokens "maximum capacity";
-  input Boolean TAein[:]
-    "active previous transitions which are already enabled by their input places";
+  input Boolean TAein[:] "active previous transitions which are already enabled by their input places";
   input Integer enablingType "resolution of actual conflicts";
   input Real enablingProb[:] "enabling probabilites of input transitions";
   input Boolean disTransition[:] "type of input transitions";

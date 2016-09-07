@@ -20,8 +20,7 @@ block activationDis "Activation of a discrete transition"
   input Boolean disPlaceOut[:] "types of output places";
   input Integer normalArc[:] "normal or double arc?";
   input Real testValue[:] "test values of test and inhibitor arcs";
-  input Integer testValueInt[:]
-    "integer test values of test and inhibitor arcs";
+  input Integer testValueInt[:] "integer test values of test and inhibitor arcs";
   output Boolean active "activation of transition";
 algorithm
   active:=true;

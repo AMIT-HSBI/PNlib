@@ -4,10 +4,10 @@ block firingSumDis "calculates the firing sum of discrete places"
   input Integer arcWeight[:] "arc weights";
   output Integer firingSum "firing sum";
 algorithm
-  firingSum:=0;
+  firingSum := 0;
   for i in 1:size(fire,1) loop
     if fire[i] then
-       firingSum:=firingSum + arcWeight[i];
+       firingSum := firingSum + arcWeight[i];
     end if;
   end for;
 end firingSumDis;

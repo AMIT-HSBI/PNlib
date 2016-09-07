@@ -22,15 +22,12 @@ block activationCon "activation process of continuous transitions"
   input Boolean disPlaceIn[:] "types of input places";
   input Boolean disPlaceOut[:] "types of output places";
   input Real testValue[:] "test values of test and inhibitor arcs";
-  input Integer testValueInt[:]
-    "integer test values of test and inhibitor arcs";
+  input Integer testValueInt[:] "integer test values of test and inhibitor arcs";
   input Integer normalArc[:] "normal or double arc?";
   input Boolean testChange[:] "Has a test value been exceeded or deceeded?";
   output Boolean active "activation of transition";
-  output Boolean weaklyInputActiveVec[nIn]
-    "places that causes weakly input activation";
-  output Boolean weaklyOutputActiveVec[nOut]
-    "places that causes weakly output activation";
+  output Boolean weaklyInputActiveVec[nIn] "places that causes weakly input activation";
+  output Boolean weaklyOutputActiveVec[nOut] "places that causes weakly output activation";
 algorithm
   active := true;
   weaklyInputActiveVec := fill(false, nIn);

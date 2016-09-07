@@ -1,6 +1,5 @@
 within PNlib.Blocks;
-block enablingOutCon
-  "enabling process of output transitions (continuous places)"
+block enablingOutCon "enabling process of output transitions (continuous places)"
   parameter input Integer nOut "number of output transitions";
   input Real arcWeight[:] "arc weights of output transitions";
   input Real t "current marks";
@@ -15,16 +14,14 @@ protected
   Boolean TEout[nOut] "enabled output transitions";
   Boolean disTAout[nOut] "discret active output transitions";
   Integer remTAout[nOut] "remaining active output transitions";
-  discrete Real cumEnablingProb[nOut]
-    "cumulated, scaled enabling probabilities";
+  discrete Real cumEnablingProb[nOut] "cumulated, scaled enabling probabilities";
   discrete Real arcWeightSum "arc weight sum";
   Integer nremTAout "number of remaining active output transitions";
   Integer nTAout "number of active output transitions";
   Integer k "iteration index";
   Integer posTE "possible enabled transition";
   discrete Real randNum "uniform distributed random number";
-  discrete Real sumEnablingProbTAout
-    "sum of the enabling probabilities of the active output transitions";
+  discrete Real sumEnablingProbTAout "sum of the enabling probabilities of the active output transitions";
   Boolean endWhile;
 algorithm
   TEout:=fill(false, nOut);

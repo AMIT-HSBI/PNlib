@@ -1,6 +1,5 @@
 within PNlib.Blocks;
-block testArcEvent
-  "Generates an event when a test value of a test or inhibitor arc is exceeded or deceeded by the place"
+block testArcEvent "Generates an event when a test value of a test or inhibitor arc is exceeded or deceeded by the place"
   parameter input Integer nIn "number of input places";
   input Real tIn[:] "marking of input places";
   input Real testValue[:] "test values of test or inhibitor arcs";
