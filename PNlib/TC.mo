@@ -56,11 +56,9 @@ protected
     "Is the transition enabled by all its discrete input transitions?";
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
   //activation process
-  Blocks.activationCon activation(testChange=testArcEvent.testChange, testValue=testValue, testValueInt=testValueInt, normalArc=normalArc,nIn=nIn,nOut=nOut,tIn=tIn,tOut=tOut,tIntIn=tIntIn,tIntOut=tIntOut,arcType=arcType,arcWeightIn=arcWeightIn,arcWeightOut=arcWeightOut,arcWeightIntIn=arcWeightIntIn,arcWeightIntOut=arcWeightIntOut,minTokens=minTokens,maxTokens=maxTokens,minTokensInt=minTokensInt,maxTokensInt=maxTokensInt,firingCon=firingCon,fed=fed,emptied=emptied,disPlaceIn=disPlaceIn,disPlaceOut=disPlaceOut);
+  Blocks.activationCon activation(testValue=testValue, testValueInt=testValueInt, normalArc=normalArc,nIn=nIn,nOut=nOut,tIn=tIn,tOut=tOut,tIntIn=tIntIn,tIntOut=tIntOut,arcType=arcType,arcWeightIn=arcWeightIn,arcWeightOut=arcWeightOut,arcWeightIntIn=arcWeightIntIn,arcWeightIntOut=arcWeightIntOut,minTokens=minTokens,maxTokens=maxTokens,minTokensInt=minTokensInt,maxTokensInt=maxTokensInt,firingCon=firingCon,fed=fed,emptied=emptied,disPlaceIn=disPlaceIn,disPlaceOut=disPlaceOut);
   //preliminary speed calculation
   PNlib.Blocks.preliminarySpeed  preliminarySpeed(nIn=nIn,nOut=nOut,arcWeightIn=arcWeightIn,arcWeightOut=arcWeightOut,speedSumIn=speedSumIn,speedSumOut=speedSumOut,maximumSpeed=maximumSpeed,weaklyInputActiveVec=activation.weaklyInputActiveVec,weaklyOutputActiveVec=activation.weaklyOutputActiveVec);
-  //Check test values of test arcs
-  Blocks.testArcEvent testArcEvent(nIn=nIn,tIn=tIn,testValue=testValue);
   //firing process
   Boolean fire_ = Functions.OddsAndEnds.allTrue(/* hack for Dymola 2017 */ Functions.OddsAndEnds.boolOr(enableIn, not disPlaceIn));
   //****BLOCKS END****//
