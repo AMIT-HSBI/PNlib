@@ -16,8 +16,8 @@ block enablingInDis "enabling process of discrete input transitions"
 protected
   discrete Integer state128[4] "state of random number generator";
   Boolean TEin[nIn] "enabled input transitions";
-  Integer remTAin[nIn] "remaining active input transitions";
-  discrete Real cumEnablingProb[nIn] "cumulated, scaled enabling probabilities";
+  Integer remTAin[nIn](each start=0, each fixed=true) "remaining active input transitions";
+  discrete Real cumEnablingProb[nIn](each start=0, each fixed=true) "cumulated, scaled enabling probabilities";
   Integer arcWeightSum "arc weight sum";
   Integer nremTAin "number of remaining active input transitions";
   Integer nTAin "number ofactive input transitions";

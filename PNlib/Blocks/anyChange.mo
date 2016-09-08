@@ -1,6 +1,6 @@
 within PNlib.Blocks;
 block anyChange "Does any entry of a Boolean vector change its value?"
-  input Boolean vec[:];
+  input Boolean vec[:](each start=false, each fixed=true);
   output Boolean anychange;
 algorithm
   anychange:=false;

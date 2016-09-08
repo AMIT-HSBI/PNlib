@@ -1,13 +1,13 @@
 within PNlib;
 model PD "Discrete Place"
-  discrete Integer t(start = startTokens) "marking";
+  discrete Integer t(start = startTokens, fixed=true) "marking";
   parameter Integer nIn=0 "number of input transitions" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut=0 "number of output transitions" annotation(Dialog(connectorSizing=true));
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   parameter Integer startTokens = 0 "start tokens"  annotation(Dialog(enable = true, group = "Tokens"));
   parameter Integer minTokens = 0 "minimum capacity" annotation(Dialog(enable = true, group = "Tokens"));
   parameter Integer maxTokens=PNlib.Constants.Integer_inf "maximum capacity"       annotation(Dialog(enable = true, group = "Tokens"));
-  Boolean reStart=false "restart condition"       annotation(Dialog(enable = true, group = "Tokens"));
+  Boolean reStart(start=false, fixed=true)=false "restart condition"       annotation(Dialog(enable = true, group = "Tokens"));
   parameter Integer reStartTokens=startTokens "number of tokens at restart"       annotation(Dialog(enable = true, group = "Tokens"));
   parameter Integer enablingType=1
     "resolution type of actual conflict (type-1-conflict)"                                annotation(Dialog(enable = true, group = "Enabling"),choices(choice=1
@@ -33,13 +33,13 @@ protected
   discrete Integer pret "pre marking";
   Integer arcWeightIn[nIn] "Integer weights of input arcs";
   Integer arcWeightOut[nOut] "Integer weights of output arcs";
-  Boolean tokeninout "change of tokens?";
+  Boolean tokeninout(start=false, fixed=true) "change of tokens?";
   Boolean fireIn[nIn] "Do input transtions fire?";
   Boolean fireOut[nOut] "Do output transitions fire?";
   Boolean disTransitionIn[nIn] "Are the input transitions discrete?";
   Boolean disTransitionOut[nOut] "Are the output transtions discrete?";
   Boolean activeIn[nIn] "Are delays passed of input transitions?";
-  Boolean activeOut[nOut] "Are delay passed of output transitions?";
+  Boolean activeOut[nOut](each start=false, each fixed=true) "Are delay passed of output transitions?";
   Boolean enabledByInPlaces[nIn]
     "Are input transitions are enabled by all their input places?";
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
