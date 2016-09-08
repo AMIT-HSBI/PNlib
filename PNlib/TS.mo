@@ -47,7 +47,7 @@ protected
     "Integer test values of input arcs (for generating events!)";
   Integer normalArc[nIn]
     "1=no,2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
-  Boolean delayPassed "Is the delay passed?";
+  Boolean delayPassed(start=false, fixed=true) "Is the delay passed?";
   Boolean ani "for transition animation";
   Boolean disPlaceIn[nIn]
     "Are the input places discrete or continuous? true=discrete";

@@ -16,8 +16,8 @@ block enablingOutDis "enabling process of output transitions"
 protected
   discrete Integer state128[4] "state of random number generator";
   Boolean TEout[nOut] "enabled output transitions";
-  Integer remTAout[nOut] "remaining active output transitions";
-  discrete Real cumEnablingProb[nOut] "cumulated, scaled enabling probabilities";
+  Integer remTAout[nOut](each start=0, each fixed=true) "remaining active output transitions";
+  discrete Real cumEnablingProb[nOut](each start=0, each fixed=true) "cumulated, scaled enabling probabilities";
   Integer arcWeightSum "arc weight sum";
   Integer nremTAout "number of remaining active output transitions";
   Integer nTAout "number of active output transitions";

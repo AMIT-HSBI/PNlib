@@ -48,7 +48,7 @@ protected
     "Are the output places discrete or continuous? true=discrete";
   Boolean enableIn[nIn] "Is the transition enabled by input places?";
   Boolean enableOut[nOut] "Is the transition enabled by output places?";
-  Boolean delayPassed "Is the delay passed?";
+  Boolean delayPassed(start=false, fixed=true) "Is the delay passed?";
   Boolean ani "for transition animation";
 
   //****BLOCKS BEGIN****// since no events are generated within functions!!!

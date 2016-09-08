@@ -45,11 +45,11 @@ protected
   Real prelimSpeedOut[nOut] "preliminary speed of output transitions";
   Real tokenscale "only for place animation and display";
   Real t_(start=startMarks, fixed=true) "marking";
-  Boolean disMarksInOut "discrete marks change";
+  Boolean disMarksInOut(start=false, fixed=true) "discrete marks change";
   Boolean preFireIn[nIn] "pre-value of fireIn";
   Boolean preFireOut[nOut] "pre-value of fireOut";
-  Boolean fireIn[nIn] "Does any input transition fire?";
-  Boolean fireOut[nOut] "Does any output transition fire?";
+  Boolean fireIn[nIn](each start=false, each fixed=true) "Does any input transition fire?";
+  Boolean fireOut[nOut](each start=false, each fixed=true) "Does any output transition fire?";
   Boolean disTransitionIn[nIn] "Are the input transitions discrete?";
   Boolean disTransitionOut[nOut] "Are the output transitions discrete?";
   Boolean activeIn[nIn] "Are the input transitions active?";
