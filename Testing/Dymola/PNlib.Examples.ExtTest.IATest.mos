@@ -1,0 +1,33 @@
+// name: PNlib.Examples.ExtTest.IATest
+// keywords: PNlib, continuous
+// status: correct
+
+vars := {
+  "P1.t",
+  "P2.t",
+  "P3.t",
+  "T1.fire",
+  "T1.instantaneousSpeed",
+  "T1.maximumSpeed",
+  "T2.fire",
+  "T2.instantaneousSpeed",
+  "T2.maximumSpeed",
+  "T3.fire",
+  "T3.instantaneousSpeed",
+  "T3.maximumSpeed"
+};
+
+res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ExtTest.IATest_res.mat",
+  "../../ReferenceFiles/PNlib.Examples.ExtTest.IATest.mat",
+  "PNlib.Examples.ExtTest.IATest_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.ExtTest.IATest_res.mat", "../../ReferenceFiles/PNlib.Examples.ExtTest.IATest_Dymola_minimal.mat", vars, 0); getErrorString();
+end if;
+
+// Result:
+// {"P1.t","P2.t","P3.t","T1.fire","T1.instantaneousSpeed","T1.maximumSpeed","T2.fire","T2.instantaneousSpeed","T2.maximumSpeed","T3.fire","T3.instantaneousSpeed","T3.maximumSpeed"}
+// {"Files Equal!"}
+// ""
+//
+// endResult

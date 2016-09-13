@@ -24,7 +24,6 @@ block activationCon "activation process of continuous transitions"
   input Real testValue[:] "test values of test and inhibitor arcs";
   input Integer testValueInt[:] "integer test values of test and inhibitor arcs";
   input Integer normalArc[:] "normal or double arc?";
-  input Boolean testChange[:] "Has a test value been exceeded or deceeded?";
   output Boolean active "activation of transition";
   output Boolean weaklyInputActiveVec[nIn] "places that causes weakly input activation";
   output Boolean weaklyOutputActiveVec[nOut] "places that causes weakly output activation";
@@ -56,7 +55,7 @@ algorithm
         if tIn[i] <= testValue[i] then
           active := false;
         end if;
-        if testChange[i] and fed[i] and normalArc[i]==2 then  //weakly input active??
+        if tIn[i] > testValue[i] and fed[i] and normalArc[i]==2 then  //weakly input active??
           weaklyInputActiveVec[i] := true;
         end if;
       elseif arcType[i]==3 and (tIn[i] >= testValue[i]) then  //inhibitor arc
