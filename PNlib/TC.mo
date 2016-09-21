@@ -83,24 +83,24 @@ public
    decreasingFactor=decreasingFactorIn,
    testValue=testValue,
    testValueint=testValueInt,
-   normalArc=normalArc) "connector for input places"  annotation (Placement(transformation(extent={{ -56,-10},{-40,10}}, rotation=0)));
+   normalArc=normalArc) if nIn > 0 "connector for input places"  annotation (Placement(transformation(extent={{ -56,-10},{-40,10}}, rotation=0)));
   Interfaces.TransitionOut[nOut] outPlaces(each active=activation.active,
-  each fire=fire,
-  each enabledByInPlaces = true,
-  arcWeight=arcWeightOut,
-  arcWeightint=arcWeightIntOut,
-  each disTransition = false,
-  each instSpeed = instantaneousSpeed,
-  each prelimSpeed = prelimSpeed,
-  each maxSpeed =  maximumSpeed,
-  t=tOut,
-  tint=tIntOut,
-  maxTokens=maxTokens,
-  maxTokensint=maxTokensInt,
-  emptied=emptied,
-  disPlace=disPlaceOut,
-  speedSum=speedSumOut,decreasingFactor=decreasingFactorOut)
-    "connector for output places"                                                          annotation (Placement(transformation(extent={{40,-10},{56,10}}, rotation=0)));
+    each fire=fire,
+    each enabledByInPlaces = true,
+    arcWeight=arcWeightOut,
+    arcWeightint=arcWeightIntOut,
+    each disTransition = false,
+    each instSpeed = instantaneousSpeed,
+    each prelimSpeed = prelimSpeed,
+    each maxSpeed =  maximumSpeed,
+    t=tOut,
+    tint=tIntOut,
+    maxTokens=maxTokens,
+    maxTokensint=maxTokensInt,
+    emptied=emptied,
+    disPlace=disPlaceOut,
+    speedSum=speedSumOut,
+    decreasingFactor=decreasingFactorOut) if nOut > 0  "connector for output places" annotation (Placement(transformation(extent={{40,-10},{56,10}}, rotation=0)));
 equation
    //****MAIN BEGIN****//
     //firing process

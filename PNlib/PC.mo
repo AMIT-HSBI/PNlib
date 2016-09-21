@@ -93,7 +93,7 @@ public
   instSpeed=instSpeedIn,
   maxSpeed=maxSpeedIn,
   prelimSpeed=prelimSpeedIn,
-  enabledByInPlaces=enabledByInPlaces) "connector for input transitions"  annotation (Placement(
+  enabledByInPlaces=enabledByInPlaces) if nIn > 0 "connector for input transitions"  annotation (Placement(
         transformation(extent={{-114,-10},{-98,10}}, rotation=0),
     iconTransformation(extent={{-116,-10},{-100,10}})));
   Interfaces.PlaceOut outTransition[nOut](each t = t_,
@@ -116,7 +116,7 @@ public
   prelimSpeed=prelimSpeedOut,
   each testValue=-1,
   each testValueint=-1,
-  each normalArc=2) "connector for output transitions"  annotation (Placement(
+  each normalArc=2) if nOut > 0 "connector for output transitions"  annotation (Placement(
         transformation(extent={{100,-10},{116,10}}, rotation=0)));
   Modelica.Blocks.Interfaces.RealOutput pc_t=t
     "connector for Simulink connection"                                            annotation (Placement(
