@@ -51,6 +51,7 @@ PNlib.Examples.HybTest.PCtoTD.mos \
 PNlib.Examples.HybTest.SixConflictProb.mos \
 PNlib.Examples.HybTest.TCwithPD.mos \
 PNlib.Examples.HybTest.TDtoPC.mos \
+PNlib.Examples.Models.BicoloredPlaces.Aquarium.mos \
 
 
 # These tests are OS dependent. Move up when fixed.

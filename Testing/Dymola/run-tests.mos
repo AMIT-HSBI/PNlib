@@ -49,4 +49,5 @@ simulateModel("PNlib.Examples.HybTest.PCtoTD", stopTime=10, resultFile="PNlib.Ex
 simulateModel("PNlib.Examples.HybTest.SixConflictProb", stopTime=10, resultFile="PNlib.Examples.HybTest.SixConflictProb_res");
 simulateModel("PNlib.Examples.HybTest.TCwithPD", stopTime=10, resultFile="PNlib.Examples.HybTest.TCwithPD_res");
 simulateModel("PNlib.Examples.HybTest.TDtoPC", stopTime=10, resultFile="PNlib.Examples.HybTest.TDtoPC_res");
+simulateModel("PNlib.Examples.Models.BicoloredPlaces.Aquarium", stopTime=40, resultFile="PNlib.Examples.Models.BicoloredPlaces.Aquarium_res");
 exit();
