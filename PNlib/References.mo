@@ -1,14 +1,14 @@
 within PNlib;
 model References
  extends Modelica.Icons.References;
-  annotation (Documentation(info="<html>
+  annotation(Documentation(info="<html>
   <h1>References</h1>
   <table border=0 cellspacing=0 cellpadding=2>
     <tr>
       <td valign=top>[Proß 2012]</td>
       <td valign=top>S. Proß,
         Hybrid Modeling and Optimization of Biological Processes,
-        <i>PhD thesis</i> (in preparation),Faculty of Technology, Bielefeld University, Germany, 2012.</td>
+        <i>PhD thesis</i> (in preparation), Faculty of Technology, Bielefeld University, Germany, 2012.</td>
     </tr>
     <tr>
       <td valign=top>[Proß, Bachmann 2012a]</td>

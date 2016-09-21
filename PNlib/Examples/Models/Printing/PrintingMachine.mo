@@ -5,135 +5,135 @@ model PrintingMachine "printing machine"
     nOut=2,
     maximumSpeed=speed,
     nIn=1)
-    annotation (Placement(transformation(extent={{-146,70},{-126,90}})));
+    annotation(Placement(transformation(extent={{-146,70},{-126,90}})));
   PC printed_paper(
     nIn=1,
     nOut=1,
     reStart=reStart) "[m]"
-    annotation (Placement(transformation(extent={{-94,70},{-74,90}})));
+    annotation(Placement(transformation(extent={{-94,70},{-74,90}})));
   TC cutting(
     nIn=1,
     nOut=1,
     maximumSpeed=speed,
     arcWeightIn={1.2})
-    annotation (Placement(transformation(extent={{-64,70},{-44,90}})));
+    annotation(Placement(transformation(extent={{-64,70},{-44,90}})));
   PC Sections(
     nIn=1,
     nOut=1,
     reStart=reStart) "m"
-    annotation (Placement(transformation(extent={{-30,70},{-10,90}})));
+    annotation(Placement(transformation(extent={{-30,70},{-10,90}})));
   TC fold(
     nIn=1,
     nOut=1,
     arcWeightOut={2},
     maximumSpeed=speed)
-    annotation (Placement(transformation(extent={{4,70},{24,90}})));
+    annotation(Placement(transformation(extent={{4,70},{24,90}})));
   PC FoldedSections(
     nIn=1,
     nOut=1,
     reStart=reStart)
-    annotation (Placement(transformation(extent={{40,70},{60,90}})));
+    annotation(Placement(transformation(extent={{40,70},{60,90}})));
   TC bundle(
     nIn=1,
     nOut=1,
     arcWeightIn={2},
     maximumSpeed=speed)
-    annotation (Placement(transformation(extent={{74,70},{94,90}})));
+    annotation(Placement(transformation(extent={{74,70},{94,90}})));
   PC Bundle(
     nIn=1,
     nOut=1,
     reStart=reStart)
-    annotation (Placement(transformation(extent={{-172,-6},{-152,14}})));
+    annotation(Placement(transformation(extent={{-172,-6},{-152,14}})));
   TC chainUp(
     nIn=1,
     nOut=2,
     maximumSpeed=speed)
-    annotation (Placement(transformation(extent={{-140,-6},{-120,14}})));
+    annotation(Placement(transformation(extent={{-140,-6},{-120,14}})));
   PC Bundle_on_chain(
     nIn=1,
     nOut=1,
     reStart=reStart)
-    annotation (Placement(transformation(extent={{-96,-6},{-76,14}})));
+    annotation(Placement(transformation(extent={{-96,-6},{-76,14}})));
   TC       Chain_to_macu_press(
     nIn=2,
     nOut=1,
     arcWeightIn={1,999},
     maximumSpeed=speed)
-    annotation (Placement(transformation(extent={{-54,-6},{-34,14}})));
+    annotation(Placement(transformation(extent={{-54,-6},{-34,14}})));
  PC bundle_at_macu_press(
     nIn=1,
     enablingType=1,
     nOut=2,
     reStart=reStart)
-            annotation (Placement(transformation(extent={{-6,-6},{14,14}})));
+            annotation(Placement(transformation(extent={{-6,-6},{14,14}})));
   PC                        Chain_full(nOut=1, nIn=1,
     reStart=reStart)
-    annotation (Placement(transformation(extent={{-100,-42},{-80,-22}})));
+    annotation(Placement(transformation(extent={{-100,-42},{-80,-22}})));
   TA       TA1(testValue=999)
-    annotation (Placement(transformation(extent={{-7.49998,-2.50001},{7.49994,2.50001}},
+    annotation(Placement(transformation(extent={{-7.49998,-2.50001},{7.49994,2.50001}},
         rotation=90,
         origin={-62.5,-6.5})));
   TC       chain_up2(
     nOut=2,
     maximumSpeed=speed,
     arcWeightIn={1,0},
-    nIn=2) annotation (Placement(transformation(extent={{50,-6},{70,14}})));
+    nIn=2) annotation(Placement(transformation(extent={{50,-6},{70,14}})));
   PC Bundle_on_chain2(
     nIn=1,
     nOut=1,
     reStart=reStart)
-    annotation (Placement(transformation(extent={{104,-6},{124,14}})));
+    annotation(Placement(transformation(extent={{104,-6},{124,14}})));
   TC       chain1(
     nIn=2,
     nOut=2,
     arcWeightIn={1,999},
     maximumSpeed=speed)
-    annotation (Placement(transformation(extent={{156,-6},{176,14}})));
+    annotation(Placement(transformation(extent={{156,-6},{176,14}})));
   PC                        Chain_full2(nIn=1, nOut=1,
     reStart=reStart)
-    annotation (Placement(transformation(extent={{102,-42},{122,-22}})));
+    annotation(Placement(transformation(extent={{102,-42},{122,-22}})));
   TA       TA2(testValue=999)
-               annotation (Placement(transformation(extent={{-8.5,-2.50012},{8.5,
+               annotation(Placement(transformation(extent={{-8.5,-2.50012},{8.5,
             2.50015}},
         rotation=90,
         origin={135.5,-5.5})));
   PC                        Counter_exemplars(nIn=1, nOut=1,
     reStart=reStart)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    annotation(Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={180,68})));
   PC                        Exemplars(nIn=1, nOut=1,
     reStart=reStart)
-    annotation (Placement(transformation(extent={{-164,-100},{-144,-80}})));
+    annotation(Placement(transformation(extent={{-164,-100},{-144,-80}})));
   TC Exemplars_Packets(
     nIn=1,
     nOut=1,
     arcWeightIn={240},
     maximumSpeed=1)
-    annotation (Placement(transformation(extent={{-122,-100},{-102,-80}})));
+    annotation(Placement(transformation(extent={{-122,-100},{-102,-80}})));
   PC Packets(
     nIn=1,
     nOut=1,
     reStart=reStart)
-    annotation (Placement(transformation(extent={{-84,-100},{-64,-80}})));
+    annotation(Placement(transformation(extent={{-84,-100},{-64,-80}})));
   TC Packets_Pallet(
     nIn=1,
     nOut=1,
     arcWeightIn={100})
-    annotation (Placement(transformation(extent={{-42,-100},{-22,-80}})));
+    annotation(Placement(transformation(extent={{-42,-100},{-22,-80}})));
   PC Pallets(nIn=1, reStart=reStart)
-    annotation (Placement(transformation(extent={{-4,-100},{16,-80}})));
+    annotation(Placement(transformation(extent={{-4,-100},{16,-80}})));
   Interfaces.TransitionIn drucken_
-    annotation (Placement(transformation(extent={{-214,70},{-194,90}}),
+    annotation(Placement(transformation(extent={{-214,70},{-194,90}}),
         iconTransformation(extent={{-166,-10},{-146,10}})));
-  Interfaces.TransitionIn maku_ annotation (Placement(transformation(
+  Interfaces.TransitionIn maku_ annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={50,-134}), iconTransformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-50,-122})));
-  Interfaces.PlaceOut ausschleussen annotation (Placement(transformation(
+  Interfaces.PlaceOut ausschleussen annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={28,-134}), iconTransformation(
@@ -144,10 +144,10 @@ protected
   outer Real speed;
   outer Boolean reStart;
 public
-  Modelica.Blocks.Interfaces.RealOutput number_exemplars_ annotation (
+  Modelica.Blocks.Interfaces.RealOutput number_exemplars_ annotation(
       Placement(transformation(extent={{142,58},{162,78}}),
         iconTransformation(extent={{150,70},{170,90}})));
-  Interfaces.PlaceOut exemplare_ annotation (Placement(transformation(
+  Interfaces.PlaceOut exemplare_ annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={178,130}), iconTransformation(
@@ -155,8 +155,8 @@ public
         rotation=90,
         origin={-90,120})));
   PC Counter_paper(nIn=1, reStart=reStart)
-    annotation (Placement(transformation(extent={{-96,102},{-76,122}})));
-  Modelica.Blocks.Interfaces.RealOutput papier_total_ annotation (
+    annotation(Placement(transformation(extent={{-96,102},{-76,122}})));
+  Modelica.Blocks.Interfaces.RealOutput papier_total_ annotation(
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -166,168 +166,168 @@ public
         origin={160,40})));
 equation
   connect(printing.outPlaces[1], printed_paper.inTransition[1])
-                                               annotation (Line(
+                                               annotation(Line(
       points={{-131.2,79.5},{-113,79.5},{-113,80},{-94.8,80}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(printed_paper.outTransition[1], cutting.inPlaces[1])
-                                               annotation (Line(
+                                               annotation(Line(
       points={{-73.2,80},{-58.8,80}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(cutting.outPlaces[1], Sections.inTransition[1])
-                                               annotation (Line(
+                                               annotation(Line(
       points={{-49.2,80},{-30.8,80}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Sections.outTransition[1], fold.inPlaces[1])
-                                               annotation (Line(
+                                               annotation(Line(
       points={{-9.2,80},{9.2,80}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(fold.outPlaces[1], FoldedSections.inTransition[1])
-                                               annotation (Line(
+                                               annotation(Line(
       points={{18.8,80},{39.2,80}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(FoldedSections.outTransition[1], bundle.inPlaces[1])
-                                               annotation (Line(
+                                               annotation(Line(
       points={{60.8,80},{79.2,80}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(bundle.outPlaces[1], Bundle.inTransition[1])
-                                               annotation (Line(
+                                               annotation(Line(
       points={{88.8,80},{112,80},{112,48},{-182,48},{-182,4},{-172.8,4}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Bundle.outTransition[1], chainUp.inPlaces[1])
-                                               annotation (Line(
+                                               annotation(Line(
       points={{-151.2,4},{-134.8,4}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(chainUp.outPlaces[1], Bundle_on_chain.inTransition[1])
-                                               annotation (Line(
+                                               annotation(Line(
       points={{-125.2,3.5},{-96.8,3.5},{-96.8,4}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Bundle_on_chain.outTransition[1], Chain_to_macu_press.inPlaces[1])
-                                               annotation (Line(
+                                               annotation(Line(
       points={{-75.2,4},{-62,4},{-62,3.5},{-48.8,3.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Chain_to_macu_press.outPlaces[1], bundle_at_macu_press.inTransition[
-    1])                                        annotation (Line(
+    1])                                        annotation(Line(
       points={{-39.2,4},{-6.8,4}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(TA1.outTransition,Chain_to_macu_press. inPlaces[2])
-                                             annotation (Line(
+                                             annotation(Line(
       points={{-61.2879,-4.93079},{-61.2879,3},{-48.8,3},{-48.8,4.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(TA1.inPlace,Chain_full. outTransition[1])
-                                             annotation (Line(
+                                             annotation(Line(
       points={{-61.2879,-22.3117},{-61.2879,-32},{-79.2,-32}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Chain_full.inTransition[1], chainUp.outPlaces[2])
-                                                annotation (Line(
+                                                annotation(Line(
       points={{-100.8,-32},{-118,-32},{-118,4.5},{-125.2,4.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(chain_up2.outPlaces[1], Bundle_on_chain2.inTransition[1])
-                                               annotation (Line(
+                                               annotation(Line(
       points={{64.8,3.5},{78,3.5},{78,4},{103.2,4}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Bundle_on_chain2.outTransition[1], chain1.inPlaces[1])
-                                               annotation (Line(
+                                               annotation(Line(
       points={{124.8,4},{161.2,4},{161.2,3.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Chain_full2.inTransition[1],chain_up2. outPlaces[2])
-                                                annotation (Line(
+                                                annotation(Line(
       points={{101.2,-32},{76,-32},{76,4},{64.8,4},{64.8,4.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Chain_full2.outTransition[1],TA2. inPlace)
-                                             annotation (Line(
+                                             annotation(Line(
       points={{122.8,-32},{138.4,-32},{138.4,-23.0261},{137.268,-23.0261}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(TA2.outTransition,chain1. inPlaces[2])
-                                             annotation (Line(
+                                             annotation(Line(
       points={{137.268,-3.32772},{136,-6},{136,4},{161.2,4},{161.2,4.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(chain1.outPlaces[2],Counter_exemplars. inTransition[1])
-                                                annotation (Line(
+                                                annotation(Line(
       points={{170.8,4.5},{180,4.5},{180,57.2}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Exemplars.outTransition[1], Exemplars_Packets.inPlaces[1])
-                                                annotation (Line(
+                                                annotation(Line(
       points={{-143.2,-90},{-116.8,-90}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Exemplars_Packets.outPlaces[1], Packets.inTransition[1])
-                                                 annotation (Line(
+                                                 annotation(Line(
       points={{-107.2,-90},{-84.8,-90}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Packets.outTransition[1], Packets_Pallet.inPlaces[1])
-                                                 annotation (Line(
+                                                 annotation(Line(
       points={{-63.2,-90},{-36.8,-90}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Packets_Pallet.outPlaces[1], Pallets.inTransition[1])
-                                                 annotation (Line(
+                                                 annotation(Line(
       points={{-27.2,-90},{-4.8,-90}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(chain1.outPlaces[1],Exemplars. inTransition[1])
-                                               annotation (Line(
+                                               annotation(Line(
       points={{170.8,3.5},{182,3.5},{182,-54},{-186,-54},{-186,-90},{-164.8,-90}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(printing.inPlaces[1], drucken_)
-                                         annotation (Line(
+                                         annotation(Line(
       points={{-140.8,80},{-204,80}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(bundle_at_macu_press.outTransition[1], chain_up2.inPlaces[1])
-    annotation (Line(
+    annotation(Line(
       points={{14.8,3.5},{55.2,3.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(chain_up2.inPlaces[2], maku_) annotation (Line(
+  connect(chain_up2.inPlaces[2], maku_) annotation(Line(
       points={{55.2,4.5},{50,4.5},{50,-134}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(bundle_at_macu_press.outTransition[2], ausschleussen)   annotation (
+  connect(bundle_at_macu_press.outTransition[2], ausschleussen)   annotation(
       Line(
       points={{14.8,4.5},{28,4.5},{28,-134}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(Counter_exemplars.pc_t,number_exemplars_)  annotation (Line(
+  connect(Counter_exemplars.pc_t,number_exemplars_)  annotation(Line(
       points={{169.2,68},{152,68}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(Counter_exemplars.outTransition[1], exemplare_) annotation (
+  connect(Counter_exemplars.outTransition[1], exemplare_) annotation(
       Line(
       points={{180,78.8},{180,130},{178,130}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(printing.outPlaces[2], Counter_paper.inTransition[1])
-    annotation (Line(
+    annotation(Line(
       points={{-131.2,80.5},{-120,80.5},{-120,112},{-96.8,112}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(Counter_paper.pc_t, papier_total_)  annotation (Line(
+  connect(Counter_paper.pc_t, papier_total_)  annotation(Line(
       points={{-86,122.8},{-86,140}},
       color={0,0,127},
       smooth=Smooth.None));
-  annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-200,
+  annotation(Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-200,
             -125},{200,125}}),
                          graphics), Icon(coordinateSystem(preserveAspectRatio=true,
           extent={{-200,-125},{200,125}}), graphics={Bitmap(

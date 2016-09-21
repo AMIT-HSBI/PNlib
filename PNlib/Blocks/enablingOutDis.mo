@@ -35,7 +35,7 @@ algorithm
   TEout := fill(false, nOut);
   when delayPassed or activeCon then
     if nOut>0 then
-      arcWeightSum := Functions.OddsAndEnds.conditionalSumInt(arcWeight,TAout);  //arc weight sum of all active output transitions
+      arcWeightSum := Functions.OddsAndEnds.conditionalSumInt(arcWeight, TAout);  //arc weight sum of all active output transitions
       if t - arcWeightSum >= minTokens then  //Place has no actual conflict; all active output transitions are enabled
         TEout := TAout;
       else                          //Place has an actual conflict;
@@ -89,7 +89,7 @@ algorithm
               end if;
               nremTAout := nremTAout - 1;
               if nremTAout > 0 then
-                remTAout := Functions.OddsAndEnds.deleteElementInt(remTAout,k);
+                remTAout := Functions.OddsAndEnds.deleteElementInt(remTAout, k);
                 cumEnablingProb := zeros(nOut);
                 sumEnablingProbTAout := sum(enablingProb[remTAout[1:nremTAout]]);
                 if sumEnablingProbTAout>0 then

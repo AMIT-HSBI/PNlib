@@ -11,29 +11,29 @@ model Senseo_Maschine
     nIn=3,
     nOut=1,
     maximumSpeed=Psenseo/(c*water_hc.t))
-                            annotation (Placement(transformation(
+                            annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-14,82})));
   PNlib.TA TA1(testValue=0)
-               annotation (Placement(transformation(
+               annotation(Placement(transformation(
         extent={{-5.99995,-2.00001},{6.00002,2.00001}},
         rotation=270,
         origin={-40,96})));
   PNlib.TA TA2(testValue=0.34)
-    annotation (Placement(transformation(extent={{-86,78},{-70,84}})));
+    annotation(Placement(transformation(extent={{-86,78},{-70,84}})));
   PNlib.PC TW(
     nIn=2,
     nOut=3,
     maxMarks=90,
     startMarks=20) "water temperature"
-    annotation (Placement(transformation(extent={{10,72},{30,92}})));
+    annotation(Placement(transformation(extent={{10,72},{30,92}})));
   PNlib.TC pumping(
     maximumSpeed=0.1,
     nOut=2,
     nIn=1,
     arcWeightOut={1,TC/water_hc.t})
-            annotation (Placement(transformation(
+            annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-144,64})));
@@ -41,18 +41,18 @@ model Senseo_Maschine
     nIn=2,
     maximumSpeed=k*(TW.t - TE),
     firingCon=TW.t > TE)
-    annotation (Placement(transformation(extent={{62,72},{82,92}})));
+    annotation(Placement(transformation(extent={{62,72},{82,92}})));
   PNlib.TD stopornext(
     nIn=2,
     firingCon=true,
     delay=1,
     nOut=1)
-    annotation (Placement(transformation(extent={{158,100},{178,120}})));
+    annotation(Placement(transformation(extent={{158,100},{178,120}})));
   PNlib.PC water_hc(
     nIn=1,
     nOut=2,
     startMarks=0.25,
-    maxMarks=0.25) "water in heating chamber" annotation (Placement(
+    maxMarks=0.25) "water in heating chamber" annotation(Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
@@ -61,12 +61,12 @@ model Senseo_Maschine
     nIn=2,
     nOut=1,
     arcWeightIn={90,1},
-    delay=1) annotation (Placement(transformation(
+    delay=1) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={52,36})));
   PNlib.TA TA3(testValue=90)
-               annotation (Placement(transformation(
+               annotation(Placement(transformation(
         extent={{-6,-2},{6,2}},
         rotation=270,
         origin={46,60})));
@@ -75,7 +75,7 @@ model Senseo_Maschine
     maxTokens=1,
     nOut=2,
     enablingType=2,
-    enablingProbOut={0.7,0.3}) annotation (Placement(transformation(
+    enablingProbOut={0.7,0.3}) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={32,-32})));
@@ -83,7 +83,7 @@ model Senseo_Maschine
     nIn=1,
     nOut=1,
     delay=1)
-            annotation (Placement(transformation(
+            annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-10,-10})));
@@ -91,27 +91,27 @@ model Senseo_Maschine
     nIn=1,
     nOut=1,
     delay=1)
-            annotation (Placement(transformation(
+            annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-8,-54})));
   PNlib.PD onecup(nIn=1, nOut=1,
-    maxTokens=1)                 annotation (Placement(transformation(
+    maxTokens=1)                 annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-46,-10})));
   PNlib.PD twocups(nIn=1, nOut=1,
-    maxTokens=1)                  annotation (Placement(transformation(
+    maxTokens=1)                  annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-46,-54})));
   PNlib.TD T4(nIn=1, nOut=1,
-    arcWeightOut={1})        annotation (Placement(transformation(
+    arcWeightOut={1})        annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-74,-10})));
   PNlib.TD T5(nIn=1, nOut=1,
-    arcWeightOut={2})        annotation (Placement(transformation(
+    arcWeightOut={2})        annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-74,-54})));
@@ -120,94 +120,94 @@ model Senseo_Maschine
     nIn=3,
     nOut=2,
     arcWeightIn={1,1,TW.t/water_hc.t})
-            annotation (Placement(transformation(
+            annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-144,-30})));
   TA       RA1(testValue=0)
-               annotation (Placement(transformation(extent={{-7,-2.00002},
+               annotation(Placement(transformation(extent={{-7,-2.00002},
             {7,2.00002}},
         rotation=90,
         origin={-36,41})));
   PNlib.PC coffee_cup(nIn=1, nOut=1)
-                         annotation (Placement(transformation(
+                         annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-144,-74})));
   inner PNlib.Settings settings
-    annotation (Placement(transformation(extent={{156,-158},{182,-132}})));
+    annotation(Placement(transformation(extent={{156,-158},{182,-132}})));
   PNlib.PD ready(
     maxTokens=1,
     nIn=1,
     nOut=1,
     startTokens=0)
-    annotation (Placement(transformation(extent={{-102,-130},{-82,-110}})));
+    annotation(Placement(transformation(extent={{-102,-130},{-82,-110}})));
   PNlib.TD T7(
     nIn=2,
     nOut=2,
     firingCon=pre(disamount.t) > 0,
     arcWeightIn={pre(disamount.t)*0.125,pre(disamount.t)},
     arcWeightOut={pre(disamount.t),1},
-    delay=1)                             annotation (Placement(transformation(
+    delay=1)                             annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-144,-108})));
-  PNlib.PD amountCups(nIn=1) annotation (Placement(transformation(
+  PNlib.PD amountCups(nIn=1) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-144,-152})));
-  PNlib.PD disamount(nIn=3, nOut=2) annotation (Placement(transformation(
+  PNlib.PD disamount(nIn=3, nOut=2) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-106,-32})));
   PNlib.PD P1(
     nOut=3,
     maxTokens=1,
-    nIn=1)  annotation (Placement(transformation(
+    nIn=1)  annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-34,158})));
   PNlib.PD P3(       nOut=1, nIn=1,
-    maxTokens=1)             annotation (Placement(transformation(
+    maxTokens=1)             annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={92,142})));
-  Modelica.Blocks.Interfaces.RealOutput coffee_cup_ annotation (Placement(
+  Modelica.Blocks.Interfaces.RealOutput coffee_cup_ annotation(Placement(
         transformation(extent={{-114,-84},{-94,-64}}),
                                                      iconTransformation(extent={{100,40},
             {120,60}})));
-  Modelica.Blocks.Interfaces.IntegerOutput amount_cups_ annotation (Placement(
+  Modelica.Blocks.Interfaces.IntegerOutput amount_cups_ annotation(Placement(
         transformation(extent={{-124,-162},{-104,-142}}), iconTransformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={50,190})));
   Interfaces.TransitionIn watertank_[2]
-    annotation (Placement(transformation(extent={{-200,72},{-180,92}}),
+    annotation(Placement(transformation(extent={{-200,72},{-180,92}}),
         iconTransformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={110,-124})));
-  Interfaces.TransitionOut stopornext_ annotation (Placement(transformation(
+  Interfaces.TransitionOut stopornext_ annotation(Placement(transformation(
           extent={{202,100},{222,120}}),
                                        iconTransformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-94,-120})));
-  Interfaces.PlaceIn startheating_ annotation (Placement(transformation(
+  Interfaces.PlaceIn startheating_ annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-34,190}), iconTransformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-96,94})));
-  Interfaces.PlaceIn padinsert_ annotation (Placement(transformation(
+  Interfaces.PlaceIn padinsert_ annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={92,190}), iconTransformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-22,190})));
-  Modelica.Blocks.Interfaces.RealOutput tw_ annotation (Placement(
+  Modelica.Blocks.Interfaces.RealOutput tw_ annotation(Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -216,194 +216,194 @@ model Senseo_Maschine
         rotation=0,
         origin={110,152})));
   IA IA1(testValue=1)
-    annotation (Placement(transformation(extent={{24,134},{40,140}})));
+    annotation(Placement(transformation(extent={{24,134},{40,140}})));
 equation
-  connect(TA1.outTransition, heating.inPlaces[1]) annotation (Line(
+  connect(TA1.outTransition, heating.inPlaces[1]) annotation(Line(
       points={{-34.303,90.0173},{-34.303,82.009},{-18.8,82.009},{-18.8,
           81.3333}},
       color={0,0,0},
       smooth=Smooth.None));
 
-  connect(TA2.outTransition, heating.inPlaces[2]) annotation (Line(
+  connect(TA2.outTransition, heating.inPlaces[2]) annotation(Line(
       points={{-68.7302,81},{-18.8,82}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(heating.outPlaces[1], TW.inTransition[1]) annotation (Line(
+  connect(heating.outPlaces[1], TW.inTransition[1]) annotation(Line(
       points={{-9.2,82},{0,82},{0,81.5},{9.2,81.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(TW.outTransition[1], cooling.inPlaces[1]) annotation (Line(
+  connect(TW.outTransition[1], cooling.inPlaces[1]) annotation(Line(
       points={{30.8,81.3333},{42,81.3333},{42,81.5},{67.2,81.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(pumping.outPlaces[1], water_hc.inTransition[1]) annotation (Line(
+  connect(pumping.outPlaces[1], water_hc.inTransition[1]) annotation(Line(
       points={{-144.5,59.2},{-144.5,50},{-144,50},{-144,40.8}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(TW.outTransition[2], TA3.inPlace) annotation (Line(
+  connect(TW.outTransition[2], TA3.inPlace) annotation(Line(
       points={{30.8,82},{51.697,82},{51.697,67.9221}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(TA3.outTransition, T1.inPlaces[1]) annotation (Line(
+  connect(TA3.outTransition, T1.inPlaces[1]) annotation(Line(
       points={{51.697,54.0173},{51.697,45.0087},{51.5,45.0087},{51.5,40.8}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(T1.outPlaces[1], decision.inTransition[1]) annotation (Line(
+  connect(T1.outPlaces[1], decision.inTransition[1]) annotation(Line(
       points={{52,31.2},{52,-32},{42.8,-32}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(decision.outTransition[1], T2.inPlaces[1]) annotation (Line(
+  connect(decision.outTransition[1], T2.inPlaces[1]) annotation(Line(
       points={{21.2,-31.5},{8,-31.5},{8,-10},{-5.2,-10}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(decision.outTransition[2], T3.inPlaces[1]) annotation (Line(
+  connect(decision.outTransition[2], T3.inPlaces[1]) annotation(Line(
       points={{21.2,-32.5},{8,-32.5},{8,-54},{-3.2,-54}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(T2.outPlaces[1], onecup.inTransition[1]) annotation (Line(
+  connect(T2.outPlaces[1], onecup.inTransition[1]) annotation(Line(
       points={{-14.8,-10},{-25,-10},{-25,-10},{-35.2,-10}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(T3.outPlaces[1], twocups.inTransition[1]) annotation (Line(
+  connect(T3.outPlaces[1], twocups.inTransition[1]) annotation(Line(
       points={{-12.8,-54},{-35.2,-54}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(onecup.outTransition[1], T4.inPlaces[1]) annotation (Line(
+  connect(onecup.outTransition[1], T4.inPlaces[1]) annotation(Line(
       points={{-56.8,-10},{-63,-10},{-63,-10},{-69.2,-10}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(twocups.outTransition[1], T5.inPlaces[1]) annotation (Line(
+  connect(twocups.outTransition[1], T5.inPlaces[1]) annotation(Line(
       points={{-56.8,-54},{-69.2,-54}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(water_hc.outTransition[1], scalding.inPlaces[1]) annotation (Line(
+  connect(water_hc.outTransition[1], scalding.inPlaces[1]) annotation(Line(
       points={{-144.5,19.2},{-144,8},{-144,-25.2},{-144.667,-25.2}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(RA1.outTransition, heating.inPlaces[3]) annotation (Line(
+  connect(RA1.outTransition, heating.inPlaces[3]) annotation(Line(
       points={{-34.4748,42.8586},{-34.5238,42.8586},{-34.5238,82.6667},{
           -18.8,82.6667}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(water_hc.outTransition[2], RA1.inPlace) annotation (Line(
+  connect(water_hc.outTransition[2], RA1.inPlace) annotation(Line(
       points={{-143.5,19.2},{-143.5,14},{-34,14},{-34,26.6363},{-34.4748,
           26.6363}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(scalding.outPlaces[1], coffee_cup.inTransition[1])
-                                                         annotation (Line(
+                                                         annotation(Line(
       points={{-144.5,-34.8},{-144.5,-34},{-144,-34},{-144,-63.2}},
       color={0,0,0},
       smooth=Smooth.None));
 
-  connect(coffee_cup.outTransition[1], T7.inPlaces[1]) annotation (Line(
+  connect(coffee_cup.outTransition[1], T7.inPlaces[1]) annotation(Line(
       points={{-144,-84.8},{-144,-103.2},{-144.5,-103.2}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(T7.outPlaces[1], amountCups.inTransition[1]) annotation (Line(
+  connect(T7.outPlaces[1], amountCups.inTransition[1]) annotation(Line(
       points={{-144.5,-112.8},{-144.5,-119},{-144,-119},{-144,-141.2}},
       color={0,0,0},
       smooth=Smooth.None));
 
-  connect(T7.outPlaces[2], ready.inTransition[1]) annotation (Line(
+  connect(T7.outPlaces[2], ready.inTransition[1]) annotation(Line(
       points={{-143.5,-112.8},{-144,-112.8},{-144,-120},{-102.8,-120}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(T4.outPlaces[1], disamount.inTransition[1]) annotation (Line(
+  connect(T4.outPlaces[1], disamount.inTransition[1]) annotation(Line(
       points={{-78.8,-10},{-95.2,-31.3333}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(T5.outPlaces[1], disamount.inTransition[2]) annotation (Line(
+  connect(T5.outPlaces[1], disamount.inTransition[2]) annotation(Line(
       points={{-78.8,-54},{-95.2,-32}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(disamount.outTransition[1], T7.inPlaces[2]) annotation (Line(
+  connect(disamount.outTransition[1], T7.inPlaces[2]) annotation(Line(
       points={{-116.8,-31.5},{-126,-31.5},{-126,-94},{-143.5,-94},{-143.5,
           -103.2}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(disamount.outTransition[2], scalding.inPlaces[2]) annotation (Line(
+  connect(disamount.outTransition[2], scalding.inPlaces[2]) annotation(Line(
       points={{-116.8,-32.5},{-126,-32.5},{-126,-12},{-144,-12},{-144,-25.2}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(scalding.outPlaces[2], disamount.inTransition[3]) annotation (Line(
+  connect(scalding.outPlaces[2], disamount.inTransition[3]) annotation(Line(
       points={{-143.5,-34.8},{-143.5,-46},{-90,-46},{-90,-32.6667},{-95.2,
           -32.6667}},
       color={0,0,0},
       smooth=Smooth.None));
 
-  connect(P1.outTransition[1], TA1.inPlace) annotation (Line(
+  connect(P1.outTransition[1], TA1.inPlace) annotation(Line(
       points={{-34.6667,147.2},{-34.6667,114.361},{-34.303,114.361},{
           -34.303,103.922}},
       color={0,0,0},
       smooth=Smooth.None));
 
   connect(P1.outTransition[2], stopornext.inPlaces[1])
-                                                     annotation (Line(
+                                                     annotation(Line(
       points={{-34,147.2},{-34,110},{163.2,110},{163.2,109.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(ready.outTransition[1], stopornext.inPlaces[2])
-                                                        annotation (Line(
+                                                        annotation(Line(
       points={{-81.2,-120},{116,-120},{116,110.5},{163.2,110.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(P3.outTransition[1], T1.inPlaces[2]) annotation (Line(
+  connect(P3.outTransition[1], T1.inPlaces[2]) annotation(Line(
       points={{92,131.2},{92,48},{52,48},{52,40.8},{52.5,40.8}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(coffee_cup.pc_t, coffee_cup_) annotation (Line(
+  connect(coffee_cup.pc_t, coffee_cup_) annotation(Line(
       points={{-133.2,-74},{-104,-74}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(amountCups.pd_t, amount_cups_) annotation (Line(
+  connect(amountCups.pd_t, amount_cups_) annotation(Line(
       points={{-133.4,-152},{-114,-152}},
       color={255,127,0},
       smooth=Smooth.None));
 
-  connect(stopornext.outPlaces[1], stopornext_) annotation (Line(
+  connect(stopornext.outPlaces[1], stopornext_) annotation(Line(
       points={{172.8,110},{212,110}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(watertank_[1], TA2.inPlace) annotation (Line(
+  connect(watertank_[1], TA2.inPlace) annotation(Line(
       points={{-190,77},{-190,81},{-87.2698,81}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(watertank_[2], pumping.inPlaces[1]) annotation (Line(
+  connect(watertank_[2], pumping.inPlaces[1]) annotation(Line(
       points={{-190,87},{-190,82},{-144,82},{-144,68.8}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(P1.inTransition[1], startheating_) annotation (Line(
+  connect(P1.inTransition[1], startheating_) annotation(Line(
       points={{-34,168.8},{-34,190}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(P3.inTransition[1], padinsert_) annotation (Line(
+  connect(P3.inTransition[1], padinsert_) annotation(Line(
       points={{92,152.8},{92,190}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(pumping.outPlaces[2], TW.inTransition[2]) annotation (Line(
+  connect(pumping.outPlaces[2], TW.inTransition[2]) annotation(Line(
       points={{-143.5,59.2},{-143.5,52},{0,52},{0,82.5},{9.2,82.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(TW.outTransition[3], scalding.inPlaces[3]) annotation (Line(
+  connect(TW.outTransition[3], scalding.inPlaces[3]) annotation(Line(
       points={{30.8,82.6667},{34,82.6667},{34,10},{-143.333,10},{-143.333,
           -25.2}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(TW.pc_t, tw_) annotation (Line(
+  connect(TW.pc_t, tw_) annotation(Line(
       points={{20,92.8},{20,124}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(P1.outTransition[3], IA1.inPlace) annotation (Line(
+  connect(P1.outTransition[3], IA1.inPlace) annotation(Line(
       points={{-33.3333,147.2},{-32,147.2},{-32,138},{22.7302,138},{
           22.7302,137}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(IA1.outTransition, cooling.inPlaces[2]) annotation (Line(
+  connect(IA1.outTransition, cooling.inPlaces[2]) annotation(Line(
       points={{41.2698,137},{60,137},{60,82.5},{67.2,82.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  annotation (
+  annotation(
     Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-200,-200},
             {220,200}}),
                     graphics),

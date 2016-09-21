@@ -2,7 +2,7 @@ within PNlib.Examples.Models.Senseo;
 model Counter "Integer Counter"
 
   Modelica.Blocks.Interfaces.IntegerInput levelSensor
-    annotation (Placement(transformation(extent={{-61,-30},{-81,-10}},
+    annotation(Placement(transformation(extent={{-61,-30},{-81,-10}},
             rotation=0), iconTransformation(
         extent={{10,-10},{-10,10}},
         rotation=270,
@@ -11,7 +11,7 @@ model Counter "Integer Counter"
   parameter Integer hmax=20;
 equation
   count=if levelSensor/hmax<1 then levelSensor/hmax else 1;
-  annotation (
+  annotation(
     Diagram(coordinateSystem(
           preserveAspectRatio=true,
           extent={{-100,-100},{100,100}},

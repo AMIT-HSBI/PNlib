@@ -2,7 +2,7 @@ within PNlib.Examples.Models.Senseo;
 model coffee_cup "Animation of coffee cup"
 
   Modelica.Blocks.Interfaces.RealInput levelSensor
-    annotation (Placement(transformation(extent={{-61,-30},{-81,-10}},
+    annotation(Placement(transformation(extent={{-61,-30},{-81,-10}},
             rotation=0), iconTransformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
@@ -12,7 +12,7 @@ model coffee_cup "Animation of coffee cup"
   parameter Real color[3]={0,0,255};
 equation
   level=levelSensor/hmax;
-  annotation (
+  annotation(
     Diagram(coordinateSystem(
           preserveAspectRatio=true,
           extent={{-100,-100},{100,100}},

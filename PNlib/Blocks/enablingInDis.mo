@@ -35,7 +35,7 @@ algorithm
   TEin:=fill(false, nIn);
   when delayPassed then
     if nIn>0 then
-      arcWeightSum:=Functions.OddsAndEnds.conditionalSumInt(arcWeight,TAein);  //arc weight sum of all active input transitions which are already enabled by their input places
+      arcWeightSum:=Functions.OddsAndEnds.conditionalSumInt(arcWeight, TAein);  //arc weight sum of all active input transitions which are already enabled by their input places
       if t + arcWeightSum <= maxTokens then  //Place has no actual conflict; all active input transitions are enabled
         TEin:=TAein;
       else                          //Place has an actual conflict
@@ -82,7 +82,7 @@ algorithm
             end if;
             nremTAin:=nremTAin - 1;
             if nremTAin > 0 then
-              remTAin:=Functions.OddsAndEnds.deleteElementInt(remTAin,k);
+              remTAin:=Functions.OddsAndEnds.deleteElementInt(remTAin, k);
               cumEnablingProb:=zeros(nIn);
               sumEnablingProbTAin:=sum(enablingProb[remTAin[1:nremTAin]]);
               if sumEnablingProbTAin>0 then

@@ -8,7 +8,7 @@ function isEqual "Determine if two Real scalars are numerically identical"
   output Boolean result "= true, if scalars are identical";
 algorithm
   result :=abs(s1 - s2) <= eps;
-  annotation (Inline=true, Documentation(info="<HTML>
+  annotation(Inline=true, Documentation(info="<HTML>
 <h4>Syntax</h4>
 <blockquote><pre>
 Math.<b>isEqual</b>(s1, s2);

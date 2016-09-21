@@ -1,7 +1,7 @@
 within PNlib;
 model RevisionHistory
 extends Modelica.Icons.ReleaseNotes;
-annotation (Documentation(
+annotation(Documentation(
 info="<html>
 <h1>ReleaseNotes</h1>
 <table border=\"1\" cellspacing=\"0\" cellpadding=\"2\">

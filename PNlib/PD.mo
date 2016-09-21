@@ -4,17 +4,17 @@ model PD "Discrete Place"
   parameter Integer nIn=0 "number of input transitions" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut=0 "number of output transitions" annotation(Dialog(connectorSizing=true));
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
-  parameter Integer startTokens = 0 "start tokens"  annotation(Dialog(enable = true, group = "Tokens"));
+  parameter Integer startTokens = 0 "start tokens" annotation(Dialog(enable = true, group = "Tokens"));
   parameter Integer minTokens = 0 "minimum capacity" annotation(Dialog(enable = true, group = "Tokens"));
-  parameter Integer maxTokens=PNlib.Constants.Integer_inf "maximum capacity"       annotation(Dialog(enable = true, group = "Tokens"));
-  Boolean reStart(start=false, fixed=true)=false "restart condition"       annotation(Dialog(enable = true, group = "Tokens"));
-  parameter Integer reStartTokens=startTokens "number of tokens at restart"       annotation(Dialog(enable = true, group = "Tokens"));
+  parameter Integer maxTokens=PNlib.Constants.Integer_inf "maximum capacity" annotation(Dialog(enable = true, group = "Tokens"));
+  Boolean reStart(start=false, fixed=true)=false "restart condition" annotation(Dialog(enable = true, group = "Tokens"));
+  parameter Integer reStartTokens=startTokens "number of tokens at restart" annotation(Dialog(enable = true, group = "Tokens"));
   parameter Integer enablingType=1
-    "resolution type of actual conflict (type-1-conflict)"                                annotation(Dialog(enable = true, group = "Enabling"),choices(choice=1
-        "Priority",    choice=2 "Probability",__Dymola_radioButtons=true));
-  parameter Real enablingProbIn[nIn]=fill(1/nIn,nIn)
+    "resolution type of actual conflict (type-1-conflict)" annotation(Dialog(enable = true, group = "Enabling"), choices(choice=1
+        "Priority", choice=2 "Probability", __Dymola_radioButtons=true));
+  parameter Real enablingProbIn[nIn]=fill(1/nIn, nIn)
     "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==1 then false else true, group = "Enabling"));
-  parameter Real enablingProbOut[nOut]=fill(1/nOut,nOut)
+  parameter Real enablingProbOut[nOut]=fill(1/nOut, nOut)
     "enabling probabilities of output transitions" annotation(Dialog(enable = if enablingType==1 then false else true, group = "Enabling"));
   parameter Integer N=settings.N "N+1=amount of levels" annotation(Dialog(enable = true, group = "Level Concentrations"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
@@ -25,8 +25,8 @@ model PD "Discrete Place"
   Integer animateMarking=settings.animateMarking
     "only for place animation and display (Do not change!)";
   Real color[3] "only for place animation and display (Do not change!)";
-  parameter Integer localSeedIn = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for input conflicts"  annotation(Dialog(enable = true, group = "Random Number Generator"));
-  parameter Integer localSeedOut = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for output conflicts"  annotation(Dialog(enable = true, group = "Random Number Generator"));
+  parameter Integer localSeedIn = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for input conflicts" annotation(Dialog(enable = true, group = "Random Number Generator"));
+  parameter Integer localSeedOut = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for output conflicts" annotation(Dialog(enable = true, group = "Random Number Generator"));
 protected
   outer PNlib.Settings settings "global settings for animation and display";
   Real tokenscale "only for place animation and display";
@@ -52,8 +52,8 @@ protected
   Blocks.firingSumDis firingSumIn(fire=fireIn and disTransitionIn, arcWeight=arcWeightIn);
   Blocks.firingSumDis firingSumOut(fire=fireOut and disTransitionOut, arcWeight=arcWeightOut);
   //Enabling process
-  Blocks.enablingOutDis enableOut(delayPassed=delayPassedOut.anytrue,activeCon=activeConOut.anychange,nOut=nOut,arcWeight=arcWeightOut, t=pret, minTokens=minTokens, TAout=activeOut,enablingType=enablingType,enablingProb=enablingProbOut,disTransition=disTransitionOut, localSeed=localSeedOut, globalSeed=settings.globalSeed);
-  Blocks.enablingInDis enableIn(delayPassed=delayPassedIn.anytrue,active=activeIn,nIn=nIn,arcWeight=arcWeightIn, t=pret, maxTokens=maxTokens, TAein=enabledByInPlaces,enablingType=enablingType,enablingProb=enablingProbIn,disTransition=disTransitionIn, localSeed=localSeedIn, globalSeed=settings.globalSeed);
+  Blocks.enablingOutDis enableOut(delayPassed=delayPassedOut.anytrue, activeCon=activeConOut.anychange, nOut=nOut, arcWeight=arcWeightOut, t=pret, minTokens=minTokens, TAout=activeOut, enablingType=enablingType, enablingProb=enablingProbOut, disTransition=disTransitionOut, localSeed=localSeedOut, globalSeed=settings.globalSeed);
+  Blocks.enablingInDis enableIn(delayPassed=delayPassedIn.anytrue, active=activeIn, nIn=nIn, arcWeight=arcWeightIn, t=pret, maxTokens=maxTokens, TAein=enabledByInPlaces, enablingType=enablingType, enablingProb=enablingProbIn, disTransition=disTransitionIn, localSeed=localSeedIn, globalSeed=settings.globalSeed);
   //****BLOCKS END****//
 
 public
@@ -71,7 +71,7 @@ public
     disTransition=disTransitionIn,
     arcWeightint=arcWeightIn,
     active=activeIn,
-    enabledByInPlaces=enabledByInPlaces) if nIn > 0 "connector for input transitions" annotation (Placement(transformation(extent={{-114,-10},{-98,10}}, rotation=0), iconTransformation(extent={{-116,-10},{-100,10}})));
+    enabledByInPlaces=enabledByInPlaces) if nIn > 0 "connector for input transitions" annotation(Placement(transformation(extent={{-114, -10}, {-98, 10}}, rotation=0), iconTransformation(extent={{-116, -10}, {-100, 10}})));
   PNlib.Interfaces.PlaceOut outTransition[nOut](
     each t=pret,
     each tint=pret,
@@ -90,13 +90,13 @@ public
     active=activeOut,
     each testValue=-1,
     each testValueint=-1,
-    each normalArc=2) if nOut > 0 "connector for output transitions" annotation (Placement(transformation(extent={{100,-10},{116,10}}, rotation=0)));
+    each normalArc=2) if nOut > 0 "connector for output transitions" annotation(Placement(transformation(extent={{100, -10}, {116, 10}}, rotation=0)));
   Modelica.Blocks.Interfaces.IntegerOutput pd_t=t
-    "connector for Simulink connection"                                               annotation (Placement(
-        transformation(extent={{-36,68},{-16,88}}), iconTransformation(
-        extent={{-10,-10},{10,10}},
+    "connector for Simulink connection" annotation(Placement(
+        transformation(extent={{-36, 68}, {-16, 88}}), iconTransformation(
+        extent={{-10, -10}, {10, 10}},
         rotation=90,
-        origin={0,106})));
+        origin={0, 106})));
 equation
   //****MAIN BEGIN****//
   //recalculation of tokens
@@ -110,29 +110,29 @@ equation
   //****MAIN END****//
   //****ANIMATION BEGIN****//
   tokenscale= t*settings.scale;
-  color=if settings.animatePlace==1 then if tokenscale<100 then {255,255-2.55*tokenscale,255-2.55*tokenscale} else {255,0,0} else {255,255,255};
+  color=if settings.animatePlace==1 then if tokenscale<100 then {255, 255-2.55*tokenscale, 255-2.55*tokenscale} else {255, 0, 0} else {255, 255, 255};
   //****ANIMATION END****//
   //****ERROR MESSENGES BEGIN****//
-  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbIn), 1.0, 1e-6) or nIn==0 or enablingType==1,"The sum of input enabling probabilities has to be equal to 1");
-  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbOut), 1.0, 1e-6) or nOut==0 or enablingType==1,"The sum of output enabling probabilities has to be equal to 1");
-  assert(startTokens>=minTokens and startTokens<=maxTokens,"minTokens<=startTokens<=maxTokens");
+  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbIn), 1.0, 1e-6) or nIn==0 or enablingType==1, "The sum of input enabling probabilities has to be equal to 1");
+  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbOut), 1.0, 1e-6) or nOut==0 or enablingType==1, "The sum of output enabling probabilities has to be equal to 1");
+  assert(startTokens>=minTokens and startTokens<=maxTokens, "minTokens<=startTokens<=maxTokens");
   //****ERROR MESSENGES END****//
-  annotation (defaultComponentName = "P1",Icon(graphics={Ellipse(
-          extent={{-100,96},{100,-100}},
-          lineColor={0,0,0},
-          fillColor=DynamicSelect({255,255,255},color),
+  annotation(defaultComponentName = "P1", Icon(graphics={Ellipse(
+          extent={{-100, 96}, {100, -100}},
+          lineColor={0, 0, 0},
+          fillColor=DynamicSelect({255, 255, 255}, color),
           fillPattern=FillPattern.Solid),
       Text(
-        extent={{-1.5,25.5},{-1.5,-21.5}},
-        lineColor={0,0,0},
-        textString=DynamicSelect("%startTokens",if animateMarking==1 then realString(t,1,0) else " ")),
+        extent={{-1.5, 25.5}, {-1.5, -21.5}},
+        lineColor={0, 0, 0},
+        textString=DynamicSelect("%startTokens", if animateMarking==1 then realString(t, 1, 0) else " ")),
         Text(
-          extent={{-90,130},{-90,116}},
-          lineColor={0,0,0},
-          textString=DynamicSelect(" ",if showCapacity==1 then if maxTokens>1073741822 then  "[%minTokens, inf]" else "[%minTokens, %maxTokens]" else " ")),
+          extent={{-90, 130}, {-90, 116}},
+          lineColor={0, 0, 0},
+          textString=DynamicSelect(" ", if showCapacity==1 then if maxTokens>1073741822 then  "[%minTokens, inf]" else "[%minTokens, %maxTokens]" else " ")),
                                           Text(
-          extent={{-74,-113},{-74,-138}},
-          lineColor={0,0,0},
+          extent={{-74, -113}, {-74, -138}},
+          lineColor={0, 0, 0},
           textString="%name")}),
                            Diagram(graphics));
 end PD;

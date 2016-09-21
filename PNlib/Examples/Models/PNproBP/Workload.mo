@@ -1,7 +1,7 @@
 within PNlib.Examples.Models.PNproBP;
 model Workload
   Real cap;
-  Modelica.Blocks.Interfaces.IntegerInput u annotation (Placement(
+  Modelica.Blocks.Interfaces.IntegerInput u annotation(Placement(
         transformation(
         extent={{-20,-20},{20,20}},
         rotation=0,
@@ -18,7 +18,7 @@ algorithm
     color:={128,255,0};
   end when;
 
-  annotation (Icon(coordinateSystem(
+  annotation(Icon(coordinateSystem(
         preserveAspectRatio=true,
         extent={{-100,-100},{100,100}},
         initialScale=0.05),

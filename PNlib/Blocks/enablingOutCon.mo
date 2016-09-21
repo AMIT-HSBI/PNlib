@@ -89,7 +89,7 @@ algorithm
           end if;
           nremTAout:=nremTAout - 1;
           if nremTAout > 0 then
-            remTAout:=Functions.OddsAndEnds.deleteElementInt(remTAout,k);
+            remTAout:=Functions.OddsAndEnds.deleteElementInt(remTAout, k);
             cumEnablingProb:=zeros(nOut);
             sumEnablingProbTAout:=sum(enablingProb[remTAout[1:nremTAout]]);
             if sumEnablingProbTAout>0 then

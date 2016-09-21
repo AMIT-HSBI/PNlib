@@ -16,51 +16,51 @@ model Maculation "maculation of the printing process"
     arcWeightOut={1},
     nOut=1,
     delay=time_channel_out)
-    annotation (Placement(transformation(extent={{-66,-6},{-46,14}})));
+    annotation(Placement(transformation(extent={{-66,-6},{-46,14}})));
   TD channelOut(
     nIn=2,
     arcWeightOut={2},
     nOut=1,
     delay=1)
-    annotation (Placement(transformation(extent={{-64,-64},{-44,-44}})));
+    annotation(Placement(transformation(extent={{-64,-64},{-44,-44}})));
   PD start_channelOut(
     nIn=1,
     nOut=1,
     maxTokens=1)
-    annotation (Placement(transformation(extent={{-128,-64},{-108,-44}})));
+    annotation(Placement(transformation(extent={{-128,-64},{-108,-44}})));
   TS       pressing_button(nOut=1,
     firingCon=start,
     nIn=1,
     h=1/time_between_macus)
-    annotation (Placement(transformation(extent={{-190,-64},{-170,-44}})));
+    annotation(Placement(transformation(extent={{-190,-64},{-170,-44}})));
   PD bundle_channelOut(
     nOut=4,
     nIn=2,
     maxTokens=2)
-    annotation (Placement(transformation(extent={{4,-28},{24,-8}})));
+    annotation(Placement(transformation(extent={{4,-28},{24,-8}})));
   TS Stop_macu(
     nIn=1,
     nOut=1,
     h=h,
     arcWeightIn={pre(bundle_channelOut.t)})
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    annotation(Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={56,8})));
   PD bundle_not_channelOut(
     startTokens=1,
     maxTokens=1,
     nOut=3,
-    nIn=2) annotation (Placement(transformation(
+    nIn=2) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-14,36})));
   TA       TA4(testValue=0)
-               annotation (Placement(transformation(extent={{-10.0003,-3.5},{10.0001,
+               annotation(Placement(transformation(extent={{-10.0003,-3.5},{10.0001,
             3.50001}},
         rotation=90,
         origin={-54.0001,84.5})));
   TA       TA3(testValue=0)
-               annotation (Placement(transformation(extent={{-12.0001,
+               annotation(Placement(transformation(extent={{-12.0001,
             -3.99999},{11.9999,4}},
         rotation=0,
         origin={102,-18})));
@@ -69,13 +69,13 @@ model Maculation "maculation of the printing process"
     nOut=1,
     maximumSpeed=speed,
     arcWeightIn={0,1})
-    annotation (Placement(transformation(extent={{128,-28},{148,-8}})));
+    annotation(Placement(transformation(extent={{128,-28},{148,-8}})));
   PC Bundle_in_macu_press(nIn=1, reStart=reStart)
-    annotation (Placement(transformation(extent={{172,-28},{192,-8}})));
+    annotation(Placement(transformation(extent={{172,-28},{192,-8}})));
   Interfaces.TransitionIn ausschleussen_[2]
-    annotation (Placement(transformation(extent={{-198,-6},{-178,14}}),
+    annotation(Placement(transformation(extent={{-198,-6},{-178,14}}),
         iconTransformation(extent={{-200,-10},{-180,10}})));
-  Interfaces.PlaceOut makulatur_ annotation (Placement(transformation(
+  Interfaces.PlaceOut makulatur_ annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-52,110}), iconTransformation(
@@ -87,7 +87,7 @@ protected
   outer Boolean reStart;
   outer Real speed;
 public
-  Interfaces.TransitionIn buendelinMakuPresse_ annotation (Placement(
+  Interfaces.TransitionIn buendelinMakuPresse_ annotation(Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
@@ -95,144 +95,144 @@ public
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={80,90})));
-  Modelica.Blocks.Interfaces.RealOutput macuBundle_  annotation (Placement(
+  Modelica.Blocks.Interfaces.RealOutput macuBundle_  annotation(Placement(
         transformation(extent={{172,2},{192,22}}), iconTransformation(extent={{180,
             -12},{200,8}})));
   TD T1(
     nIn=2,
     nOut=2,
     arcWeightIn={pre(bundle_channelOut.t),1})
-    annotation (Placement(transformation(extent={{-154,46},{-134,66}})));
+    annotation(Placement(transformation(extent={{-154,46},{-134,66}})));
   TD T2(nIn=1, nOut=1)
-    annotation (Placement(transformation(extent={{-154,-6},{-134,14}})));
+    annotation(Placement(transformation(extent={{-154,-6},{-134,14}})));
   PD P1(nIn=2, nOut=1)
-    annotation (Placement(transformation(extent={{-110,-6},{-90,14}})));
+    annotation(Placement(transformation(extent={{-110,-6},{-90,14}})));
   IA IA1(testValue=1)
-         annotation (Placement(transformation(
+         annotation(Placement(transformation(
         extent={{-11,-3.99999},{11.0001,3.99999}},
         rotation=180,
         origin={-75,-76})));
 equation
   connect(pressing_button.outPlaces[1], start_channelOut.inTransition[1])
-    annotation (Line(
+    annotation(Line(
       points={{-175.2,-54},{-128.8,-54}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(start_channelOut.outTransition[1], channelOut.inPlaces[1])
-    annotation (Line(
+    annotation(Line(
       points={{-107.2,-54},{-58.8,-54.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(bundle_channelOut.outTransition[1], Stop_macu.inPlaces[1])
-    annotation (Line(
+    annotation(Line(
       points={{24.8,-18.75},{56,-18.75},{56,3.2}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Stop_macu.outPlaces[1], bundle_not_channelOut.inTransition[1])
-    annotation (Line(
+    annotation(Line(
       points={{56,12.8},{56,36.5},{-3.2,36.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(bundle_not_channelOut.outTransition[1], channelOut1.inPlaces[1])
-        annotation (Line(
+        annotation(Line(
       points={{-24.8,36.6667},{-66,36.6667},{-66,36},{-76,36},{-76,3.5},{
           -60.8,3.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(bundle_not_channelOut.outTransition[2], channelOut.inPlaces[2])
-    annotation (Line(
+    annotation(Line(
       points={{-24.8,36},{-84,36},{-84,-53.5},{-58.8,-53.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(bundle_not_channelOut.outTransition[3], TA4.inPlace)
-    annotation (Line(
+    annotation(Line(
       points={{-24.8,35.3333},{-52,35.3333},{-52,63.2203},{-52.5808,
           63.2203}},
       color={0,0,0},
       smooth=Smooth.None));
 
-  connect(TA4.outTransition, makulatur_) annotation (Line(
+  connect(TA4.outTransition, makulatur_) annotation(Line(
       points={{-52.5808,86.3954},{-52.5808,91.1977},{-52,91.1977},{-52,
           110}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(bundle_channelOut.outTransition[2], TA3.inPlace)     annotation (Line(
+  connect(bundle_channelOut.outTransition[2], TA3.inPlace)     annotation(Line(
       points={{24.8,-18.25},{60,-18.25},{60,-18},{88.0951,-18}},
       color={0,0,0},
       smooth=Smooth.None));
 
-  connect(TA3.outTransition, Macu_press.inPlaces[1])  annotation (Line(
+  connect(TA3.outTransition, Macu_press.inPlaces[1])  annotation(Line(
       points={{115.905,-18},{115.794,-18},{115.794,-18.5},{133.2,-18.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(Macu_press.outPlaces[1], Bundle_in_macu_press.inTransition[1])
-    annotation (Line(
+    annotation(Line(
       points={{142.8,-18},{171.2,-18}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(Macu_press.inPlaces[2], buendelinMakuPresse_)  annotation (Line(
+  connect(Macu_press.inPlaces[2], buendelinMakuPresse_)  annotation(Line(
       points={{133.2,-17.5},{120,-17.5},{120,108}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(Bundle_in_macu_press.pc_t, macuBundle_)    annotation (Line(
+  connect(Bundle_in_macu_press.pc_t, macuBundle_)    annotation(Line(
       points={{182,-7.2},{182,12}},
       color={0,0,127},
       smooth=Smooth.None));
   connect(channelOut1.outPlaces[1], bundle_channelOut.inTransition[1])
-    annotation (Line(
+    annotation(Line(
       points={{-51.2,4},{-24,4},{-24,-18.5},{3.2,-18.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(channelOut.outPlaces[1], bundle_channelOut.inTransition[2])
-    annotation (Line(
+    annotation(Line(
       points={{-49.2,-54},{-24,-54},{-24,-18},{-10,-18},{-10,-17.5},{3.2,
           -17.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(bundle_channelOut.outTransition[3], T1.inPlaces[1])     annotation (
+  connect(bundle_channelOut.outTransition[3], T1.inPlaces[1])     annotation(
       Line(
       points={{24.8,-17.75},{72,-18},{72,94},{-172,94},{-172,55.5},{
           -148.8,55.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(T1.outPlaces[1], bundle_not_channelOut.inTransition[2])
-    annotation (Line(
+    annotation(Line(
       points={{-139.2,55.5},{-58,56},{28,56},{28,35.5},{-3.2,35.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(ausschleussen_[1], T1.inPlaces[2]) annotation (Line(
+  connect(ausschleussen_[1], T1.inPlaces[2]) annotation(Line(
       points={{-188,-1},{-192,4},{-172,4},{-172,56.5},{-148.8,56.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(ausschleussen_[2], T2.inPlaces[1]) annotation (Line(
+  connect(ausschleussen_[2], T2.inPlaces[1]) annotation(Line(
       points={{-188,9},{-192,10},{-194,6},{-194,4},{-148.8,4}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(T2.outPlaces[1], P1.inTransition[1]) annotation (Line(
+  connect(T2.outPlaces[1], P1.inTransition[1]) annotation(Line(
       points={{-139.2,4},{-110.8,4},{-110.8,3.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(P1.outTransition[1], channelOut1.inPlaces[2])    annotation (Line(
+  connect(P1.outTransition[1], channelOut1.inPlaces[2])    annotation(Line(
       points={{-89.2,4},{-60.8,4.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(T1.outPlaces[2], P1.inTransition[2]) annotation (Line(
+  connect(T1.outPlaces[2], P1.inTransition[2]) annotation(Line(
       points={{-139.2,56.5},{-120,56.5},{-120,4.5},{-110.8,4.5}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(bundle_channelOut.outTransition[4], IA1.inPlace)
-    annotation (Line(
+    annotation(Line(
       points={{24.8,-17.25},{38,-17.25},{38,-84},{-50.0317,-84},{-50.0317,
           -85.4545}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(IA1.outTransition,pressing_button. inPlaces[1]) annotation (
+  connect(IA1.outTransition,pressing_button. inPlaces[1]) annotation(
       Line(
       points={{-75.5239,-85.4545},{-196,-85.4545},{-196,-54},{-184.8,-54}},
       color={0,0,0},
       smooth=Smooth.None));
 
-  annotation (Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-200,-100},
+  annotation(Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-200,-100},
             {200,100}}), graphics), Icon(coordinateSystem(preserveAspectRatio=true,
           extent={{-200,-100},{200,100}}), graphics={
         Rectangle(

@@ -3,7 +3,7 @@ package Senseo "Model of a Senseo coffee machine"
   extends Modelica.Icons.ExamplesPackage;
 
 
-annotation (Documentation(info="<html>
+annotation(Documentation(info="<html>
 <h1>Background</h1>
 <p>
 A model of a Senseo coffee machine is presented. The main feature of a Senseo coffee machine is that the coffee is placed in the machine

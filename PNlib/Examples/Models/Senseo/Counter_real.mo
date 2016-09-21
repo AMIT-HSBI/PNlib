@@ -3,7 +3,7 @@ model Counter_real "Real Counter"
  parameter String text="counter";
  parameter Real color[3]={255,0,0};
   Modelica.Blocks.Interfaces.RealInput    levelSensor
-    annotation (Placement(transformation(extent={{-61,-30},{-81,-10}},
+    annotation(Placement(transformation(extent={{-61,-30},{-81,-10}},
             rotation=0), iconTransformation(
         extent={{10,-10},{-10,10}},
         rotation=270,
@@ -13,7 +13,7 @@ model Counter_real "Real Counter"
   Real levelSensor_=if levelSensor>0 then levelSensor else 0;
 equation
   count=levelSensor_/hmax;
-  annotation (
+  annotation(
     Diagram(coordinateSystem(
           preserveAspectRatio=true,
           extent={{-100,-100},{100,100}},

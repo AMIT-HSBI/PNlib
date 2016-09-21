@@ -39,7 +39,7 @@ algorithm
       // hack for Dymola 2017
       //disTAin := TAein and disTransition;
       disTAin := Functions.OddsAndEnds.boolAnd(TAein, disTransition);
-      arcWeightSum:=Functions.OddsAndEnds.conditionalSum(arcWeight,disTAin);  //arc weight sum of all active input transitions which are already enabled by their input places
+      arcWeightSum:=Functions.OddsAndEnds.conditionalSum(arcWeight, disTAin);  //arc weight sum of all active input transitions which are already enabled by their input places
       if t + arcWeightSum -maxMarks <= Constants.almost_eps or Functions.OddsAndEnds.isEqual(arcWeightSum, 0.0) then  //Place has no actual conflict; all active input transitions are enabled
         TEin:=TAein;
       else                          //Place has an actual conflict
@@ -89,7 +89,7 @@ algorithm
             end if;
             nremTAin:=nremTAin - 1;
             if nremTAin > 0 then
-              remTAin:=Functions.OddsAndEnds.deleteElementInt(remTAin,k);
+              remTAin:=Functions.OddsAndEnds.deleteElementInt(remTAin, k);
               cumEnablingProb:=zeros(nIn);
               sumEnablingProbTAin:=sum(enablingProb[remTAin[1:nremTAin]]);
               if sumEnablingProbTAin>0 then

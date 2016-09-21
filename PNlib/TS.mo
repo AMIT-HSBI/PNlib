@@ -4,9 +4,9 @@ model TS "Stochastic Transition"
   parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
   Real h=1 "user-defined hazard function" annotation(Dialog(enable = true, group = "Exponential Distribution"));
-  Real arcWeightIn[nIn]=fill(1,nIn) "arc weights of input places"
+  Real arcWeightIn[nIn]=fill(1, nIn) "arc weights of input places"
                                          annotation(Dialog(enable = true, group = "Arc Weights"));
-  Real arcWeightOut[nOut]=fill(1,nOut) "arc weights of output places"
+  Real arcWeightOut[nOut]=fill(1, nOut) "arc weights of output places"
                                      annotation(Dialog(enable = true, group = "Arc Weights"));
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
@@ -18,7 +18,7 @@ model TS "Stochastic Transition"
   Integer animateHazardFunc=settings.animateHazardFunc
     "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
-  parameter Integer localSeed = PNlib.Functions.Random.counter() "Local seed to initialize random number generator"  annotation(Dialog(enable = true, group = "Random Number Generator"));
+  parameter Integer localSeed = PNlib.Functions.Random.counter() "Local seed to initialize random number generator" annotation(Dialog(enable = true, group = "Random Number Generator"));
 protected
   discrete Integer state128[4] "state of random number generator";
   Real r128 "random number";
@@ -46,7 +46,7 @@ protected
   Integer testValueInt[nIn]
     "Integer test values of input arcs (for generating events!)";
   Integer normalArc[nIn]
-    "1=no,2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
+    "1=no, 2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
   Boolean delayPassed(start=false, fixed=true) "Is the delay passed?";
   Boolean ani "for transition animation";
   Boolean disPlaceIn[nIn]
@@ -58,7 +58,7 @@ protected
   Boolean tokenInOut[nIn] "Have the tokens of input places changed?";
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
   //activation process
-  Blocks.activationDis activation(testValue=testValue,testValueInt=testValueInt,normalArc=normalArc,nIn=nIn,nOut=nOut,tIn=tIn, tOut=tOut, tIntIn=tIntIn,tIntOut=tIntOut,arcType=arcType,arcWeightIn=arcWeightIn, arcWeightIntIn=arcWeightIntIn, arcWeightOut=arcWeightOut, arcWeightIntOut=arcWeightIntOut, minTokens=minTokens, maxTokens=maxTokens, minTokensInt=minTokensInt, maxTokensInt=maxTokensInt,firingCon=firingCon,disPlaceIn=disPlaceIn,disPlaceOut=disPlaceOut);
+  Blocks.activationDis activation(testValue=testValue, testValueInt=testValueInt, normalArc=normalArc, nIn=nIn, nOut=nOut, tIn=tIn, tOut=tOut, tIntIn=tIntIn, tIntOut=tIntOut, arcType=arcType, arcWeightIn=arcWeightIn, arcWeightIntIn=arcWeightIntIn, arcWeightOut=arcWeightOut, arcWeightIntOut=arcWeightIntOut, minTokens=minTokens, maxTokens=maxTokens, minTokensInt=minTokensInt, maxTokensInt=maxTokensInt, firingCon=firingCon, disPlaceIn=disPlaceIn, disPlaceOut=disPlaceOut);
   //Is the transition enabled by all input places?
   Boolean enabledByInPlaces = Functions.OddsAndEnds.allTrue(enableIn);
   //Is the transition enabled by all output places?
@@ -88,7 +88,7 @@ public
     tokenInOut=tokenInOut,
     testValue=testValue,
     testValueint=testValueInt,
-    normalArc=normalArc) if nIn > 0 "connector for input places" annotation (Placement(transformation(extent={{-56,-10},{-40,10}}, rotation=0)));
+    normalArc=normalArc) if nIn > 0 "connector for input places" annotation(Placement(transformation(extent={{-56, -10}, {-40, 10}}, rotation=0)));
 
   PNlib.Interfaces.TransitionOut outPlaces[nOut](
     each active=delayPassed,
@@ -105,7 +105,7 @@ public
     maxTokens=maxTokens,
     maxTokensint=maxTokensInt,
     disPlace=disPlaceOut,
-    enable=enableOut) if nOut > 0 "connector for output places" annotation (Placement(transformation(extent={{40,-10},{56,10}}, rotation=0)));
+    enable=enableOut) if nOut > 0 "connector for output places" annotation(Placement(transformation(extent={{40, -10}, {56, 10}}, rotation=0)));
 equation
   //****MAIN BEGIN****//
   //reset active when delay passed
@@ -120,7 +120,7 @@ equation
      fireTime=time;
      ani=true;
    end when;
-   color=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255,255,0} else {0,0,0};
+   color=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255, 255, 0} else {0, 0, 0};
    //****ANIMATION END****//
    //****ERROR MESSENGES BEGIN****//
     for i in 1:nIn loop
@@ -164,27 +164,27 @@ initial algorithm
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, settings.globalSeed);
   (r128, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(
       state128);
-  annotation (defaultComponentName = "T1",Icon(graphics={Rectangle(
-          extent={{-40,100},{40,-100}},
-          lineColor={0,0,0},
-          fillColor=DynamicSelect({0,0,0},color),
+  annotation(defaultComponentName = "T1", Icon(graphics={Rectangle(
+          extent={{-40, 100}, {40, -100}},
+          lineColor={0, 0, 0},
+          fillColor=DynamicSelect({0, 0, 0}, color),
           fillPattern=FillPattern.Solid),
       Polygon(
-        points={{-40,48},{40,74},{-40,8},{-40,10},{-40,6},{-40,8},{-40,48}},
-        lineColor={0,0,0},
+        points={{-40, 48}, {40, 74}, {-40, 8}, {-40, 10}, {-40, 6}, {-40, 8}, {-40, 48}},
+        lineColor={0, 0, 0},
         smooth=Smooth.None,
-        fillColor={255,255,255},
+        fillColor={255, 255, 255},
         fillPattern=FillPattern.Solid),
         Text(
-          extent={{-2,-112},{-2,-140}},
-          lineColor={0,0,0},
-          textString=DynamicSelect(" ",if animateHazardFunc==1 then "h="+realString(h,1,2) else " ")),
+          extent={{-2, -112}, {-2, -140}},
+          lineColor={0, 0, 0},
+          textString=DynamicSelect(" ", if animateHazardFunc==1 then "h="+realString(h, 1, 2) else " ")),
         Text(
-          extent={{6,-152},{6,-180}},
-          lineColor={0,0,0},
-          textString=DynamicSelect(" ",if animatePutFireTime==1 then "pt="+realString(putFireTime,1,2) else " ")),
+          extent={{6, -152}, {6, -180}},
+          lineColor={0, 0, 0},
+          textString=DynamicSelect(" ", if animatePutFireTime==1 then "pt="+realString(putFireTime, 1, 2) else " ")),
                                           Text(
-          extent={{-4,139},{-4,114}},
-          lineColor={0,0,0},
+          extent={{-4, 139}, {-4, 114}},
+          lineColor={0, 0, 0},
           textString="%name")}));
 end TS;

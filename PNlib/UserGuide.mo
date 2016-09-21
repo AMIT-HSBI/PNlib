@@ -1,7 +1,7 @@
 within PNlib;
 model UserGuide
  extends Modelica.Icons.Information;
-  annotation (Documentation(info="<html>
+  annotation(Documentation(info="<html>
 <h1>Extended Hybrid Petri Nets (xHPN)</h1>
 <p>
 The xHPN formalism comprises of three different processes, called <b>transitions</b>: discrete, stochastic, and continuous transition,
@@ -54,8 +54,8 @@ when continuous transitions fire but their marking cannot be changed during the 
 <h3>Example: Basic concepts of hybrid Petri nets</h3>
 <p>The figure shows examples of these two basic principles:</p>
 <ul>
-<li>T1 can only fire when P1 has more than zero marks and P3 has at least one mark,</li>
-<li>T2 can only fire when P4 has at least one mark and P6 has at least 5.4 marks,</li>
+<li>T1 can only fire when P1 has more than zero marks and P3 has at least one mark, </li>
+<li>T2 can only fire when P4 has at least one mark and P6 has at least 5.4 marks, </li>
 <li>T3 fires by removing one mark from P7 and adding 1.8 marks to P8</li>
 <li>T4 fires by removing 0.8 marks from P9 and adding one mark to P10.</li>
 </ul>
@@ -69,14 +69,14 @@ continuous transition if it is input as well as output of the transition with ar
 place but the discrete marking cannot be changed by continuous firing.</p>
 <p>Summarized, an xHPN comprises of:</p>
 <ul>
-<li>discrete and continuous places,</li>
-<li>discrete, stochastic, and continuous transitions,</li>
-<li>places can be connected to transitions by normal, test, inhibitor, and read arcs while transitions can only be connected to places by normal arcs,</li>
-<li>arc weights can be functions depending on markings and/or time,</li>
-<li>discrete place must be input as well as output of continuous transitions with arcs of same weights,</li>
-<li>places can be provided with minimum and maximum capacities,</li>
-<li>discrete transitions can be provided with delays,</li>
-<li>stochastic transitions can be provided with hazard functions depending on markings,</li>
+<li>discrete and continuous places, </li>
+<li>discrete, stochastic, and continuous transitions, </li>
+<li>places can be connected to transitions by normal, test, inhibitor, and read arcs while transitions can only be connected to places by normal arcs, </li>
+<li>arc weights can be functions depending on markings and/or time, </li>
+<li>discrete place must be input as well as output of continuous transitions with arcs of same weights, </li>
+<li>places can be provided with minimum and maximum capacities, </li>
+<li>discrete transitions can be provided with delays, </li>
+<li>stochastic transitions can be provided with hazard functions depending on markings, </li>
 <li>continuous transitions can be provided with maximum speed function depending on markings and/or time, and</li>
 <li>all transitions can be provided with additional firing conditions depending on all possible model variables.</li>
 </ul>
@@ -152,7 +152,7 @@ This conflict can be solved by prioritization of the transitions. If T1 takes pr
 <p>The advanced Petri Net library, called PNlib, enables the modeling of extended hybrid Petri Nets (xHPN).
 It comprises</p>
 <ul>
-<li>a discrete (PD) and a continuous place (PC),</li>
+<li>a discrete (PD) and a continuous place (PC), </li>
 <li>a discrete (TD), a stochastic (TS), and a continuous transition (TC), and</li>
 <li>a test (TA), an inhibitor (IA), and a read arcs (RA).</li>
 </ul>
@@ -168,29 +168,29 @@ It comprises</p>
 Additionally, the package contains the component <b>settings</b> which enables the setting of
 global parameters for the display and animation of a Petri net model:</p>
 <ul>
-<li>showPlaceName: displays the names of places,</li>
-<li>showTransitionName: displays the names of transitions,</li>
-<li>showDelay: displays the delays of discrete transitions,</li>
-<li>showCapacity: displays the minimum and maximum capacities of places,</li>
-<li>showWeightTIarc: displays the arc weights of test and inhibitor arcs,</li>
+<li>showPlaceName: displays the names of places, </li>
+<li>showTransitionName: displays the names of transitions, </li>
+<li>showDelay: displays the delays of discrete transitions, </li>
+<li>showCapacity: displays the minimum and maximum capacities of places, </li>
+<li>showWeightTIarc: displays the arc weights of test and inhibitor arcs, </li>
 <li>animateMarking: animates the current marking in the places; the change of</li>
-<li>tokens/marks is displayed in the places during animation,</li>
+<li>tokens/marks is displayed in the places during animation, </li>
 <li>animatePlace: animates the color of places. Places change their degree of redness</li>
 according to the amount of tokens/marks; thereby, the redness degree is scaled by the
-parameter scale from 0 to 100,</li>
+parameter scale from 0 to 100, </li>
 <li> antimateTransition: animates the color of transitions. Transitions change their color
 to yellow when they fire; thereby, discrete transitions blink yellow for specified time units
-(timeFire) while continuous transitions are yellow the whole time when they fire,</li>
+(timeFire) while continuous transitions are yellow the whole time when they fire, </li>
 <li> animatePutFireTime: animates the putative firing time of stochastic transitions; the
-putative firing time is displayed under the transition during animation,</li>
+putative firing time is displayed under the transition during animation, </li>
 <li> animateHazardFunc: animates the hazard function of stochastic transitions; the hazard
-function is displayed under the transition during animation,</li>
+function is displayed under the transition during animation, </li>
 <li> animateSpeed: animates the instantaneous speed of continuous transitions; the
-instantaneous speed is displayed under the transition during animation,</li>
+instantaneous speed is displayed under the transition during animation, </li>
 <li> animateWeightTIarc: animates the weights of threshold and inhibition arcs; the
-weights are displayed under the arc during animation,</li>
+weights are displayed under the arc during animation, </li>
 <li> animateTIarc: animates the color of test and inhibitor arcs; the arc is green when the
-weight is satisfied and red otherwise,</li>
+weight is satisfied and red otherwise, </li>
 </ul>
 <p>
 Places, transitions, and arcs are represented by the icons depicted in the figure. Thereby, the
@@ -254,14 +254,14 @@ Therefore, the dimension parameters nIn and nOut are declared in the place and t
   <tr>
     <td>enablingProbIn</td>
     <td>vector</td>
-    <td>fill(1/nIn,nIn)</td>
+    <td>fill(1/nIn, nIn)</td>
     <td>sum must be equal to one</td>
     <td>Enabling probabilities of input transitions</td>
   </tr>
     <tr>
     <td>enablingProbOut</td>
     <td>vector</td>
-    <td>fill(1/nOut,nOut)</td>
+    <td>fill(1/nOut, nOut)</td>
     <td>sum must be equal to one</td>
     <td>Enabling probabilities of output transitions</td>
   </tr>
@@ -300,7 +300,7 @@ connect(P1.outTransition[1], T1.inPlaces[1]);
 connect(P1.outTransition[2], T2.inPlaces[1]);
 connect(P1.outTransition[3], T3.inPlaces[1]);
 The enabling probabilities 0.3 for T1, 0.25 for T2, and 0.45 for T3 have to be entered by the parameter vector
-enablingProbOut={0.3,0.25,0.45}.</p>
+enablingProbOut={0.3, 0.25, 0.45}.</p>
 
 <p><img src=\"modelica://PNlib/Resources/Images/enablingprobklein.png\"></p>
 
@@ -328,7 +328,7 @@ der(t) = conMarkChange;
   <b>reinit</b>(t, t+disMarkChange);
 <b>end when</b>;
 <b>when</b> reStart <b>then</b>
-  <b>reinit</b>(t,reStartMarks);
+  <b>reinit</b>(t, reStartMarks);
 <b>end when</b>;
 </pre>
 <p>
@@ -380,7 +380,7 @@ Parameters and modification possibilities of discrete (d), stochastic (s), and c
     <td>arcWeightIn</td>
     <td>vector or vector function</td>
     <td>d, s, c</td>
-    <td>fill(1,nIn)</td>
+    <td>fill(1, nIn)</td>
     <td>integers (d, s) positive real values (c)</td>
     <td>Weights of input arcs</td>
   </tr>
@@ -388,7 +388,7 @@ Parameters and modification possibilities of discrete (d), stochastic (s), and c
     <td>arcWeightOut</td>
     <td>vector or vector function</td>
     <td>d, s, c</td>
-    <td>fill(1,nOut)</td>
+    <td>fill(1, nOut)</td>
     <td>integers (d, s) positive real values (c)</td>
     <td>Weights of output arcs</td>
   </tr>
@@ -413,7 +413,7 @@ e.g. the connection (P1-T1) has the input index [1] and (T1-P5) has the output i
 The input of the arc weights displayed after the indices to property dialog or as modification equation is performed by the vector functions
 </p>
 <p>
-arcWeightIn = {2*P1.t,4} and arcWeightOut = {2,1,5*P1.t},
+arcWeightIn = {2*P1.t, 4} and arcWeightOut = {2, 1, 5*P1.t},
 </p>
 <p>
 whereby the expression P1.t accesses the current token number of P1. Thus, the weights of the arcs (P1-T1) and (T1-P5) are functions which depend on the token number of P1.

@@ -21,6 +21,6 @@ connector PlaceOut "part of place model to connect places to output transitions"
   output Boolean tokenInOut "Does the place have a discrete token change?" annotation(HideResult=true);
   output Real testValue "Test value of a test or inhibitor arc" annotation(HideResult=true);
   output Integer testValueint "Integer test value of a test or inhibitor arc" annotation(HideResult=true);
-  output Integer normalArc "Double arc: test and normal arc or inhibitor and normal arc"   annotation(HideResult=true);
+  output Integer normalArc "Double arc: test and normal arc or inhibitor and normal arc" annotation(HideResult=true);
   annotation(Icon(graphics={Polygon( points={{-100, 100}, {98, 0}, {-100, -100}, {-100, 100}}, lineColor={0, 0, 0}, fillColor={255, 255, 255}, fillPattern=FillPattern.Solid)}));
 end PlaceOut;

@@ -1,7 +1,7 @@
 within PNlib;
 model Contact
 extends Modelica.Icons.Contact;
- annotation (Documentation(info="<html>
+ annotation(Documentation(info="<html>
  <h1>Contact</h1>
  <p>This package is developed and maintained by the following contributors</p>
   <table border=1 cellspacing=0 cellpadding=2>

@@ -55,7 +55,7 @@ algorithm
      end while;
      gap := div(gap,2);
   end while;
-  annotation (Documentation(info="<HTML>
+  annotation(Documentation(info="<HTML>
 <h4>Syntax</h4>
 <blockquote><pre>
            sorted_v = Vectors.<b>sort</b>(v);
