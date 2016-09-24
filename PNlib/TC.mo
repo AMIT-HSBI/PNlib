@@ -16,7 +16,7 @@ model TC "Continuous Transition"
   Real color[3] "only for transition animation and display (Do not change!)";
 protected
   outer PNlib.Settings settings "global settings for animation and display";
-  Real prelimSpeed=preliminarySpeed.prelimSpeed "preliminary speed";
+  Real prelimSpeed "preliminary speed";
   Real tIn[nIn] "tokens of input places";
   Real tOut[nOut] "tokens of output places";
   Real minTokens[nIn] "minimum tokens of input places";
@@ -43,8 +43,6 @@ protected
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
   //activation process
   Blocks.activationCon activation(testValue=testValue, testValueInt=testValueInt, normalArc=normalArc, nIn=nIn, nOut=nOut, tIn=tIn, tOut=tOut, tIntIn=tIntIn, tIntOut=tIntOut, arcType=arcType, arcWeightIn=arcWeightIn, arcWeightOut=arcWeightOut, arcWeightIntIn=arcWeightIntIn, arcWeightIntOut=arcWeightIntOut, minTokens=minTokens, maxTokens=maxTokens, minTokensInt=minTokensInt, maxTokensInt=maxTokensInt, firingCon=firingCon, fed=fed, emptied=emptied, disPlaceIn=disPlaceIn, disPlaceOut=disPlaceOut);
-  //preliminary speed calculation
-  PNlib.Blocks.preliminarySpeed  preliminarySpeed(nIn=nIn, nOut=nOut, arcWeightIn=arcWeightIn, arcWeightOut=arcWeightOut, speedSumIn=speedSumIn, speedSumOut=speedSumOut, maximumSpeed=maximumSpeed, weaklyInputActiveVec=activation.weaklyInputActiveVec, weaklyOutputActiveVec=activation.weaklyOutputActiveVec);
   //firing process
   Boolean fire_ = Functions.OddsAndEnds.allTrue(/* hack for Dymola 2017 */ Functions.OddsAndEnds.boolOr(enableIn, not disPlaceIn));
   //****BLOCKS END****//
@@ -91,6 +89,8 @@ public
     decreasingFactor=decreasingFactorOut) if nOut > 0  "connector for output places" annotation(Placement(transformation(extent={{40, -10}, {56, 10}}, rotation=0)));
 equation
   //****MAIN BEGIN****//
+  //preliminary speed calculation
+  prelimSpeed = Functions.preliminarySpeed(nIn=nIn, nOut=nOut, arcWeightIn=arcWeightIn, arcWeightOut=arcWeightOut, speedSumIn=speedSumIn, speedSumOut=speedSumOut, maximumSpeed=maximumSpeed, weaklyInputActiveVec=activation.weaklyInputActiveVec, weaklyOutputActiveVec=activation.weaklyOutputActiveVec);
   //firing process
   fire=fire_ and activation.active and not maximumSpeed<=0;
   //instantaneous speed calculation
