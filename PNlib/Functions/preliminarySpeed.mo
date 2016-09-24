@@ -1,5 +1,5 @@
-within PNlib.Blocks;
-block preliminarySpeed "calculates the preliminary speed of a continuous transition"
+within PNlib.Functions;
+function preliminarySpeed "calculates the preliminary speed of a continuous transition"
   parameter input Integer nIn "number of input places";
   parameter input Integer nOut "number of output places";
   input Real arcWeightIn[:] "input arc weights";
@@ -10,16 +10,25 @@ block preliminarySpeed "calculates the preliminary speed of a continuous transit
   input Boolean weaklyInputActiveVec[:] "places that causes weakly input activation";
   input Boolean weaklyOutputActiveVec[:] "places that causes weakly output activation";
   output Real prelimSpeed "preliminary speed";
+protected
+  Real speedSum;
+  Real arcWeight;
 algorithm
-  prelimSpeed := maximumSpeed;
+  prelimSpeed := max(maximumSpeed, 0.0);
+
   for i in 1:nIn loop
-    if weaklyInputActiveVec[i] and speedSumIn[i] < prelimSpeed*arcWeightIn[i] then
-      prelimSpeed := speedSumIn[i]/arcWeightIn[i];
+    speedSum := max(speedSumIn[i], 0.0);
+    arcWeight := max(arcWeightIn[i], 0.0);
+    if weaklyInputActiveVec[i] and speedSum < prelimSpeed*arcWeight then
+      prelimSpeed := speedSum/arcWeight;
     end if;
   end for;
+
   for i in 1:nOut loop
-    if weaklyOutputActiveVec[i] and speedSumOut[i] < prelimSpeed*arcWeightOut[i] then
-      prelimSpeed := speedSumOut[i]/arcWeightOut[i];
+    speedSum := max(speedSumOut[i], 0.0);
+    arcWeight := max(arcWeightOut[i], 0.0);
+    if weaklyOutputActiveVec[i] and speedSum < prelimSpeed*arcWeight then
+      prelimSpeed := speedSum/arcWeight;
     end if;
   end for;
 end preliminarySpeed;
