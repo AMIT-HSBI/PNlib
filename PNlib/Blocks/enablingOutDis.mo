@@ -29,10 +29,17 @@ protected
 initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, globalSeed);
-  (randNum, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(
-      state128);
+  (randNum, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(state128);
 algorithm
   TEout := fill(false, nOut);
+  arcWeightSum := 0;
+  for i in 1: nOut loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
+    if TAout[i] and not disTransition[i] and t-(arcWeightSum+arcWeight[i]) >= minTokens then
+      TEout[i] := true;
+      arcWeightSum := arcWeightSum + arcWeight[i];
+    end if;
+  end for;
+
   when delayPassed or activeCon then
     if nOut>0 then
       arcWeightSum := Functions.OddsAndEnds.conditionalSumInt(arcWeight, TAout);  //arc weight sum of all active output transitions
@@ -42,13 +49,13 @@ algorithm
         if enablingType==1 then     //deterministic enabling according to priorities
           arcWeightSum := 0;
           for i in 1: nOut loop  //discrete transitions are proven at first
-            if TAout[i] and disTransition[i] and t-(arcWeightSum+arcWeight[i])>=minTokens then
+            if TAout[i] and disTransition[i] and t-(arcWeightSum+arcWeight[i]) >= minTokens then
               TEout[i] := true;
               arcWeightSum := arcWeightSum + arcWeight[i];
             end if;
           end for;
           for i in 1: nOut loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
-            if TAout[i] and not disTransition[i] and ((t-(arcWeightSum+arcWeight[i])>=minTokens)) then
+            if TAout[i] and not disTransition[i] and t-(arcWeightSum+arcWeight[i]) >= minTokens then
               TEout[i] := true;
               arcWeightSum := arcWeightSum + arcWeight[i];
             end if;
