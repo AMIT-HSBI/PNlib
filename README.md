@@ -34,7 +34,7 @@ it can be redistributed and/or modified under the terms of the [Modelica License
     http://www.fh-bielefeld.de/ammo
 * Sabrina Pro&szlig;
 * Lennart Ochel
-* Timo Kleine-Döpke
+* Timo Lask
 * Bernhard Bachmann
 
 You may report feedback, issues or feature-requests using the [Issues](../../issues) button.
