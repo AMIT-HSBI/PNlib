@@ -32,5 +32,5 @@ equation
   connect(P3.outTransition[1], T1.inPlaces[2]) annotation(Line(points={{50.8,
           -20}, {60, -20}, {60, -40}, {-60, -40}, {-60, 0.5}, {-54.8, 0.5}}, color = {0, 0, 0}, smooth = Smooth.None));
   annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent={{-80, -60},
-            {80, 80}}), graphics), experiment(StartTime=0.0, StopTime=10.0));
+            {80, 80}}), graphics), experiment(StartTime=0.0, StopTime=10.0, Tolerance = 1e-6));
 end ConflictLoop;

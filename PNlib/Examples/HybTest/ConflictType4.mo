@@ -19,5 +19,5 @@ equation
   connect(T1.outPlaces[1], P4.inTransition[1]) annotation(Line(points={{4.8, -40.5}, {29.2, -40.5}, {29.2, -40}}, color={0, 0, 0}));
   connect(P5.outTransition[2], T1.inPlaces[2]) annotation(Line(points={{-10.8, -9.5}, {-20, -9.5}, {-20, -39.5}, {-4.8, -39.5}}, color={0, 0, 0}));
   connect(P5.inTransition[2], T1.outPlaces[2]) annotation(Line(points={{10.8, -9.5}, {20, -9.5}, {20, -39.5}, {4.8, -39.5}}, color={0, 0, 0}));
-  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-60, -60}, {60, 60}})), experiment(StartTime = 0.0, StopTime = 10.0));
+  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-60, -60}, {60, 60}})), experiment(StartTime = 0.0, StopTime = 10.0, Tolerance = 1e-6));
 end ConflictType4;

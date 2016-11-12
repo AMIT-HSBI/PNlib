@@ -18,5 +18,5 @@ equation
   connect(P2.inTransition[1], T1.outPlaces[2]) annotation(Line(points={{20, 19.2},
           {20, -0.5}, {4.8, -0.5}}, color = {0, 0, 0}, smooth = Smooth.None));
   annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent={{-40, -40},
-            {40, 40}}), graphics), experiment(StartTime=0.0, StopTime=10.0));
+            {40, 40}}), graphics), experiment(StartTime=0.0, StopTime=10.0, Tolerance = 1e-6));
 end LoopAndArcweight;

@@ -8,5 +8,5 @@ model TSTest
 equation
   connect(P1.outTransition[1], T1.inPlaces[1]) annotation(Line(points={{-19.2, 0}, {-4.8, 0}}, color={0, 0, 0}));
   connect(T1.outPlaces[1], P2.inTransition[1]) annotation(Line(points={{4.8, 0}, {19.2, 0}}, color={0, 0, 0}));
-  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-40, -40}, {40, 40}})), experiment(StartTime=0.0, StopTime=10.0));
+  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-40, -40}, {40, 40}})), experiment(StartTime=0.0, StopTime=10.0, Tolerance = 1e-6));
 end TSTest;

@@ -14,5 +14,5 @@ equation
   connect(P1.outTransition[2], TA1.inPlace) annotation(Line(points={{-33.2, 0.5}, {-28, 0.5}, {-28, -31}, {-21.1111, -31}}, color={0, 0, 0}));
   connect(TA1.outTransition, T2.inPlaces[1]) annotation(Line(points={{-4.88889, -31}, {1.5556, -31}, {1.5556, -30}, {11.2, -30}}, color={0, 0, 0}));
   connect(T2.outPlaces[1], P3.inTransition[1]) annotation(Line(points={{20.8, -30}, {29.2, -30}}, color={0, 0, 0}));
-  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-60, -60}, {60, 60}}), graphics), experiment(StartTime=0.0, StopTime=10.0));
+  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-60, -60}, {60, 60}}), graphics), experiment(StartTime=0.0, StopTime=10.0, Tolerance = 1e-6));
 end IAwithPCtoTC;

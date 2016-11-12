@@ -22,5 +22,5 @@ equation
   connect(T5.inPlaces[1], P1.outTransition[5]) annotation(Line(points = {{5.2, -30}, {0, -30}, {0, 0.5}, {-29.2, 0.5}}, color = {0, 0, 0}, smooth = Smooth.None));
   connect(T6.inPlaces[1], P1.outTransition[6]) annotation(Line(points={{-14.8,
           -40}, {-20, -40}, {-20, 0.833333}, {-29.2, 0.833333}}, color = {0, 0, 0}, smooth = Smooth.None));
-  annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-60, -60}, {40, 60}}), graphics), experiment(StartTime = 0.0, StopTime = 10.0));
+  annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-60, -60}, {40, 60}}), graphics), experiment(StartTime = 0.0, StopTime = 10.0, Tolerance = 1e-6));
 end SixConflictProb;

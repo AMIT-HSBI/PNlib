@@ -33,5 +33,5 @@ equation
           -40}, {-20, -40}, {-20, 0.833333}, {-29.2, 0.833333}},
                                                       color = {0, 0, 0}, smooth = Smooth.None));
   annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent={{-60, -60},
-            {40, 60}}), graphics), experiment(StartTime=0.0, StopTime=10.0));
+            {40, 60}}), graphics), experiment(StartTime=0.0, StopTime=10.0, Tolerance = 1e-6));
 end SixConflictProb;

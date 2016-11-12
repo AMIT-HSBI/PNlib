@@ -28,5 +28,5 @@ equation
   connect(P3.inTransition[1], T3.outPlaces[1]) annotation(Line(points={{49.2,
           -20}, {34.8, -20}}, color = {0, 0, 0}, smooth = Smooth.None));
   annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent={{-40, -40},
-            {80, 40}}), graphics), experiment(StartTime=0.0, StopTime=10.0));
+            {80, 40}}), graphics), experiment(StartTime=0.0, StopTime=10.0, Tolerance = 1e-6));
 end Conflict;

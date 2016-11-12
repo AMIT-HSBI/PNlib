@@ -16,5 +16,5 @@ equation
   connect(T2.outPlaces[1], P3.inTransition[1]) annotation(Line(points={{20.8, -30}, {29.2, -30}}, color={0, 0, 0}));
   connect(IA1.outTransition, T1.inPlaces[1]) annotation(Line(points={{-6.88889, 29}, {-2.44445, 29}, {-2.44445, 30}, {11.2, 30}}, color={0, 0, 0}));
   connect(IA1.inPlace, P1.outTransition[2]) annotation(Line(points={{-23.1111, 29}, {-23.1111, 30}, {-30, 30}, {-30, 0}, {-33.2, 0}, {-33.2, 0.5}}, color={0, 0, 0}));
-  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-60, -60}, {60, 60}})), experiment(StartTime=0.0, StopTime=10.0));
+  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-60, -60}, {60, 60}})), experiment(StartTime=0.0, StopTime=10.0, Tolerance = 1e-6));
 end DoubleArcwithPCtoTC;

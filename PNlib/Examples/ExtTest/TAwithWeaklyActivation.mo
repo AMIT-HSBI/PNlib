@@ -14,5 +14,5 @@ equation
   connect(T2.outPlaces[1], P2.inTransition[1]) annotation(Line(points={{34.8, 20}, {34.8, 20}, {49.2, 20}}, color={0, 0, 0}));
   connect(T3.inPlaces[1], P1.outTransition[2]) annotation(Line(points={{25.2, 60}, {-10, 60}, {-10, 40.5}, {-19.2, 40.5}}, color={0, 0, 0}));
   connect(TA1.outTransition, T2.inPlaces[1]) annotation(Line(points={{17.1111, 20}, {17.1111, 20}, {25.2, 20}}, color={0, 0, 0}));
-  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-80, 0}, {80, 80}})), experiment(StartTime=0.0, StopTime=5.0));
+  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-80, 0}, {80, 80}})), experiment(StartTime=0.0, StopTime=5.0, Tolerance = 1e-6));
 end TAwithWeaklyActivation;

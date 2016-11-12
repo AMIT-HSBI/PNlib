@@ -19,5 +19,5 @@ equation
   connect(IA2.outTransition, T3.inPlaces[1]) annotation(Line(points={{56.9524, -1}, {56.9524, 0}, {66, 0}, {76, 0}, {76, -0.5}, {75.2, -0.5}}, color={0, 0, 0}));
   connect(P1.outTransition[2], T3.inPlaces[2]) annotation(Line(points={{-49.2, 0.5}, {-48, 0.5}, {-48, -20}, {66, -20}, {66, -4}, {66, 0.5}, {75.2, 0.5}}, color={0, 0, 0}));
   connect(T3.outPlaces[1], P3.inTransition[1]) annotation(Line(points={{84.8, 0}, {89.2, 0}}, color={0, 0, 0}));
-  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100, -40}, {120, 40}})), experiment(StartTime=0.0, StopTime=6.0));
+  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100, -40}, {120, 40}})), experiment(StartTime=0.0, StopTime=6.0, Tolerance = 1e-6));
 end IATest;

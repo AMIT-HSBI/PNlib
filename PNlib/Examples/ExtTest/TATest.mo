@@ -17,5 +17,5 @@ equation
   connect(P2.outTransition[1], TA2. inPlace) annotation(Line(points={{30.8, 0}, {38, 0}, {38, -1}, {43.0476, -1}}, color={0, 0, 0}));
   connect(TA2.outTransition, T3. inPlaces[1]) annotation(Line(points={{56.9524, -1}, {56.9524, 0}, {66, 0}, {76, 0}, {76, -0.5}, {75.2, -0.5}}, color={0, 0, 0}));
   connect(P1.outTransition[2], T3. inPlaces[2]) annotation(Line(points={{-49.2, 0.5}, {-48, 0.5}, {-48, -20}, {66, -20}, {66, -4}, {66, 0.5}, {75.2, 0.5}}, color={0, 0, 0}));
-  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100, -40}, {100, 40}})), experiment(StartTime=0.0, StopTime=6.0));
+  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100, -40}, {100, 40}})), experiment(StartTime=0.0, StopTime=6.0, Tolerance = 1e-6));
 end TATest;

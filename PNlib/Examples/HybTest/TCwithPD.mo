@@ -12,5 +12,5 @@ equation
   connect(T1.outPlaces[1], P2.inTransition[1]) annotation(Line(points={{4.8,19.5},{12,19.5},{12,20},{29.2,20}}, color={0,0,0}));
   connect(P3.outTransition[1], T1.inPlaces[2]) annotation(Line(points={{-10.8,-10},{-20,-10},{-20,20.5},{-4.8,20.5}}, color={0,0,0}));
   connect(T1.outPlaces[2], P3.inTransition[1]) annotation(Line(points={{4.8,20.5},{20,20.5},{20,-10},{10.8,-10}}, color={0,0,0}));
-  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-60,-60},{60,60}})), experiment(StartTime = 0.0, StopTime = 10.0));
+  annotation(Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-60,-60},{60,60}})), experiment(StartTime = 0.0, StopTime = 10.0, Tolerance = 1e-6));
 end TCwithPD;

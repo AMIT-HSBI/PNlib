@@ -37,5 +37,5 @@ equation
   connect(T8.inPlaces[1], P1.outTransition[8]) annotation(Line(points={{5.2, -20},
           {-0.4, -20}, {-0.4, 0.875}, {-29.2, 0.875}}, color = {0, 0, 0}, smooth = Smooth.None));
   annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent={{-60, -60},
-            {60, 60}}), graphics), experiment(StartTime=0.0, StopTime=10.0));
+            {60, 60}}), graphics), experiment(StartTime=0.0, StopTime=10.0, Tolerance = 1e-6));
 end EightConflictProb;

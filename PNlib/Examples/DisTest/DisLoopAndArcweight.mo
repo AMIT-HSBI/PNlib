@@ -14,5 +14,5 @@ equation
   connect(T1.outPlaces[1], P1.inTransition[1]) annotation(Line(points={{-6.8, 20},
           {-20, 20}, {-20, -20}, {-10.8, -20}}, color = {0, 0, 0}, smooth = Smooth.None));
   annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent={{-40, -40},
-            {40, 60}}), graphics), experiment(StartTime=0.0, StopTime=10.0));
+            {40, 60}}), graphics), experiment(StartTime=0.0, StopTime=10.0, Tolerance = 1e-6));
 end DisLoopAndArcweight;

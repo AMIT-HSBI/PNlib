@@ -3,14 +3,16 @@
 test: openmodelica dymola
 
 openmodelica:
-	@make -C OpenModelica > openmodelica.log 2>&1
+	@make -C OpenModelica | tee openmodelica.log
 	@make -C OpenModelica clean
-	@tail -2 openmodelica.log | head -1
+	@echo ""
+	@grep == openmodelica.log
 
 dymola:
-	@make -C Dymola > dymola.log 2>&1
+	@make -C Dymola | tee dymola.log
 	@make -C Dymola clean
-	@tail -2 dymola.log | head -1
+	@echo ""
+	@grep == dymola.log
 
 clean:
 	@make -C OpenModelica clean

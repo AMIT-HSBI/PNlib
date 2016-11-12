@@ -33,6 +33,6 @@ equation
           {0, -20}, {0, 0.5}, {9.2, 0.5}}, color = {0, 0, 0}, smooth = Smooth.None));
   connect(T1.inPlaces[1], P1.outTransition[1]) annotation(Line(points={{45.2, 0},
           {30.8, 0}}, color = {0, 0, 0}, smooth = Smooth.None));
-  annotation(experiment(StartTime=0.0, StopTime=10.0),
+  annotation(experiment(StartTime=0.0, StopTime=10.0, Tolerance = 1e-6),
     Diagram(coordinateSystem(extent={{-60, -40}, {60, 40}})));
 end InputConflictProb;

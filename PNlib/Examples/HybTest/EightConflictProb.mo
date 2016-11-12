@@ -22,5 +22,5 @@ equation
   connect(T6.inPlaces[1], P1.outTransition[6]) annotation(Line(points = {{-14.8, -40}, {-20, -40}, {-20, 0.375}, {-29.2, 0.375}}, color = {0, 0, 0}, smooth = Smooth.None));
   connect(T7.inPlaces[1], P1.outTransition[7]) annotation(Line(points = {{25.2, -30}, {20, -30}, {20, 0.625}, {-29.2, 0.625}}, color = {0, 0, 0}, smooth = Smooth.None));
   connect(T8.inPlaces[1], P1.outTransition[8]) annotation(Line(points = {{5.2, -20}, {-0.4, -20}, {-0.4, 0.875}, {-29.2, 0.875}}, color = {0, 0, 0}, smooth = Smooth.None));
-  annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-60, -60}, {60, 60}}), graphics), experiment(StartTime = 0.0, StopTime = 10.0));
+  annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-60, -60}, {60, 60}}), graphics), experiment(StartTime = 0.0, StopTime = 10.0, Tolerance = 1e-6));
 end EightConflictProb;

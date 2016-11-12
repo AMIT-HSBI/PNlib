@@ -15,5 +15,5 @@ equation
   connect(T1.outPlaces[1], P2.inTransition[1]) annotation(Line(points = {{14.8, 20}, {29.2, 20}}, color = {0, 0, 0}, smooth = Smooth.None));
   connect(T2.inPlaces[1], P1.outTransition[2]) annotation(Line(points = {{5.2, -20}, {-0.4, -20}, {-0.4, 0.5}, {-9.2, 0.5}}, color = {0, 0, 0}, smooth = Smooth.None));
   connect(T2.outPlaces[1], P3.inTransition[1]) annotation(Line(points = {{14.8, -20}, {29.2, -20}}, color = {0, 0, 0}, smooth = Smooth.None));
-  annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-60, -40}, {60, 40}}), graphics), experiment(StartTime = 0.0, StopTime = 10.0));
+  annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-60, -40}, {60, 40}}), graphics), experiment(StartTime = 0.0, StopTime = 10.0, Tolerance = 1e-6));
 end ConflictPrio;
