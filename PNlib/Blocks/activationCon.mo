@@ -52,13 +52,13 @@ algorithm
         end if;
       end if;
       if arcType[i]==2 then //test arc
-        if tIn[i] <= testValue[i] then
+        if tIn[i] - testValue[i] <= Constants.almost_eps then
           active := false;
         end if;
-        if tIn[i] > testValue[i] and fed[i] and normalArc[i]==2 then  //weakly input active??
+        if tIn[i] - testValue[i] > Constants.almost_eps and fed[i] and normalArc[i]==2 then  //weakly input active??
           weaklyInputActiveVec[i] := true;
         end if;
-      elseif arcType[i]==3 and (tIn[i] >= testValue[i]) then  //inhibitor arc
+      elseif arcType[i]==3 and (tIn[i] - testValue[i] >= -Constants.almost_eps) then  //inhibitor arc
         active := false;
       end if;
     end if;
