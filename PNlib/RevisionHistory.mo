@@ -17,6 +17,7 @@ info="<html>
       <td valign=\"top\">S. Proß</td>
       <td valign=\"top\">Initial release.</td>
     </tr>
+
     <tr>
       <td valign=\"top\">1.1</td>
       <td valign=\"top\">2015-01-13</td>
@@ -26,6 +27,7 @@ info="<html>
         <li>New function PNlib.Functions.Random.initRandom is introduced to make stochastic simulations reproducible.</li>
       </ul></td>
     </tr>
+
     <tr>
       <td valign=\"top\">1.2</td>
       <td valign=\"top\">2015-10-19</td>
@@ -33,6 +35,36 @@ info="<html>
       <td valign=\"top\"><ul>
         <li>Added support for 64-bit systems</li>
         <li>Revised some internal algorithm to archive less complex equation system structure</li>
+        <li>Minor bug fixes</li>
+      </ul></td>
+    </tr>
+
+    <tr>
+      <td valign=\"top\">1.3</td>
+      <td valign=\"top\">2016-04-19</td>
+      <td valign=\"top\">Lennart Ochel</td>
+      <td valign=\"top\"><ul>
+        <li>Added inflow/outflow information to continuous places</li>
+        <li>Added actual speed information to continuous transitions</li>
+        <li>Added tests for Dymola</li>
+        <li>Added more unit tests</li>
+        <li>Revised some internal algorithm to archive more efficient equation system structure</li>
+        <li>Minor bug fixes</li>
+      </ul></td>
+    </tr>
+
+    <tr>
+      <td valign=\"top\">2.0</td>
+      <td valign=\"top\">2016-12-05</td>
+      <td valign=\"top\">Lennart Ochel</td>
+      <td valign=\"top\"><ul>
+        <li>Added bicolored places</li>
+        <li>Fixed division by zero in function decreasingFactor</li>
+        <li>Fixed division by zero in preliminary speed calculation</li>
+        <li>Fixed handling of type-3 conflicts</li>
+        <li>Fixed handling of type-4 conflicts</li>
+        <li>Fixed missing initial conditions</li>
+        <li>Fixed zero arc weights</li>
         <li>Minor bug fixes</li>
       </ul></td>
     </tr>
