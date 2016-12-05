@@ -17,7 +17,7 @@ The main package PNlib is divided into the following sub-packages:
  * _Examples_: contains several examples and unit tests.
 
 ## Current release
-Download [PNlib v1.3 (2016-04-19)](../../archive/v1.3.zip)
+Download [PNlib v2.0 (2016-12-05)](../../archive/v2.0.zip)
 
 ## Compatibility
 * Works in OpenModelica (latest release) ([trend](https://test.openmodelica.org/libraries/history/PNlib/PNlib-trend.svg), [coverage](https://test.openmodelica.org/libraries/PNlib/BuildModelRecursive.html))
