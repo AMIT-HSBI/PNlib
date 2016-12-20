@@ -33,6 +33,7 @@ simulateModel("PNlib.Examples.ExtTest.TAwithPCtoTC", stopTime=10, resultFile="PN
 simulateModel("PNlib.Examples.ExtTest.TAwithPDtoTD", stopTime=10, resultFile="PNlib.Examples.ExtTest.TAwithPDtoTD_res");
 simulateModel("PNlib.Examples.ExtTest.TAwithWeaklyActivation", stopTime=5, resultFile="PNlib.Examples.ExtTest.TAwithWeaklyActivation_res");
 simulateModel("PNlib.Examples.ExtTest.TSTest", stopTime=10, resultFile="PNlib.Examples.ExtTest.TSTest_res");
+simulateModel("PNlib.Examples.ExtTest.TStriangular", stopTime=10, resultFile="PNlib.Examples.ExtTest.TSTest_res");
 simulateModel("PNlib.Examples.HybTest.ConflictPrio", stopTime=10, resultFile="PNlib.Examples.HybTest.ConflictPrio_res");
 simulateModel("PNlib.Examples.HybTest.ConflictProb", stopTime=10, resultFile="PNlib.Examples.HybTest.ConflictProb_res");
 simulateModel("PNlib.Examples.HybTest.ConflictType3", stopTime=10, resultFile="PNlib.Examples.HybTest.ConflictType3_res");
