@@ -6,13 +6,13 @@ model TS "Stochastic Transition"
   parameter Integer distributionType=1
     "distribution type of delay" annotation(Dialog(enable = true, group = "Distribution"), choices(choice=1
         "Exponential distribution", choice=2 "Triangular distribution", __Dymola_radioButtons=true));
-  parameter Real h=1
+  Real h=1
     "probability density" annotation(Dialog(enable = if distributionType==1 then true else false, group = "Exponential distribution"));
-  parameter Real a=0
+  Real a=0
     "Lower limit" annotation(Dialog(enable = if distributionType==2 then true else false, group = "Triangular distribution"));
-  parameter Real b=1
+  Real b=1
     "Upper Limit" annotation(Dialog(enable = if distributionType==2 then true else false, group = "Triangular distribution"));
-  parameter Real c=0.5
+  Real c=0.5
     "Most likely value" annotation(Dialog(enable = if distributionType==2 then true else false, group = "Triangular distribution"));
   Real arcWeightIn[nIn]=fill(1, nIn) "arc weights of input places"
                                          annotation(Dialog(enable = true, group = "Arc Weights"));
