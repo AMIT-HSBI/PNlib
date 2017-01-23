@@ -50,7 +50,6 @@ protected
   Boolean enableOut[nOut] "Is the transition enabled by output places?";
   Boolean tactPassed(start=false, fixed=true) "Is the tact passed?";
   Boolean ani "for transition animation";
-
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
   //activation process
   Blocks.activationDis activation(testValue=testValue, testValueInt=testValueInt, normalArc=normalArc, nIn=nIn, nOut=nOut, tIn=tIn, tOut=tOut, tIntIn=tIntIn, tIntOut=tIntOut, arcType=arcType, arcWeightIn=arcWeightIn, arcWeightIntIn=arcWeightIntIn, arcWeightOut=arcWeightOut, arcWeightIntOut=arcWeightIntOut, minTokens=minTokens, maxTokens=maxTokens, minTokensInt=minTokensInt, maxTokensInt=maxTokensInt, firingCon=firingCon, disPlaceIn=disPlaceIn, disPlaceOut=disPlaceOut);
@@ -137,7 +136,6 @@ equation
       assert(arcWeightOut[i]>=0, "Output arc weights must be positive.");
    end for;
    //****ERROR MESSENGES END****//
-
   annotation(defaultComponentName = "T1", Icon(graphics={Rectangle(
           extent={{-40, 100}, {40, -100}},
           lineColor={0, 0, 0},
