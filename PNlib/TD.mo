@@ -3,19 +3,15 @@ model TD "Discrete Transition"
   parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
-  parameter Real delay = 1 "delay of timed transition" annotation(Dialog(enable = true, group = "Delay"));
-  Real arcWeightIn[nIn]=fill(1, nIn) "arc weights of input places"
-                                         annotation(Dialog(enable = true, group = "Arc Weights"));
-  Real arcWeightOut[nOut]=fill(1, nOut) "arc weights of output places"
-                                     annotation(Dialog(enable = true, group = "Arc Weights"));
+  Real delay = 1 "delay of timed transition" annotation(Dialog(enable = true, group = "Delay"));
+  Real arcWeightIn[nIn] = fill(1, nIn) "arc weights of input places" annotation(Dialog(enable = true, group = "Arc Weights"));
+  Real arcWeightOut[nOut] = fill(1, nOut) "arc weights of output places" annotation(Dialog(enable = true, group = "Arc Weights"));
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
 protected
   outer PNlib.Settings settings "global settings for animation and display";
-  Integer showTransitionName=settings.showTransitionName
-    "only for transition animation and display (Do not change!)";
-  Integer showDelay=settings.showDelay
-    "only for transition animation and display (Do not change!)";
+  Integer showTransitionName=settings.showTransitionName "only for transition animation and display (Do not change!)";
+  Integer showDelay=settings.showDelay "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
   Real tIn[nIn] "tokens of input places";
   Real tOut[nOut] "tokens of output places";
@@ -24,7 +20,7 @@ protected
   Real fireTime "for transition animation";
   Real minTokens[nIn] "minimum tokens of input places";
   Real maxTokens[nOut] "maximum tokens of output places";
-  Real delay_ "due to problems if d==0";
+  Real delay_ = if delay < 1e-6 then 1e-6 else delay "due to event problems if delay==0";
   Integer tIntIn[nIn] "integer tokens of input places (for generating events!)";
   Integer tIntOut[nOut]
     "integer tokens of output places (for generating events!)";
@@ -99,12 +95,11 @@ public
     enable=enableOut) if nOut > 0 "connector for output places" annotation(Placement(transformation(extent={{40, -10}, {56, 10}}, rotation=0)));
 equation
   //****MAIN BEGIN****//
-   delay_=if delay<=0 then 10^(-6) else delay;  //due to event problems if delay==0
    //reset active when delay passed
    active = activation.active and not pre(delayPassed);
    //save next putative firing time
    when active then
-      firingTime=time+delay_;
+      firingTime = time + delay_;
    end when;
    //delay passed?
    delayPassed= active and time>=firingTime;
