@@ -6,6 +6,7 @@ block enablingOutDis "enabling process of output transitions"
   input Integer minTokens "minimum capacity";
   input Boolean TAout[:] "active output transitions with passed delay";
   input Integer enablingType "resolution of actual conflicts";
+  input Real enablingPrio[:] "enabling priorities of output transitions";
   input Real enablingProb[:] "enabling probabilites of output transitions";
   input Boolean disTransition[:] "discrete output transition";
   input Boolean delayPassed "Does any delayPassed of a output transition";
@@ -26,6 +27,7 @@ protected
   discrete Real randNum "uniform distributed random number";
   discrete Real sumEnablingProbTAout "sum of the enabling probabilities of the active output transitions";
   Boolean endWhile;
+  Integer Index "priority Index";
 initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, globalSeed);
@@ -49,9 +51,10 @@ algorithm
         if enablingType==1 then     //deterministic enabling according to priorities
           arcWeightSum := 0;
           for i in 1: nOut loop  //discrete transitions are proven at first
-            if TAout[i] and disTransition[i] and t-(arcWeightSum+arcWeight[i]) >= minTokens then
-              TEout[i] := true;
-              arcWeightSum := arcWeightSum + arcWeight[i];
+            Index:=Modelica.Math.Vectors.find(i,enablingPrio);
+            if Index>0 and TAout[Index] and disTransition[Index] and t-(arcWeightSum+arcWeight[Index]) >= minTokens then
+              TEout[Index] := true;
+              arcWeightSum := arcWeightSum + arcWeight[Index];
             end if;
           end for;
           for i in 1: nOut loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
@@ -130,6 +133,7 @@ algorithm
       state128 := pre(state128);
       sumEnablingProbTAout := 0.0;
       endWhile := false;
+      Index := 0;
     end if;
   end when;
   // hack for Dymola 2017

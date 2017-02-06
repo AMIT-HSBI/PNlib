@@ -6,6 +6,7 @@ block enablingInCon "enabling process of input transitions (continuous places)"
   input Real maxMarks "maximum capacity";
   input Boolean TAein[nIn] "active input transitions which are already enabled by their input places";
   input Integer enablingType "resolution of actual conflicts";
+  input Real enablingPrio[:] "enabling priorities of output transitions";
   input Real enablingProb[nIn] "enabling probabilites of input transitions";
   input Boolean disTransition[nIn] "discrete transition?";
   input Boolean delayPassed "Does any delayPassed of a output transition";
@@ -27,6 +28,7 @@ protected
   discrete Real randNum "uniform distributed random number";
   discrete Real sumEnablingProbTAin "sum of the enabling probabilities of the active input transitions";
   Boolean endWhile;
+  Integer Index "priority Index";
 initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, globalSeed);
@@ -49,9 +51,10 @@ algorithm
         if enablingType==1 then     //deterministic enabling according to priorities
           arcWeightSum:=0;
           for i in 1:nIn loop
-            if disTAin[i] and ((t+(arcWeightSum+arcWeight[i])<=maxMarks) or Functions.OddsAndEnds.isEqual(arcWeight[i], 0.0)) then
-              TEin[i]:=true;
-              arcWeightSum:=arcWeightSum + arcWeight[i];
+            Index:=Modelica.Math.Vectors.find(i,enablingPrio);
+            if Index>0 and disTAin[Index] and ((t+(arcWeightSum+arcWeight[Index])<=maxMarks) or Functions.OddsAndEnds.isEqual(arcWeight[Index], 0.0)) then
+              TEin[Index]:=true;
+              arcWeightSum:=arcWeightSum + arcWeight[Index];
             end if;
           end for;
         else                        //probabilistic enabling according to enabling probabilities
@@ -117,6 +120,7 @@ algorithm
       state128 := pre(state128);
       sumEnablingProbTAin := 0.0;
       endWhile := false;
+      Index := 0;
     end if;
   end when;
   // hack for Dymola 2017

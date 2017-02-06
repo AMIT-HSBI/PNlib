@@ -1,5 +1,4 @@
 within PNlib.Examples.HybTest;
-
 model ConflictPrio
   extends Modelica.Icons.Example;
   PNlib.PC P1(nIn = 1, nOut = 2, startMarks=2) annotation(Placement(transformation(extent = {{-30, -10}, {-10, 10}})));

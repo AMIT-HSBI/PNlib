@@ -12,6 +12,10 @@ model PD "Discrete Place"
   parameter Integer enablingType=1
     "resolution type of actual conflict (type-1-conflict)" annotation(Dialog(enable = true, group = "Enabling"), choices(choice=1
         "Priority", choice=2 "Probability", __Dymola_radioButtons=true));
+  parameter Real enablingPrioIn[nIn]=if nIn>1 then linspace(1,nIn,nIn) else fill(1, nIn)
+    "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==2 then false else true, group = "Enabling"));
+  parameter Real enablingPrioOut[nOut]=if nOut>1 then linspace(1,nOut,nOut) else fill(1, nOut)
+    "enabling probabilities of output transitions" annotation(Dialog(enable = if enablingType==2 then false else true, group = "Enabling"));
   parameter Real enablingProbIn[nIn]=fill(1/nIn, nIn)
     "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==1 then false else true, group = "Enabling"));
   parameter Real enablingProbOut[nOut]=fill(1/nOut, nOut)
@@ -52,8 +56,8 @@ protected
   Blocks.firingSumDis firingSumIn(fire=fireIn and disTransitionIn, arcWeight=arcWeightIn);
   Blocks.firingSumDis firingSumOut(fire=fireOut and disTransitionOut, arcWeight=arcWeightOut);
   //Enabling process
-  Blocks.enablingOutDis enableOut(delayPassed=delayPassedOut.anytrue, activeCon=activeConOut.anychange, nOut=nOut, arcWeight=arcWeightOut, t=pret, minTokens=minTokens, TAout=activeOut, enablingType=enablingType, enablingProb=enablingProbOut, disTransition=disTransitionOut, localSeed=localSeedOut, globalSeed=settings.globalSeed);
-  Blocks.enablingInDis enableIn(delayPassed=delayPassedIn.anytrue, active=activeIn, nIn=nIn, arcWeight=arcWeightIn, t=pret, maxTokens=maxTokens, TAein=enabledByInPlaces, enablingType=enablingType, enablingProb=enablingProbIn, disTransition=disTransitionIn, localSeed=localSeedIn, globalSeed=settings.globalSeed);
+  Blocks.enablingOutDis enableOut(delayPassed=delayPassedOut.anytrue, activeCon=activeConOut.anychange, nOut=nOut, arcWeight=arcWeightOut, t=pret, minTokens=minTokens, TAout=activeOut, enablingType=enablingType, enablingPrio=enablingPrioOut, enablingProb=enablingProbOut, disTransition=disTransitionOut, localSeed=localSeedOut, globalSeed=settings.globalSeed);
+  Blocks.enablingInDis enableIn(delayPassed=delayPassedIn.anytrue, active=activeIn, nIn=nIn, arcWeight=arcWeightIn, t=pret, maxTokens=maxTokens, TAein=enabledByInPlaces, enablingType=enablingType, enablingPrio=enablingPrioIn, enablingProb=enablingProbIn, disTransition=disTransitionIn, localSeed=localSeedIn, globalSeed=settings.globalSeed);
   //****BLOCKS END****//
 
 public
