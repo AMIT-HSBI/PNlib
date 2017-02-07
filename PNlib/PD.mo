@@ -13,9 +13,9 @@ model PD "Discrete Place"
     "resolution type of actual conflict (type-1-conflict)" annotation(Dialog(enable = true, group = "Enabling"), choices(choice=1
         "Priority", choice=2 "Probability", __Dymola_radioButtons=true));
   parameter Real enablingPrioIn[nIn]=if nIn>1 then linspace(1,nIn,nIn) else fill(1, nIn)
-    "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==2 then false else true, group = "Enabling"));
+    "enabling priorities of input transitions" annotation(Dialog(enable = if enablingType==2 then false else true, group = "Enabling"));
   parameter Real enablingPrioOut[nOut]=if nOut>1 then linspace(1,nOut,nOut) else fill(1, nOut)
-    "enabling probabilities of output transitions" annotation(Dialog(enable = if enablingType==2 then false else true, group = "Enabling"));
+    "enabling priorities of output transitions" annotation(Dialog(enable = if enablingType==2 then false else true, group = "Enabling"));
   parameter Real enablingProbIn[nIn]=fill(1/nIn, nIn)
     "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==1 then false else true, group = "Enabling"));
   parameter Real enablingProbOut[nOut]=fill(1/nOut, nOut)
