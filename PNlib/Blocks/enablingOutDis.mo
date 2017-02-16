@@ -6,7 +6,7 @@ block enablingOutDis "enabling process of output transitions"
   input Integer minTokens "minimum capacity";
   input Boolean TAout[:] "active output transitions with passed delay";
   input Integer enablingType "resolution of actual conflicts";
-  input Real enablingPrio[:] "enabling priorities of output transitions";
+  input Integer enablingPrio[:] "enabling priorities of output transitions";
   input Real enablingProb[:] "enabling probabilites of output transitions";
   input Boolean disTransition[:] "discrete output transition";
   input Boolean delayPassed "Does any delayPassed of a output transition";

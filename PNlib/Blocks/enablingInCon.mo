@@ -6,7 +6,7 @@ block enablingInCon "enabling process of input transitions (continuous places)"
   input Real maxMarks "maximum capacity";
   input Boolean TAein[nIn] "active input transitions which are already enabled by their input places";
   input Integer enablingType "resolution of actual conflicts";
-  input Real enablingPrio[:] "enabling priorities of output transitions";
+  input Integer enablingPrio[:] "enabling priorities of output transitions";
   input Real enablingProb[nIn] "enabling probabilites of input transitions";
   input Boolean disTransition[nIn] "discrete transition?";
   input Boolean delayPassed "Does any delayPassed of a output transition";

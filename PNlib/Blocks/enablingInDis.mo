@@ -6,7 +6,7 @@ block enablingInDis "enabling process of discrete input transitions"
   input Integer maxTokens "maximum capacity";
   input Boolean TAein[:] "active previous transitions which are already enabled by their input places";
   input Integer enablingType "resolution of actual conflicts";
-  input Real enablingPrio[:] "enabling priorities of input transitions";
+  input Integer enablingPrio[:] "enabling priorities of input transitions";
   input Real enablingProb[:] "enabling probabilites of input transitions";
   input Boolean disTransition[:] "type of input transitions";
   input Boolean delayPassed "Does any delayPassed of a output transition";
