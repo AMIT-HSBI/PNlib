@@ -20,6 +20,7 @@ PNlib.Examples.DisTest.InputConflictProb.mos \
 PNlib.Examples.DisTest.OutputConflictPrio.mos \
 PNlib.Examples.DisTest.OutputConflictProb.mos \
 PNlib.Examples.DisTest.PDtoTD.mos \
+PNlib.Examples.DisTest.PrioTest.mos \
 PNlib.Examples.DisTest.SinglePD.mos \
 PNlib.Examples.DisTest.SingleTD.mos \
 PNlib.Examples.DisTest.SixConflictProb.mos \
