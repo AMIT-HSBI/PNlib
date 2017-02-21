@@ -150,7 +150,7 @@ equation
         Text(
           extent={{-2, -116}, {-2, -144}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect("d=%event", if showevent==1 then "d=%event" else " ")),
+          textString=DynamicSelect("e=%event", if showevent==1 then "e=%event" else " ")),
                                           Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},

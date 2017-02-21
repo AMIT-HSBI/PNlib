@@ -25,6 +25,7 @@ PNlib.Examples.DisTest.SinglePD.mos \
 PNlib.Examples.DisTest.SingleTD.mos \
 PNlib.Examples.DisTest.SixConflictProb.mos \
 PNlib.Examples.DisTest.TDtoPD.mos \
+PNlib.Examples.DisTest.TEtest.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPCtoTC.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPTtoTD.mos \
 PNlib.Examples.ExtTest.IATest.mos \

@@ -19,5 +19,5 @@ equation
   connect(T2.outPlaces[1], P1.inTransition[1]) annotation(
     Line(points = {{-49.2, 20}, {-19.2, 20}, {-19.2, 20}, {-19.2, 20}}));
   annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent={{-80, -40},
-            {80, 40}}), graphics), experiment(StartTime=0.0, StopTime=10.0, Tolerance = 1e-6));
+            {80, 40}}), graphics), experiment(StartTime=0.0, StopTime=5.0, Tolerance = 1e-6));
 end TEtest;
