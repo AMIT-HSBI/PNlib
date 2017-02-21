@@ -1,7 +1,6 @@
 within PNlib.Examples.DisTest;
 model TEtest
   extends Modelica.Icons.Example;
-
   inner PNlib.Settings settings annotation(Placement(visible = true, transformation(extent = {{60, 20}, {80, 40}}, rotation = 0)));
   PNlib.PD P1(nIn = 1,nOut = 1, startTokens = 0) annotation(Placement(visible = true, transformation(extent = {{-20, 10}, {0, 30}}, rotation = 0)));
   PNlib.TE T1(nIn = 1, nOut = 1) annotation(Placement(visible = true, transformation(extent = {{20, 10}, {40, 30}}, rotation = 0)));

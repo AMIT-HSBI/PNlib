@@ -95,11 +95,9 @@ public
     disPlace=disPlaceOut,
     enable=enableOut) if nOut > 0 "connector for output places" annotation(Placement(transformation(extent={{40, -10}, {56, 10}}, rotation=0)));
 algorithm
-
 when time>event_[eventIndex] then
     eventIndex:=eventIndex+1;
 end when;
-
 equation
   //****MAIN BEGIN****//
    //reset active when event passed
