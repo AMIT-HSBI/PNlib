@@ -17,3 +17,5 @@ sort
 testOK
 numTrue
 prioCheck
+addElement
+eventCheck
