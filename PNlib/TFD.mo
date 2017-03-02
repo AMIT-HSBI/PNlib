@@ -16,8 +16,8 @@ protected
   Real tIn[nIn] "tokens of input places";
   Real tOut[nOut] "tokens of output places";
   Real testValue[nIn] "test values of input arcs";
-  Real firingTime1 "next putative firing time";
-  Real firingTime2 "next putative firing time";
+  Real firingTimeIn "next putative firing time";
+  Real firingTimeOut "next putative firing time";
   Real fireTime "for transition animation";
   Real minTokens[nIn] "minimum tokens of input places";
   Real maxTokens[nOut] "maximum tokens of output places";
@@ -45,12 +45,11 @@ protected
     "Are the output places discrete or continuous? true=discrete";
   Boolean enableIn[nIn] "Is the transition enabled by input places?";
   Boolean enableOut[nOut] "Is the transition enabled by output places?";
-  Boolean durationPassed1(start=false, fixed=true) "Is the duration passed?";
-  Boolean durationPassed2(start=false, fixed=true) "Is the duration passed?";
-  Boolean durationPassed(start=false, fixed=true) "Is the duration passed?";
+  Boolean durationPassedIn(start=false, fixed=true) "Is the duration passed?";
+  Boolean durationPassedOut(start=false, fixed=true) "Is the duration passed?";
   Boolean ani "for transition animation";
-  Real fire( start=0.0, fixed=true) "Is the duration passed?";
-  Real prefire( start=0.0, fixed=true) "Is the duration passed?";
+  Boolean fire( start=false, fixed=true) "Is the Transition fire?";
+  Boolean prefire( start=false, fixed=true) "Was the Transition fire?";
 
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
   //activation process
@@ -62,15 +61,15 @@ protected
   Boolean enabledByOutPlaces = Functions.OddsAndEnds.allTrue(enableOut);
   //****BLOCKS END****//
 public
-  Boolean active1 "Is the transition active?";
-  Boolean active2 "Is the transition active?";
-  Boolean fire1 "Does the transition fire?";
-  Boolean fire2 "Does the transition fire?";
+  Boolean activeIn "Is the transition Input active?";
+  Boolean activeOut "Is the transition Output active?";
+  Boolean fireIn "Does the transition Input fire?";
+  Boolean fireOut "Does the transition Output fire?";
   PNlib.Interfaces.TransitionIn inPlaces[nIn](
-    each active=durationPassed1,
+    each active=durationPassedIn,
     arcWeight=arcWeightIn,
     arcWeightint=arcWeightIntIn,
-    each fire=fire1,
+    each fire=fireIn,
     each disTransition=true,
     each instSpeed=0,
     each prelimSpeed=0,
@@ -86,10 +85,10 @@ public
     testValueint=testValueInt,
     normalArc=normalArc) if nIn > 0 "connector for input places" annotation(Placement(transformation(extent={{-56, -10}, {-40, 10}}, rotation=0)));
   PNlib.Interfaces.TransitionOut outPlaces[nOut](
-    each active=durationPassed2,
+    each active=durationPassedOut,
     arcWeight=arcWeightOut,
     arcWeightint=arcWeightIntOut,
-    each fire=fire2,
+    each fire=fireOut,
     each enabledByInPlaces=true,
     each disTransition=true,
     each instSpeed=0,
@@ -101,57 +100,36 @@ public
     maxTokensint=maxTokensInt,
     disPlace=disPlaceOut,
     enable=enableOut) if nOut > 0 "connector for output places" annotation(Placement(transformation(extent={{40, -10}, {56, 10}}, rotation=0)));
-    //each enabledByInPlaces=enabledByInPlaces,
 equation
   //****MAIN BEGIN****//
    //reset active when duration passed
-   active1 = activationIn.active  and not pre(durationPassed1) and 0.5>=prefire;
-   active2 = activationOut.active and not pre(durationPassed2) and prefire>=0.5;
-   //active2 = false and not pre(durationPassed2);
-   
+   activeIn = activationIn.active  and not pre(durationPassedIn) and not prefire;
+   activeOut = activationOut.active and not pre(durationPassedOut) and prefire;
    //save next putative firing time
-   when active1 then
-      firingTime1 = time+1e-6;
+   when activeIn then
+      firingTimeIn = time+1e-6;
    end when;
-   
-   
-   when active2 then
-      firingTime2 = if time>=firingTime1+duration_-1e-6  then time+1e-6 else time +duration_;
+   when activeOut then
+      firingTimeOut = if time>=firingTimeIn+duration_-1e-6  then time+1e-6 else firingTimeIn+duration_-1e-6;
    end when;
-   
-
-  prefire=pre(fire);
-  durationPassed = durationPassed1 or durationPassed2;
-  when {durationPassed1, durationPassed2} then
-    //fire=not prefire ;
-    if durationPassed2 then
-      //reinit(fire,0.0);
-      fire=0.0;
+   //is the Transition fire?
+   prefire=pre(fire);
+   when {durationPassedIn, durationPassedOut} then
+    if durationPassedOut then
+      fire=false;
     else
-      //reinit(fire,1.0);
-      fire=1.0;
-    end if; 
-  end when;
-
+      fire=true;
+    end if;
+   end when;
    //duration passed?
-   durationPassed1= active1 and time>=firingTime1;
-   durationPassed2= active2 and time>=firingTime2;
-
-  /* when {pre(fire1), pre(fire2)} then
-      nofire = not pre( nofire);
-   end when;*/
-
-
+   durationPassedIn= activeIn and time>=firingTimeIn;
+   durationPassedOut= activeOut and time>=firingTimeOut;
    //firing process
-   //fire=if nOut==0 then enabledByInPlaces else enabledByOutPlaces;
-  fire1=enabledByInPlaces;
-  fire2=enabledByOutPlaces;
-  //fire2=active2 and time>=firingTime2;
-
-   
+   fireIn=enabledByInPlaces;
+   fireOut=enabledByOutPlaces;
    //****MAIN END****//
     //****ANIMATION BEGIN****//
-    when fire1 then
+    when fireIn then
      fireTime=time;
      ani=true;
    end when;
