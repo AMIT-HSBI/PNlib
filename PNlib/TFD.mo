@@ -47,7 +47,10 @@ protected
   Boolean enableOut[nOut] "Is the transition enabled by output places?";
   Boolean durationPassed1(start=false, fixed=true) "Is the duration passed?";
   Boolean durationPassed2(start=false, fixed=true) "Is the duration passed?";
+  Boolean durationPassed(start=false, fixed=true) "Is the duration passed?";
   Boolean ani "for transition animation";
+  Real fire( start=0.0, fixed=true) "Is the duration passed?";
+  Real prefire( start=0.0, fixed=true) "Is the duration passed?";
 
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
   //activation process
@@ -87,7 +90,6 @@ public
     arcWeight=arcWeightOut,
     arcWeightint=arcWeightIntOut,
     each fire=fire2,
-    //each enabledByInPlaces=enabledByInPlaces,
     each enabledByInPlaces=true,
     each disTransition=true,
     each instSpeed=0,
@@ -99,30 +101,54 @@ public
     maxTokensint=maxTokensInt,
     disPlace=disPlaceOut,
     enable=enableOut) if nOut > 0 "connector for output places" annotation(Placement(transformation(extent={{40, -10}, {56, 10}}, rotation=0)));
+    //each enabledByInPlaces=enabledByInPlaces,
 equation
   //****MAIN BEGIN****//
    //reset active when duration passed
-   active1 = activationIn.active and not pre(durationPassed1);
-   active2 = activationOut.active and not pre(durationPassed2);
+   active1 = activationIn.active  and not pre(durationPassed1) and 0.5>=prefire;
+   active2 = activationOut.active and not pre(durationPassed2) and prefire>=0.5;
+   //active2 = false and not pre(durationPassed2);
+   
    //save next putative firing time
    when active1 then
       firingTime1 = time+1e-6;
-      firingTime2 = time +duration_;
    end when;
    
-   when fire1 then
-      firingTime2 = time +duration_;
+   
+   when active2 then
+      firingTime2 = if time>=firingTime1+duration_-1e-6  then time+1e-6 else time +duration_;
    end when;
+   
+
+  prefire=pre(fire);
+  durationPassed = durationPassed1 or durationPassed2;
+  when {durationPassed1, durationPassed2} then
+    //fire=not prefire ;
+    if durationPassed2 then
+      //reinit(fire,0.0);
+      fire=0.0;
+    else
+      //reinit(fire,1.0);
+      fire=1.0;
+    end if; 
+  end when;
 
    //duration passed?
    durationPassed1= active1 and time>=firingTime1;
    durationPassed2= active2 and time>=firingTime2;
-   
-  
+
+  /* when {pre(fire1), pre(fire2)} then
+      nofire = not pre( nofire);
+   end when;*/
+
+
    //firing process
    //fire=if nOut==0 then enabledByInPlaces else enabledByOutPlaces;
-   fire1=enabledByInPlaces;
-   fire2=enabledByOutPlaces;
+  fire1=enabledByInPlaces;
+  fire2=enabledByOutPlaces;
+  //fire2=active2 and time>=firingTime2;
+
+   
    //****MAIN END****//
     //****ANIMATION BEGIN****//
     when fire1 then
