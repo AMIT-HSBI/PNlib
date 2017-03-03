@@ -57,7 +57,7 @@ protected
   Blocks.firingSumDis firingSumOut(fire=fireOut and disTransitionOut, arcWeight=arcWeightOut);
   //Enabling process
   Blocks.enablingOutDis enableOut(delayPassed=delayPassedOut.anytrue, activeCon=activeConOut.anychange, nOut=nOut, arcWeight=arcWeightOut, t=pret, minTokens=minTokens, TAout=activeOut, enablingType=enablingType, enablingPrio=enablingPrioOut, enablingProb=enablingProbOut, disTransition=disTransitionOut, localSeed=localSeedOut, globalSeed=settings.globalSeed);
-  Blocks.enablingInDis enableIn(delayPassed=delayPassedIn.anytrue, active=activeIn, nIn=nIn, arcWeight=arcWeightIn, t=pret, maxTokens=maxTokens, TAein=enabledByInPlaces, enablingType=enablingType, enablingPrio=enablingPrioIn, enablingProb=enablingProbIn, disTransition=disTransitionIn, localSeed=localSeedIn, globalSeed=settings.globalSeed);
+  Blocks.enablingInDis enableIn(delayPassed=delayPassedIn.anytrue, active=activeIn, nIn=nIn, arcWeight=arcWeightIn, t=pret, maxTokens=maxTokens, TAein=enabledByInPlaces and activeIn, enablingType=enablingType, enablingPrio=enablingPrioIn, enablingProb=enablingProbIn, disTransition=disTransitionIn, localSeed=localSeedIn, globalSeed=settings.globalSeed);
   //****BLOCKS END****//
 
 public
