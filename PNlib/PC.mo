@@ -62,7 +62,7 @@ protected
     "Are the input transitions enabled by all their input places?";
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
   //enabling discrete transitions
-  Blocks.enablingInCon enableIn(active=activeIn, delayPassed=delayPassedIn.anytrue, nIn=nIn, arcWeight=arcWeightIn, t=t_, maxMarks=maxMarks, TAein=enabledByInPlaces, enablingType=enablingType, enablingPrio=enablingPrioIn, enablingProb=enablingProbIn, disTransition=disTransitionIn, localSeed=localSeedIn, globalSeed=settings.globalSeed);
+  Blocks.enablingInCon enableIn(active=activeIn, delayPassed=delayPassedIn.anytrue, nIn=nIn, arcWeight=arcWeightIn, t=t_, maxMarks=maxMarks, TAein=enabledByInPlaces and activeIn, enablingType=enablingType, enablingPrio=enablingPrioIn, enablingProb=enablingProbIn, disTransition=disTransitionIn, localSeed=localSeedIn, globalSeed=settings.globalSeed);
   Blocks.enablingOutCon enableOut(delayPassed=delayPassedOut.anytrue, nOut=nOut, arcWeight=arcWeightOut, t=t_, minMarks=minMarks, TAout=activeOut, enablingType=enablingType, enablingPrio=enablingPrioOut, enablingProb=enablingProbOut, disTransition=disTransitionOut, localSeed=localSeedOut, globalSeed=settings.globalSeed);
   //Does any delay passed of a connected transition?
   Blocks.anyTrue delayPassedOut(vec=activeOut and disTransitionOut);
