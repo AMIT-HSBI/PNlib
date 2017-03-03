@@ -48,7 +48,6 @@ protected
   Boolean durationPassedIn(start=false, fixed=true) "Is the duration passed?";
   Boolean durationPassedOut(start=false, fixed=true) "Is the duration passed?";
   Boolean ani "for transition animation";
-  Boolean fire( start=false, fixed=true) "Is the Transition fire?";
   Boolean prefire( start=false, fixed=true) "Was the Transition fire?";
 
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
@@ -65,6 +64,7 @@ public
   Boolean activeOut "Is the transition Output active?";
   Boolean fireIn "Does the transition Input fire?";
   Boolean fireOut "Does the transition Output fire?";
+  Boolean fire( start=false, fixed=true) "Is the Transition fire?";
   PNlib.Interfaces.TransitionIn inPlaces[nIn](
     each active=durationPassedIn,
     arcWeight=arcWeightIn,
