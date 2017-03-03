@@ -1,5 +1,5 @@
 within PNlib.Examples.DisTest;
-model NoInputConflikt
+model NoInputConflict
   extends Modelica.Icons.Example;
   PNlib.TD T1(nOut = 1) annotation(Placement(visible = true, transformation(extent = {{-30, 10}, {-10, 30}}, rotation = 0)));
   PNlib.TD T2(delay = 2, nOut = 1) annotation(Placement(visible = true, transformation(extent = {{-30, -30}, {-10, -10}}, rotation = 0)));
@@ -14,4 +14,4 @@ equation
     Line(points = {{-15.2, -20}, {-5.2, -20}, {-5.2, 2}, {5.8, 2}}));
   annotation(experiment(StartTime=0.0, StopTime=3.0, Tolerance = 1e-6),
     Diagram(coordinateSystem(extent={{-60, -40}, {60, 40}})));
-end NoInputConflikt;
+end NoInputConflict;
