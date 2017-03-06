@@ -2,6 +2,9 @@ SinglePD
 SingleTD
 TDtoPD
 PDtoTD
+TFDtest
+TFDoutCap
+TFDinputConflict
 TEtest
 DisLoopAndArcweight
 ConflictPrio
