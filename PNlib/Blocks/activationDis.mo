@@ -32,7 +32,7 @@ algorithm
       elseif arcType[i]==2 and not (tIntIn[i] > testValueInt[i]) then
         active:=false;
       elseif arcType[i]==3 and not (tIntIn[i] >= testValueInt[i]) then
-        active:=false
+        active:=false;
       elseif arcType[i]==4 and not (tIntIn[i] < testValueInt[i]) then
         active:=false;
       elseif arcType[i]==5 and not (tIntIn[i] <= testValueInt[i]) then
