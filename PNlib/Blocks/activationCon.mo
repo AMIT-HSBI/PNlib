@@ -54,7 +54,8 @@ algorithm
         elseif tIn[i]<=minTokens[i] and fed[i] then  //weakly input active??
           weaklyInputActiveVec[i] := true;
         end if;
-      elseif arcType[i]==2 then //real test arc
+      end if;
+      if arcType[i]==2 then //real test arc
         if tIn[i] - testValue[i] <= Constants.almost_eps then
           active := false;
         end if;
