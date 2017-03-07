@@ -51,7 +51,7 @@ protected
   Integer tIntOut[nOut]
     "Integer tokens of output places (for generating events!)";
   Integer arcType[nIn]
-    "type of input arcs 1=normal, 2=test arc, 3=inhibitor arc, 4=read arc";
+      "type of input arcs 1=normal, 2=real test arc,  3=test arc, 4=real inhibitor arc, 5=inhibitor arc, 6=read arc";
   Integer testValueInt[nIn]
     "Integer test values of input arcs (for generating events!)";
   Integer normalArc[nIn]

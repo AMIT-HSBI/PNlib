@@ -1,8 +1,8 @@
 within PNlib;
 model IA "Inhibitor Arc"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
-  parameter Real testValue=1 "marking that has to be deceeded to enable firing"
-                                                                                 annotation(Dialog(enable = true, group = "Inhibitor Arc"));
+  parameter Real testValue=1 "marking that has to be deceeded to enable firing" annotation(Dialog(enable = true, group = "Inhibitor Arc"));
+  parameter Boolean realInhibitorArc=true "real Inhibitor arc <, Inhibitor arc <=" annotation(Dialog(enable = true, group = "Inhibitor Arc"));                                                                               annotation(Dialog(enable = true, group = "Inhibitor Arc"));
   parameter Integer normalArc=1 "double arc: inhibitor and normal arc?" annotation(Dialog(enable = true, group = "Inhibitor Arc"), choices(choice=1 "No",
                  choice=2 "Yes", __Dymola_radioButtons=true));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
@@ -32,7 +32,7 @@ model IA "Inhibitor Arc"
   decreasingFactor=inPlace.decreasingFactor,
   disPlace=inPlace.disPlace,
   tokenInOut=inPlace.tokenInOut,
-  arcType=3,
+  arcType=if realInhibitorArc then 4 else 5,
   testValue=testValue,
   testValueint=testValueInt,
   normalArc=normalArc,

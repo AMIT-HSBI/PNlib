@@ -31,7 +31,11 @@ algorithm
         active:=false;
       elseif arcType[i]==2 and not (tIntIn[i] > testValueInt[i]) then
         active:=false;
-      elseif arcType[i]==3 and not (tIntIn[i] < testValueInt[i]) then
+      elseif arcType[i]==3 and not (tIntIn[i] >= testValueInt[i]) then
+        active:=false
+      elseif arcType[i]==4 and not (tIntIn[i] < testValueInt[i]) then
+        active:=false;
+      elseif arcType[i]==5 and not (tIntIn[i] <= testValueInt[i]) then
         active:=false;
       end if;
     else  //continuous
@@ -39,7 +43,11 @@ algorithm
         active:=false;
       elseif arcType[i]==2 and not (tIn[i] > testValue[i]) then
         active:=false;
-      elseif arcType[i]==3 and not (tIn[i] < testValue[i]) then
+      elseif arcType[i]==3 and not (tIn[i] >= testValue[i]) then
+        active:=false;
+      elseif arcType[i]==4 and not (tIn[i] < testValue[i]) then
+        active:=false;
+      elseif arcType[i]==5 and not (tIn[i] <= testValue[i]) then
         active:=false;
       end if;
     end if;
