@@ -1,12 +1,16 @@
 DoubleArcwithPCtoTC
 DoubleArcwithPTtoTD
+DoubleArcwithPTtoTD2
 IATest
 IAwithPCtoTC
 IAwithPDtoTD
+IAwithPDtoTD2
 TATest
 TAwithPCtoTC
 TAwithPDtoTD
+TAwithPDtoTD2
 TAwithWeaklyActivation
+ArcswithPCtoTC
 TSTest
 TStriangular
 TFDStest
