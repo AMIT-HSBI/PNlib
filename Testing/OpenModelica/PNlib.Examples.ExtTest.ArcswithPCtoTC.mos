@@ -1,0 +1,59 @@
+// name: PNlib.Examples.ExtTest.ArcswithPCtoTC
+// keywords: PNlib, continuous
+// status: correct
+
+loadFile("../../PNlib/package.mo"); getErrorString();
+simulate(PNlib.Examples.ExtTest.ArcswithPCtoTC); getErrorString();
+
+vars := {
+  "P1.t",
+  "P2.t",
+  "P3.t",
+  "P4.t",
+  "P5.t",
+  "P6.t",
+  "P7.t",
+  "P8.t",
+  "T1.fire",
+  "T1.instantaneousSpeed",
+  "T1.maximumSpeed",
+  "T2.fire",
+  "T2.instantaneousSpeed",
+  "T2.maximumSpeed",
+  "T3.fire",
+  "T3.instantaneousSpeed",
+  "T3.maximumSpeed",
+  "T4.fire",
+  "T4.instantaneousSpeed",
+  "T4.maximumSpeed"
+};
+
+res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ExtTest.ArcswithPCtoTC_res.mat",
+  "../../ReferenceFiles/PNlib.Examples.ExtTest.ArcswithPCtoTC.mat",
+  "PNlib.Examples.ExtTest.ArcswithPCtoTC_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.ExtTest.ArcswithPCtoTC_res.mat", "../../ReferenceFiles/PNlib.Examples.ExtTest.ArcswithPCtoTC_minimal.mat", vars, 0); getErrorString();
+end if;
+
+// Result:
+// true
+// "Notification: Automatically loaded package Modelica 3.2.2 due to uses annotation.
+// Notification: Automatically loaded package Complex 3.2.2 due to uses annotation.
+// Notification: Automatically loaded package ModelicaServices 3.2.2 due to uses annotation.
+// "
+// record SimulationResult
+//     resultFile = "PNlib.Examples.ExtTest.ArcswithPCtoTC_res.mat",
+//     simulationOptions = "startTime = 0.0, stopTime = 1.0, numberOfIntervals = 500, tolerance = 1e-06, method = 'dassl', fileNamePrefix = 'PNlib.Examples.ExtTest.ArcswithPCtoTC', options = '', outputFormat = 'mat', variableFilter = '.*', cflags = '', simflags = ''",
+//     messages = ""
+// end SimulationResult;
+// "Warning: The Tearing heuristic has chosen variables with annotation attribute 'tearingSelect = avoid'. Use -d=tearingdump and -d=tearingdumpV for more information.
+// Warning: The initial conditions are not fully specified. For more information set -d=initialization. In OMEdit Tools->Options->Simulation->OMCFlags, in OMNotebook call setCommandLineOptions("-d=initialization").
+// Warning: There are iteration variables with default zero start attribute. For more information set -d=initialization. In OMEdit Tools->Options->Simulation->OMCFlags, in OMNotebook call setCommandLineOptions("-d=initialization").
+// Warning: The Tearing heuristic has chosen variables with annotation attribute 'tearingSelect = avoid'. Use -d=tearingdump and -d=tearingdumpV for more information.
+// "
+// {"P1.t","P2.t","P3.t","P4.t","P5.t","P6.t","P7.t","P8.t",T1.fire","T1.instantaneousSpeed","T1.maximumSpeed","T2.fire","T2.instantaneousSpeed","T2.maximumSpeed",T3.fire","T3.instantaneousSpeed","T3.maximumSpeed",T4.fire","T4.instantaneousSpeed","T4.maximumSpeed"}
+// {"Files Equal!"}
+// ""
+//
+// endResult

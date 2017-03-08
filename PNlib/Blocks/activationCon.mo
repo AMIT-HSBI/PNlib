@@ -56,22 +56,22 @@ algorithm
         end if;
       end if;
       if arcType[i]==2 then //real test arc
-        if tIn[i] - testValue[i] <= Constants.almost_eps then
+        if tIn[i] <= testValue[i] then
           active := false;
         end if;
-        if tIn[i] - testValue[i] > Constants.almost_eps and fed[i] and normalArc[i]==2 then  //weakly input active??
+        if tIn[i] > testValue[i] and fed[i] and normalArc[i]==2 then  //weakly input active??
           weaklyInputActiveVec[i] := true;
         end if;
       elseif arcType[i]==3 then //test arc
-        if tIn[i] - testValue[i] < 0 then
+        if tIn[i] < testValue[i] then
           active := false;
         end if;
-        if tIn[i] - testValue[i] >= 0 and fed[i] and normalArc[i]==2 then  //weakly input active??
+        if tIn[i] >= testValue[i] and fed[i] and normalArc[i]==2 then  //weakly input active??
           weaklyInputActiveVec[i] := true;
         end if;
-      elseif arcType[i]==4 and (tIn[i] - testValue[i] >= -Constants.almost_eps) then  //real inhibitor arc
+      elseif arcType[i]==4 and (tIn[i] >= testValue[i]) then  //real inhibitor arc
         active := false;
-      elseif arcType[i]==5 and (tIn[i] - testValue[i] > 0) then  //inhibitor arc
+      elseif arcType[i]==5 and (tIn[i] > testValue[i]) then  //inhibitor arc
         active := false;
       end if;
     end if;
