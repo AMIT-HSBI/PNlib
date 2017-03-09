@@ -6,7 +6,7 @@ model TFDinputConflict
     Placement(visible = true, transformation(extent = {{40, 20}, {60, 40}}, rotation = 0)));
   PNlib.PD P1(nIn = 1, nOut = 1, startTokens = 0) annotation(
     Placement(visible = true, transformation(extent = {{-34, -28}, {-14, -8}}, rotation = 0)));
-  PNlib.PD P2( enablingPrioIn = {2, 1},maxTokens = 1, nIn = 2, nOut = 1, startTokens = 0) annotation(
+  PNlib.PD P2(enablingPrioIn = {2, 1}, maxTokens = 1, nIn = 2, nOut = 1, startTokens = 0) annotation(
     Placement(visible = true, transformation(origin = {22, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PNlib.TFD T1(nIn = 1, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {-2, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

@@ -6,7 +6,7 @@ model DoubleArcwithPTtoTD
   PD P1(nOut=2, startTokens=5) annotation(Placement(transformation(extent={{-54, -8}, {-34, 12}})));
   PD P2(nIn=1) annotation(Placement(transformation(extent={{30, 20}, {50, 40}})));
   PD P3(nIn=1) annotation(Placement(transformation(extent={{30, -38}, {50, -18}})));
-  TA TA1(normalArc=2, testValue=false) annotation(Placement(transformation(extent={{-20, -32}, {-6, -26}})));
+  TA TA1(normalArc=false, testValue=2) annotation(Placement(transformation(extent={{-20, -32}, {-6, -26}})));
   TD T1(nOut=1, nIn=1) annotation(Placement(transformation(extent={{6, 20}, {26, 40}})));
   TD T2(nIn=1, nOut=1) annotation(Placement(transformation(extent={{6, -38}, {26, -18}})));
 equation

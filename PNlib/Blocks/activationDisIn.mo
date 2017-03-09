@@ -32,7 +32,7 @@ algorithm
         active:=false;
       end if;
     else  //continuous
-      if (arcType[i]==ArcType.NormalAr or not normalArc[i]) and not (tIn[i]-arcWeightIn[i]-minTokens[i] >= -Constants.almost_eps) then
+      if (arcType[i]==ArcType.NormalArc or not normalArc[i]) and not (tIn[i]-arcWeightIn[i]-minTokens[i] >= -Constants.almost_eps) then
         active:=false;
       elseif arcType[i]==ArcType.RealTestArc and not (tIn[i] > testValue[i]) then
         active:=false;

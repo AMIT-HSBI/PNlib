@@ -6,7 +6,7 @@ model TFDtest
     Placement(visible = true, transformation(extent = {{20, 20}, {40, 40}}, rotation = 0)));
   PNlib.PD P1(nIn = 0, nOut = 1, startTokens = 5) annotation(
     Placement(visible = true, transformation(extent = {{-38, -10}, {-18, 10}}, rotation = 0)));
-  PNlib.PD P2(  nIn = 1) annotation(
+  PNlib.PD P2(nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {28, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PNlib.TFD T1(nIn = 1, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
