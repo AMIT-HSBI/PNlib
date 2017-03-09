@@ -5,7 +5,7 @@ model TATest
   PC P1( nOut=2, nIn=1) annotation(Placement(transformation(extent={{-70, -10}, {-50, 10}})));
   PC P2(nIn=1, nOut=1) annotation(Placement(transformation(extent={{10, -10}, {30, 10}})));
   TA TA1( normalArc=2, testValue=1) annotation(Placement(transformation(extent={{-44, -2}, {-30, 2}})));
-  TA TA2(testValue=2, normalArc=1) annotation(Placement(transformation(extent={{-6, -3}, {6, 3}}, rotation=0, origin={50, -1})));
+  TA TA2(testValue=2) annotation(Placement(transformation(extent={{-6, -3}, {6, 3}}, rotation=0, origin={50, -1})));
   TC T1(nOut=1, nIn=1) annotation(Placement(transformation(extent={{-20, -10}, {0, 10}})));
   TC T2(nOut=1, maximumSpeed=1.5) annotation(Placement(transformation(extent={{-100, -10}, {-80, 10}})));
   TC T3(nIn=2, arcWeightIn={1, 2}) annotation(Placement(transformation(extent={{-10, -10}, {10, 10}}, rotation=0, origin={80, 0})));

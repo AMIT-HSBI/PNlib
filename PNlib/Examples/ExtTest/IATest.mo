@@ -3,7 +3,7 @@ model IATest
   extends Modelica.Icons.Example;
   inner PNlib.Settings settings annotation(Placement(transformation(extent={{100, 20}, {120, 40}})));
   IA IA1( normalArc=2, testValue=1) annotation(Placement(transformation(extent={{-44, -2}, {-30, 2}})));
-  IA IA2(testValue=2, normalArc=1) annotation(Placement(transformation(extent={{-6, -3}, {6, 3}}, rotation=0, origin={50, -1})));
+  IA IA2(testValue=2,) annotation(Placement(transformation(extent={{-6, -3}, {6, 3}}, rotation=0, origin={50, -1})));
   PC P1(nOut=2, nIn=1, startMarks=2) annotation(Placement(transformation(extent={{-70, -10}, {-50, 10}})));
   PC P2(nIn=1, nOut=1, startMarks=1) annotation(Placement(transformation(extent={{10, -10}, {30, 10}})));
   PC P3(nIn=1) annotation(Placement(transformation(extent={{90, -10}, {110, 10}})));
