@@ -1,6 +1,6 @@
 within PNlib;
 model RA "Read Arc"
-
+  import PNlib.Types.ArcType;
   Interfaces.TransitionIn inPlace(active=outTransition.active,
   fire=outTransition.fire,
   arcWeight=0,
@@ -20,10 +20,10 @@ model RA "Read Arc"
   decreasingFactor=inPlace.decreasingFactor,
   disPlace=inPlace.disPlace,
   tokenInOut=inPlace.tokenInOut,
-  arcType=4,
+  arcType=ArcType.ReadArc,
   testValue=1,
   testValueint=1,
-  normalArc=1,
+  normalArc=true,
   speedSum=inPlace.speedSum) "connector for transition" annotation(Placement(transformation(extent={{28, 16},
             {48, 36}}), iconTransformation(extent={{28, 16},
             {48, 36}})));

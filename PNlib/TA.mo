@@ -1,21 +1,22 @@
 within PNlib;
 model TA "Test Arc"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
+  import PNlib.Types.ArcType;
   parameter Real testValue=1 "marking that has to be exceeded to enable firing" annotation(Dialog(enable = true, group = "Test Arc"));
   parameter Boolean realTestArc=true "real Test arc >, Test arc >=" annotation(Dialog(enable = true, group = "Test Arc"));
-  parameter Integer normalArc=1 "Double arc: test and normal arc?" annotation(Dialog(enable = true, group = "Test Arc"), choices(choice=1 "No", choice=2 "Yes", __Dymola_radioButtons=true));
+  parameter Boolean normalArc=true "Double arc: test and normal arc?" annotation(Dialog(enable = true, group = "Test Arc"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   Integer animateWeightTIarc=settings.animateWeightTIarc "only for transition animation and display (Do not change!)";
   Integer testColor[3] "only for transition animation and display (Do not change!)";
   Interfaces.TransitionIn inPlace(
     active=outTransition.active,
     fire=outTransition.fire,
-    arcWeight=if normalArc==1 then 0 else outTransition.arcWeight,
-    arcWeightint=if normalArc==1 then 0 else outTransition.arcWeightint,
+    arcWeight=if normalArc then 0 else outTransition.arcWeight,
+    arcWeightint=if normalArc then 0 else outTransition.arcWeightint,
     disTransition=outTransition.disTransition,
-    instSpeed=if normalArc==1 then 0 else outTransition.instSpeed,
-    prelimSpeed=if normalArc==1 then 0 else outTransition.prelimSpeed,
-    maxSpeed=if normalArc==1 then 0 else outTransition.maxSpeed) "connector for place" annotation(Placement(transformation(extent={{-110, 12}, {-90, 32}}), iconTransformation(extent={{-118, 16}, {-98, 36}})));
+    instSpeed=if normalArc then 0 else outTransition.instSpeed,
+    prelimSpeed=if normalArc then 0 else outTransition.prelimSpeed,
+    maxSpeed=if normalArc then 0 else outTransition.maxSpeed) "connector for place" annotation(Placement(transformation(extent={{-110, 12}, {-90, 32}}), iconTransformation(extent={{-118, 16}, {-98, 36}})));
   Interfaces.PlaceOut outTransition(
     t=inPlace.t,
     tint=inPlace.tint,
@@ -26,7 +27,7 @@ model TA "Test Arc"
     decreasingFactor=inPlace.decreasingFactor,
     disPlace=inPlace.disPlace,
     tokenInOut=inPlace.tokenInOut,
-    arcType=if realTestArc then 2 else 3,
+    arcType=if realTestArc then ArcType.RealTestArc else ArcType.TestArc,
     testValue=testValue,
     testValueint=testValueInt,
     normalArc=normalArc,

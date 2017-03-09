@@ -1,10 +1,10 @@
 within PNlib;
 model IA "Inhibitor Arc"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
+  import PNlib.Types.ArcType;
   parameter Real testValue=1 "marking that has to be deceeded to enable firing" annotation(Dialog(enable = true, group = "Inhibitor Arc"));
   parameter Boolean realInhibitorArc=true "real Inhibitor arc <, Inhibitor arc <=" annotation(Dialog(enable = true, group = "Inhibitor Arc"));                                                                               annotation(Dialog(enable = true, group = "Inhibitor Arc"));
-  parameter Integer normalArc=1 "double arc: inhibitor and normal arc?" annotation(Dialog(enable = true, group = "Inhibitor Arc"), choices(choice=1 "No",
-                 choice=2 "Yes", __Dymola_radioButtons=true));
+  parameter Boolean normalArc=true "double arc: inhibitor and normal arc?" annotation(Dialog(enable = true, group = "Inhibitor Arc"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   Integer animateWeightTIarc=settings.animateWeightTIarc
     "only for transition animation and display (Do not change!)";
@@ -12,18 +12,18 @@ model IA "Inhibitor Arc"
     "only for transition animation and display (Do not change!)";
   Interfaces.TransitionIn inPlace(active=outTransition.active,
   fire=outTransition.fire,
-  arcWeight=if normalArc==1 then 0 else outTransition.arcWeight,
-  arcWeightint=if normalArc==1 then 0 else outTransition.arcWeightint,
+  arcWeight=if normalArc then 0 else outTransition.arcWeight ,
+  arcWeightint=if normalArc then 0 else outTransition.arcWeightint,
   disTransition=outTransition.disTransition,
-  instSpeed=if normalArc==1 then 0 else outTransition.instSpeed,
-  prelimSpeed=if normalArc==1 then 0 else outTransition.prelimSpeed,
-  maxSpeed=if normalArc==1 then 0 else outTransition.maxSpeed)
+  instSpeed=if normalArc then 0 else outTransition.instSpeed,
+  prelimSpeed=if normalArc then 0 else outTransition.prelimSpeed,
+  maxSpeed=if normalArc then 0 else outTransition.maxSpeed)
     "connector for place"
           annotation(Placement(transformation(
           extent={{-110, 12}, {-90, 32}}), iconTransformation(extent={{-118, 16},
             {-98, 36}})));
   Interfaces.PlaceOut outTransition(
- t=inPlace.t,
+  t=inPlace.t,
   tint=inPlace.tint,
   minTokens=inPlace.minTokens,
   minTokensint=inPlace.minTokensint,
@@ -32,7 +32,7 @@ model IA "Inhibitor Arc"
   decreasingFactor=inPlace.decreasingFactor,
   disPlace=inPlace.disPlace,
   tokenInOut=inPlace.tokenInOut,
-  arcType=if realInhibitorArc then 4 else 5,
+  arcType=if realInhibitorArc then ArcType.RealInhibitorArc else ArcType.InhibitorArc,
   testValue=testValue,
   testValueint=testValueInt,
   normalArc=normalArc,

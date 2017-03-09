@@ -1,6 +1,7 @@
 within PNlib;
 model TS "Stochastic Transition"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
+  import PNlib.Types.ArcType;
   parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
   parameter Integer distributionType=1
@@ -50,7 +51,7 @@ protected
   Integer tIntIn[nIn] "Integer tokens of input places (for generating events!)";
   Integer tIntOut[nOut]
     "Integer tokens of output places (for generating events!)";
-  Integer arcType[nIn]
+  ArcType arcType[nIn]
       "type of input arcs 1=normal, 2=real test arc,  3=test arc, 4=real inhibitor arc, 5=inhibitor arc, 6=read arc";
   Integer testValueInt[nIn]
     "Integer test values of input arcs (for generating events!)";
