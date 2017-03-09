@@ -1,6 +1,7 @@
 within PNlib;
 model PD "Discrete Place"
   import PNlib.Types.EnablingType;
+  import PNlib.Types.ArcType;
   discrete Integer t(start = startTokens, fixed=true) "marking";
   parameter Integer nIn=0 "number of input transitions" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut=0 "number of output transitions" annotation(Dialog(connectorSizing=true));
@@ -85,7 +86,7 @@ public
     each fed=false,
     each decreasingFactor=1,
     each disPlace=true,
-    each arcType=1,
+    each arcType=ArcType.NormalArc,
     each speedSum=0,
     each tokenInOut=pre(tokeninout),
     fire=fireOut,
@@ -94,7 +95,7 @@ public
     active=activeOut,
     each testValue=-1,
     each testValueint=-1,
-    each normalArc=2) if nOut > 0 "connector for output transitions" annotation(Placement(transformation(extent={{100, -10}, {116, 10}}, rotation=0)));
+    each normalArc=false) if nOut > 0 "connector for output transitions" annotation(Placement(transformation(extent={{100, -10}, {116, 10}}, rotation=0)));
   Modelica.Blocks.Interfaces.IntegerOutput pd_t=t
     "connector for Simulink connection" annotation(Placement(
         transformation(extent={{-36, 68}, {-16, 88}}), iconTransformation(

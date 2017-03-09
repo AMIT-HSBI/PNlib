@@ -1,6 +1,7 @@
 within PNlib;
 model PC "Continuous Place"
   import PNlib.Types.EnablingType;
+  import PNlib.Types.ArcType;
   Real t "marking";
   parameter Integer nIn=0 "number of input transitions" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut=0 "number of output transitions" annotation(Dialog(connectorSizing=true));
@@ -8,7 +9,7 @@ model PC "Continuous Place"
   parameter Real startMarks = 0 "start marks" annotation(Dialog(enable = true, group = "Marks"));
   parameter Real minMarks = 0 "minimum capacity" annotation(Dialog(enable = true, group = "Marks"));
   parameter Real maxMarks=PNlib.Constants.inf "maximum capacity" annotation(Dialog(enable = true, group = "Marks"));
-   Boolean reStart=false "restart condition" annotation(Dialog(enable = true, group = "Marks"));
+  Boolean reStart=false "restart condition" annotation(Dialog(enable = true, group = "Marks"));
   parameter Real reStartMarks=0 "number of marks at restart" annotation(Dialog(enable = true, group = "Marks"));
   parameter Integer N=settings.N "N+1=amount of levels" annotation(Dialog(enable = true, group = "Level Concentrations"));
   parameter EnablingType enablingType=EnablingType.Priority
@@ -108,7 +109,7 @@ public
   each fed=feeding.anytrue,
   decreasingFactor=decFactorOut,
   each disPlace=false,
-  each arcType=1,
+  each arcType=ArcType.NormalArc,
   each speedSum=firingSumIn.conFiringSum,
   each tokenInOut=pre(disMarksInOut),
   fire=fireOut,
@@ -120,7 +121,7 @@ public
   prelimSpeed=prelimSpeedOut,
   each testValue=-1,
   each testValueint=-1,
-  each normalArc=2) if nOut > 0 "connector for output transitions" annotation(Placement(
+  each normalArc=false) if nOut > 0 "connector for output transitions" annotation(Placement(
         transformation(extent={{100, -10}, {116, 10}}, rotation=0)));
   Modelica.Blocks.Interfaces.RealOutput pc_t=t
     "connector for Simulink connection" annotation(Placement(
