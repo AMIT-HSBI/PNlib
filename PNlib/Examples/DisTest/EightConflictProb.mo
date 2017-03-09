@@ -2,7 +2,7 @@ within PNlib.Examples.DisTest;
 model EightConflictProb
   extends Modelica.Icons.Example;
 
-  PNlib.PD P1(startTokens = 1, enablingType = 2, nOut = 8,
+  PNlib.PD P1(startTokens = 1, enablingType = PNlib.Types.EnablingType.Probability, nOut = 8,
     localSeedIn=1,
     localSeedOut=2)                                        annotation(Placement(transformation(extent={{-50, -10},
             {-30, 10}})));

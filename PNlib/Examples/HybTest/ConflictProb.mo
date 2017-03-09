@@ -2,7 +2,7 @@ within PNlib.Examples.HybTest;
 
 model ConflictProb
   extends Modelica.Icons.Example;
-  PNlib.PC P1(nIn = 1, nOut = 2, enablingType = 2, enablingProbOut = {0.5, 0.5}, startMarks=2,
+  PNlib.PC P1(nIn = 1, nOut = 2, enablingType = PNlib.Types.EnablingType.Probability, startMarks=2,
     localSeedIn=1,
     localSeedOut=2)                                                                            annotation(Placement(transformation(extent = {{-30, -10}, {-10, 10}})));
   PNlib.TD T1(nIn = 1, nOut = 1) annotation(Placement(transformation(extent = {{0, 10}, {20, 30}})));
