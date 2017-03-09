@@ -32,13 +32,17 @@ PNlib.Examples.DisTest.TFDinputConflict.mos \
 PNlib.Examples.DisTest.TEtest.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPCtoTC.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPTtoTD.mos \
+PNlib.Examples.ExtTest.DoubleArcwithPTtoTD2.mos \
 PNlib.Examples.ExtTest.IATest.mos \
 PNlib.Examples.ExtTest.IAwithPCtoTC.mos \
 PNlib.Examples.ExtTest.IAwithPDtoTD.mos \
+PNlib.Examples.ExtTest.IAwithPDtoTD2.mos \
 PNlib.Examples.ExtTest.TATest.mos \
 PNlib.Examples.ExtTest.TAwithPCtoTC.mos \
 PNlib.Examples.ExtTest.TAwithPDtoTD.mos \
+PNlib.Examples.ExtTest.TAwithPDtoTD2.mos \
 PNlib.Examples.ExtTest.TAwithWeaklyActivation.mos \
+PNlib.Examples.ExtTest.ArcswithPCtoTC.mos \
 PNlib.Examples.ExtTest.TSTest.mos \
 PNlib.Examples.ExtTest.TStriangular.mos \
 PNlib.Examples.ExtTest.TFDStest.mos \

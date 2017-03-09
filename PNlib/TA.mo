@@ -2,6 +2,7 @@ within PNlib;
 model TA "Test Arc"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   parameter Real testValue=1 "marking that has to be exceeded to enable firing" annotation(Dialog(enable = true, group = "Test Arc"));
+  parameter Boolean realTestArc=true "real Test arc >, Test arc >=" annotation(Dialog(enable = true, group = "Test Arc"));
   parameter Integer normalArc=1 "Double arc: test and normal arc?" annotation(Dialog(enable = true, group = "Test Arc"), choices(choice=1 "No", choice=2 "Yes", __Dymola_radioButtons=true));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   Integer animateWeightTIarc=settings.animateWeightTIarc "only for transition animation and display (Do not change!)";
@@ -25,7 +26,7 @@ model TA "Test Arc"
     decreasingFactor=inPlace.decreasingFactor,
     disPlace=inPlace.disPlace,
     tokenInOut=inPlace.tokenInOut,
-    arcType=2,
+    arcType=if realTestArc then 2 else 3,
     testValue=testValue,
     testValueint=testValueInt,
     normalArc=normalArc,

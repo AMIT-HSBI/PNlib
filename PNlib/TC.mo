@@ -26,7 +26,7 @@ protected
   Real decreasingFactorIn[nIn] "decreasing factors of input places";
   Real decreasingFactorOut[nOut] "decreasing factors of output places";
   Real testValue[nIn] "test values of test or inhibitor arcs";
-  Integer arcType[nIn] "type of input arcs 1=normal, 2=test arc, 3=inhibitor arc, 4=read arc";
+  Integer arcType[nIn]   "type of input arcs 1=normal, 2=real test arc,  3=test arc, 4=real inhibitor arc, 5=inhibitor arc, 6=read arc";
   Integer arcWeightIntIn[nIn] "Integer arc weights of discrete input places (for generating events!)";
   Integer arcWeightIntOut[nOut] "Integer arc weights of discrete output places (for generating events!)";
   Integer minTokensInt[nIn] "Integer minimum tokens of input places (for generating events!)";
