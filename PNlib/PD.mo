@@ -1,5 +1,6 @@
 within PNlib;
 model PD "Discrete Place"
+  import PNlib.Types.EnablingType;
   discrete Integer t(start = startTokens, fixed=true) "marking";
   parameter Integer nIn=0 "number of input transitions" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut=0 "number of output transitions" annotation(Dialog(connectorSizing=true));
@@ -9,7 +10,7 @@ model PD "Discrete Place"
   parameter Integer maxTokens=PNlib.Constants.Integer_inf "maximum capacity" annotation(Dialog(enable = true, group = "Tokens"));
   Boolean reStart(start=false, fixed=true)=false "restart condition" annotation(Dialog(enable = true, group = "Tokens"));
   parameter Integer reStartTokens=startTokens "number of tokens at restart" annotation(Dialog(enable = true, group = "Tokens"));
-  parameter Integer enablingType=1
+  parameter EnablingType enablingType=EnablingType.Prio
     "resolution type of actual conflict (type-1-conflict)" annotation(Dialog(enable = true, group = "Enabling"), choices(choice=1
         "Priority", choice=2 "Probability", __Dymola_radioButtons=true));
   parameter Integer enablingPrioIn[nIn]=1:nIn
@@ -117,10 +118,10 @@ equation
   color=if settings.animatePlace==1 then if tokenscale<100 then {255, 255-2.55*tokenscale, 255-2.55*tokenscale} else {255, 0, 0} else {255, 255, 255};
   //****ANIMATION END****//
   //****ERROR MESSENGES BEGIN****//
-   assert(Functions.OddsAndEnds.prioCheck(enablingPrioIn,nIn) or nIn==0 or enablingType==2, "The priorities of the input priorities may be given only once and must be selected from 1 to nIn");
-   assert(Functions.OddsAndEnds.prioCheck(enablingPrioOut,nOut) or nOut==0 or enablingType==2, "The priorities of the output priorities may be given only once and must be selected from 1 to nOut");
-  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbIn), 1.0, 1e-6) or nIn==0 or enablingType==1, "The sum of input enabling probabilities has to be equal to 1");
-  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbOut), 1.0, 1e-6) or nOut==0 or enablingType==1, "The sum of output enabling probabilities has to be equal to 1");
+   assert(Functions.OddsAndEnds.prioCheck(enablingPrioIn,nIn) or nIn==0 or enablingType==EnablingType.Prob, "The priorities of the input priorities may be given only once and must be selected from 1 to nIn");
+   assert(Functions.OddsAndEnds.prioCheck(enablingPrioOut,nOut) or nOut==0 or enablingType==EnablingType.Prob, "The priorities of the output priorities may be given only once and must be selected from 1 to nOut");
+  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbIn), 1.0, 1e-6) or nIn==0 or enablingType==EnablingType.Prio, "The sum of input enabling probabilities has to be equal to 1");
+  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbOut), 1.0, 1e-6) or nOut==0 or enablingType==EnablingType.Prio, "The sum of output enabling probabilities has to be equal to 1");
   assert(startTokens>=minTokens and startTokens<=maxTokens, "minTokens<=startTokens<=maxTokens");
   //****ERROR MESSENGES END****//
   annotation(defaultComponentName = "P1", Icon(graphics={Ellipse(

@@ -4,8 +4,8 @@ model ConflictPrio
   PNlib.PD P1(nIn = 1, nOut = 2, startTokens = 2) annotation(Placement(transformation(extent = {{-30, -10}, {-10, 10}})));
   PNlib.TD T1(nIn = 1, nOut = 1) annotation(Placement(transformation(extent = {{0, 10}, {20, 30}})));
   PNlib.TD T2(nIn = 1, nOut = 1) annotation(Placement(transformation(extent = {{0, -30}, {20, -10}})));
-  PNlib.PD P2(enablingType = 1, nIn = 1) annotation(Placement(transformation(extent = {{30, 10}, {50, 30}})));
-  PNlib.PD P3(enablingType = 1, nIn = 1) annotation(Placement(transformation(extent = {{30, -30}, {50, -10}})));
+  PNlib.PD P2(nIn = 1) annotation(Placement(transformation(extent = {{30, 10}, {50, 30}})));
+  PNlib.PD P3(nIn = 1) annotation(Placement(transformation(extent = {{30, -30}, {50, -10}})));
   PNlib.TD T3(nOut = 1) annotation(Placement(transformation(extent = {{-60, -10}, {-40, 10}})));
   inner PNlib.Settings settings annotation(Placement(transformation(extent = {{-60, 20}, {-40, 40}})));
 equation

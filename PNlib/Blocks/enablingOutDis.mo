@@ -1,11 +1,12 @@
 within PNlib.Blocks;
 block enablingOutDis "enabling process of output transitions"
+  import PNlib.Types.EnablingType;
   parameter input Integer nOut "number of output transitions";
   input Integer arcWeight[:] "arc weights of output transitions";
   input Integer t "current token number";
   input Integer minTokens "minimum capacity";
   input Boolean TAout[:] "active output transitions with passed delay";
-  input Integer enablingType "resolution of actual conflicts";
+  input EnablingType enablingType "resolution of actual conflicts";
   input Integer enablingPrio[:] "enabling priorities of output transitions";
   input Real enablingProb[:] "enabling probabilites of output transitions";
   input Boolean disTransition[:] "discrete output transition";
@@ -48,7 +49,7 @@ algorithm
       if t - arcWeightSum >= minTokens then  //Place has no actual conflict; all active output transitions are enabled
         TEout := TAout;
       else                          //Place has an actual conflict;
-        if enablingType==1 then     //deterministic enabling according to priorities
+        if enablingType==EnablingType.Prio then     //deterministic enabling according to priorities
           arcWeightSum := 0;
           for i in 1: nOut loop  //discrete transitions are proven at first
             Index:=Modelica.Math.Vectors.find(i,enablingPrio);
