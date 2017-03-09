@@ -55,7 +55,7 @@ protected
       "type of input arcs 1=normal, 2=real test arc,  3=test arc, 4=real inhibitor arc, 5=inhibitor arc, 6=read arc";
   Integer testValueInt[nIn]
     "Integer test values of input arcs (for generating events!)";
-  Integer normalArc[nIn]
+  Boolean normalArc[nIn]
     "1=no, 2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
   Boolean delayPassed(start=false, fixed=true) "Is the delay passed?";
   Boolean ani "for transition animation";

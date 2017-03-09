@@ -38,7 +38,7 @@ protected
     "Integer maximum tokens of output places (for generating events!)";
   Integer testValueInt[nIn]
     "Integer test values of input arcs (for generating events!)";
-  Integer normalArc[nIn]
+  Boolean normalArc[nIn]
     "1=no, 2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
   Boolean disPlaceIn[nIn]
     "Are the input places discrete or continuous? true=discrete";

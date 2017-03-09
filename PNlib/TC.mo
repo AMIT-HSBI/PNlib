@@ -35,7 +35,7 @@ protected
   Integer tIntIn[nIn] "integer tokens of input places (for generating events!)";
   Integer tIntOut[nOut] "integer tokens of output places (for generating events!)";
   Integer testValueInt[nIn] "Integer test values of input arcs (for generating events!)";
-  Integer normalArc[nIn] "1=no, 2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
+  Boolean normalArc[nIn] "1=no, 2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
   Boolean fed[nIn] "Are the input places fed by their input transitions?";
   Boolean emptied[nOut] "Are the output places emptied by their output transitions?";
   Boolean disPlaceIn[nIn] "Are the input places discrete?";

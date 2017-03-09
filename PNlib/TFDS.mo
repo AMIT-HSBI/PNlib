@@ -57,7 +57,7 @@ protected
     "type of input arcs 1=normal, 2=test arc, 3=inhibitor arc, 4=read arc";
   Integer testValueInt[nIn]
     "Integer test values of input arcs (for generating events!)";
-  Integer normalArc[nIn]
+  Boolean normalArc[nIn]
     "1=no, 2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
   Boolean durationPassedIn(start=false, fixed=true) "Is the duration passed?";
   Boolean durationPassedOut(start=false, fixed=true) "Is the duration passed?";
