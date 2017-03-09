@@ -49,7 +49,7 @@ algorithm
       if t - arcWeightSum >= minTokens then  //Place has no actual conflict; all active output transitions are enabled
         TEout := TAout;
       else                          //Place has an actual conflict;
-        if enablingType==EnablingType.Prio then     //deterministic enabling according to priorities
+        if enablingType==EnablingType.Priority then     //deterministic enabling according to priorities
           arcWeightSum := 0;
           for i in 1: nOut loop  //discrete transitions are proven at first
             Index:=Modelica.Math.Vectors.find(i,enablingPrio);
