@@ -1,7 +1,6 @@
 within PNlib;
 model TA "Test Arc"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
-  import PNlib.Types.ArcType;
   parameter Real testValue=1 "marking that has to be exceeded to enable firing" annotation(Dialog(enable = true, group = "Test Arc"));
   parameter Boolean realTestArc=true "real Test arc >, Test arc >=" annotation(Dialog(enable = true, group = "Test Arc"));
   parameter Boolean normalArc=true "Double arc: test and normal arc?" annotation(Dialog(enable = true, group = "Test Arc"));
@@ -27,7 +26,7 @@ model TA "Test Arc"
     decreasingFactor=inPlace.decreasingFactor,
     disPlace=inPlace.disPlace,
     tokenInOut=inPlace.tokenInOut,
-    arcType=if realTestArc then ArcType.RealTestArc else ArcType.TestArc,
+    arcType=if realTestArc then PNlib.Types.ArcType.RealTestArc else PNlib.Types.ArcType.TestArc,
     testValue=testValue,
     testValueint=testValueInt,
     normalArc=normalArc,

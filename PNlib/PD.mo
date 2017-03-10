@@ -1,7 +1,5 @@
 within PNlib;
 model PD "Discrete Place"
-  import PNlib.Types.EnablingType;
-  import PNlib.Types.ArcType;
   discrete Integer t(start = startTokens, fixed=true) "marking";
   parameter Integer nIn=0 "number of input transitions" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut=0 "number of output transitions" annotation(Dialog(connectorSizing=true));
@@ -11,16 +9,16 @@ model PD "Discrete Place"
   parameter Integer maxTokens=PNlib.Constants.Integer_inf "maximum capacity" annotation(Dialog(enable = true, group = "Tokens"));
   Boolean reStart(start=false, fixed=true)=false "restart condition" annotation(Dialog(enable = true, group = "Tokens"));
   parameter Integer reStartTokens=startTokens "number of tokens at restart" annotation(Dialog(enable = true, group = "Tokens"));
-  parameter EnablingType enablingType=EnablingType.Priority
+  parameter PNlib.Types.EnablingType enablingType=PNlib.Types.EnablingType.Priority
     "resolution type of actual conflict (type-1-conflict)" annotation(Dialog(enable = true, group = "Enabling"));
   parameter Integer enablingPrioIn[nIn]=1:nIn
-    "enabling priorities of input transitions" annotation(Dialog(enable = if enablingType==EnablingType.Probability then false else true, group = "Enabling"));
+    "enabling priorities of input transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Probability then false else true, group = "Enabling"));
   parameter Integer enablingPrioOut[nOut]=1:nOut
-    "enabling priorities of output transitions" annotation(Dialog(enable = if enablingType==EnablingType.Probability then false else true, group = "Enabling"));
+    "enabling priorities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Probability then false else true, group = "Enabling"));
   parameter Real enablingProbIn[nIn]=fill(1/nIn, nIn)
-    "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==EnablingType.Priority then false else true, group = "Enabling"));
+    "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Priority then false else true, group = "Enabling"));
   parameter Real enablingProbOut[nOut]=fill(1/nOut, nOut)
-    "enabling probabilities of output transitions" annotation(Dialog(enable = if enablingType==EnablingType.Priority then false else true, group = "Enabling"));
+    "enabling probabilities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Priority then false else true, group = "Enabling"));
   parameter Integer N=settings.N "N+1=amount of levels" annotation(Dialog(enable = true, group = "Level Concentrations"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   Real levelCon
@@ -86,7 +84,7 @@ public
     each fed=false,
     each decreasingFactor=1,
     each disPlace=true,
-    each arcType=ArcType.NormalArc,
+    each arcType=PNlib.Types.ArcType.NormalArc,
     each speedSum=0,
     each tokenInOut=pre(tokeninout),
     fire=fireOut,
@@ -118,10 +116,10 @@ equation
   color=if settings.animatePlace==1 then if tokenscale<100 then {255, 255-2.55*tokenscale, 255-2.55*tokenscale} else {255, 0, 0} else {255, 255, 255};
   //****ANIMATION END****//
   //****ERROR MESSENGES BEGIN****//
-   assert(Functions.OddsAndEnds.prioCheck(enablingPrioIn,nIn) or nIn==0 or enablingType==EnablingType.Probability, "The priorities of the input priorities may be given only once and must be selected from 1 to nIn");
-   assert(Functions.OddsAndEnds.prioCheck(enablingPrioOut,nOut) or nOut==0 or enablingType==EnablingType.Probability, "The priorities of the output priorities may be given only once and must be selected from 1 to nOut");
-  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbIn), 1.0, 1e-6) or nIn==0 or enablingType==EnablingType.Priority, "The sum of input enabling probabilities has to be equal to 1");
-  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbOut), 1.0, 1e-6) or nOut==0 or enablingType==EnablingType.Priority, "The sum of output enabling probabilities has to be equal to 1");
+   assert(Functions.OddsAndEnds.prioCheck(enablingPrioIn,nIn) or nIn==0 or enablingType==PNlib.Types.EnablingType.Probability, "The priorities of the input priorities may be given only once and must be selected from 1 to nIn");
+   assert(Functions.OddsAndEnds.prioCheck(enablingPrioOut,nOut) or nOut==0 or enablingType==PNlib.Types.EnablingType.Probability, "The priorities of the output priorities may be given only once and must be selected from 1 to nOut");
+  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbIn), 1.0, 1e-6) or nIn==0 or enablingType==PNlib.Types.EnablingType.Priority, "The sum of input enabling probabilities has to be equal to 1");
+  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbOut), 1.0, 1e-6) or nOut==0 or enablingType==PNlib.Types.EnablingType.Priority, "The sum of output enabling probabilities has to be equal to 1");
   assert(startTokens>=minTokens and startTokens<=maxTokens, "minTokens<=startTokens<=maxTokens");
   //****ERROR MESSENGES END****//
   annotation(defaultComponentName = "P1", Icon(graphics={Ellipse(

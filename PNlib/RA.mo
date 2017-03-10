@@ -1,6 +1,5 @@
 within PNlib;
 model RA "Read Arc"
-  import PNlib.Types.ArcType;
   Interfaces.TransitionIn inPlace(active=outTransition.active,
   fire=outTransition.fire,
   arcWeight=0,
@@ -20,7 +19,7 @@ model RA "Read Arc"
   decreasingFactor=inPlace.decreasingFactor,
   disPlace=inPlace.disPlace,
   tokenInOut=inPlace.tokenInOut,
-  arcType=ArcType.ReadArc,
+  arcType=PNlib.Types.ArcType.ReadArc,
   testValue=1,
   testValueint=1,
   normalArc=true,

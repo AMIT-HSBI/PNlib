@@ -1,7 +1,6 @@
 within PNlib;
 model IA "Inhibitor Arc"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
-  import PNlib.Types.ArcType;
   parameter Real testValue=1 "marking that has to be deceeded to enable firing" annotation(Dialog(enable = true, group = "Inhibitor Arc"));
   parameter Boolean realInhibitorArc=true "real Inhibitor arc <, Inhibitor arc <=" annotation(Dialog(enable = true, group = "Inhibitor Arc"));                                                                               annotation(Dialog(enable = true, group = "Inhibitor Arc"));
   parameter Boolean normalArc=true "double arc: inhibitor and normal arc?" annotation(Dialog(enable = true, group = "Inhibitor Arc"));
@@ -32,7 +31,7 @@ model IA "Inhibitor Arc"
   decreasingFactor=inPlace.decreasingFactor,
   disPlace=inPlace.disPlace,
   tokenInOut=inPlace.tokenInOut,
-  arcType=if realInhibitorArc then ArcType.RealInhibitorArc else ArcType.InhibitorArc,
+  arcType=if realInhibitorArc then PNlib.Types.ArcType.RealInhibitorArc else PNlib.Types.ArcType.InhibitorArc,
   testValue=testValue,
   testValueint=testValueInt,
   normalArc=normalArc,

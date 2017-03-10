@@ -1,14 +1,13 @@
 within PNlib.Blocks;
 block activationCon "activation process of continuous transitions"
 //no events are generated within while-loops; for-loops are applied
-  import PNlib.Types.ArcType;
   parameter input Integer nIn "number of input places";
   parameter input Integer nOut "number of output places";
   input Real tIn[:] "marking of input places";
   input Real tOut[:] "marking of output places";
   input Integer tIntIn[:] "marking of input places";
   input Integer tIntOut[:] "marking of output places";
-  input ArcType arcType[:] "arc type of input places";
+  input PNlib.Types.ArcType arcType[:] "arc type of input places";
   input Real arcWeightIn[:] "arc weights of input places";
   input Real arcWeightOut[:] "arc weights of output places";
   input Integer arcWeightIntIn[:] "arc weights of input places";
@@ -36,19 +35,19 @@ algorithm
   //check input places
   for i in 1:nIn loop
     if disPlaceIn[i] then //discrete place
-      if arcType[i]==ArcType.NormalArc and (tIntIn[i]-arcWeightIntIn[i]  < minTokensInt[i]) then //normal arc
+      if arcType[i]==PNlib.Types.ArcType.NormalArc and (tIntIn[i]-arcWeightIntIn[i]  < minTokensInt[i]) then //normal arc
         active := false;
-      elseif arcType[i]==ArcType.RealTestArc and (tIntIn[i] <= testValueInt[i]) then //real test arc
+      elseif arcType[i]==PNlib.Types.ArcType.RealTestArc and (tIntIn[i] <= testValueInt[i]) then //real test arc
         active := false;
-      elseif arcType[i]==ArcType.TestArc and (tIntIn[i] < testValueInt[i]) then //test arc
+      elseif arcType[i]==PNlib.Types.ArcType.TestArc and (tIntIn[i] < testValueInt[i]) then //test arc
         active := false;
-      elseif arcType[i]==ArcType.RealInhibitorArc and (tIntIn[i] >= testValueInt[i]) then // real inhibition arc
+      elseif arcType[i]==PNlib.Types.ArcType.RealInhibitorArc and (tIntIn[i] >= testValueInt[i]) then // real inhibition arc
         active := false;
-      elseif arcType[i]==ArcType.InhibitorArc and (tIntIn[i] > testValueInt[i]) then //inhibition arc
+      elseif arcType[i]==PNlib.Types.ArcType.InhibitorArc and (tIntIn[i] > testValueInt[i]) then //inhibition arc
         active := false;
       end if;
     else  //continuous place
-      if arcType[i]==ArcType.NormalArc or not normalArc[i] then  //normal arc or double arc
+      if arcType[i]==PNlib.Types.ArcType.NormalArc or not normalArc[i] then  //normal arc or double arc
         if arcWeightIn[i] <= 0.0 then
         elseif tIn[i]<=minTokens[i] and (not fed[i]) then
           active := false;
@@ -56,23 +55,23 @@ algorithm
           weaklyInputActiveVec[i] := true;
         end if;
       end if;
-      if arcType[i]==ArcType.RealTestArc then //real test arc
+      if arcType[i]==PNlib.Types.ArcType.RealTestArc then //real test arc
         if tIn[i] <= testValue[i] then
           active := false;
         end if;
         if tIn[i] > testValue[i] and fed[i] and not normalArc[i] then  //weakly input active??
           weaklyInputActiveVec[i] := true;
         end if;
-      elseif arcType[i]==ArcType.TestArc then //test arc
+      elseif arcType[i]==PNlib.Types.ArcType.TestArc then //test arc
         if tIn[i] < testValue[i] then
           active := false;
         end if;
         if tIn[i] >= testValue[i] and fed[i] and not normalArc[i] then  //weakly input active??
           weaklyInputActiveVec[i] := true;
         end if;
-      elseif arcType[i]==ArcType.RealInhibitorArc and (tIn[i] >= testValue[i]) then  //real inhibitor arc
+      elseif arcType[i]==PNlib.Types.ArcType.RealInhibitorArc and (tIn[i] >= testValue[i]) then  //real inhibitor arc
         active := false;
-      elseif arcType[i]==ArcType.InhibitorArc and (tIn[i] > testValue[i]) then  //inhibitor arc
+      elseif arcType[i]==PNlib.Types.ArcType.InhibitorArc and (tIn[i] > testValue[i]) then  //inhibitor arc
         active := false;
       end if;
     end if;

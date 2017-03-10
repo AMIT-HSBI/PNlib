@@ -1,12 +1,11 @@
 within PNlib.Blocks;
 block enablingInCon "enabling process of input transitions (continuous places)"
-  import PNlib.Types.EnablingType;
   parameter input Integer nIn "number of input transitions";
   input Real arcWeight[nIn] "arc weights of input transitions";
   input Real t "current marking";
   input Real maxMarks "maximum capacity";
   input Boolean TAein[nIn] "active input transitions which are already enabled by their input places";
-  input EnablingType enablingType "resolution of actual conflicts";
+  input PNlib.Types.EnablingType enablingType "resolution of actual conflicts";
   input Integer enablingPrio[:] "enabling priorities of output transitions";
   input Real enablingProb[nIn] "enabling probabilites of input transitions";
   input Boolean disTransition[nIn] "discrete transition?";
@@ -49,7 +48,7 @@ algorithm
         // hack for Dymola 2017
         // TEin := TAein and not disTransition;
         TEin := Functions.OddsAndEnds.boolAnd(TAein, not disTransition);
-        if enablingType==EnablingType.Priority then     //deterministic enabling according to priorities
+        if enablingType==PNlib.Types.EnablingType.Priority then     //deterministic enabling according to priorities
           arcWeightSum:=0;
           for i in 1:nIn loop
             Index:=Modelica.Math.Vectors.find(i,enablingPrio);
