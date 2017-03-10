@@ -23,9 +23,9 @@ model PD "Discrete Place"
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   Real levelCon
     "conversion of tokens to level concentration according to M and N of the settings box";
-  Integer showCapacity=settings.showCapacity
+  Boolean showCapacity=settings.showCapacity
     "only for place animation and display (Do not change!)";
-  Integer animateMarking=settings.animateMarking
+  Boolean animateMarking=settings.animateMarking
     "only for place animation and display (Do not change!)";
   Real color[3] "only for place animation and display (Do not change!)";
   parameter Integer localSeedIn = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for input conflicts" annotation(Dialog(enable = true, group = "Random Number Generator"));
@@ -130,11 +130,11 @@ equation
       Text(
         extent={{-1.5, 25.5}, {-1.5, -21.5}},
         lineColor={0, 0, 0},
-        textString=DynamicSelect("%startTokens", if animateMarking==1 then realString(t, 1, 0) else " ")),
+        textString=DynamicSelect("%startTokens", if animateMarking then realString(t, 1, 0) else " ")),
         Text(
           extent={{-90, 130}, {-90, 116}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if showCapacity==1 then if maxTokens>1073741822 then  "[%minTokens, inf]" else "[%minTokens, %maxTokens]" else " ")),
+          textString=DynamicSelect(" ", if showCapacity then if maxTokens>1073741822 then  "[%minTokens, inf]" else "[%minTokens, %maxTokens]" else " ")),
                                           Text(
           extent={{-74, -113}, {-74, -138}},
           lineColor={0, 0, 0},

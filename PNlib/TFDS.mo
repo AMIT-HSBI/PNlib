@@ -20,11 +20,11 @@ model TFDS "Stochastic Transition"
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   discrete Real putDuration "putative firing time";
-  Integer showTransitionName=settings.showTransitionName
+  Boolean Integer showTransitionName=settings.showTransitionName
     "only for transition animation and display (Do not change!)";
-  Integer animateputDuration=settings.showDelay
+  Boolean Integer animateputDuration=settings.animatePutFireTime
     "only for transition animation and display (Do not change!)";
-  Integer animateHazardFunc=settings.animateHazardFunc
+  Boolean Integer animateHazardFunc=settings.animateHazardFunc
     "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
   parameter Integer localSeed = PNlib.Functions.Random.counter() "Local seed to initialize random number generator" annotation(Dialog(enable = true, group = "Random Number Generator"));
@@ -51,7 +51,7 @@ protected
   Integer tIntIn[nIn] "Integer tokens of input places (for generating events!)";
   Integer tIntOut[nOut]
     "Integer tokens of output places (for generating events!)";
-   PNlib.Types.ArcType arcType[nIn]
+  PNlib.Types.ArcType arcType[nIn]
     "type of input arcs 1=normal, 2=test arc, 3=inhibitor arc, 4=read arc";
   Integer testValueInt[nIn]
     "Integer test values of input arcs (for generating events!)";
@@ -155,7 +155,7 @@ equation
      fireTime=time;
      ani=true;
    end when;
-   color=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255, 255, 0} else {0, 0, 0};
+   color=if (fireTime+settings.timeFire>=time and settings.animateTransition and ani) then {255, 255, 0} else {0, 0, 0};
    //****ANIMATION END****//
    //****ERROR MESSENGES BEGIN****//
     for i in 1:nIn loop
@@ -207,11 +207,11 @@ initial algorithm
         Text(
           extent={{-2, -112}, {-2, -140}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animateHazardFunc==1 then "h="+realString(h, 1, 2) else " ")),
+          textString=DynamicSelect(" ", if animateHazardFunc then "h="+realString(h, 1, 2) else " ")),
         Text(
           extent={{6, -152}, {6, -180}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animateputDuration==1 then "pt="+realString(putDuration, 1, 2) else " ")),
+          textString=DynamicSelect(" ", if animateputDuration then "pt="+realString(putDuration, 1, 2) else " ")),
                                           Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},

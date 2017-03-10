@@ -20,11 +20,11 @@ model TS "Stochastic Transition"
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   discrete Real putFireTime "putative firing time";
-  Integer showTransitionName=settings.showTransitionName
+  Boolean showTransitionName=settings.showTransitionName
     "only for transition animation and display (Do not change!)";
-  Integer animatePutFireTime=settings.animatePutFireTime
+  Boolean animatePutFireTime=settings.animatePutFireTime
     "only for transition animation and display (Do not change!)";
-  Integer animateHazardFunc=settings.animateHazardFunc
+  Boolean animateHazardFunc=settings.animateHazardFunc
     "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
   parameter Integer localSeed = PNlib.Functions.Random.counter() "Local seed to initialize random number generator" annotation(Dialog(enable = true, group = "Random Number Generator"));
@@ -128,7 +128,7 @@ equation
      fireTime=time;
      ani=true;
    end when;
-   color=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255, 255, 0} else {0, 0, 0};
+   color=if (fireTime+settings.timeFire>=time and settings.animateTransition and ani) then {255, 255, 0} else {0, 0, 0};
    //****ANIMATION END****//
    //****ERROR MESSENGES BEGIN****//
     for i in 1:nIn loop
@@ -180,11 +180,11 @@ initial algorithm
         Text(
           extent={{-2, -112}, {-2, -140}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animateHazardFunc==1 then "h="+realString(h, 1, 2) else " ")),
+          textString=DynamicSelect(" ", if animateHazardFunc then "h="+realString(h, 1, 2) else " ")),
         Text(
           extent={{6, -152}, {6, -180}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animatePutFireTime==1 then "pt="+realString(putFireTime, 1, 2) else " ")),
+          textString=DynamicSelect(" ", if animatePutFireTime then "pt="+realString(putFireTime, 1, 2) else " ")),
                                           Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},

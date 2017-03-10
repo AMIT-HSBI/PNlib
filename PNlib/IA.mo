@@ -81,6 +81,6 @@ equation
           extent={{-38, -4}, {-38, -16}},
           lineColor={0, 0, 0},
           lineThickness=0.5,
-          textString=DynamicSelect(" ", if animateWeightTIarc==1 then realString(testValue, 1, 1) else " "))}), Diagram(coordinateSystem(
+          textString=DynamicSelect(" ", if animateWeightTIarc then realString(testValue, 1, 1) else " "))}), Diagram(coordinateSystem(
           preserveAspectRatio=true, extent={{-98, 0}, {28, 48}}), graphics));
 end IA;

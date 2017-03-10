@@ -23,11 +23,11 @@ model PC "Continuous Place"
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   Real levelCon
     "conversion of tokens to level concentration according to M and N of the settings box";
-  Integer showPlaceName=settings.showPlaceName
+  Boolean showPlaceName=settings.showPlaceName
     "only for place animation and display (Do not change!)";
-  Integer showCapacity=settings.showCapacity
+  Boolean showCapacity=settings.showCapacity
     "only for place animation and display (Do not change!)";
-  Integer animateMarking=settings.animateMarking
+  Boolean animateMarking=settings.animateMarking
     "only for place animation and display (Do not change!)";
   Real color[3] "only for place animation and display (Do not change!)";
   parameter Boolean showTokenFlow = settings.showTokenFlow annotation(Dialog(enable = true, group = "Token flow"));
@@ -177,11 +177,11 @@ equation
         lineColor={0, 0, 0},
         origin={0.5, -0.5},
         rotation=0,
-        textString=DynamicSelect("%startMarks", if animateMarking==1 then if t>0 then realString(t, 1, 2) else "0.0" else " ")),
+        textString=DynamicSelect("%startMarks", if animateMarking then if t>0 then realString(t, 1, 2) else "0.0" else " ")),
         Text(
           extent={{-90, 130}, {-90, 116}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if showCapacity==1 then if maxMarks>1e+30 then  "[%minMarks, inf]" else "[%minMarks, %maxMarks]" else " ")),
+          textString=DynamicSelect(" ", if showCapacity then if maxMarks>1e+30 then  "[%minMarks, inf]" else "[%minMarks, %maxMarks]" else " ")),
                                           Text(
           extent={{-74, -103}, {-74, -128}},
           lineColor={0, 0, 0},
