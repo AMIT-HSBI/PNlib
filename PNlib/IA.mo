@@ -5,7 +5,7 @@ model IA "Inhibitor Arc"
   parameter Boolean realInhibitorArc=true "real Inhibitor arc <, Inhibitor arc <=" annotation(Dialog(enable = true, group = "Inhibitor Arc"));                                                                               annotation(Dialog(enable = true, group = "Inhibitor Arc"));
   parameter Boolean normalArc=true "double arc: inhibitor and normal arc?" annotation(Dialog(enable = true, group = "Inhibitor Arc"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
-  Integer animateWeightTIarc=settings.animateWeightTIarc
+  Boolean animateWeightTIarc=settings.animateWeightTIarc
     "only for transition animation and display (Do not change!)";
   Integer testColor[3]
     "only for transition animation and display (Do not change!)";
@@ -48,9 +48,9 @@ equation
      testValueInt=1;
   end if;
   //****ANIMATION BEGIN****//
-  if inPlace.t<testValue and settings.animateTIarc==1 then
+  if inPlace.t<testValue and settings.animateTIarc then
     testColor={0, 255, 0};
-  elseif  settings.animateTIarc==1 then
+  elseif  settings.animateTIarc then
     testColor={255, 0, 0};
   else
     testColor={255, 255, 255};

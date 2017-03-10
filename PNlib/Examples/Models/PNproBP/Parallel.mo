@@ -74,7 +74,7 @@ equation
      fireTime=time;
      ani=true;
   end when;
-  fireColor=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255,255,0} else {128,255,0};
+  fireColor=if (fireTime+settings.timeFire>=time and settings.animateTransition and ani) then {255,255,0} else {128,255,0};
 
   connect(puffern.outPlaces[1], Puffer.inTransition[1]) annotation(Line(
       points={{-85.2,14},{-70.8,14}},

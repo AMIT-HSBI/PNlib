@@ -109,15 +109,7 @@ model FlushToilet "Model of a flush toilet"
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-62,-118})));
-  inner Settings settings(scale=5, timeFire=0.1,
-    animateMarking=1,
-    animatePlace=1,
-    animateTransition=1,
-    animatePutFireTime=1,
-    animateHazardFunc=1,
-    animateSpeed=1,
-    animateWeightTIarc=1,
-    animateTIarc=1)
+  inner Settings settings(scale=5, timeFire=0.1)
     annotation(Placement(transformation(extent={{42,66},{74,98}})));
   PD Visitor(
     nOut=1,

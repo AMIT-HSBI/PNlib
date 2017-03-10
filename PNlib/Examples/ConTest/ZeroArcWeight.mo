@@ -6,10 +6,7 @@ model ZeroArcWeight
     annotation(Placement(transformation(extent={{-50, 10}, {-30, 30}})));
   PNlib.PC P2(nOut=1, startMarks=10)
     annotation(Placement(transformation(extent={{-50, -30}, {-30, -10}})));
-  PNlib.TC T1(
-    nIn=2,
-    nOut=1,
-    arcWeightIn={0, 1})
+  PNlib.TC T1(nIn=2, nOut=1, arcWeightIn={0, 1})
     annotation(Placement(transformation(extent={{-10, -10}, {10, 10}})));
   PNlib.PC P3(nIn=1)
     annotation(Placement(transformation(extent={{30, -10}, {50, 10}})));

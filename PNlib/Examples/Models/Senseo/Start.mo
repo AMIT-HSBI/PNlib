@@ -10,7 +10,6 @@ model Start
    Real colorHead[3]=if stop.t>0 then {255,0,0} else {0,255,0};
   PD       start(       nOut=2,
     nIn=3,
-    enablingType=1,
     maxTokens=1)                                       annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -47,7 +46,7 @@ model Start
   PD       P1(
     nIn=1,
     nOut=2,
-    enablingType=2,
+    enablingType=PNlib.Types.EnablingType.Probability,
     enablingProbOut={0.2,0.8},
     maxTokens=1)
     annotation(Placement(transformation(extent={{-90,-4},{-70,16}})));

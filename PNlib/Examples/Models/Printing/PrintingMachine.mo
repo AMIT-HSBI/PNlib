@@ -62,7 +62,6 @@ model PrintingMachine "printing machine"
     annotation(Placement(transformation(extent={{-54,-6},{-34,14}})));
  PC bundle_at_macu_press(
     nIn=1,
-    enablingType=1,
     nOut=2,
     reStart=reStart)
             annotation(Placement(transformation(extent={{-6,-6},{14,14}})));

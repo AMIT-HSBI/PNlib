@@ -5,7 +5,7 @@ model TA "Test Arc"
   parameter Boolean realTestArc=true "real Test arc >, Test arc >=" annotation(Dialog(enable = true, group = "Test Arc"));
   parameter Boolean normalArc=true "Double arc: test and normal arc?" annotation(Dialog(enable = true, group = "Test Arc"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
-  Integer animateWeightTIarc=settings.animateWeightTIarc "only for transition animation and display (Do not change!)";
+  Boolean animateWeightTIarc=settings.animateWeightTIarc "only for transition animation and display (Do not change!)";
   Integer testColor[3] "only for transition animation and display (Do not change!)";
   Interfaces.TransitionIn inPlace(
     active=outTransition.active,
@@ -41,9 +41,9 @@ equation
     testValueInt=1;
   end if;
   //****ANIMATION BEGIN****//
-  if inPlace.t>testValue and settings.animateTIarc==1 then
+  if inPlace.t>testValue and settings.animateTIarc then
     testColor={0, 255, 0};
-  elseif settings.animateTIarc==1 then
+  elseif settings.animateTIarc then
     testColor={255, 0, 0};
   else
     testColor={255, 255, 255};
