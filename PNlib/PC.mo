@@ -152,7 +152,7 @@ equation
   //****ANIMATION BEGIN****//
   //scaling of tokens for animation
   tokenscale= t*settings.scale;
-  color=if settings.animatePlace==1 then if tokenscale<100 then {255, 255-2.55*tokenscale, 255-2.55*tokenscale} else {255, 0, 0} else {255, 255, 255};
+  color=if settings.animatePlace then if tokenscale<100 then {255, 255-2.55*tokenscale, 255-2.55*tokenscale} else {255, 0, 0} else {255, 255, 255};
   //****ANIMATION END****//
   //****ERROR MESSENGES BEGIN****//
   assert(Functions.OddsAndEnds.prioCheck(enablingPrioIn,nIn) or nIn==0 or enablingType==PNlib.Types.EnablingType.Probability, "The priorities of the input priorities may be given only once and must be selected from 1 to nIn");
