@@ -20,12 +20,9 @@ model TFDS "Stochastic Transition"
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   discrete Real putDuration "putative firing time";
-  Boolean Integer showTransitionName=settings.showTransitionName
-    "only for transition animation and display (Do not change!)";
-  Boolean Integer animateputDuration=settings.animatePutFireTime
-    "only for transition animation and display (Do not change!)";
-  Boolean Integer animateHazardFunc=settings.animateHazardFunc
-    "only for transition animation and display (Do not change!)";
+  Boolean showTransitionName=settings.showTransitionName "only for transition animation and display (Do not change!)";
+  Boolean animateputDuration=settings.animatePutFireTime "only for transition animation and display (Do not change!)";
+  Boolean  animateHazardFunc=settings.animateHazardFunc "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
   parameter Integer localSeed = PNlib.Functions.Random.counter() "Local seed to initialize random number generator" annotation(Dialog(enable = true, group = "Random Number Generator"));
 protected
