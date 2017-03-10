@@ -1,5 +1,5 @@
 within PNlib;
-model TD "Discrete Transition"
+model TD "Discrete Transition with delay "
   parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
