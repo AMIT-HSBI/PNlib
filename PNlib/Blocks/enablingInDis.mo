@@ -5,7 +5,7 @@ block enablingInDis "enabling process of discrete input transitions"
   input Integer t "current token number";
   input Integer maxTokens "maximum capacity";
   input Boolean TAein[:] "active previous transitions which are already enabled by their input places";
-  input Integer enablingType "resolution of actual conflicts";
+  input PNlib.Types.EnablingType enablingType "resolution of actual conflicts";
   input Integer enablingPrio[:] "enabling priorities of input transitions";
   input Real enablingProb[:] "enabling probabilites of input transitions";
   input Boolean disTransition[:] "type of input transitions";
@@ -41,7 +41,7 @@ algorithm
       if t + arcWeightSum <= maxTokens then  //Place has no actual conflict; all active input transitions are enabled
         TEin:=TAein;
       else                          //Place has an actual conflict
-        if enablingType==1 then     //deterministic enabling according to priorities
+        if enablingType==PNlib.Types.EnablingType.Priority then     //deterministic enabling according to priorities
           arcWeightSum:=0;
           for i in 1:nIn loop
             Index:=Modelica.Math.Vectors.find(i,enablingPrio);
@@ -49,7 +49,7 @@ algorithm
               TEin[Index]:=true;
               arcWeightSum:=arcWeightSum + arcWeight[Index];
             end if;
-          end for; 
+          end for;
         else                        //probabilistic enabling according to enabling probabilities
           arcWeightSum:=0;
           remTAin:=zeros(nIn);

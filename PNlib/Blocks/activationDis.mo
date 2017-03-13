@@ -6,7 +6,7 @@ block activationDis "Activation of a discrete transition"
   input Real tOut[:] "tokens of output places";
   input Integer tIntIn[:] "tokens of input places";
   input Integer tIntOut[:] "tokens of output places";
-  input Integer arcType[:] "arc type of input places";
+  input PNlib.Types.ArcType arcType[:] "arc type of input places";
   input Real arcWeightIn[:] "arc weights of input places";
   input Integer arcWeightIntIn[:] "arc weights of input places";
   input Real arcWeightOut[:] "arc weights of output places";
@@ -18,7 +18,7 @@ block activationDis "Activation of a discrete transition"
   input Boolean firingCon "firing condition of transition";
   input Boolean disPlaceIn[:] "types of input places";
   input Boolean disPlaceOut[:] "types of output places";
-  input Integer normalArc[:] "normal or double arc?";
+  input Boolean normalArc[:] "normal or double arc?";
   input Real testValue[:] "test values of test and inhibitor arcs";
   input Integer testValueInt[:] "integer test values of test and inhibitor arcs";
   output Boolean active "activation of transition";
@@ -27,27 +27,27 @@ algorithm
   //check input places
   for i in 1:nIn loop
     if disPlaceIn[i] then //discrete
-      if (arcType[i]==1 or normalArc[i]==2) and not (tIntIn[i]-arcWeightIntIn[i]  >= minTokensInt[i]) then
+      if (arcType[i]==PNlib.Types.ArcType.NormalArc or not normalArc[i]) and not (tIntIn[i]-arcWeightIntIn[i]  >= minTokensInt[i]) then
         active:=false;
-      elseif arcType[i]==2 and not (tIntIn[i] > testValueInt[i]) then
+      elseif arcType[i]==PNlib.Types.ArcType.RealTestArc and not (tIntIn[i] > testValueInt[i]) then
         active:=false;
-      elseif arcType[i]==3 and not (tIntIn[i] >= testValueInt[i]) then
+      elseif arcType[i]==PNlib.Types.ArcType.TestArc and not (tIntIn[i] >= testValueInt[i]) then
         active:=false;
-      elseif arcType[i]==4 and not (tIntIn[i] < testValueInt[i]) then
+      elseif arcType[i]==PNlib.Types.ArcType.RealInhibitorArc and not (tIntIn[i] < testValueInt[i]) then
         active:=false;
-      elseif arcType[i]==5 and not (tIntIn[i] <= testValueInt[i]) then
+      elseif arcType[i]==PNlib.Types.ArcType.InhibitorArc and not (tIntIn[i] <= testValueInt[i]) then
         active:=false;
       end if;
     else  //continuous
-      if (arcType[i]==1 or normalArc[i]==2) and not (tIn[i]-arcWeightIn[i]-minTokens[i] >= -Constants.almost_eps) then
+      if (arcType[i]==PNlib.Types.ArcType.NormalArc or not normalArc[i]) and not (tIn[i]-arcWeightIn[i]-minTokens[i] >= -Constants.almost_eps) then
         active:=false;
-      elseif arcType[i]==2 and not (tIn[i] > testValue[i]) then
+      elseif arcType[i]==PNlib.Types.ArcType.RealTestArc and not (tIn[i] > testValue[i]) then
         active:=false;
-      elseif arcType[i]==3 and not (tIn[i] >= testValue[i]) then
+      elseif arcType[i]==PNlib.Types.ArcType.TestArc and not (tIn[i] >= testValue[i]) then
         active:=false;
-      elseif arcType[i]==4 and not (tIn[i] < testValue[i]) then
+      elseif arcType[i]==PNlib.Types.ArcType.RealInhibitorArc and not (tIn[i] < testValue[i]) then
         active:=false;
-      elseif arcType[i]==5 and not (tIn[i] <= testValue[i]) then
+      elseif arcType[i]==PNlib.Types.ArcType.InhibitorArc and not (tIn[i] <= testValue[i]) then
         active:=false;
       end if;
     end if;

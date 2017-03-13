@@ -1,19 +1,18 @@
 within PNlib;
-model TFDS "Stochastic Transition"
+model TFDS "Stochastic Transition with fire duration"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
-  parameter Integer distributionType=1
-    "distribution type of duration" annotation(Dialog(enable = true, group = "Distribution"), choices(choice=1
-        "Exponential distribution", choice=2 "Triangular distribution", __Dymola_radioButtons=true));
+  parameter  PNlib.Types.DistributionType distributionType= PNlib.Types.DistributionType.Exponential
+    "distribution type of duration" annotation(Dialog(enable = true, group = "Distribution"));
   Real h=1
-    "probability density" annotation(Dialog(enable = if distributionType==1 then true else false, group = "Exponential distribution"));
+    "probability density" annotation(Dialog(enable = if distributionType== PNlib.Types.DistributionType.Exponential then true else false, group = "Exponential distribution"));
   Real a=0
-    "Lower limit" annotation(Dialog(enable = if distributionType==2 then true else false, group = "Triangular distribution"));
+    "Lower limit" annotation(Dialog(enable = if distributionType== PNlib.Types.DistributionType.Triangular then true else false, group = "Triangular distribution"));
   Real b=1
-    "Upper Limit" annotation(Dialog(enable = if distributionType==2 then true else false, group = "Triangular distribution"));
+    "Upper Limit" annotation(Dialog(enable = if distributionType== PNlib.Types.DistributionType.Triangular then true else false, group = "Triangular distribution"));
   Real c=0.5
-    "Most likely value" annotation(Dialog(enable = if distributionType==2 then true else false, group = "Triangular distribution"));
+    "Most likely value" annotation(Dialog(enable = if distributionType== PNlib.Types.DistributionType.Triangular then true else false, group = "Triangular distribution"));
   Real arcWeightIn[nIn]=fill(1, nIn) "arc weights of input places"
                                          annotation(Dialog(enable = true, group = "Arc Weights"));
   Real arcWeightOut[nOut]=fill(1, nOut) "arc weights of output places"
@@ -21,12 +20,9 @@ model TFDS "Stochastic Transition"
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   discrete Real putDuration "putative firing time";
-  Integer showTransitionName=settings.showTransitionName
-    "only for transition animation and display (Do not change!)";
-  Integer animateputDuration=settings.showDelay
-    "only for transition animation and display (Do not change!)";
-  Integer animateHazardFunc=settings.animateHazardFunc
-    "only for transition animation and display (Do not change!)";
+  Boolean showTransitionName=settings.showTransitionName "only for transition animation and display (Do not change!)";
+  Boolean animateputDuration=settings.animatePutFireTime "only for transition animation and display (Do not change!)";
+  Boolean  animateHazardFunc=settings.animateHazardFunc "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
   parameter Integer localSeed = PNlib.Functions.Random.counter() "Local seed to initialize random number generator" annotation(Dialog(enable = true, group = "Random Number Generator"));
 protected
@@ -52,11 +48,11 @@ protected
   Integer tIntIn[nIn] "Integer tokens of input places (for generating events!)";
   Integer tIntOut[nOut]
     "Integer tokens of output places (for generating events!)";
-  Integer arcType[nIn]
+  PNlib.Types.ArcType arcType[nIn]
     "type of input arcs 1=normal, 2=test arc, 3=inhibitor arc, 4=read arc";
   Integer testValueInt[nIn]
     "Integer test values of input arcs (for generating events!)";
-  Integer normalArc[nIn]
+  Boolean normalArc[nIn]
     "1=no, 2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
   Boolean durationPassedIn(start=false, fixed=true) "Is the duration passed?";
   Boolean durationPassedOut(start=false, fixed=true) "Is the duration passed?";
@@ -156,7 +152,7 @@ equation
      fireTime=time;
      ani=true;
    end when;
-   color=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255, 255, 0} else {0, 0, 0};
+   color=if (fireTime+settings.timeFire>=time and settings.animateTransition and ani) then {255, 255, 0} else {0, 0, 0};
    //****ANIMATION END****//
    //****ERROR MESSENGES BEGIN****//
     for i in 1:nIn loop
@@ -183,12 +179,12 @@ algorithm
   //generate random putative fire time according to Next-Reaction method of Gibson and Bruck
   when activeIn then    //17.06.11 Reihenfolge getauscht!
     (r128, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(pre(state128));
-    putDuration :=  if distributionType==1 then PNlib.Functions.Random.randomexp(h, r128) else PNlib.Functions.Random.randomtriangular(a, b, c, r128);
+    putDuration :=  if distributionType== PNlib.Types.DistributionType.Exponential then PNlib.Functions.Random.randomexp(h, r128) else PNlib.Functions.Random.randomtriangular(a, b, c, r128);
   end when;
    //****MAIN END****//
 initial equation
   //to initialize the random generator otherwise the first random number is always the same in every simulation run
-    putDuration = if distributionType==1 then PNlib.Functions.Random.randomexp(h, r128) else PNlib.Functions.Random.randomtriangular(a, b, c, r128);
+    putDuration = if distributionType== PNlib.Types.DistributionType.Exponential then PNlib.Functions.Random.randomexp(h, r128) else PNlib.Functions.Random.randomtriangular(a, b, c, r128);
 initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, settings.globalSeed);
@@ -208,11 +204,11 @@ initial algorithm
         Text(
           extent={{-2, -112}, {-2, -140}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animateHazardFunc==1 then "h="+realString(h, 1, 2) else " ")),
+          textString=DynamicSelect(" ", if animateHazardFunc then "h="+realString(h, 1, 2) else " ")),
         Text(
           extent={{6, -152}, {6, -180}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animateputDuration==1 then "pt="+realString(putDuration, 1, 2) else " ")),
+          textString=DynamicSelect(" ", if animateputDuration then "pt="+realString(putDuration, 1, 2) else " ")),
                                           Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},

@@ -2,11 +2,11 @@ within PNlib.Examples.ExtTest;
 model DoubleArcwithPCtoTC
   extends Modelica.Icons.Example;
   inner Settings settings annotation(Placement(transformation(extent={{-60, 40}, {-40, 60}})));
-  IA IA1(testValue=3, normalArc=2) annotation(Placement(transformation(extent={{-22, 26}, {-8, 32}})));
+  IA IA1(testValue=3, normalArc=false) annotation(Placement(transformation(extent={{-22, 26}, {-8, 32}})));
   PC P1(nOut=2, startMarks=5) annotation(Placement(transformation(extent={{-54, -10}, {-34, 10}})));
   PC P2(nIn=1) annotation(Placement(transformation(extent={{30, 20}, {50, 40}})));
   PC P3(nIn=1) annotation(Placement(transformation(extent={{30, -40}, {50, -20}})));
-  TA TA1(testValue=2, normalArc=2) annotation(Placement(transformation(extent={{-20, -34}, {-6, -28}})));
+  TA TA1(testValue=2, normalArc=false) annotation(Placement(transformation(extent={{-20, -34}, {-6, -28}})));
   TC T1(nOut=1, nIn=1) annotation(Placement(transformation(extent={{6, 20}, {26, 40}})));
   TC T2(nIn=1, nOut=1) annotation(Placement(transformation(extent={{6, -40}, {26, -20}})));
 equation

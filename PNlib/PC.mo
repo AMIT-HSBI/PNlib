@@ -7,28 +7,27 @@ model PC "Continuous Place"
   parameter Real startMarks = 0 "start marks" annotation(Dialog(enable = true, group = "Marks"));
   parameter Real minMarks = 0 "minimum capacity" annotation(Dialog(enable = true, group = "Marks"));
   parameter Real maxMarks=PNlib.Constants.inf "maximum capacity" annotation(Dialog(enable = true, group = "Marks"));
-   Boolean reStart=false "restart condition" annotation(Dialog(enable = true, group = "Marks"));
+  Boolean reStart=false "restart condition" annotation(Dialog(enable = true, group = "Marks"));
   parameter Real reStartMarks=0 "number of marks at restart" annotation(Dialog(enable = true, group = "Marks"));
   parameter Integer N=settings.N "N+1=amount of levels" annotation(Dialog(enable = true, group = "Level Concentrations"));
-  parameter Integer enablingType=1
-    "resolution type of actual conflict (type-1-conflict)" annotation(Dialog(enable = true, group = "Enabling"), choices(choice=1
-        "Priority", choice=2 "Probability", __Dymola_radioButtons=true));
+  parameter PNlib.Types.EnablingType enablingType=PNlib.Types.EnablingType.Priority
+    "resolution type of actual conflict (type-1-conflict)" annotation(Dialog(enable = true, group = "Enabling"));
   parameter Integer enablingPrioIn[nIn]=1:nIn
-    "enabling priorities of input transitions" annotation(Dialog(enable = if enablingType==2 then false else true, group = "Enabling"));
+    "enabling priorities of input transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Probability then false else true, group = "Enabling"));
   parameter Integer enablingPrioOut[nOut]=1:nOut
-    "enabling priorities of output transitions" annotation(Dialog(enable = if enablingType==2 then false else true, group = "Enabling"));
+    "enabling priorities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Probability then false else true, group = "Enabling"));
   parameter Real enablingProbIn[nIn]=fill(1/nIn, nIn)
-    "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==1 then false else true, group = "Enabling"));
+    "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Priority then false else true, group = "Enabling"));
   parameter Real enablingProbOut[nOut]=fill(1/nOut, nOut)
-    "enabling probabilities of output transitions" annotation(Dialog(enable = if enablingType==1 then false else true, group = "Enabling"));
+    "enabling probabilities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Priority then false else true, group = "Enabling"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   Real levelCon
     "conversion of tokens to level concentration according to M and N of the settings box";
-  Integer showPlaceName=settings.showPlaceName
+  Boolean showPlaceName=settings.showPlaceName
     "only for place animation and display (Do not change!)";
-  Integer showCapacity=settings.showCapacity
+  Boolean showCapacity=settings.showCapacity
     "only for place animation and display (Do not change!)";
-  Integer animateMarking=settings.animateMarking
+  Boolean animateMarking=settings.animateMarking
     "only for place animation and display (Do not change!)";
   Real color[3] "only for place animation and display (Do not change!)";
   parameter Boolean showTokenFlow = settings.showTokenFlow annotation(Dialog(enable = true, group = "Token flow"));
@@ -108,7 +107,7 @@ public
   each fed=feeding.anytrue,
   decreasingFactor=decFactorOut,
   each disPlace=false,
-  each arcType=1,
+  each arcType=PNlib.Types.ArcType.NormalArc,
   each speedSum=firingSumIn.conFiringSum,
   each tokenInOut=pre(disMarksInOut),
   fire=fireOut,
@@ -120,7 +119,7 @@ public
   prelimSpeed=prelimSpeedOut,
   each testValue=-1,
   each testValueint=-1,
-  each normalArc=2) if nOut > 0 "connector for output transitions" annotation(Placement(
+  each normalArc=false) if nOut > 0 "connector for output transitions" annotation(Placement(
         transformation(extent={{100, -10}, {116, 10}}, rotation=0)));
   Modelica.Blocks.Interfaces.RealOutput pc_t=t
     "connector for Simulink connection" annotation(Placement(
@@ -153,13 +152,13 @@ equation
   //****ANIMATION BEGIN****//
   //scaling of tokens for animation
   tokenscale= t*settings.scale;
-  color=if settings.animatePlace==1 then if tokenscale<100 then {255, 255-2.55*tokenscale, 255-2.55*tokenscale} else {255, 0, 0} else {255, 255, 255};
+  color=if settings.animatePlace then if tokenscale<100 then {255, 255-2.55*tokenscale, 255-2.55*tokenscale} else {255, 0, 0} else {255, 255, 255};
   //****ANIMATION END****//
   //****ERROR MESSENGES BEGIN****//
-  assert(Functions.OddsAndEnds.prioCheck(enablingPrioIn,nIn) or nIn==0 or enablingType==2, "The priorities of the input priorities may be given only once and must be selected from 1 to nIn");
-  assert(Functions.OddsAndEnds.prioCheck(enablingPrioOut,nOut) or nOut==0 or enablingType==2, "The priorities of the output priorities may be given only once and must be selected from 1 to nOut");
-  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbIn), 1.0, 1e-6) or nIn==0 or enablingType==1, "The sum of input enabling probabilities has to be equal to 1");
-  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbOut), 1.0, 1e-6) or nOut==0 or enablingType==1, "The sum of output enabling probabilities has to be equal to 1");
+  assert(Functions.OddsAndEnds.prioCheck(enablingPrioIn,nIn) or nIn==0 or enablingType==PNlib.Types.EnablingType.Probability, "The priorities of the input priorities may be given only once and must be selected from 1 to nIn");
+  assert(Functions.OddsAndEnds.prioCheck(enablingPrioOut,nOut) or nOut==0 or enablingType==PNlib.Types.EnablingType.Probability, "The priorities of the output priorities may be given only once and must be selected from 1 to nOut");
+  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbIn), 1.0, 1e-6) or nIn==0 or enablingType==PNlib.Types.EnablingType.Priority, "The sum of input enabling probabilities has to be equal to 1");
+  assert(Functions.OddsAndEnds.isEqual(sum(enablingProbOut), 1.0, 1e-6) or nOut==0 or enablingType==PNlib.Types.EnablingType.Priority, "The sum of output enabling probabilities has to be equal to 1");
   assert(startMarks>=minMarks and startMarks<=maxMarks, "minMarks<=startMarks<=maxMarks");
   //****ERROR MESSENGES END****//
    annotation(defaultComponentName = "P1", Icon(graphics={
@@ -178,11 +177,11 @@ equation
         lineColor={0, 0, 0},
         origin={0.5, -0.5},
         rotation=0,
-        textString=DynamicSelect("%startMarks", if animateMarking==1 then if t>0 then realString(t, 1, 2) else "0.0" else " ")),
+        textString=DynamicSelect("%startMarks", if animateMarking then if t>0 then realString(t, 1, 2) else "0.0" else " ")),
         Text(
           extent={{-90, 130}, {-90, 116}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if showCapacity==1 then if maxMarks>1e+30 then  "[%minMarks, inf]" else "[%minMarks, %maxMarks]" else " ")),
+          textString=DynamicSelect(" ", if showCapacity then if maxMarks>1e+30 then  "[%minMarks, inf]" else "[%minMarks, %maxMarks]" else " ")),
                                           Text(
           extent={{-74, -103}, {-74, -128}},
           lineColor={0, 0, 0},

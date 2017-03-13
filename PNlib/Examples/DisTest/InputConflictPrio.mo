@@ -12,7 +12,7 @@ model InputConflictPrio
             {0, -10}})));
   PNlib.PD P2(startTokens = 5, nOut = 1) annotation(Placement(transformation(extent={{-50, 10},
             {-30, 30}})));
-  PNlib.PD P3(startTokens = 5, enablingType = 1, nOut = 1) annotation(Placement(transformation(extent={{-50, -30},
+  PNlib.PD P3(startTokens = 5, nOut = 1) annotation(Placement(transformation(extent={{-50, -30},
             {-30, -10}})));
   inner PNlib.Settings settings annotation(Placement(transformation(extent={{40, 20},
             {60, 40}})));

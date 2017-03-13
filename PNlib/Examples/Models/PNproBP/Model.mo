@@ -20,11 +20,11 @@ model Model "Top Model"
     annotation(Placement(transformation(extent={{-400,90},{-380,110}})));
   PD Request(
     nIn=1,
-    enablingType=2,
+    enablingType=PNlib.Types.EnablingType.Probability,
     nOut=1) "Request of a custumer is available"
     annotation(Placement(transformation(extent={{-358,90},{-338,110}})));
   PD Consultants(
-    enablingType=2,
+    enablingType=PNlib.Types.EnablingType.Probability,
     nOut=1,
     nIn=1,
     startTokens=Nr_Consultant,
@@ -45,7 +45,7 @@ model Model "Top Model"
     annotation(Placement(transformation(extent={{-164,60},{-144,80}})));
   PD Advisor1(
     nOut=1,
-    enablingType=2,
+    enablingType=PNlib.Types.EnablingType.Probability,
     nIn=1,
     startTokens=Nr_Advisor1)                    annotation(Placement(
         transformation(
@@ -75,7 +75,7 @@ model Model "Top Model"
         rotation=180,
         origin={392,114})));
   PD Advisor2(
-    enablingType=2,
+    enablingType=PNlib.Types.EnablingType.Probability,
     startTokens=Nr_Advisor2,
     nOut=1,
     nIn=1) annotation(Placement(transformation(
@@ -126,7 +126,7 @@ model Model "Top Model"
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-334,-66})));
-  inner Settings settings(scale=10, showCapacity=2)
+  inner Settings settings(scale=10)
     annotation(Placement(transformation(extent={{-420,166},{-386,200}})));
   PNproBP.Parallel Consulting(
     nIn=2,
@@ -249,7 +249,7 @@ model Model "Top Model"
         rotation=90,
         origin={-179,5})));
   PD Controller(
-    enablingType=2,
+    enablingType=PNlib.Types.EnablingType.Probability,
     nOut=1,
     nIn=1,
     startTokens=Nr_Controller)

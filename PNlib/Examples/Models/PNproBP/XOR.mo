@@ -21,7 +21,7 @@ model XOR
   PD P1(
     nIn=1,
     nOut=2,
-    enablingType=2,
+    enablingType=PNlib.Types.EnablingType.Probability,
     enablingProbOut={upperProb,lowerProb},
     maxTokens=1)
     annotation(Placement(transformation(extent={{-62,-10},{-42,10}})));
@@ -48,7 +48,7 @@ equation
      fireTime=time;
      ani=true;
   end when;
-  fireColor=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255,255,0} else {85,170,255};
+  fireColor=if (fireTime+settings.timeFire>=time and settings.animateTransition and ani) then {255,255,0} else {85,170,255};
   connect(T3.outPlaces[1], P1.inTransition[1]) annotation(Line(
       points={{-73.2,0},{-68,0},{-62.8,0}},
       color={0,0,0},

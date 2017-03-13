@@ -5,7 +5,7 @@ block enablingOutCon "enabling process of output transitions (continuous places)
   input Real t "current marks";
   input Real minMarks "minimum capacity";
   input Boolean TAout[:] "active output transitions with passed delay";
-  input Integer enablingType "resolution of actual conflicts";
+  input PNlib.Types.EnablingType enablingType "resolution of actual conflicts";
   input Integer enablingPrio[:] "enabling priorities of output transitions";
   input Real enablingProb[:] "enabling probabilites of output transitions";
   input Boolean disTransition[:] "discrete transition?";
@@ -48,7 +48,7 @@ algorithm
       // hack for Dymola 2017
       // TEout := TAout and not disTransition;
       TEout := Functions.OddsAndEnds.boolAnd(TAout, not disTransition);
-      if enablingType==1 then     //deterministic enabling according to priorities
+      if enablingType==PNlib.Types.EnablingType.Priority then     //deterministic enabling according to priorities
         arcWeightSum:=0;
         for i in 1: nOut loop  //discrete transitions are proven at first
           Index:=Modelica.Math.Vectors.find(i,enablingPrio);

@@ -74,7 +74,7 @@ model Senseo_Maschine
     nIn=1,
     maxTokens=1,
     nOut=2,
-    enablingType=2,
+    enablingType=PNlib.Types.EnablingType.Probability,
     enablingProbOut={0.7,0.3}) annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,

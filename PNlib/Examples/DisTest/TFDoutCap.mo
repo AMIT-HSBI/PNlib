@@ -6,7 +6,7 @@ model TFDoutCap
     Placement(visible = true, transformation(extent = {{40, 20}, {60, 40}}, rotation = 0)));
   PNlib.PD P1(nIn = 1, nOut = 1, startTokens = 0) annotation(
     Placement(visible = true, transformation(extent = {{-34, -10}, {-14, 10}}, rotation = 0)));
-  PNlib.PD P2( maxTokens = 1, nIn = 1, nOut = 1, startTokens = 1) annotation(
+  PNlib.PD P2(maxTokens = 1, nIn = 1, nOut = 1, startTokens = 1) annotation(
     Placement(visible = true, transformation(origin = {22, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PNlib.TFD T1(nIn = 1, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {-2, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

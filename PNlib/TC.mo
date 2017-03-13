@@ -11,8 +11,8 @@ model TC "Continuous Transition"
   Boolean fire "Does the transition fire?";
   Real instantaneousSpeed "instantaneous speed";
   Real actualSpeed = if fire then instantaneousSpeed else 0.0;
-  Integer showTransitionName=settings.showTransitionName "only for transition animation and display (Do not change!)";
-  Integer animateSpeed=settings.animateSpeed "only for transition animation and display (Do not change!)";
+  Boolean showTransitionName=settings.showTransitionName "only for transition animation and display (Do not change!)";
+  Boolean animateSpeed=settings.animateSpeed "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
 protected
   outer PNlib.Settings settings "global settings for animation and display";
@@ -26,7 +26,7 @@ protected
   Real decreasingFactorIn[nIn] "decreasing factors of input places";
   Real decreasingFactorOut[nOut] "decreasing factors of output places";
   Real testValue[nIn] "test values of test or inhibitor arcs";
-  Integer arcType[nIn]   "type of input arcs 1=normal, 2=real test arc,  3=test arc, 4=real inhibitor arc, 5=inhibitor arc, 6=read arc";
+  PNlib.Types.ArcType arcType[nIn]   "type of input arcs 1=normal, 2=real test arc,  3=test arc, 4=real inhibitor arc, 5=inhibitor arc, 6=read arc";
   Integer arcWeightIntIn[nIn] "Integer arc weights of discrete input places (for generating events!)";
   Integer arcWeightIntOut[nOut] "Integer arc weights of discrete output places (for generating events!)";
   Integer minTokensInt[nIn] "Integer minimum tokens of input places (for generating events!)";
@@ -34,7 +34,7 @@ protected
   Integer tIntIn[nIn] "integer tokens of input places (for generating events!)";
   Integer tIntOut[nOut] "integer tokens of output places (for generating events!)";
   Integer testValueInt[nIn] "Integer test values of input arcs (for generating events!)";
-  Integer normalArc[nIn] "1=no, 2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
+  Boolean normalArc[nIn] "1=no, 2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
   Boolean fed[nIn] "Are the input places fed by their input transitions?";
   Boolean emptied[nOut] "Are the output places emptied by their output transitions?";
   Boolean disPlaceIn[nIn] "Are the input places discrete?";
@@ -97,7 +97,7 @@ equation
   instantaneousSpeed=min(min(min(decreasingFactorIn), min(decreasingFactorOut))*maximumSpeed, prelimSpeed);
   //****MAIN END****//
   //****ANIMATION BEGIN****//
-  color=if (fire and settings.animateTransition==1) then {255, 255, 0} else {255, 255, 255};
+  color=if (fire and settings.animateTransition) then {255, 255, 0} else {255, 255, 255};
   //****ANIMATION END****//
   //****ERROR MESSENGES BEGIN****//  hier noch Message gleiches Kantengewicht und auch Kante dis Place!!
   for i in 1:nIn loop
@@ -119,5 +119,5 @@ equation
     assert(arcWeightOut[i]>=0, "Output arc weights must be positive.");
   end for;
   //****ERROR MESSENGES END****//
-  annotation(defaultComponentName = "T1", Icon(graphics={Rectangle(extent={{-40, 100}, {40, -100}}, lineColor={0, 0, 0}, fillColor=DynamicSelect({255, 255, 255}, color), fillPattern=FillPattern.Solid), Text(extent={{-2, -116}, {-2, -144}}, lineColor={0, 0, 0}, textString=DynamicSelect(" ", if animateSpeed==1 and fire>0.5 then if instantaneousSpeed>0 then realString(instantaneousSpeed, 1, 2) else "0.0" else " ")), Text(extent={{-4, 139}, {-4, 114}}, lineColor={0, 0, 0}, textString="%name")}));
+  annotation(defaultComponentName = "T1", Icon(graphics={Rectangle(extent={{-40, 100}, {40, -100}}, lineColor={0, 0, 0}, fillColor=DynamicSelect({255, 255, 255}, color), fillPattern=FillPattern.Solid), Text(extent={{-2, -116}, {-2, -144}}, lineColor={0, 0, 0}, textString=DynamicSelect(" ", if animateSpeed1 and fire>0.5 then if instantaneousSpeed>0 then realString(instantaneousSpeed, 1, 2) else "0.0" else " ")), Text(extent={{-4, 139}, {-4, 114}}, lineColor={0, 0, 0}, textString="%name")}));
 end TC;

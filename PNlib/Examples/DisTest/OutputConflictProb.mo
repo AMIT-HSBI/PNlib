@@ -2,7 +2,7 @@ within PNlib.Examples.DisTest;
 model OutputConflictProb
   extends Modelica.Icons.Example;
 
-  PNlib.PD P1(nIn = 1, startTokens = 2, nOut = 2, enablingProbOut = {0.5, 0.5}, minTokens = 2, enablingType = 2,
+  PNlib.PD P1(nIn = 1, startTokens = 2, nOut = 2, enablingProbOut = {0.5, 0.5}, minTokens = 2, enablingType = PNlib.Types.EnablingType.Probability,
     localSeedIn=1,
     localSeedOut=2)                                                                                              annotation(Placement(transformation(extent={{-30, -10},
             {-10, 10}})));

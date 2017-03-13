@@ -1,5 +1,5 @@
 within PNlib;
-model TE "Discrete Transition"
+model TE "Discrete Transition with event"
   parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
@@ -10,8 +10,8 @@ model TE "Discrete Transition"
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
 protected
   outer PNlib.Settings settings "global settings for animation and display";
-  Integer showTransitionName=settings.showTransitionName "only for transition animation and display (Do not change!)";
-  Integer showevent=settings.showDelay "only for transition animation and display (Do not change!)";
+  Boolean showTransitionName=settings.showTransitionName "only for transition animation and display (Do not change!)";
+  Boolean showevent=settings.showTime "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
   Real tIn[nIn] "tokens of input places";
   Real tOut[nOut] "tokens of output places";
@@ -24,7 +24,7 @@ protected
   Integer tIntIn[nIn] "integer tokens of input places (for generating events!)";
   Integer tIntOut[nOut]
     "integer tokens of output places (for generating events!)";
-  Integer arcType[nIn]
+  PNlib.Types.ArcType arcType[nIn]
       "type of input arcs 1=normal, 2=real test arc,  3=test arc, 4=real inhibitor arc, 5=inhibitor arc, 6=read arc";
   Integer arcWeightIntIn[nIn]
     "Integer arc weights of discrete input places (for generating events!)";
@@ -36,7 +36,7 @@ protected
     "Integer maximum tokens of output places (for generating events!)";
   Integer testValueInt[nIn]
     "Integer test values of input arcs (for generating events!)";
-  Integer normalArc[nIn]
+  Boolean normalArc[nIn]
     "1=no, 2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
   Boolean disPlaceIn[nIn]
     "Are the input places discrete or continuous? true=discrete";
@@ -116,7 +116,7 @@ equation
      fireTime=time;
      ani=true;
    end when;
-   color=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255, 255, 0} else {0, 0, 0};
+   color=if (fireTime+settings.timeFire>=time and settings.animateTransition and ani) then {255, 255, 0} else {0, 0, 0};
    //****ANIMATION END****//
    //****ERROR MESSENGES BEGIN****//
    for i in 1:nIn loop
@@ -148,7 +148,7 @@ equation
         Text(
           extent={{-2, -116}, {-2, -144}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect("e=%event", if showevent==1 then "e=%event" else " ")),
+          textString=DynamicSelect("e=%event", if showevent then "e=%event" else " ")),
                                           Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},

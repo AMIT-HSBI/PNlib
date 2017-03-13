@@ -37,7 +37,7 @@ equation
      fireTime=time;
      ani=true;
   end when;
-  fireColor=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255,255,0} else {255,128,8};
+  fireColor=if (fireTime+settings.timeFire>=time and settings.animateTransition and ani) then {255,255,0} else {255,128,8};
   connect(T3.outPlaces[1], P1.inTransition[1]) annotation(Line(
       points={{-73.2,0},{-54.8,0}},
       color={0,0,0},
