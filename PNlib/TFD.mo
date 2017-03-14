@@ -89,7 +89,7 @@ public
     arcWeight=arcWeightOut,
     arcWeightint=arcWeightIntOut,
     each fire=fireOut,
-    each enabledByInPlaces=true,
+    each enabledByInPlaces= true,
     each disTransition=true,
     each instSpeed=0,
     each prelimSpeed=0,
@@ -114,7 +114,7 @@ equation
    end when;
    //is the Transition fire?
    prefire=pre(fire);
-   when {durationPassedIn, durationPassedOut} then
+   when {fireIn, fireOut} then
     if durationPassedOut then
       fire=false;
     else

@@ -133,7 +133,7 @@ equation
    end when;
    //is the Transition fire?
    prefire=pre(fire);
-   when {durationPassedIn, durationPassedOut} then
+    when {fireIn, fireOut} then
     if durationPassedOut then
       fire=false;
     else
