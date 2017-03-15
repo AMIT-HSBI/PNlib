@@ -13,4 +13,6 @@ TAwithWeaklyActivation
 ArcswithPCtoTC
 TSTest
 TStriangular
+TSuniform
+TSdiscrete
 TFDStest
