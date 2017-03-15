@@ -210,6 +210,7 @@ initial equation
   else
       putDuration = max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
   end if;
+  initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, settings.globalSeed);
   (r128, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(
