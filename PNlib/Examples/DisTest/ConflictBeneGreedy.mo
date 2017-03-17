@@ -1,7 +1,7 @@
 within PNlib.Examples.DisTest;
 model ConflictBeneGreedy
   extends Modelica.Icons.Example;
-  PNlib.PD P1(nIn = 1, nOut = 2, startTokens = 2) annotation(Placement(transformation(extent = {{-30, -10}, {-10, 10}})));
+  PNlib.PD P1(enablingType = PNlib.Types.EnablingType.Benefit,nIn = 1, nOut = 2, startTokens = 2) annotation(Placement(transformation(extent = {{-30, -10}, {-10, 10}})));
   PNlib.TD T1(nIn = 1, nOut = 1) annotation(Placement(transformation(extent = {{0, 10}, {20, 30}})));
   PNlib.TD T2(nIn = 1, nOut = 1) annotation(Placement(transformation(extent = {{0, -30}, {20, -10}})));
   PNlib.PD P2(nIn = 1) annotation(Placement(transformation(extent = {{30, 10}, {50, 30}})));

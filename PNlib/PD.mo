@@ -14,14 +14,14 @@ model PD "Discrete Place"
   parameter Integer enablingPrioIn[nIn]=1:nIn
     "enabling priorities of input transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Priority then true else false, group = "Enabling"));
   parameter Integer enablingPrioOut[nOut]=1:nOut
-    "enabling priorities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Priority then then true else false, group = "Enabling"));
+    "enabling priorities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Priority then true else false, group = "Enabling"));
   parameter Real enablingProbIn[nIn]=fill(1/nIn, nIn)
     "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Probability then true else false, group = "Enabling"));
   parameter Real enablingProbOut[nOut]=fill(1/nOut, nOut)
     "enabling probabilities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Probability then true else false, group = "Enabling"));
-  parameter Real enablingBeneIn[nIn]=fill(1/nIn, nIn)
+  parameter Real enablingBeneIn[nIn]=1:nIn
       "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
-  parameter Real enablingBeneOut[nOut]=fill(1/nOut, nOut)
+  parameter Real enablingBeneOut[nOut]=1:nOut
       "enabling probabilities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
   parameter PNlib.Types.BenefitType benefitType=PNlib.Types.BenefitType.Greedy
         "resolution type of actual conflict (type-1-conflict)" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
