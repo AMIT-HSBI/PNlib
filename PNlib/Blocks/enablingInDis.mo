@@ -36,7 +36,6 @@ initial algorithm
   (randNum, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(
       state128);
 algorithm
-  enablingBene_:=enablingBene;
   TEin:=fill(false, nIn);
   when delayPassed then
     if nIn>0 then
@@ -102,7 +101,7 @@ algorithm
             end if;
           end for;
         else
-            TEin:=PNlib.Functions.Enabling.benefitGreedyIn(nIn, arcWeight, t, maxTokens, TAein, enablingBene, disTransition);
+            (TEin,arcWeightSum):=PNlib.Functions.Enabling.benefitGreedyIn(nIn, arcWeight, t, maxTokens, TAein, enablingBene, disTransition);
         end if;
       end if;
     else

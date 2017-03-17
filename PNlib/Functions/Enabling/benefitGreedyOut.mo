@@ -9,11 +9,14 @@ function benefitGreedyOut "Enabling Output Transition by Benefit and Greedy"
   input Real enablingBene[:] "enabling benefit of output transitions";
   input Boolean disTransition[:] "discrete output transition";
   output Boolean TEout[nOut] "enabled output transitions";
-protected
   output Integer arcWeightSum "arc weight sum";
+protected
   Integer Index "priority Index";
   Real MaxBenefit "Max Benefit";
+  Real enablingBene_[nOut]  "Max Benefit";
 algorithm
+    TEout:=fill(false, nOut);
+    enablingBene_:=enablingBene;
     arcWeightSum := 0;
     for i in 1: nOut loop  //discrete transitions are proven at first
       MaxBenefit:=max(enablingBene);

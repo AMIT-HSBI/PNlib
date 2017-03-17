@@ -122,7 +122,7 @@ algorithm
             end if;
           end for;
         else
-            TEout:=PNlib.Functions.Enabling.benefitGreedyOut(nOut, arcWeight, t, minTokens, TAout, enablingBene, disTransition);
+            (TEout,arcWeightSum):=PNlib.Functions.Enabling.benefitGreedyOut(nOut, arcWeight, t, minTokens, TAout, enablingBene, disTransition);
         end if;
       end if;
     else

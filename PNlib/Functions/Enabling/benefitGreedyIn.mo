@@ -9,11 +9,14 @@ function benefitGreedyIn "Enabling Input Transition by Benefit and Greedy"
   input Real enablingBene[:] "enabling benefit of input transitions";
   input Boolean disTransition[:] "type of input transitions";
   output Boolean TEin[nIn] "enabled input transitions";
+  output Integer arcWeightSum "arc weight sum";
 protected
-  Integer arcWeightSum "arc weight sum";
   Integer Index "priority Index";
   Real MaxBenefit "Max Benefit";
+  Real enablingBene_[nIn]  "Max Benefit";
 algorithm
+  TEin:=fill(false, nIn);
+  enablingBene_:=enablingBene;
   arcWeightSum := 0;
     for i in 1: nIn loop  //discrete transitions are proven at first
       MaxBenefit:=max(enablingBene_);
