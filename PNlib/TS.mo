@@ -8,11 +8,15 @@ model TS "Stochastic Transition with delay"
   Real h=1
     "probability density" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Exponential then true else false, group = "Exponential distribution"));
   Real a=0
-    "Lower limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular then true else false, group = "Triangular distribution"));
+    "Lower Limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular or distributionType==PNlib.Types.DistributionType.Uniform then true else false, group = "Triangular or Uniform distribution"));
   Real b=1
-    "Upper Limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular then true else false, group = "Triangular distribution"));
+    "Upper Limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular or distributionType==PNlib.Types.DistributionType.Uniform then true else false, group = "Triangular or Uniform distribution"));
   Real c=0.5
-    "Most likely value" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular then true else false, group = "Triangular distribution"));
+    "Most likely value" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular then true else false, group = "Triangular or Uniform distribution"));
+  Real E[:]={1, 2, 3, 4, 5, 6} "Events of Discrete Distribution"
+    annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Discrete  then true else false, group = "Discrete Probability Distribution"));
+  Real P[:]={1/6, 1/6, 1/6, 1/6, 1/6, 1/6} "Probability of Discrete Distribution"
+    annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Discrete  then true else false, group = "Discrete Probability Distribution"));
   Real arcWeightIn[nIn]=fill(1, nIn) "arc weights of input places"
                                          annotation(Dialog(enable = true, group = "Arc Weights"));
   Real arcWeightOut[nOut]=fill(1, nOut) "arc weights of output places"
@@ -149,18 +153,39 @@ equation
       assert((disPlaceOut[i] and arcWeightOut[i]-arcWeightIntOut[i]<=0.0) or not disPlaceOut[i], "Output arcs connected to discrete places must have integer weights.");
       assert(arcWeightOut[i]>=0, "Output arc weights must be positive.");
    end for;
+   assert(h>0 or distributionType<>PNlib.Types.DistributionType.Exponential, "The probability density must be greater than zero");
+   assert((a<b and a<=c and c<=b) or distributionType<>PNlib.Types.DistributionType.Triangular, "The Lower Limit must be less than or equal to the Most likely value and the Most likely value must be less than or equal to the Upper Limit but he Lower Limit must be less than the Upper Limit");
+   assert(a<b or distributionType<>PNlib.Types.DistributionType.Uniform, "The Lower Limit must be less than the Upper Limit");
+   assert(Functions.OddsAndEnds.isEqual(sum(P), 1.0, 1e-6) or distributionType<>PNlib.Types.DistributionType.Discrete, "The Probability sum Probability of Discrete Distribution has to be equal to 1");
+   assert(size(E,1)==size(P,1) or distributionType<>PNlib.Types.DistributionType.Discrete, "Discrete probability distribution must have the same number of events and probabilities");
    //****ERROR MESSENGES END****//
 algorithm
    //****MAIN BEGIN****//
   //generate random putative fire time according to Next-Reaction method of Gibson and Bruck
   when active then    //17.06.11 Reihenfolge getauscht!
     (r128, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(pre(state128));
-    putFireTime :=  if distributionType==PNlib.Types.DistributionType.Exponential then time + PNlib.Functions.Random.randomexp(h, r128) else time +PNlib.Functions.Random.randomtriangular(a, b, c, r128);
+    if distributionType==PNlib.Types.DistributionType.Exponential then
+        putFireTime := time + PNlib.Functions.Random.randomexp(h, r128);
+    elseif distributionType==PNlib.Types.DistributionType.Triangular then
+        putFireTime := time +PNlib.Functions.Random.randomtriangular(a, b, c, r128);
+    elseif distributionType==PNlib.Types.DistributionType.Uniform then
+        putFireTime := time +PNlib.Functions.Random.randomuniform(a, b, r128);
+    else
+        putFireTime := time +max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
+    end if;
   end when;
    //****MAIN END****//
 initial equation
   //to initialize the random generator otherwise the first random number is always the same in every simulation run
-    putFireTime = if distributionType==PNlib.Types.DistributionType.Exponential then time + PNlib.Functions.Random.randomexp(h, r128) else time +PNlib.Functions.Random.randomtriangular(a, b, c, r128);
+  if distributionType==PNlib.Types.DistributionType.Exponential then
+      putFireTime = time + PNlib.Functions.Random.randomexp(h, r128);
+  elseif distributionType==PNlib.Types.DistributionType.Triangular then
+      putFireTime = time +PNlib.Functions.Random.randomtriangular(a, b, c, r128);
+  elseif distributionType==PNlib.Types.DistributionType.Uniform then
+      putFireTime = time +PNlib.Functions.Random.randomuniform(a, b, r128);
+  else
+      putFireTime = time +max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
+  end if;
 initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, settings.globalSeed);

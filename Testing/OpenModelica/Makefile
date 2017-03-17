@@ -46,6 +46,8 @@ PNlib.Examples.ExtTest.TAwithWeaklyActivation.mos \
 PNlib.Examples.ExtTest.ArcswithPCtoTC.mos \
 PNlib.Examples.ExtTest.TSTest.mos \
 PNlib.Examples.ExtTest.TStriangular.mos \
+PNlib.Examples.ExtTest.TSuniform.mos \
+PNlib.Examples.ExtTest.TSdiscrete.mos \
 PNlib.Examples.ExtTest.TFDStest.mos \
 PNlib.Examples.HybTest.ConflictPrio.mos \
 PNlib.Examples.HybTest.ConflictProb.mos \
