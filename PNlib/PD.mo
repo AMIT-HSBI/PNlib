@@ -12,13 +12,19 @@ model PD "Discrete Place"
   parameter PNlib.Types.EnablingType enablingType=PNlib.Types.EnablingType.Priority
     "resolution type of actual conflict (type-1-conflict)" annotation(Dialog(enable = true, group = "Enabling"));
   parameter Integer enablingPrioIn[nIn]=1:nIn
-    "enabling priorities of input transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Probability then false else true, group = "Enabling"));
+    "enabling priorities of input transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Priority then true else false, group = "Enabling"));
   parameter Integer enablingPrioOut[nOut]=1:nOut
-    "enabling priorities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Probability then false else true, group = "Enabling"));
+    "enabling priorities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Priority then then true else false, group = "Enabling"));
   parameter Real enablingProbIn[nIn]=fill(1/nIn, nIn)
-    "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Priority then false else true, group = "Enabling"));
+    "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Probability then true else false, group = "Enabling"));
   parameter Real enablingProbOut[nOut]=fill(1/nOut, nOut)
-    "enabling probabilities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Priority then false else true, group = "Enabling"));
+    "enabling probabilities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Probability then true else false, group = "Enabling"));
+  parameter Real enablingBeneIn[nIn]=fill(1/nIn, nIn)
+      "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
+  parameter Real enablingBeneOut[nOut]=fill(1/nOut, nOut)
+      "enabling probabilities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
+  parameter PNlib.Types.BenefitType benefitType=PNlib.Types.BenefitType.Greedy
+        "resolution type of actual conflict (type-1-conflict)" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
   parameter Integer N=settings.N "N+1=amount of levels" annotation(Dialog(enable = true, group = "Level Concentrations"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   Real levelCon
@@ -55,8 +61,8 @@ protected
   Blocks.firingSumDis firingSumIn(fire=fireIn and disTransitionIn, arcWeight=arcWeightIn);
   Blocks.firingSumDis firingSumOut(fire=fireOut and disTransitionOut, arcWeight=arcWeightOut);
   //Enabling process
-  Blocks.enablingOutDis enableOut(delayPassed=delayPassedOut.anytrue, activeCon=activeConOut.anychange, nOut=nOut, arcWeight=arcWeightOut, t=pret, minTokens=minTokens, TAout=activeOut, enablingType=enablingType, enablingPrio=enablingPrioOut, enablingProb=enablingProbOut, disTransition=disTransitionOut, localSeed=localSeedOut, globalSeed=settings.globalSeed);
-  Blocks.enablingInDis enableIn(delayPassed=delayPassedIn.anytrue, active=activeIn, nIn=nIn, arcWeight=arcWeightIn, t=pret, maxTokens=maxTokens, TAein=enabledByInPlaces and activeIn, enablingType=enablingType, enablingPrio=enablingPrioIn, enablingProb=enablingProbIn, disTransition=disTransitionIn, localSeed=localSeedIn, globalSeed=settings.globalSeed);
+  Blocks.enablingOutDis enableOut(delayPassed=delayPassedOut.anytrue, activeCon=activeConOut.anychange, nOut=nOut, arcWeight=arcWeightOut, t=pret, minTokens=minTokens, TAout=activeOut, enablingType=enablingType, enablingPrio=enablingPrioOut, enablingProb=enablingProbOut, enablingBene=enablingBeneOut, benefitType=benefitType, disTransition=disTransitionOut, localSeed=localSeedOut, globalSeed=settings.globalSeed);
+  Blocks.enablingInDis enableIn(delayPassed=delayPassedIn.anytrue, active=activeIn, nIn=nIn, arcWeight=arcWeightIn, t=pret, maxTokens=maxTokens, TAein=enabledByInPlaces and activeIn, enablingType=enablingType, enablingPrio=enablingPrioIn, enablingProb=enablingProbIn, enablingBene=enablingBeneIn, benefitType=benefitType, disTransition=disTransitionIn, localSeed=localSeedIn, globalSeed=settings.globalSeed);
   //****BLOCKS END****//
 
 public

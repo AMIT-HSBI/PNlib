@@ -1,3 +1,4 @@
+addElement
 allTrue
 anyTrue
 boolAnd
@@ -11,11 +12,10 @@ countTrue
 deleteElement
 deleteElementInt
 findFirstZero
+eventCheck
 isEqual
 printResult
+prioCheck
 sort
 testOK
 numTrue
-prioCheck
-addElement
-eventCheck

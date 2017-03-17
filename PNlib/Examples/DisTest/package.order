@@ -11,10 +11,15 @@ TEnoInput
 DisLoopAndArcweight
 ConflictPrio
 ConflictProb
+ConflictBeneGreedy
+ConflictBeneQuotient
+ConflictBeneBaB
 OutputConflictPrio
 OutputConflictProb
+OutputConflictBene
 InputConflictPrio
 InputConflictProb
+InputConflictBene
 SixConflictProb
 EightConflictProb
 PrioTest

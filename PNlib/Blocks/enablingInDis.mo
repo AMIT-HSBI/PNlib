@@ -8,6 +8,8 @@ block enablingInDis "enabling process of discrete input transitions"
   input PNlib.Types.EnablingType enablingType "resolution of actual conflicts";
   input Integer enablingPrio[:] "enabling priorities of input transitions";
   input Real enablingProb[:] "enabling probabilites of input transitions";
+  input Real enablingBene[:] "enabling benefit of input transitions";
+  input PNlib.Types.BenefitType benefitType "algorithm for benefit";
   input Boolean disTransition[:] "type of input transitions";
   input Boolean delayPassed "Does any delayPassed of a output transition";
   input Boolean active[:] "Are the input transitions active?";
@@ -16,6 +18,7 @@ block enablingInDis "enabling process of discrete input transitions"
   output Boolean TEin_[nIn] "enabled input transitions";
 protected
   discrete Integer state128[4] "state of random number generator";
+  Real enablingBene_[nOut] "enabling benefit of input transitions";
   Boolean TEin[nIn] "enabled input transitions";
   Integer remTAin[nIn](each start=0, each fixed=true) "remaining active input transitions";
   discrete Real cumEnablingProb[nIn](each start=0, each fixed=true) "cumulated, scaled enabling probabilities";
@@ -28,12 +31,14 @@ protected
   discrete Real sumEnablingProbTAin "sum of the enabling probabilities of the active input transitions";
   Boolean endWhile;
   Integer Index "priority Index";
+  Real MaxBenefit "Max Benefit";
 initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, globalSeed);
   (randNum, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(
       state128);
 algorithm
+  enablingBene_:=enablingBene;
   TEin:=fill(false, nIn);
   when delayPassed then
     if nIn>0 then
@@ -50,7 +55,7 @@ algorithm
               arcWeightSum:=arcWeightSum + arcWeight[Index];
             end if;
           end for;
-        else                        //probabilistic enabling according to enabling probabilities
+        elseif enablingType==PNlib.Types.EnablingType.Probability then                        //probabilistic enabling according to enabling probabilities
           arcWeightSum:=0;
           remTAin:=zeros(nIn);
           nremTAin:=0;
@@ -98,6 +103,25 @@ algorithm
               end if;
             end if;
           end for;
+        else
+          arcWeightSum := 0;
+          if benefitType==PNlib.Types.BenefitType.Greedy then
+            for i in 1: nOut loop  //discrete transitions are proven at first
+              MaxBenefit:=max(enablingBene_)
+              Index:=Modelica.Math.Vectors.find(MaxBenefit,enablingBene_);
+              if Index>0 and TAein[Index] and disTransition[Index] and t+arcWeightSum+arcWeight[Index] <= maxTokens then
+                TEin[Index] := true;
+                arcWeightSum := arcWeightSum + arcWeight[Index];
+              end if;
+              enablingBene_[Index]:=-1;
+            end for;
+            for i in 1: nOut loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
+              if TAout[i] and not disTransition[i] and t+arcWeightSum+arcWeight[i] <= maxTokens then
+                TEin[i] := true;
+                arcWeightSum := arcWeightSum + arcWeight[i];
+              end if;
+            end for;
+          end if;
         end if;
       end if;
     else
@@ -113,6 +137,7 @@ algorithm
       sumEnablingProbTAin := 0;
       endWhile := false;
       Index := 0;
+      MaxBenefit:=0;
     end if;
   end when;
   // hack for Dymola 2017
