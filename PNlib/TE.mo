@@ -3,7 +3,7 @@ model TE "Discrete Transition with event"
   parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
-  Real event [:] = {1,2,3} "Event time of timed transition" annotation(Dialog(enable = true, group = "Event"));
+  Real event[:] = {1,2,3} "Event time of timed transition" annotation(Dialog(enable = true, group = "Event"));
   Real arcWeightIn[nIn] = fill(1, nIn) "arc weights of input places" annotation(Dialog(enable = true, group = "Arc Weights"));
   Real arcWeightOut[nOut] = fill(1, nOut) "arc weights of output places" annotation(Dialog(enable = true, group = "Arc Weights"));
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
@@ -20,7 +20,7 @@ protected
   Real fireTime "for transition animation";
   Real minTokens[nIn] "minimum tokens of input places";
   Real maxTokens[nOut] "maximum tokens of output places";
-  Real event_ [:]= Functions.OddsAndEnds.addElement(event) "solves last-time problem";
+  Real event_[:]= Functions.OddsAndEnds.addElement(event) "solves last-time problem";
   Integer tIntIn[nIn] "integer tokens of input places (for generating events!)";
   Integer tIntOut[nOut]
     "integer tokens of output places (for generating events!)";
@@ -95,7 +95,7 @@ public
     disPlace=disPlaceOut,
     enable=enableOut) if nOut > 0 "connector for output places" annotation(Placement(transformation(extent={{40, -10}, {56, 10}}, rotation=0)));
 algorithm
-when time>event_[eventIndex] then
+when time>=event_[eventIndex] then
     eventIndex:=eventIndex+1;
 end when;
 equation
@@ -104,7 +104,7 @@ equation
    active = activation.active and not pre(eventPassed);
    //save next putative firing time
    when active then
-      firingTime =event_[eventIndex] ;
+      firingTime =event_[eventIndex];
    end when;
    //event passed?
    eventPassed= active and time>= firingTime;
