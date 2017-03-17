@@ -31,6 +31,7 @@ PNlib.Examples.DisTest.TFDoutCap.mos \
 PNlib.Examples.DisTest.TFDinputConflict.mos \
 PNlib.Examples.DisTest.TFDoutputConflict.mos \
 PNlib.Examples.DisTest.TEtest.mos \
+PNlib.Examples.DisTest.TEnoInput.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPCtoTC.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPTtoTD.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPTtoTD2.mos \
