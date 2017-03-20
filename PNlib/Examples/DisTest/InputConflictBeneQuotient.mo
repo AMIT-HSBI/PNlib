@@ -2,7 +2,7 @@ within PNlib.Examples.DisTest;
 model InputConflictBeneQuotient
   extends Modelica.Icons.Example;
 
-  PNlib.PD P1(benefitType = PNlib.Types.BenefitType.BenefitQuotient,enablingBeneIn = {6, 2}, enablingType = PNlib.Types.EnablingType.Benefit,maxTokens = 5, nIn = 2, nOut = 1) annotation(Placement(transformation(extent={{10, -10},
+  PNlib.PD P1(benefitType = PNlib.Types.BenefitType.BenefitQuotient,enablingBeneIn = {6, 5}, enablingType = PNlib.Types.EnablingType.Benefit,maxTokens = 5, nIn = 2, nOut = 1) annotation(Placement(transformation(extent={{10, -10},
             {30, 10}})));
   PNlib.TD T1(arcWeightIn = {3}, nIn = 1) annotation(Placement(transformation(extent={{40, -10}, {60,
             10}})));
