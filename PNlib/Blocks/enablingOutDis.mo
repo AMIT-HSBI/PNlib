@@ -122,7 +122,13 @@ algorithm
             end if;
           end for;
         else
-            (TEout,arcWeightSum):=PNlib.Functions.Enabling.benefitGreedyOut(nOut, arcWeight, t, minTokens, TAout, enablingBene, disTransition);
+          if benefitType==PNlib.Types.BenefitType.Greedy then
+             TEout:=PNlib.Functions.Enabling.benefitGreedyDisOut(nOut, arcWeight, t, minTokens, TAout, enablingBene, disTransition);
+           elseif benefitType==PNlib.Types.BenefitType.BenefitQuotient then
+             TEout:=PNlib.Functions.Enabling.benefitQuotientDisOut(nOut, arcWeight, t, minTokens, TAout, enablingBene, disTransition);
+           else
+             TEout:=PNlib.Functions.Enabling.benefitGreedyDisOut(nOut, arcWeight, t, minTokens, TAout, enablingBene, disTransition);
+          end if;
         end if;
       end if;
     else
