@@ -1,9 +1,9 @@
-// name: PNlib.Examples.DisTest.InputConflictQuotient
+// name: PNlib.Examples.DisTest.InputConflictBeneQuotient
 // keywords: PNlib, discrete
 // status: correct
 
 loadFile("../../PNlib/package.mo"); getErrorString();
-simulate(PNlib.Examples.DisTest.InputConflictQuotient); getErrorString();
+simulate(PNlib.Examples.DisTest.InputConflictBeneQuotient); getErrorString();
 
 vars := {
   "P1.t",
@@ -17,12 +17,12 @@ vars := {
   "T3.fire"
 };
 
-res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.InputConflictQuotient_res.mat",
-  "../../ReferenceFiles/PNlib.Examples.DisTest.InputConflictQuotient.mat",
-  "PNlib.Examples.DisTest.InputConflictQuotient_diff.csv", 0.01, 0.0001, vars); getErrorString();
+res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.InputConflictBeneQuotient_res.mat",
+  "../../ReferenceFiles/PNlib.Examples.DisTest.InputConflictBeneQuotient.mat",
+  "PNlib.Examples.DisTest.InputConflictBeneQuotient_diff.csv", 0.01, 0.0001, vars); getErrorString();
 
 if res[1] <> "Files Equal!" then
-  filterSimulationResults("PNlib.Examples.DisTest.InputConflictQuotient_res.mat", "../../ReferenceFiles/PNlib.Examples.DisTest.InputConflictQuotient_minimal.mat", vars, 0); getErrorString();
+  filterSimulationResults("PNlib.Examples.DisTest.InputConflictBeneQuotient_res.mat", "../../ReferenceFiles/PNlib.Examples.DisTest.InputConflictBeneQuotient_minimal.mat", vars, 0); getErrorString();
 end if;
 
 // Result:
@@ -32,8 +32,8 @@ end if;
 // Notification: Automatically loaded package ModelicaServices 3.2.2 due to uses annotation.
 // "
 // record SimulationResult
-//     resultFile = "PNlib.Examples.DisTest.InputConflictQuotient_res.mat",
-//     simulationOptions = "startTime = 0.0, stopTime = 10.0, numberOfIntervals = 500, tolerance = 1e-06, method = 'dassl', fileNamePrefix = 'PNlib.Examples.DisTest.InputConflictQuotient', options = '', outputFormat = 'mat', variableFilter = '.*', cflags = '', simflags = ''",
+//     resultFile = "PNlib.Examples.DisTest.InputConflictBeneQuotient_res.mat",
+//     simulationOptions = "startTime = 0.0, stopTime = 10.0, numberOfIntervals = 500, tolerance = 1e-06, method = 'dassl', fileNamePrefix = 'PNlib.Examples.DisTest.InputConflictBeneQuotient', options = '', outputFormat = 'mat', variableFilter = '.*', cflags = '', simflags = ''",
 //     messages = ""
 // end SimulationResult;
 // "Warning: The initial conditions are not fully specified. For more information set -d=initialization. In OMEdit Tools->Options->Simulation->OMCFlags, in OMNotebook call setCommandLineOptions("-d=initialization").
