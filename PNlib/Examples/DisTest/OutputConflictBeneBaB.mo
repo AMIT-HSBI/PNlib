@@ -1,5 +1,5 @@
 within PNlib.Examples.DisTest;
-model OutputConflictBene
+model OutputConflictBeneBaB
   extends Modelica.Icons.Example;
 
   PNlib.PD P1(nIn = 1, startTokens = 2, nOut = 2, minTokens = 2) annotation(Placement(transformation(extent={{-30, -10},
@@ -28,4 +28,4 @@ equation
           {29.2, -20}}, color = {0, 0, 0}, smooth = Smooth.None));
   annotation(experiment(StartTime=0.0, StopTime=10.0, Tolerance = 1e-6),
     Diagram(coordinateSystem(extent={{-60, -40}, {60, 40}})));
-end OutputConflictBene;
+end OutputConflictBeneBaB;

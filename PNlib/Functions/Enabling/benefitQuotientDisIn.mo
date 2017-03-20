@@ -16,7 +16,7 @@ protected
   Real enablingBeneQuo[nIn]  "Benefit Quotient";
 algorithm
     TEin:=fill(false, nIn);
-    enablingBeneQuo:=enablingBene ./arcweight;
+    enablingBeneQuo:=enablingBene ./arcWeight;
     arcWeightSum := 0;
     for i in 1: nIn loop  //discrete transitions are proven at first
       MaxBenefit:=max(enablingBeneQuo);
@@ -25,8 +25,9 @@ algorithm
         TEin[Index] := true;
         arcWeightSum := arcWeightSum + arcWeight[Index];
       end if;
-      enablingBene_[Index]:=-1;
+      enablingBeneQuo[Index]:=-1;
     end for;
+    enablingBeneQuo:=enablingBene ./arcWeight;
     for i in 1: nIn loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
       MaxBenefit:=max(enablingBeneQuo);
       Index:=Modelica.Math.Vectors.find(MaxBenefit,enablingBeneQuo);
@@ -34,6 +35,6 @@ algorithm
         TEin[Index] := true;
         arcWeightSum := arcWeightSum + arcWeight[Index];
       end if;
-      enablingBene[Index]:=-1;
+      enablingBeneQuo[Index]:=-1;
     end for;
 end benefitQuotientDisIn;

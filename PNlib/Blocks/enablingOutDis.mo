@@ -36,7 +36,6 @@ initial algorithm
   (randNum, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(state128);
 algorithm
   TEout := fill(false, nOut);
-  arcWeightSum := 0;
   for i in 1: nOut loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
     if TAout[i] and not disTransition[i] and t-(arcWeightSum+arcWeight[i]) >= minTokens then
       TEout[i] := true;

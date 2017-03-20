@@ -16,10 +16,14 @@ ConflictBeneQuotient
 ConflictBeneBaB
 OutputConflictPrio
 OutputConflictProb
-OutputConflictBene
+OutputConflictBeneGreedy
+OutputConflictBeneQuotient
+OutputConflictBeneBaB
 InputConflictPrio
 InputConflictProb
-InputConflictBene
+InputConflictBeneGreedy
+InputConflictBeneQuotient
+InputConflictBeneBaB
 SixConflictProb
 EightConflictProb
 PrioTest

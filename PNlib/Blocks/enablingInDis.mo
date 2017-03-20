@@ -37,7 +37,6 @@ initial algorithm
       state128);
 algorithm
   TEin:=fill(false, nIn);
-  arcWeightSum:=0;
   when delayPassed then
     if nIn>0 then
       arcWeightSum:=Functions.OddsAndEnds.conditionalSumInt(arcWeight, TAein);  //arc weight sum of all active input transitions which are already enabled by their input places
@@ -45,6 +44,7 @@ algorithm
         TEin:=TAein;
       else                          //Place has an actual conflict
         if enablingType==PNlib.Types.EnablingType.Priority then     //deterministic enabling according to priorities
+          arcWeightSum:=0;
           for i in 1:nIn loop
             Index:=Modelica.Math.Vectors.find(i,enablingPrio);
             if Index>0 and TAein[Index] and disTransition[Index] and t+(arcWeightSum+arcWeight[Index])<=maxTokens then  ///new 07.03.2011
@@ -53,6 +53,7 @@ algorithm
             end if;
           end for;
         elseif enablingType==PNlib.Types.EnablingType.Probability then                        //probabilistic enabling according to enabling probabilities
+          arcWeightSum:=0;
           remTAin:=zeros(nIn);
           nremTAin:=0;
           for i in 1:nIn loop

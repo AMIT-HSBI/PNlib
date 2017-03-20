@@ -27,6 +27,7 @@ algorithm
       end if;
       enablingBeneQuo[Index]:=-1;
     end for;
+    enablingBeneQuo:=enablingBene ./arcWeight;
     for i in 1: nOut loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
       MaxBenefit:=max(enablingBeneQuo);
       Index:=Modelica.Math.Vectors.find(MaxBenefit,enablingBeneQuo);

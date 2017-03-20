@@ -1,14 +1,14 @@
 within PNlib.Examples.DisTest;
-model InputConflictBene
+model InputConflictBeneQuotient
   extends Modelica.Icons.Example;
 
-  PNlib.PD P1(maxTokens = 2, nIn = 2, nOut = 1) annotation(Placement(transformation(extent={{10, -10},
+  PNlib.PD P1(benefitType = PNlib.Types.BenefitType.BenefitQuotient,enablingBeneIn = {6, 2}, enablingType = PNlib.Types.EnablingType.Benefit,maxTokens = 5, nIn = 2, nOut = 1) annotation(Placement(transformation(extent={{10, -10},
             {30, 10}})));
-  PNlib.TD T1(nIn = 1) annotation(Placement(transformation(extent={{40, -10}, {60,
+  PNlib.TD T1(arcWeightIn = {3}, nIn = 1) annotation(Placement(transformation(extent={{40, -10}, {60,
             10}})));
-  PNlib.TD T2(nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{-20, 10},
+  PNlib.TD T2(arcWeightOut = {3},nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{-20, 10},
             {0, 30}})));
-  PNlib.TD T3(nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{-20, -30},
+  PNlib.TD T3(arcWeightOut = {2},nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{-20, -30},
             {0, -10}})));
   PNlib.PD P2(startTokens = 5, nOut = 1) annotation(Placement(transformation(extent={{-50, 10},
             {-30, 30}})));
@@ -29,4 +29,4 @@ equation
           {30.8, 0}}, color = {0, 0, 0}, smooth = Smooth.None));
   annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent={{-60, -40},
             {60, 40}}), graphics), experiment(StartTime=0.0, StopTime=10.0, Tolerance = 1e-6));
-end InputConflictBene;
+end InputConflictBeneQuotient;

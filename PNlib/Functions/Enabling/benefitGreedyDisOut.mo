@@ -27,6 +27,7 @@ algorithm
       end if;
       enablingBene_[Index]:=-1;
     end for;
+    enablingBene_:=enablingBene;
     for i in 1: nOut loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
       MaxBenefit:=max(enablingBene_);
       Index:=Modelica.Math.Vectors.find(MaxBenefit,enablingBene_);
