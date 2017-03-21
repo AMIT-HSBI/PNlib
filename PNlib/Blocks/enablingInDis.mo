@@ -52,6 +52,13 @@ algorithm
               arcWeightSum:=arcWeightSum + arcWeight[Index];
             end if;
           end for;
+          for i in 1: nIn loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
+          Index:=Modelica.Math.Vectors.find(i,enablingPrio);
+            if TAein[Index] and not disTransition[Index] and t+(arcWeightSum+arcWeight[Index])<=maxTokens then
+              TEin[Index] := true;
+              arcWeightSum := arcWeightSum + arcWeight[Index];
+            end if;
+          end for;
         elseif enablingType==PNlib.Types.EnablingType.Probability then                        //probabilistic enabling according to enabling probabilities
           arcWeightSum:=0;
           remTAin:=zeros(nIn);

@@ -36,6 +36,7 @@ initial algorithm
   (randNum, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(state128);
 algorithm
   TEout := fill(false, nOut);
+  arcWeightSum := 0;
   for i in 1: nOut loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
     if TAout[i] and not disTransition[i] and t-(arcWeightSum+arcWeight[i]) >= minTokens then
       TEout[i] := true;
@@ -59,15 +60,16 @@ algorithm
             end if;
           end for;
           for i in 1: nOut loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
-            if TAout[i] and not disTransition[i] and t-(arcWeightSum+arcWeight[i]) >= minTokens then
-              TEout[i] := true;
-              arcWeightSum := arcWeightSum + arcWeight[i];
+          Index:=Modelica.Math.Vectors.find(i,enablingPrio);
+            if TAout[Index] and not disTransition[Index] and t-(arcWeightSum+arcWeight[Index]) >= minTokens then
+              TEout[Index] := true;
+              arcWeightSum := arcWeightSum + arcWeight[Index];
             end if;
           end for;
         elseif enablingType==PNlib.Types.EnablingType.Probability then                        //probabilistic enabling according to enabling probabilities
-          arcWeightSum := 0;
           remTAout := zeros(nOut);
           nremTAout := 0;
+          arcWeightSum := 0;
           for i in 1:nOut loop
             if TAout[i] and disTransition[i] then
               nremTAout := nremTAout+1;  //number of active output transitions

@@ -20,11 +20,11 @@ model PD "Discrete Place"
   parameter Real enablingProbOut[nOut]=fill(1/nOut, nOut)
     "enabling probabilities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Probability then true else false, group = "Enabling"));
   parameter Real enablingBeneIn[nIn]=1:nIn
-      "enabling probabilities of input transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
+      "enabling benefit of input transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
   parameter Real enablingBeneOut[nOut]=1:nOut
-      "enabling probabilities of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
+      "enabling benefit of output transitions" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
   parameter PNlib.Types.BenefitType benefitType=PNlib.Types.BenefitType.Greedy
-        "resolution type of actual conflict (type-1-conflict)" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
+        "enabling strategy for benefit" annotation(Dialog(enable = if enablingType==PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
   parameter Integer N=settings.N "N+1=amount of levels" annotation(Dialog(enable = true, group = "Level Concentrations"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   Real levelCon
