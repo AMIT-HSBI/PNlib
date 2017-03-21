@@ -8,6 +8,8 @@ block enablingInDis "enabling process of discrete input transitions"
   input PNlib.Types.EnablingType enablingType "resolution of actual conflicts";
   input Integer enablingPrio[:] "enabling priorities of input transitions";
   input Real enablingProb[:] "enabling probabilites of input transitions";
+  input Real enablingBene[:] "enabling benefit of input transitions";
+  input PNlib.Types.BenefitType benefitType "algorithm for benefit";
   input Boolean disTransition[:] "type of input transitions";
   input Boolean delayPassed "Does any delayPassed of a output transition";
   input Boolean active[:] "Are the input transitions active?";
@@ -50,7 +52,14 @@ algorithm
               arcWeightSum:=arcWeightSum + arcWeight[Index];
             end if;
           end for;
-        else                        //probabilistic enabling according to enabling probabilities
+          for i in 1: nIn loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
+          Index:=Modelica.Math.Vectors.find(i,enablingPrio);
+            if TAein[Index] and not disTransition[Index] and t+(arcWeightSum+arcWeight[Index])<=maxTokens then
+              TEin[Index] := true;
+              arcWeightSum := arcWeightSum + arcWeight[Index];
+            end if;
+          end for;
+        elseif enablingType==PNlib.Types.EnablingType.Probability then                        //probabilistic enabling according to enabling probabilities
           arcWeightSum:=0;
           remTAin:=zeros(nIn);
           nremTAin:=0;
@@ -98,6 +107,14 @@ algorithm
               end if;
             end if;
           end for;
+        else
+          if benefitType==PNlib.Types.BenefitType.Greedy then
+            TEin:=PNlib.Functions.Enabling.benefitGreedyDisIn(nIn, arcWeight, t, maxTokens, TAein, enablingBene, disTransition);
+          elseif benefitType==PNlib.Types.BenefitType.BenefitQuotient then
+            TEin:=PNlib.Functions.Enabling.benefitQuotientDisIn(nIn, arcWeight, t, maxTokens, TAein, enablingBene, disTransition);
+          else
+            TEin:=PNlib.Functions.Enabling.benefitGreedyDisIn(nIn, arcWeight, t, maxTokens, TAein, enablingBene, disTransition);
+          end if;
         end if;
       end if;
     else

@@ -8,6 +8,8 @@ block enablingOutDis "enabling process of output transitions"
   input PNlib.Types.EnablingType enablingType "resolution of actual conflicts";
   input Integer enablingPrio[:] "enabling priorities of output transitions";
   input Real enablingProb[:] "enabling probabilites of output transitions";
+  input Real enablingBene[:] "enabling benefit of output transitions";
+  input PNlib.Types.BenefitType benefitType "algorithm for benefit";
   input Boolean disTransition[:] "discrete output transition";
   input Boolean delayPassed "Does any delayPassed of a output transition";
   input Boolean activeCon "change of activation of output transitions";
@@ -58,15 +60,16 @@ algorithm
             end if;
           end for;
           for i in 1: nOut loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
-            if TAout[i] and not disTransition[i] and t-(arcWeightSum+arcWeight[i]) >= minTokens then
-              TEout[i] := true;
-              arcWeightSum := arcWeightSum + arcWeight[i];
+          Index:=Modelica.Math.Vectors.find(i,enablingPrio);
+            if TAout[Index] and not disTransition[Index] and t-(arcWeightSum+arcWeight[Index]) >= minTokens then
+              TEout[Index] := true;
+              arcWeightSum := arcWeightSum + arcWeight[Index];
             end if;
           end for;
-        else                        //probabilistic enabling according to enabling probabilities
-          arcWeightSum := 0;
+        elseif enablingType==PNlib.Types.EnablingType.Probability then                        //probabilistic enabling according to enabling probabilities
           remTAout := zeros(nOut);
           nremTAout := 0;
+          arcWeightSum := 0;
           for i in 1:nOut loop
             if TAout[i] and disTransition[i] then
               nremTAout := nremTAout+1;  //number of active output transitions
@@ -119,6 +122,14 @@ algorithm
               arcWeightSum := arcWeightSum + arcWeight[i];
             end if;
           end for;
+        else
+          if benefitType==PNlib.Types.BenefitType.Greedy then
+             TEout:=PNlib.Functions.Enabling.benefitGreedyDisOut(nOut, arcWeight, t, minTokens, TAout, enablingBene, disTransition);
+           elseif benefitType==PNlib.Types.BenefitType.BenefitQuotient then
+             TEout:=PNlib.Functions.Enabling.benefitQuotientDisOut(nOut, arcWeight, t, minTokens, TAout, enablingBene, disTransition);
+           else
+             TEout:=PNlib.Functions.Enabling.benefitGreedyDisOut(nOut, arcWeight, t, minTokens, TAout, enablingBene, disTransition);
+          end if;
         end if;
       end if;
     else
