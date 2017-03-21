@@ -1,5 +1,5 @@
 within PNlib;
-model TDT "Discrete Transition"
+model TT "Discrete Transition"
   parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
@@ -13,9 +13,9 @@ model TDT "Discrete Transition"
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
 protected
   outer PNlib.Settings settings "global settings for animation and display";
-  Integer showTransitionName=settings.showTransitionName
+  Boolean showTransitionName=settings.showTransitionName
     "only for transition animation and display (Do not change!)";
-  Integer showTakt=settings.showDelay
+  Boolean showTakt=settings.showTime
     "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
   Real tIn[nIn] "tokens of input places";
@@ -28,7 +28,7 @@ protected
   Integer tIntIn[nIn] "integer tokens of input places (for generating events!)";
   Integer tIntOut[nOut]
     "integer tokens of output places (for generating events!)";
-  Integer arcType[nIn]
+  PNlib.Types.ArcType arcType[nIn]
     "type of input arcs 1=normal, 2=test arc, 3=inhibitor arc, 4=read arc";
   Integer arcWeightIntIn[nIn]
     "Integer arc weights of discrete input places (for generating events!)";
@@ -40,7 +40,7 @@ protected
     "Integer maximum tokens of output places (for generating events!)";
   Integer testValueInt[nIn]
     "Integer test values of input arcs (for generating events!)";
-  Integer normalArc[nIn]
+  Boolean normalArc[nIn]
     "1=no, 2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
   Boolean disPlaceIn[nIn]
     "Are the input places discrete or continuous? true=discrete";
@@ -101,7 +101,7 @@ equation
    active = activation.active;
    //save next putative firing time
    //due to event problems if tactStart==0
-   when active and sample(max(tactStart,10 ^ (-8)), max(tactIntervall,10 ^ (-5))) then
+   when active and sample(max(tactStart,10 ^ (-8)), max(tactIntervall,10 ^ (-6))) then
      firingTime =time;
    end when;
    //tact passed?
@@ -114,7 +114,7 @@ equation
      fireTime=time;
      ani=true;
    end when;
-   color=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255, 255, 0} else {0, 0, 0};
+   color=if (fireTime+settings.timeFire>=time and settings.animateTransition and ani) then {255, 255, 0} else {0, 0, 0};
    //****ANIMATION END****//
    //****ERROR MESSENGES BEGIN****//
    for i in 1:nIn loop
@@ -153,4 +153,4 @@ equation
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},
           textString="%name")}), Diagram(graphics));
-end TDT;
+end TT;
