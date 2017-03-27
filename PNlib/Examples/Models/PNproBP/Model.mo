@@ -577,6 +577,6 @@ equation
     Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-420,-145},
             {420,200}}),
                     graphics),
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-420,-145},{420,200}})),
-    experiment(StopTime=320, Tolerance = 1e-6));
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-420,-145},{420,200}}))/*,
+    experiment(StopTime=320, Tolerance = 1e-6)*/);
 end Model;

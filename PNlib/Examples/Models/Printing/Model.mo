@@ -194,6 +194,6 @@ equation
           fillPattern=FillPattern.Solid,
           textString=DynamicSelect("0",realString(duration__,1,0)))}), Icon(coordinateSystem(preserveAspectRatio=true,
           extent={{-125,-125},{125,125}})),
-    experiment(StopTime=32000, Tolerance = 1e-6),
+    //experiment(StopTime=32000, Tolerance = 1e-6),
     __Dymola_experimentSetupOutput);
 end Model;

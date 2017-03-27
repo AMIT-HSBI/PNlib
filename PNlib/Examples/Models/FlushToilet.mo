@@ -250,7 +250,7 @@ equation
         coordinateSystem(preserveAspectRatio=true, extent={{-125,-125},{125,125}}),
         graphics),
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-125,-125},{125,125}})),
-    experiment(StopTime=100, Tolerance = 1e-6),
+    //experiment(StopTime=100, Tolerance = 1e-6),
     __Dymola_experimentSetupOutput,
                 Documentation(info="<html>
   <p>
