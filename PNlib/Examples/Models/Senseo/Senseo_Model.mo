@@ -82,6 +82,6 @@ equation
   annotation(Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,
             -100},{120,80}}),
                       graphics), Icon(coordinateSystem(
-          preserveAspectRatio=true, extent={{-100,-100},{120,80}})),
-    experiment(StopTime=18000, Tolerance = 1e-6));
+          preserveAspectRatio=true, extent={{-100,-100},{120,80}}))/*,
+    experiment(StopTime=18000, Tolerance = 1e-6)*/);
 end Senseo_Model;
