@@ -2,12 +2,15 @@ SinglePD
 SingleTD
 TDtoPD
 PDtoTD
+TEtest
+TEnoInput
 TFDtest
 TFDoutCap
 TFDinputConflict
 TFDoutputConflict
-TEtest
-TEnoInput
+PDtoTT
+TTtoPD
+TTcircle
 DisLoopAndArcweight
 ConflictPrio
 ConflictProb
@@ -28,3 +31,4 @@ SixConflictProb
 EightConflictProb
 PrioTest
 NoInputConflict
+FiveTimes

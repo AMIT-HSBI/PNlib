@@ -36,8 +36,12 @@ PNlib.Examples.DisTest.TFDtest.mos \
 PNlib.Examples.DisTest.TFDoutCap.mos \
 PNlib.Examples.DisTest.TFDinputConflict.mos \
 PNlib.Examples.DisTest.TFDoutputConflict.mos \
+PNlib.Examples.DisTest.PDtoTT.mos \
+PNlib.Examples.DisTest.TTtoPD.mos \
+PNlib.Examples.DisTest.TTcircle.mos \
 PNlib.Examples.DisTest.TEtest.mos \
 PNlib.Examples.DisTest.TEnoInput.mos \
+PNlib.Examples.DisTest.FiveTimes.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPCtoTC.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPTtoTD.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPTtoTD2.mos \
