@@ -30,9 +30,9 @@ protected
   discrete Real sumEnablingProbTAin "sum of the enabling probabilities of the active input transitions";
   Boolean endWhile;
   Integer Index "priority Index";
-  Real benefitMax "theoretical benefit";
+  discrete Real benefitMax "theoretical benefit";
   Boolean valid "valid solution";
-  Real benefitLimit "best valid benefit";
+  discrete Real benefitLimit "best valid benefit";
 initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, globalSeed);
