@@ -56,22 +56,22 @@ algorithm
         end if;
       end if;
       if arcType[i]==PNlib.Types.ArcType.RealTestArc then //real test arc
-        if tIn[i] <= testValue[i] then
+        if tIn[i] - testValue[i]<= Constants.almost_eps then
           active := false;
         end if;
-        if tIn[i] > testValue[i] and fed[i] and not normalArc[i] then  //weakly input active??
+        if tIn[i] - testValue[i] > Constants.almost_eps and fed[i] and not normalArc[i] then  //weakly input active??
           weaklyInputActiveVec[i] := true;
         end if;
       elseif arcType[i]==PNlib.Types.ArcType.TestArc then //test arc
-        if tIn[i] < testValue[i] then
+        if tIn[i] - testValue[i] < -Constants.almost_eps then
           active := false;
         end if;
-        if tIn[i] >= testValue[i] and fed[i] and not normalArc[i] then  //weakly input active??
+        if tIn[i] - testValue[i] >= -Constants.almost_eps and fed[i] and not normalArc[i] then  //weakly input active??
           weaklyInputActiveVec[i] := true;
         end if;
-      elseif arcType[i]==PNlib.Types.ArcType.RealInhibitorArc and (tIn[i] >= testValue[i]) then  //real inhibitor arc
+      elseif arcType[i]==PNlib.Types.ArcType.RealInhibitorArc and (tIn[i] - testValue[i] >=  -Constants.almost_eps) then  //real inhibitor arc
         active := false;
-      elseif arcType[i]==PNlib.Types.ArcType.InhibitorArc and (tIn[i] > testValue[i]) then  //inhibitor arc
+      elseif arcType[i]==PNlib.Types.ArcType.InhibitorArc and (tIn[i] -testValue[i] >  Constants.almost_eps) then  //inhibitor arc
         active := false;
       end if;
     end if;
