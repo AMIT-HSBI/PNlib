@@ -90,6 +90,8 @@ PNlib.Examples.HybTest.TDtoPCfunction.mos \
 PNlib.Examples.Models.BicoloredPlaces.Aquarium.mos \
 PNlib.Examples.Models.FiliP.ModellStationen.Station1.mos \
 
+#TESTFILES = \
+PNlib.Examples.ExtTest.ArcswithPCtoTC3.mos \
 
 # These tests are OS dependent. Move up when fixed.
 # Run make failingtest
