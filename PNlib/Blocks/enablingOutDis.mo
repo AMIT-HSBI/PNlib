@@ -30,6 +30,9 @@ protected
   discrete Real sumEnablingProbTAout "sum of the enabling probabilities of the active output transitions";
   Boolean endWhile;
   Integer Index "priority Index";
+  discrete Real benefitMax "theoretical benefit";
+  Boolean valid "valid solution";
+  discrete Real benefitLimit "best valid benefit";
 initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, globalSeed);
@@ -128,7 +131,10 @@ algorithm
            elseif benefitType==PNlib.Types.BenefitType.BenefitQuotient then
              TEout:=PNlib.Functions.Enabling.benefitQuotientDisOut(nOut, arcWeight, t, minTokens, TAout, enablingBene, disTransition);
            else
-             TEout:=PNlib.Functions.Enabling.benefitGreedyDisOut(nOut, arcWeight, t, minTokens, TAout, enablingBene, disTransition);
+           arcWeightSum := 0;
+           benefitMax:=sum(enablingBene);
+           benefitLimit:=0;
+             (TEout, arcWeightSum,  benefitMax, valid, benefitLimit):=PNlib.Functions.Enabling.benefitBaBDisOut(1, nOut, enablingBene, arcWeight, enablingBene ./arcWeight, t, benefitMax, minTokens, TEout, 0, benefitLimit, TAout, disTransition);
           end if;
         end if;
       end if;
@@ -145,6 +151,9 @@ algorithm
       sumEnablingProbTAout := 0.0;
       endWhile := false;
       Index := 0;
+      benefitMax:=0 ;
+      valid:=false ;
+      benefitLimit:=0 ;
     end if;
   end when;
   // hack for Dymola 2017
