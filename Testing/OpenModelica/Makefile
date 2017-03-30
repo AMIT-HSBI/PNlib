@@ -62,6 +62,8 @@ PNlib.Examples.ExtTest.TAwithPDtoTD.mos \
 PNlib.Examples.ExtTest.TAwithPDtoTD2.mos \
 PNlib.Examples.ExtTest.TAwithWeaklyActivation.mos \
 PNlib.Examples.ExtTest.ArcswithPCtoTC.mos \
+PNlib.Examples.ExtTest.ArcswithPCtoTC2.mos \
+PNlib.Examples.ExtTest.ArcswithPCtoTC3.mos \
 PNlib.Examples.ExtTest.TSTest.mos \
 PNlib.Examples.ExtTest.TStriangular.mos \
 PNlib.Examples.ExtTest.TSuniform.mos \
