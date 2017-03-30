@@ -40,6 +40,7 @@ initial algorithm
       state128);
 algorithm
   TEin:=fill(false, nIn);
+  arcWeightSum := 0;
   when delayPassed then
     if nIn>0 then
       arcWeightSum:=Functions.OddsAndEnds.conditionalSumInt(arcWeight, TAein);  //arc weight sum of all active input transitions which are already enabled by their input places
@@ -116,7 +117,7 @@ algorithm
           elseif benefitType==PNlib.Types.BenefitType.BenefitQuotient then
             TEin:=PNlib.Functions.Enabling.benefitQuotientDisIn(nIn, arcWeight, t, maxTokens, TAein, enablingBene, disTransition);
           else
-            TEin:=fill(false, nIn);
+            //TEin:=fill(false, nIn);
             arcWeightSum := 0;
             benefitMax:=sum(enablingBene);
             benefitLimit:=0;

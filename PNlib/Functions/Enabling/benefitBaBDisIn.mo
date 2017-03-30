@@ -25,13 +25,13 @@ function benefitBaBDisIn "Enabling Input Transition by Benefit and Branch and Bo
   Real MaxBenefit "max benefit Quotient";
   Integer Index "index of max benefit Quotient";
   Boolean TEinOut1[nIn] "enabled input transitions output of partial solution 1";
-  Integer TokenOut1"used token output of partial solution 1";
-  Real benefitMaxOut1"theoretical benefit output of partial solution 1";
+  Integer TokenOut1 "used token output of partial solution 1";
+  Real benefitMaxOut1 "theoretical benefit output of partial solution 1";
   Boolean valid1"valid solution of partial solution 1";
   Boolean TEinOut2[nIn] "enabled output transitions output of partial solution 2";
-  Integer TokenOut2"used token output of partial solution 2";
-  Real benefitMaxOut2"theoretical benefit output of partial solution 2";
-  Boolean valid2"valid solution of partial solution 2";
+  Integer TokenOut2 "used token output of partial solution 2";
+  Real benefitMaxOut2 "theoretical benefit output of partial solution 2";
+  Boolean valid2 "valid solution of partial solution 2";
   algorithm
     // starting values
     benefitLimitOut:=benefitLimitIn;
@@ -61,12 +61,12 @@ function benefitBaBDisIn "Enabling Input Transition by Benefit and Branch and Bo
     // branch solution
     if depth < nIn then // no finished solution
       if t+TokenOut1 <=maxTokens and benefitMaxOut1>=benefitLimit then
-          (TEinOut1,TokenOut1 ,benefitMaxOut1, valid1, benefitLimit):=benefitBaBDisOut(depth+1, nIn, benefit, arcWeight, Quotient_, t, benefitMaxOut1, maxTokens, TEinOut1, TokenOut1, benefitLimit, TAein, disTransition);
+          (TEinOut1,TokenOut1 ,benefitMaxOut1, valid1, benefitLimit):=benefitBaBDisIn(depth+1, nIn, benefit, arcWeight, Quotient_, t, benefitMaxOut1, maxTokens, TEinOut1, TokenOut1, benefitLimit, TAein, disTransition);
       else
         valid1:=false;
       end if;
       if t+TokenOut2 <= maxTokens and benefitMaxOut2>=benefitLimit then
-          (TEinOut2,TokenOut2 ,benefitMaxOut2, valid2 , benefitLimit):=benefitBaBDisOut(depth+1, nIn, benefit, arcWeight, Quotient_, t, benefitMaxOut2, maxTokens, TEinOut2, TokenOut2, benefitLimit, TAein, disTransition);
+          (TEinOut2,TokenOut2 ,benefitMaxOut2, valid2 , benefitLimit):=benefitBaBDisIn(depth+1, nIn, benefit, arcWeight, Quotient_, t, benefitMaxOut2, maxTokens, TEinOut2, TokenOut2, benefitLimit, TAein, disTransition);
       else
         valid2:=false;
       end if;

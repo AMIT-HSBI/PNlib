@@ -25,13 +25,13 @@ Real Quotient_[nOut] "new benefitb Quotient";
 Real MaxBenefit "max benefit Quotient";
 Integer Index "index of max benefit Quotient";
 Boolean TEoutOut1[nOut] "enabled output transitions output of partial solution 1";
-Integer TokenOut1"used token output of partial solution 1";
-Real benefitMaxOut1"theoretical benefit output of partial solution 1";
-Boolean valid1"valid solution of partial solution 1";
+Integer TokenOut1 "used token output of partial solution 1";
+Real benefitMaxOut1 "theoretical benefit output of partial solution 1";
+Boolean valid1 "valid solution of partial solution 1";
 Boolean TEoutOut2[nOut] "enabled output transitions output of partial solution 2";
-Integer TokenOut2"used token output of partial solution 2";
-Real benefitMaxOut2"theoretical benefit output of partial solution 2";
-Boolean valid2"valid solution of partial solution 2";
+Integer TokenOut2 "used token output of partial solution 2";
+Real benefitMaxOut2 "theoretical benefit output of partial solution 2";
+Boolean valid2 "valid solution of partial solution 2";
 algorithm
   // starting values
   benefitLimitOut:=benefitLimitIn;
