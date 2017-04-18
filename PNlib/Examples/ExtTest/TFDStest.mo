@@ -8,7 +8,7 @@ model TFDStest
     Placement(visible = true, transformation(extent = {{-38, -10}, {-18, 10}}, rotation = 0)));
   PNlib.PD P2(nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {28, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TFDS T1(b = 2, c = 1,distributionType = PNlib.Types.DistributionType.Triangular, nIn = 1, nOut = 1)  annotation(
+  PNlib.TFDS T1(b = 2, c = 1,distributionType = PNlib.Types.DistributionType.Triangular, localSeed = 2, nIn = 1, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T1.outPlaces[1], P2.inTransition[1]) annotation(
