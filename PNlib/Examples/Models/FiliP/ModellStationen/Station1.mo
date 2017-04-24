@@ -1,4 +1,5 @@
 within PNlib.Examples.Models.FiliP.ModellStationen;
+
 model Station1
   extends Modelica.Icons.Example;
   extends PNlib.Examples.Models.FiliP.AllgemeineParameter;
@@ -23,5 +24,6 @@ equation
     Line(points = {{-25, 40}, {-25, 5}, {-63, 5}, {-63, -32}}));
   annotation(
     Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}})),
-    Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}})));
+    Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}})),
+    experiment(StartTime = 0, StopTime = 678, Tolerance = 1e-06));
 end Station1;

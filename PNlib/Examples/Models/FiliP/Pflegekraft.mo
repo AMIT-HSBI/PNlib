@@ -9,7 +9,16 @@ model Pflegekraft
     choices(choice = 1 "1. Wochenende", choice = 2 "2. Wochenende", choice = 3 "jedes Wochenende", __Dymola_radioButtons = true));
   parameter Real UrlaubStartTermine[:] = {10,20,30} "number of input places"annotation(Dialog(enable = true, group = "Personal Daten"));
   parameter Real UrlaubEndTermine[:] = {15,25,35} "number of input places"annotation(Dialog(enable = true, group = "Personal Daten"));
-  Real ImFruehDienst=IstImFruehDienst.t;
+  Real HatFruehDienst=IstImFruehDienst.t;
+  Real HatSpaetDienst=IstImSpaetDienst.t;
+  Real HatNachtDienst=IstImNachtDienst.t;
+  Boolean IstKrank=krankurlaub.Krank.fire;
+  Real HatUrlaubt=krankurlaub.ImUrlaub.t;
+  Real HatWochenende=ImWochenEnde.t;
+  Real HatRuhezeit=Ruhe.t;
+  Real Dienstfaehig=Dienstbereit.t;
+  Real ArbeitszeitKontingentPlanungsPeriode=ArbeitszeitKontingent.t;
+  Real GeleisteteArbeistzeitGesammt=GeleisteteArbeistzeit.t;
   protected
   PNlib.PD IstImFruehDienst(nIn = 1, nOut = 1) annotation(
     Placement(transformation(extent = {{-10, 240}, {10, 260}})));

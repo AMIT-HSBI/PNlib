@@ -9,6 +9,11 @@ model Station
     Dialog(enable = true, group = "Personal"));
   parameter Integer APND = 2 "Min. Anzahl Personal im Nachtdienst" annotation(
     Dialog(enable = true, group = "Personal"));
+  Real BesetzungFruehDienst=PersonalImFruedienst.t;
+  Real BesetzungSpaetDienst=PersonalImSpaetdienst.t;
+  Real BesetzungNachtDienst=PersonalImNachtdienst.t;
+  Real BesetzungsDefizit=ZusaetzlicherPflegebedarf.t;
+  protected
   PNlib.PD PersonalImFruedienst(enablingProbIn = fill(1 / nP, nP), enablingProbOut = fill(1 / (nP + 1), nP + 1), enablingType = PNlib.Types.EnablingType.Probability, maxTokens = APFD, nIn = nP, nOut = nP + 1) annotation(
     Placement(transformation(extent = {{-10, 112}, {10, 132}})));
   PNlib.PD PersonalImSpaetdienst(enablingProbIn = fill(1 / nP, nP), enablingProbOut = fill(1 / (nP + 1), nP + 1), enablingType = PNlib.Types.EnablingType.Probability, maxTokens = APSD, nIn = nP, nOut = nP + 1) annotation(

@@ -18,7 +18,7 @@ model KrankUrlaub
       Placement(visible = true, transformation(origin = {116.236, -0.234045}, extent = {{16.8909, -19.766}, {-16.8909, 19.766}}, rotation = 0), iconTransformation(origin = {120.636, 0.191491}, extent = {{18.6364, -21.8085}, {-18.6364, 21.8085}}, rotation = 0)));
     Real WK;
     //Real WU;
-    PNlib.TFDS TKrank(E = 24 * (1:31), P = {75 / 237, 41 / 237, 24 / 237, 19 / 237, 22 / 237, 10 / 237, 13 / 237, 4 / 237, 2 / 237, 3 / 237, 2 / 237, 1 / 237, 3 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237}, distributionType = PNlib.Types.DistributionType.Discrete, nIn = 1, nOut = 1) annotation(
+    PNlib.TFDS Krank(E = 24 * (1:31), P = {75 / 237, 41 / 237, 24 / 237, 19 / 237, 22 / 237, 10 / 237, 13 / 237, 4 / 237, 2 / 237, 3 / 237, 2 / 237, 1 / 237, 3 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237}, distributionType = PNlib.Types.DistributionType.Discrete, nIn = 1, nOut = 1) annotation(
       Placement(visible = true, transformation(origin = {4, -40}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
     PNlib.TE TUrlaubEnde(event = UrlaubEndTermine,nIn = 1, nOut = 1) annotation(
       Placement(visible = true, transformation(origin = {4, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
@@ -57,7 +57,7 @@ model KrankUrlaub
       Line(points = {{40, 0}, {52, 0}, {52, 0}, {52, 0}}, thickness = 0.5));
     connect(Arbeitet1.outPlaces[1], Krankpruefer1.inTransition[1]) annotation(
       Line(points = {{51.2, -78}, {39.2, -78}}));
-    connect(TKrank.inPlaces[1], Krankpruefer1.outTransition[1]) annotation(
+    connect(Krank.inPlaces[1], Krankpruefer1.outTransition[1]) annotation(
       Line(points = {{8.8, -40}, {16.6, -40}, {16.6, -80}, {20.8, -80}}, thickness = 0.5));
     connect(Krankpruefer1.outTransition[2], Gesund1.inPlaces[1]) annotation(
       Line(points = {{19.2, -78}, {11.2, -78}}, thickness = 0.5));
@@ -65,7 +65,7 @@ model KrankUrlaub
       Line(points = {{19.2, 2}, {11.2, 2}}, thickness = 0.5));
     connect(KannArbeiteten.inTransition[1], Gesund1.outPlaces[1]) annotation(
       Line(points = {{-29.2, -80}, {-1.2, -80}, {-1.2, -80}, {0.800078, -80}}, thickness = 0.5));
-    connect(KannArbeiteten.inTransition[2], TKrank.outPlaces[1]) annotation(
+    connect(KannArbeiteten.inTransition[2], Krank.outPlaces[1]) annotation(
       Line(points = {{-29.2, -80}, {-19.2, -80}, {-19.2, -40}, {0.800078, -40}, {0.800078, -40}}, thickness = 0.5));
     connect(KannArbeiteten.inTransition[3], TUrlaubEnde.outPlaces[1]) annotation(
       Line(points = {{-29.2, -80}, {-19.2, -80}, {-19.2, 0}, {0.800078, 0}, {0.800078, 0}}, thickness = 0.5));
