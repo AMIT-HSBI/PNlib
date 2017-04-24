@@ -1,0 +1,93 @@
+// name: PNlib.Examples.Models.FiliP.ModellStationen.Station7
+// keywords: PNlib, colored places
+// status: correct
+
+loadFile("../../PNlib/package.mo"); getErrorString();
+simulate(PNlib.Examples.Models.FiliP.ModellStationen.Station7, 0.0, 8760.0, 1e-06); getErrorString();
+
+vars := {
+  "pflegekraft1.HatFruehDienst",
+  "pflegekraft1.HatSpaetDienst",
+  "pflegekraft1.HatNachtDienst",
+  "pflegekraft1.IstKrank",
+  "pflegekraft1.HatUrlaubt",
+  "pflegekraft1.HatWochenende",
+  "pflegekraft1.HatRuhezeit",
+  "pflegekraft1.Dienstfaehig",
+  "pflegekraft1.ArbeitszeitKontingentPlanungsPeriode",
+  "pflegekraft1.GeleisteteArbeistzeitGesammt",
+  "pflegekraft2.HatFruehDienst",
+  "pflegekraft2.HatSpaetDienst",
+  "pflegekraft2.HatNachtDienst",
+  "pflegekraft2.IstKrank",
+  "pflegekraft2.HatUrlaubt",
+  "pflegekraft2.HatWochenende",
+  "pflegekraft2.HatRuhezeit",
+  "pflegekraft2.Dienstfaehig",
+  "pflegekraft2.ArbeitszeitKontingentPlanungsPeriode",
+  "pflegekraft2.GeleisteteArbeistzeitGesammt",
+  "pflegekraft3.HatFruehDienst",
+  "pflegekraft3.HatSpaetDienst",
+  "pflegekraft3.HatNachtDienst",
+  "pflegekraft3.IstKrank",
+  "pflegekraft3.HatUrlaubt",
+  "pflegekraft3.HatWochenende",
+  "pflegekraft3.HatRuhezeit",
+  "pflegekraft3.Dienstfaehig",
+  "pflegekraft3.ArbeitszeitKontingentPlanungsPeriode",
+  "pflegekraft3.GeleisteteArbeistzeitGesammt",
+  "pflegekraft4.HatFruehDienst",
+  "pflegekraft4.HatSpaetDienst",
+  "pflegekraft4.HatNachtDienst",
+  "pflegekraft4.IstKrank",
+  "pflegekraft4.HatUrlaubt",
+  "pflegekraft4.HatWochenende",
+  "pflegekraft4.HatRuhezeit",
+  "pflegekraft4.Dienstfaehig",
+  "pflegekraft4.ArbeitszeitKontingentPlanungsPeriode",
+  "pflegekraft4.GeleisteteArbeistzeitGesammt",
+  "pflegekraft5.HatFruehDienst",
+  "pflegekraft5.HatSpaetDienst",
+  "pflegekraft5.HatNachtDienst",
+  "pflegekraft5.IstKrank",
+  "pflegekraft5.HatUrlaubt",
+  "pflegekraft5.HatWochenende",
+  "pflegekraft5.HatRuhezeit",
+  "pflegekraft5.Dienstfaehig",
+  "pflegekraft5.ArbeitszeitKontingentPlanungsPeriode",
+  "pflegekraft5.GeleisteteArbeistzeitGesammt",
+  "pflegekraft6.HatFruehDienst",
+  "pflegekraft6.HatSpaetDienst",
+  "pflegekraft6.HatNachtDienst",
+  "pflegekraft6.IstKrank",
+  "pflegekraft6.HatUrlaubt",
+  "pflegekraft6.HatWochenende",
+  "pflegekraft6.HatRuhezeit",
+  "pflegekraft6.Dienstfaehig",
+  "pflegekraft6.ArbeitszeitKontingentPlanungsPeriode",
+  "pflegekraft6.GeleisteteArbeistzeitGesammt",
+  "pflegekraft7.HatFruehDienst",
+  "pflegekraft7.HatSpaetDienst",
+  "pflegekraft7.HatNachtDienst",
+  "pflegekraft7.IstKrank",
+  "pflegekraft7.HatUrlaubt",
+  "pflegekraft7.HatWochenende",
+  "pflegekraft7.HatRuhezeit",
+  "pflegekraft7.Dienstfaehig",
+  "pflegekraft7.ArbeitszeitKontingentPlanungsPeriode",
+  "pflegekraft7.GeleisteteArbeistzeitGesammt",
+  "station.BesetzungFruehDienst",
+  "station.BesetzungSpaetDienst",
+  "station.BesetzungNachtDienst",
+  "station.BesetzungsDefizit"
+};
+
+
+
+res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.Models.FiliP.ModellStationen.Station7_res.mat",
+  "../../ReferenceFiles/PNlib.Examples.Models.FiliP.ModellStationen.Station7.mat",
+  "PNlib.Examples.Models.FiliP.ModellStationen.Station7_diff.csv", 0.01, 0.0001, vars); getErrorString();
+
+if res[1] <> "Files Equal!" then
+  filterSimulationResults("PNlib.Examples.Models.FiliP.ModellStationen.Station7_res.mat", "../../ReferenceFiles/PNlib.Examples.Models.FiliP.ModellStationen.Station7_minimal.mat", vars, 0); getErrorString();
+end if;
