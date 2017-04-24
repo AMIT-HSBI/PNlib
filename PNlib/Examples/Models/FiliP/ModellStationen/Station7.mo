@@ -107,6 +107,6 @@ equation
     Line(points = {{-22.7, 309.9}, {-22.7, 286.925}, {-22.7, 286.925}, {-22.7, 267.95}, {-33, 267.95}, {-33, 252.975}, {-33, 252.975}, {-33, 248}}));
   annotation(
     Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-150, -350}, {150, 350}}), graphics),
-    Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}})),
-    experiment(StartTime = 0, StopTime = 8760, Tolerance = 1e-06));
+    Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}}))/*,
+    experiment(StartTime = 0, StopTime = 8760, Tolerance = 1e-06)*/);
 end Station7;
