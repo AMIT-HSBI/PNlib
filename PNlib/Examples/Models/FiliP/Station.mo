@@ -24,11 +24,11 @@ model Station
     Placement(transformation(extent = {{200, -52}, {304, 52}})));
   PNlib.Interfaces.PlaceIn placeIn[3 * nP] annotation(
     Placement(transformation(extent = {{-298, -50}, {-196, 48}})));
-  PNlib.TT BeginnFrueh(tactIntervall = 24, nOut = 1, tactStart = BeginFruehschicht, arcWeightOut = {DauerFruehschicht - 0.5}) annotation(
+  PNlib.TT BeginnFrueh(tactIntervall = 1, nOut = 1, tactStart = BeginFruehschicht/24, arcWeightOut = {DauerFruehschicht - 0.5}) annotation(
     Placement(transformation(extent = {{-54, 158}, {-34, 178}})));
-  PNlib.TT BeginnSpaet(tactIntervall = 24, nOut = 1, tactStart = BeginSpaetschicht, arcWeightOut = {DauerSpaetschicht - 0.5}) annotation(
+  PNlib.TT BeginnSpaet(tactIntervall = 1, nOut = 1, tactStart = BeginSpaetschicht/24, arcWeightOut = {DauerSpaetschicht - 0.5}) annotation(
     Placement(transformation(extent = {{-54, 50}, {-34, 70}})));
-  PNlib.TT BeginnNacht(tactIntervall = 24, nOut = 1, tactStart = BeginNachtschicht, arcWeightOut = {DauerNachtschicht - 0.75}) annotation(
+  PNlib.TT BeginnNacht(tactIntervall = 1, nOut = 1, tactStart = BeginNachtschicht/24, arcWeightOut = {DauerNachtschicht - 0.75}) annotation(
     Placement(transformation(extent = {{-54, -148}, {-34, -128}})));
   PNlib.PC IstFruehDienst(nIn = 1, nOut = 1) annotation(
     Placement(transformation(extent = {{-10, 158}, {10, 178}})));
@@ -40,11 +40,11 @@ model Station
     Placement(transformation(extent = {{26, 20}, {40, 24}})));
   PNlib.RA RANacht annotation(
     Placement(transformation(extent = {{32, -92}, {44, -88}})));
-  PNlib.TC BedarfsMesserFrueh(nIn = 2, nOut = 1, arcWeightOut = {APFD - PersonalImFruedienst.t}) annotation(
+  PNlib.TC BedarfsMesserFrueh(nIn = 2, nOut = 1, arcWeightOut = {24*(APFD - PersonalImFruedienst.t)}) annotation(
     Placement(transformation(extent = {{66, 158}, {86, 178}})));
-  PNlib.TC BedarfsMesserSpaet(nIn = 2, nOut = 1, arcWeightOut = {APSD - PersonalImSpaetdienst.t}) annotation(
+  PNlib.TC BedarfsMesserSpaet(nIn = 2, nOut = 1, arcWeightOut = {24*(APSD - PersonalImSpaetdienst.t)}) annotation(
     Placement(transformation(extent = {{66, 50}, {86, 70}})));
-  PNlib.TC BedarfsMesserNacht(nIn = 2, nOut = 1, arcWeightOut = {APND - PersonalImNachtdienst.t}) annotation(
+  PNlib.TC BedarfsMesserNacht(nIn = 2, nOut = 1, arcWeightOut = {24*(APND - PersonalImNachtdienst.t)}) annotation(
     Placement(transformation(extent = {{66, -148}, {86, -128}})));
   PNlib.PC ZusaetzlicherPflegebedarf(nIn = 3) annotation(
     Placement(transformation(extent = {{166, -106}, {186, -86}})));

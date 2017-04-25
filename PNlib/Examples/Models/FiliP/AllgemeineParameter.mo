@@ -1,7 +1,7 @@
 within PNlib.Examples.Models.FiliP;
 model AllgemeineParameter
-  Real Stunde(displayUnit = "Stunde") = time;
-  Real Tag(displayUnit = "Tag") = time / 24;
+  Real Stunde(displayUnit = "Stunde") = time/24;
+  Real Tag(displayUnit = "Tag") = time ;
   parameter Real BeginFruehschicht = 6;
   parameter Real BeginSpaetschicht = 12.3;
   parameter Real BeginNachtschicht = 20.25;
