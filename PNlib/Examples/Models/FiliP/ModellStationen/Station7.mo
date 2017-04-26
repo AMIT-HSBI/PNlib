@@ -108,5 +108,5 @@ equation
   annotation(
     Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-150, -350}, {150, 350}}), graphics),
     Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}}))/*,
-    experiment(StartTime = 0, StopTime = 8760, Tolerance = 1e-06)*/);
+    experiment(StartTime = 0, StopTime = 365, Tolerance = 1e-06)*/);
 end Station7;
