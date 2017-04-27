@@ -24,11 +24,11 @@ model Station
     Placement(transformation(extent = {{200, -52}, {304, 52}})));
   PNlib.Interfaces.PlaceIn placeIn[3 * nP] annotation(
     Placement(transformation(extent = {{-298, -50}, {-196, 48}})));
-  PNlib.TT BeginnFrueh(tactIntervall = 1, nOut = 1, tactStart = BeginFruehschicht/24, arcWeightOut = {DauerFruehschicht - 0.5}) annotation(
+  PNlib.TT BeginnFrueh(tactIntervall = 1, nOut = 1, tactStart = BeginFruehschicht/24, arcWeightOut = {(DauerFruehschicht - 0.5)/24}) annotation(
     Placement(transformation(extent = {{-54, 158}, {-34, 178}})));
-  PNlib.TT BeginnSpaet(tactIntervall = 1, nOut = 1, tactStart = BeginSpaetschicht/24, arcWeightOut = {DauerSpaetschicht - 0.5}) annotation(
+  PNlib.TT BeginnSpaet(tactIntervall = 1, nOut = 1, tactStart = BeginSpaetschicht/24, arcWeightOut = {(DauerSpaetschicht - 0.5)/24}) annotation(
     Placement(transformation(extent = {{-54, 50}, {-34, 70}})));
-  PNlib.TT BeginnNacht(tactIntervall = 1, nOut = 1, tactStart = BeginNachtschicht/24, arcWeightOut = {DauerNachtschicht - 0.75}) annotation(
+  PNlib.TT BeginnNacht(tactIntervall = 1, nOut = 1, tactStart = BeginNachtschicht/24, arcWeightOut = {(DauerNachtschicht - 0.75)/24}) annotation(
     Placement(transformation(extent = {{-54, -148}, {-34, -128}})));
   PNlib.PC IstFruehDienst(nIn = 1, nOut = 1) annotation(
     Placement(transformation(extent = {{-10, 158}, {10, 178}})));
