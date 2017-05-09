@@ -6,46 +6,46 @@ model Station20
       Placement(visible = true, transformation(extent = {{-48, 268}, {-8, 308}}, rotation = 0)));
   inner PNlib.Settings settings annotation(
     Placement(visible = true, transformation(origin = {306, 290}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-protected
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft0(Stelle = 0.75, UrlaubsTage = 27) annotation(
+
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft0(Stelle = 0.75) annotation(
       Placement(visible = true, transformation(extent = {{-324, 54}, {-264, 114}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft1(Stelle = 0.9, UrlaubsTage = 32) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft1(Stelle = 0.9) annotation(
       Placement(visible = true, transformation(extent = {{-322, -50}, {-262, 10}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft2(Stelle = 0.51, UrlaubsTage = 12) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft2(Stelle = 0.51) annotation(
       Placement(visible = true, transformation(extent = {{-322, -146}, {-262, -86}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft3(Stelle = 0.5, UrlaubsTage = 12, WEF = 2) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft3(Stelle = 0.5, WEF = 2) annotation(
       Placement(visible = true, transformation(extent = {{-316, -244}, {-256, -184}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft4(Stelle = 1, UrlaubsTage = 36, WEF = 2) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft4(Stelle = 1, WEF = 2) annotation(
       Placement(visible = true, transformation(extent = {{-182, 64}, {-122, 124}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft5(Stelle = 0.41, UrlaubsTage = 10) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft5(Stelle = 0.41) annotation(
       Placement(visible = true, transformation(extent = {{-182, -36}, {-122, 24}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft6(Stelle = 0.35, UrlaubsTage = 8, WEF = 2) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft6(Stelle = 0.35, WEF = 2) annotation(
       Placement(visible = true, transformation(extent = {{-182, -132}, {-122, -72}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft7(Stelle = 0.5, UrlaubsTage = 17) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft7(Stelle = 0.5) annotation(
       Placement(visible = true, transformation(extent = {{-176, -230}, {-116, -170}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft8(Stelle = 0.5, UrlaubsTage = 12) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft8(Stelle = 0.5) annotation(
       Placement(visible = true, transformation(extent = {{-48, 58}, {12, 118}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft9(Stelle = 1, UrlaubsTage = 36, WEF = 2) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft9(Stelle = 1, WEF = 2) annotation(
       Placement(visible = true, transformation(extent = {{-46, -42}, {14, 18}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft10(Stelle = 0.8, UrlaubsTage = 29) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft10(Stelle = 0.8) annotation(
       Placement(visible = true, transformation(extent = {{-46, -138}, {14, -78}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft11(Stelle = 0.75, UrlaubsTage = 27, WEF = 2) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft11(Stelle = 0.75, WEF = 2) annotation(
       Placement(visible = true, transformation(extent = {{-40, -236}, {20, -176}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft12(Stelle = 1, UrlaubsTage = 35, WEF = 2) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft12(Stelle = 1, WEF = 2) annotation(
       Placement(visible = true, transformation(extent = {{100, 50}, {160, 110}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft13(Stelle = 0.5, UrlaubsTage = 18) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft13(Stelle = 0.5) annotation(
       Placement(visible = true, transformation(extent = {{102, -50}, {162, 10}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft14(Stelle = 0.35, UrlaubsTage = 13) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft14(Stelle = 0.35) annotation(
       Placement(visible = true, transformation(extent = {{102, -146}, {162, -86}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft15(Stelle = 0.75, UrlaubsTage = 27) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft15(Stelle = 0.75) annotation(
       Placement(visible = true, transformation(extent = {{108, -244}, {168, -184}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft16(Stelle = 1, UrlaubsTage = 36, WEF = 2) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft16(Stelle = 1, WEF = 2) annotation(
       Placement(visible = true, transformation(extent = {{284, 44}, {344, 104}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft17(Stelle = 1, UrlaubsTage = 36) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft17(Stelle = 1) annotation(
       Placement(visible = true, transformation(extent = {{286, -56}, {346, 4}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft18(Stelle = 1, UrlaubsTage = 36, WEF = 2) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft18(Stelle = 1, WEF = 2) annotation(
       Placement(visible = true, transformation(extent = {{286, -152}, {346, -92}}, rotation = 0)));
-    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft19(Stelle = 1, WEF = 2, UrlaubsTage = 32) annotation(
+    PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft19(Stelle = 1, WEF = 2) annotation(
       Placement(visible = true, transformation(extent = {{292, -252}, {352, -192}}, rotation = 0)));
   equation
   connect(pflegekraft19.transitionOut[1], station.placeIn[58]) annotation(
