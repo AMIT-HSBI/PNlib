@@ -4,7 +4,7 @@
 
 
 
-varsfilter := {
+/*varsfilter := {
   "pflegekraft1.HatFruehDienst+HatSpaetDienst+HatNachtDienst+IstKrank+HatUrlaubt+HatWochenende+HatRuhezeit+Dienstfaehig+ArbeitszeitKontingentPlanungsPeriode+GeleisteteArbeistzeitGesammt"+
   "pflegekraft2.HatFruehDienst+HatSpaetDienst+HatNachtDienst+IstKrank+HatUrlaubt+HatWochenende+HatRuhezeit+Dienstfaehig+ArbeitszeitKontingentPlanungsPeriode+GeleisteteArbeistzeitGesammt"+
   "pflegekraft3.HatFruehDienst+HatSpaetDienst+HatNachtDienst+IstKrank+HatUrlaubt+HatWochenende+HatRuhezeit+Dienstfaehig+ArbeitszeitKontingentPlanungsPeriode+GeleisteteArbeistzeitGesammt"+
@@ -13,14 +13,14 @@ varsfilter := {
   "pflegekraft6.HatFruehDienst+HatSpaetDienst+HatNachtDienst+IstKrank+HatUrlaubt+HatWochenende+HatRuhezeit+Dienstfaehig+ArbeitszeitKontingentPlanungsPeriode+GeleisteteArbeistzeitGesammt"+
   "pflegekraft7.HatFruehDienst+HatSpaetDienst+HatNachtDienst+IstKrank+HatUrlaubt+HatWochenende+HatRuhezeit+Dienstfaehig+ArbeitszeitKontingentPlanungsPeriode+GeleisteteArbeistzeitGesammt"+
   "station.BesetzungFruehDienst+BesetzungSpaetDienst+BesetzungNachtDienst+BesetzungsDefizit"
-};
+};*/
 
 
 
 loadFile("../../PNlib/package.mo"); getErrorString();
 /*simulate(PNlib.Examples.Models.FiliP.ModellStationen.Station7, startTime=0.0, stopTime=100.0, tolerance=1e-06, variableFilter=pflegekraft1.HatFruehDienst+HatSpaetDienst+HatNachtDienst+IstKrank+HatUrlaubt+HatWochenende+HatRuhezeit+Dienstfaehig+ArbeitszeitKontingentPlanungsPeriode+GeleisteteArbeistzeitGesammt+pflegekraft2.HatFruehDienst+HatSpaetDienst+HatNachtDienst+IstKrank+HatUrlaubt+HatWochenende+HatRuhezeit+Dienstfaehig+ArbeitszeitKontingentPlanungsPeriode+GeleisteteArbeistzeitGesammt+pflegekraft3.HatFruehDienst+HatSpaetDienst+HatNachtDienst+IstKrank+HatUrlaubt+HatWochenende+HatRuhezeit+Dienstfaehig+ArbeitszeitKontingentPlanungsPeriode+GeleisteteArbeistzeitGesammt+pflegekraft4.HatFruehDienst+HatSpaetDienst+HatNachtDienst+IstKrank+HatUrlaubt+HatWochenende+HatRuhezeit+Dienstfaehig+ArbeitszeitKontingentPlanungsPeriode+GeleisteteArbeistzeitGesammt+pflegekraft5.HatFruehDienst+HatSpaetDienst+HatNachtDienst+IstKrank+HatUrlaubt+HatWochenende+HatRuhezeit+Dienstfaehig+ArbeitszeitKontingentPlanungsPeriode+GeleisteteArbeistzeitGesammt+pflegekraft6.HatFruehDienst+HatSpaetDienst+HatNachtDienst+IstKank+HatUrlaubt+HatWochenende+HatRuhezeit+Dienstfaehig+ArbeitszeitKontingentPlanungsPeriode+GeleisteteArbeistzeitGesammt+pflegekraft7.HatFruehDienst+HatSpaetDienst+HatNachtDienst+IstKrank+HatUrlaubt+HatWochenende+HatRuhezeit+Dienstfaehig+ArbeitszeitKontingentPlanungsPeriode+GeleisteteArbeistzeitGesammt+station.BesetzungFruehDienst+BesetzungSpaetDienst+BesetzungNachtDienst+BesetzungsDefizit); getErrorString();*/
 
-simulate(PNlib.Examples.Models.FiliP.ModellStationen.Station7, startTime=0.0, stopTime=365.0, tolerance=1e-06, variableFilter=varsfilter); getErrorString();
+simulate(PNlib.Examples.Models.FiliP.ModellStationen.Station7, startTime=0.0, stopTime=365.0, tolerance=1e-06/*, variableFilter=varsfilter*/); getErrorString();
 
 
 vars := {

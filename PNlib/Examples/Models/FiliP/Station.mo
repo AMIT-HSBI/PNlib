@@ -1,14 +1,6 @@
 within PNlib.Examples.Models.FiliP;
 
 model Station
-  Real BesetzungFruehDienst = PersonalImFruedienst.t;
-  Real BesetzungSpaetDienst = PersonalImSpaetdienst.t;
-  Real BesetzungNachtDienst = PersonalImNachtdienst.t;
-  Real BesetzungsDefizitFrueh = DefizitFruehschicht.t;
-  Real BesetzungsDefizitSpaet = DefizitSpaetSchicht.t;
-  Real BesetzungsDefizitNacht = DefizizNachtSchicht.t;
-  protected
-  extends PNlib.Examples.Models.FiliP.AllgemeineParameter;
   parameter Integer nP = 1 "Anzahl der Pflegekraefte" annotation(
     Dialog(enable = true, group = "Personal Daten"));
   parameter Integer APFD = 3 "Min. Anzahl Personal im Fruehedienst" annotation(
@@ -17,6 +9,14 @@ model Station
     Dialog(enable = true, group = "Personal"));
   parameter Integer APND = 2 "Min. Anzahl Personal im Nachtdienst" annotation(
     Dialog(enable = true, group = "Personal"));
+  Real BesetzungFruehDienst = PersonalImFruedienst.t;
+  Real BesetzungSpaetDienst = PersonalImSpaetdienst.t;
+  Real BesetzungNachtDienst = PersonalImNachtdienst.t;
+  Real BesetzungsDefizitFrueh = DefizitFruehschicht.t;
+  Real BesetzungsDefizitSpaet = DefizitSpaetSchicht.t;
+  Real BesetzungsDefizitNacht = DefizizNachtSchicht.t;
+  protected
+  extends PNlib.Examples.Models.FiliP.AllgemeineParameter;
   PNlib.PD DefizitFruehschicht(nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {164, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PNlib.PD DefizitSpaetSchicht(nIn = 1) annotation(

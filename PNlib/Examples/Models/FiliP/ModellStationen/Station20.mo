@@ -177,5 +177,5 @@ model Station20
     annotation(
       Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-400, -400}, {400, 400}}, initialScale = 0.1)),
       Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}}))/*,
-    experiment(StartTime = 0, StopTime = 8760, Tolerance = 1e-06)*/);
+    experiment(StartTime = 0, StopTime = 365, Tolerance = 1e-06)*/);
   end Station20;
