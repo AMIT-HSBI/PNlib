@@ -19,10 +19,10 @@ vars := {
   "station.BesetzungFruehDienst",
   "station.BesetzungSpaetDienst",
   "station.BesetzungNachtDienst",
-  "station.BesetzungsDefizit"
+  "station.BesetzungsDefizitFrueh",
+  "station.BesetzungsDefizitSpaet",
+  "station.BesetzungsDefizitNacht"
 };
-
-
 
 res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.Models.FiliP.ModellStationen.Station1_res.mat",
   "../../ReferenceFiles/PNlib.Examples.Models.FiliP.ModellStationen.Station1.mat",
@@ -48,7 +48,7 @@ end if;
 // Warning: There are iteration variables with default zero start attribute. For more information set -d=initialization. In OMEdit Tools->Options->Simulation->OMCFlags, in OMNotebook call setCommandLineOptions("-d=initialization").
 // Warning: The Tearing heuristic has chosen variables with annotation attribute 'tearingSelect = avoid'. Use -d=tearingdump and -d=tearingdumpV for more information.
 // "
-// {"pflegekraft.HatFruehDienst","pflegekraft.HatSpaetDienst","pflegekraft.HatNachtDienst","pflegekraft.IstKrank","pflegekraft.HatUrlaubt","pflegekraft.HatWochenende","pflegekraft.HatRuhezeit","pflegekraft.Dienstfaehig","pflegekraft.ArbeitszeitKontingentPlanungsPeriode","pflegekraft.GeleisteteArbeistzeitGesammt","station.BesetzungFruehDienst","station.BesetzungSpaetDienst","station.BesetzungNachtDienst","station.BesetzungsDefizit"}
+// {"pflegekraft.HatFruehDienst","pflegekraft.HatSpaetDienst","pflegekraft.HatNachtDienst","pflegekraft.IstKrank","pflegekraft.HatUrlaubt","pflegekraft.HatWochenende","pflegekraft.HatRuhezeit","pflegekraft.Dienstfaehig","pflegekraft.ArbeitszeitKontingentPlanungsPeriode","pflegekraft.GeleisteteArbeistzeitGesammt","station.BesetzungFruehDienst","station.BesetzungSpaetDienst","station.BesetzungNachtDienst","station.BesetzungsDefizitFrueh","station.BesetzungsDefizitSpaet","station.BesetzungsDefizitNacht"}
 // {"Files Equal!"}
 // ""
 //
