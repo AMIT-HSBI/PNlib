@@ -80,6 +80,7 @@ PNlib.Examples.HybTest.SixConflictProb.mos \
 PNlib.Examples.HybTest.TCwithPD.mos \
 PNlib.Examples.HybTest.TDtoPC.mos \
 PNlib.Examples.Models.BicoloredPlaces.Aquarium.mos \
+PNlib.Examples.Models.FiliP.ModellStationen.Station1.mos \
 
 
 # These tests are OS dependent. Move up when fixed.
