@@ -17,11 +17,13 @@ vars := {
   "T2.maximumSpeed"
 };
 
-res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ExtTest.TAwithPCtoTC_res.mat",
+(success, failVars) := OpenModelica.Scripting.diffSimulationResults("PNlib.Examples.ExtTest.TAwithPCtoTC_res.mat",
   "../../ReferenceFiles/PNlib.Examples.ExtTest.TAwithPCtoTC.mat",
-  "PNlib.Examples.ExtTest.TAwithPCtoTC_diff.csv", 0.01, 0.0001, vars); getErrorString();
+  "PNlib.Examples.ExtTest.TAwithPCtoTC_diff", vars=vars); getErrorString();
 
-if res[1] <> "Files Equal!" then
+if success then
+  print("Files Equal!");
+else
   filterSimulationResults("PNlib.Examples.ExtTest.TAwithPCtoTC_res.mat", "../../ReferenceFiles/PNlib.Examples.ExtTest.TAwithPCtoTC_minimal.mat", vars, 0); getErrorString();
 end if;
 
@@ -42,7 +44,7 @@ end if;
 // Warning: The Tearing heuristic has chosen variables with annotation attribute 'tearingSelect = avoid'. Use -d=tearingdump and -d=tearingdumpV for more information.
 // "
 // {"P1.t","P2.t","P3.t","T1.fire","T1.instantaneousSpeed","T1.maximumSpeed","T2.fire","T2.instantaneousSpeed","T2.maximumSpeed"}
-// {"Files Equal!"}
-// ""
 //
+// ""
+// Files Equal!
 // endResult

@@ -21,11 +21,13 @@ vars := {
   "ratio"
 };
 
-res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.Models.BicoloredPlaces.Aquarium_res.mat",
+(success, failVars) := OpenModelica.Scripting.diffSimulationResults("PNlib.Examples.Models.BicoloredPlaces.Aquarium_res.mat",
   "../../ReferenceFiles/PNlib.Examples.Models.BicoloredPlaces.Aquarium.mat",
-  "PNlib.Examples.Models.BicoloredPlaces.Aquarium_diff.csv", 0.01, 0.0001, vars); getErrorString();
+  "PNlib.Examples.Models.BicoloredPlaces.Aquarium_diff", vars=vars); getErrorString();
 
-if res[1] <> "Files Equal!" then
+if success then
+  print("Files Equal!");
+else
   filterSimulationResults("PNlib.Examples.Models.BicoloredPlaces.Aquarium_res.mat", "../../ReferenceFiles/PNlib.Examples.Models.BicoloredPlaces.Aquarium_minimal.mat", vars, 0); getErrorString();
 end if;
 
@@ -44,7 +46,7 @@ end if;
 // Warning: There are iteration variables with default zero start attribute. For more information set -d=initialization. In OMEdit Tools->Options->Simulation->OMCFlags, in OMNotebook call setCommandLineOptions("-d=initialization").
 // "
 // {"P1.t","P1.color[1]","P1.color[2]","P2.t","P2.color[1]","P2.color[2]","t1.fire","t1.instantaneousSpeed","t1.maximumSpeed","t2.fire","t2.instantaneousSpeed","t2.maximumSpeed","ratio"}
-// {"Files Equal!"}
-// ""
 //
+// ""
+// Files Equal!
 // endResult

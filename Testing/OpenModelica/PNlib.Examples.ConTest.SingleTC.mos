@@ -11,11 +11,13 @@ vars := {
   "T1.maximumSpeed"
 };
 
-res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ConTest.SingleTC_res.mat",
+(success, failVars) := OpenModelica.Scripting.diffSimulationResults("PNlib.Examples.ConTest.SingleTC_res.mat",
   "../../ReferenceFiles/PNlib.Examples.ConTest.SingleTC.mat",
-  "PNlib.Examples.ConTest.SingleTC_diff.csv", 0.01, 0.0001, vars); getErrorString();
+  "PNlib.Examples.ConTest.SingleTC_diff", vars=vars); getErrorString();
 
-if res[1] <> "Files Equal!" then
+if success then
+  print("Files Equal!");
+else
   filterSimulationResults("PNlib.Examples.ConTest.SingleTC_res.mat", "../../ReferenceFiles/PNlib.Examples.ConTest.SingleTC_minimal.mat", vars, 0); getErrorString();
 end if;
 
@@ -32,7 +34,7 @@ end if;
 // end SimulationResult;
 // ""
 // {"T1.fire","T1.instantaneousSpeed","T1.maximumSpeed"}
-// {"Files Equal!"}
-// ""
 //
+// ""
+// Files Equal!
 // endResult

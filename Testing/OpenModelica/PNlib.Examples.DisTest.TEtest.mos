@@ -14,11 +14,13 @@ vars := {
   "T2.active"
 };
 
-res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.TEtest_res.mat",
+(success, failVars) := OpenModelica.Scripting.diffSimulationResults("PNlib.Examples.DisTest.TEtest_res.mat",
   "../../ReferenceFiles/PNlib.Examples.DisTest.TEtest.mat",
-  "PNlib.Examples.DisTest.TEtest_diff.csv", 0.01, 0.0001, vars); getErrorString();
+  "PNlib.Examples.DisTest.TEtest_diff", vars=vars); getErrorString();
 
-if res[1] <> "Files Equal!" then
+if success then
+  print("Files Equal!");
+else
   filterSimulationResults("PNlib.Examples.DisTest.TEtest_res.mat", "../../ReferenceFiles/PNlib.Examples.DisTest.TEtest_minimal.mat", vars, 0); getErrorString();
 end if;
 
@@ -36,7 +38,7 @@ end if;
 // "Warning: The initial conditions are not fully specified. For more information set -d=initialization. In OMEdit Tools->Options->Simulation->OMCFlags, in OMNotebook call setCommandLineOptions("-d=initialization").
 // "
 // {"P1.t","P2.t","T1.fire","T1.active","T2.fire","T2.active"}
-// {"Files Equal!"}
-// ""
 //
+// ""
+// Files Equal!
 // endResult
