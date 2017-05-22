@@ -34,11 +34,13 @@ vars := {
   "T6.fire"
 };
 
-res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.DisTest.FiveTimes_res.mat",
+(success, failVars) := OpenModelica.Scripting.diffSimulationResults("PNlib.Examples.DisTest.FiveTimes_res.mat",
   "../../ReferenceFiles/PNlib.Examples.DisTest.FiveTimes.mat",
-  "PNlib.Examples.DisTest.FiveTimes_diff.csv", 0.01, 0.0001, vars); getErrorString();
+  "PNlib.Examples.DisTest.FiveTimes_diff", vars=vars); getErrorString();
 
-if res[1] <> "Files Equal!" then
+if success then
+  print("Files Equal!");
+else
   filterSimulationResults("PNlib.Examples.DisTest.FiveTimes_res.mat", "../../ReferenceFiles/PNlib.Examples.DisTest.FiveTimes_minimal.mat", vars, 0); getErrorString();
 end if;
 
@@ -57,7 +59,7 @@ end if;
 // Warning: There are iteration variables with default zero start attribute. For more information set -d=initialization. In OMEdit Tools->Options->Simulation->OMCFlags, in OMNotebook call setCommandLineOptions("-d=initialization").
 // "
 // {"P1.t","P2.t","P3.t","P4.t","P5.t","P6.t","P7.t","P8.t","P9.t","P10.t","T1.active","T1.fire","T2.active","T2.fire","T3.fire","T3.fireIn","T3.fireOut","T3.activeIn","T3.activeOut","T4.active","T4.fire","T5.fire","T5.instantaneousSpeed","T5.maximumSpeed","T6.active","T6.fire"}
-// {"Files Equal!"}
-// ""
 //
+// ""
+// Files Equal!
 // endResult

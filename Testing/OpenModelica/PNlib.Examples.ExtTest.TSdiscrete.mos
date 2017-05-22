@@ -13,11 +13,13 @@ vars := {
   "T1.putFireTime"
 };
 
-res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ExtTest.TSdiscrete_res.mat",
+(success, failVars) := OpenModelica.Scripting.diffSimulationResults("PNlib.Examples.ExtTest.TSdiscrete_res.mat",
   "../../ReferenceFiles/PNlib.Examples.ExtTest.TSdiscrete.mat",
-  "PNlib.Examples.ExtTest.TSdiscrete_diff.csv", 0.01, 0.0001, vars); getErrorString();
+  "PNlib.Examples.ExtTest.TSdiscrete_diff", vars=vars); getErrorString();
 
-if res[1] <> "Files Equal!" then
+if success then
+  print("Files Equal!");
+else
   filterSimulationResults("PNlib.Examples.ExtTest.TSdiscrete_res.mat", "../../ReferenceFiles/PNlib.Examples.ExtTest.TSdiscrete_minimal.mat", vars, 0); getErrorString();
 end if;
 
@@ -29,13 +31,13 @@ end if;
 // "
 // record SimulationResult
 //     resultFile = "PNlib.Examples.ExtTest.TSdiscrete_res.mat",
-//     simulationOptions = "startTime = 0.0, stopTime = 60.0, numberOfIntervals = 500, tolerance = 1e-006, method = 'dassl', fileNamePrefix = 'PNlib.Examples.ExtTest.TSdiscrete', options = '', outputFormat = 'mat', variableFilter = '.*', cflags = '', simflags = ''",
+//     simulationOptions = "startTime = 0.0, stopTime = 60.0, numberOfIntervals = 500, tolerance = 1e-06, method = 'dassl', fileNamePrefix = 'PNlib.Examples.ExtTest.TSdiscrete', options = '', outputFormat = 'mat', variableFilter = '.*', cflags = '', simflags = ''",
 //     messages = ""
 // end SimulationResult;
 // "Warning: The initial conditions are not fully specified. For more information set -d=initialization. In OMEdit Tools->Options->Simulation->OMCFlags, in OMNotebook call setCommandLineOptions("-d=initialization").
 // "
 // {"P1.t","P2.t","T1.active","T1.fire","T1.putFireTime"}
-// {"Files Equal!"}
-// ""
 //
+// ""
+// Files Equal!
 // endResult

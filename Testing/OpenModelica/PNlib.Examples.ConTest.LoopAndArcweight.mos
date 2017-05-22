@@ -13,11 +13,13 @@ vars := {
   "T1.maximumSpeed"
 };
 
-res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ConTest.LoopAndArcweight_res.mat",
+(success, failVars) := OpenModelica.Scripting.diffSimulationResults("PNlib.Examples.ConTest.LoopAndArcweight_res.mat",
   "../../ReferenceFiles/PNlib.Examples.ConTest.LoopAndArcweight.mat",
-  "PNlib.Examples.ConTest.LoopAndArcweight_diff.csv", 0.01, 0.0001, vars); getErrorString();
+  "PNlib.Examples.ConTest.LoopAndArcweight_diff", vars=vars); getErrorString();
 
-if res[1] <> "Files Equal!" then
+if success then
+  print("Files Equal!");
+else
   filterSimulationResults("PNlib.Examples.ConTest.LoopAndArcweight_res.mat", "../../ReferenceFiles/PNlib.Examples.ConTest.LoopAndArcweight_minimal.mat", vars, 0); getErrorString();
 end if;
 
@@ -36,7 +38,7 @@ end if;
 // Warning: There are iteration variables with default zero start attribute. For more information set -d=initialization. In OMEdit Tools->Options->Simulation->OMCFlags, in OMNotebook call setCommandLineOptions("-d=initialization").
 // "
 // {"P1.t","P2.t","T1.fire","T1.instantaneousSpeed","T1.maximumSpeed"}
-// {"Files Equal!"}
-// ""
 //
+// ""
+// Files Equal!
 // endResult
