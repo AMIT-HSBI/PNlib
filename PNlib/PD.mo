@@ -111,8 +111,10 @@ equation
   //recalculation of tokens
   pret=pre(t);
   tokeninout = firingSumIn.firingSum > 0 or firingSumOut.firingSum > 0;
-  when tokeninout or pre(reStart) then
-    t=if tokeninout then pret + firingSumIn.firingSum - firingSumOut.firingSum else reStartTokens;
+  when pre(reStart) then
+    t = reStartTokens;
+  elsewhen {firingSumIn.firingSum > 0, firingSumOut.firingSum > 0} then
+    t = pret + firingSumIn.firingSum - firingSumOut.firingSum;
   end when;
   //Conversion of tokens to level concentrations
   levelCon=t*settings.M/N;
@@ -122,8 +124,8 @@ equation
   color=if settings.animatePlace then if tokenscale<100 then {255, 255-2.55*tokenscale, 255-2.55*tokenscale} else {255, 0, 0} else {255, 255, 255};
   //****ANIMATION END****//
   //****ERROR MESSENGES BEGIN****//
-   assert(Functions.OddsAndEnds.prioCheck(enablingPrioIn,nIn) or nIn==0 or enablingType==PNlib.Types.EnablingType.Probability, "The priorities of the input priorities may be given only once and must be selected from 1 to nIn");
-   assert(Functions.OddsAndEnds.prioCheck(enablingPrioOut,nOut) or nOut==0 or enablingType==PNlib.Types.EnablingType.Probability, "The priorities of the output priorities may be given only once and must be selected from 1 to nOut");
+  assert(Functions.OddsAndEnds.prioCheck(enablingPrioIn,nIn) or nIn==0 or enablingType==PNlib.Types.EnablingType.Probability, "The priorities of the input priorities may be given only once and must be selected from 1 to nIn");
+  assert(Functions.OddsAndEnds.prioCheck(enablingPrioOut,nOut) or nOut==0 or enablingType==PNlib.Types.EnablingType.Probability, "The priorities of the output priorities may be given only once and must be selected from 1 to nOut");
   assert(Functions.OddsAndEnds.isEqual(sum(enablingProbIn), 1.0, 1e-6) or nIn==0 or enablingType==PNlib.Types.EnablingType.Priority, "The sum of input enabling probabilities has to be equal to 1");
   assert(Functions.OddsAndEnds.isEqual(sum(enablingProbOut), 1.0, 1e-6) or nOut==0 or enablingType==PNlib.Types.EnablingType.Priority, "The sum of output enabling probabilities has to be equal to 1");
   assert(startTokens>=minTokens and startTokens<=maxTokens, "minTokens<=startTokens<=maxTokens");
