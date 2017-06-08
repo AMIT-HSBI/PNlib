@@ -52,7 +52,7 @@ protected
   Boolean ani "for transition animation";
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
   //activation process
-  Blocks.activationDis activation(testValue=testValue, testValueInt=testValueInt, normalArc=normalArc, nIn=nIn, nOut=nOut, tIn=tIn, tOut=tOut, tIntIn=tIntIn, tIntOut=tIntOut, arcType=arcType, arcWeightIn=arcWeightIn, arcWeightIntIn=arcWeightIntIn, arcWeightOut=arcWeightOut, arcWeightIntOut=arcWeightIntOut, minTokens=minTokens, maxTokens=maxTokens, minTokensInt=minTokensInt, maxTokensInt=maxTokensInt, firingCon=firingCon, disPlaceIn=disPlaceIn, disPlaceOut=disPlaceOut);
+  Blocks.activationDis activation(testValue=testValue, testValueInt=testValueInt, normalArc=normalArc, nIn=nIn, nOut=nOut, tIn=tIn, tOut=tOut, tIntIn=tIntIn, tIntOut=tIntOut, arcType=arcType, arcWeightIn=pre(arcWeightIn), arcWeightIntIn=pre(arcWeightIntIn), arcWeightOut=pre(arcWeightOut), arcWeightIntOut=pre(arcWeightIntOut), minTokens=minTokens, maxTokens=maxTokens, minTokensInt=minTokensInt, maxTokensInt=maxTokensInt, firingCon=firingCon, disPlaceIn=disPlaceIn, disPlaceOut=disPlaceOut);
   //Is the transition enabled by all input places?
   Boolean enabledByInPlaces = Functions.OddsAndEnds.allTrue(enableIn);
    //Is the transition enabled by all output places?
