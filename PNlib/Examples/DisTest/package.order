@@ -1,7 +1,9 @@
 SinglePD
 SingleTD
 TDtoPD
+TDtoPDfunction
 PDtoTD
+PDtoTDfunction
 TEtest
 TEnoInput
 TFDtest

@@ -5,10 +5,12 @@ PNlib.Examples.ConTest.Conflict.mos \
 PNlib.Examples.ConTest.ConflictLoop.mos \
 PNlib.Examples.ConTest.LoopAndArcweight.mos \
 PNlib.Examples.ConTest.PCtoTC.mos \
+PNlib.Examples.ConTest.PCtoTCfunction.mos \
 PNlib.Examples.ConTest.SinglePC.mos \
 PNlib.Examples.ConTest.SingleTC.mos \
 PNlib.Examples.ConTest.Speed.mos \
 PNlib.Examples.ConTest.TCtoPC.mos \
+PNlib.Examples.ConTest.TCtoPCfunction.mos \
 PNlib.Examples.ConTest.ZeroArcWeight.mos \
 PNlib.Examples.ConTest.ZeroPlace.mos \
 PNlib.Examples.DisTest.ConflictPrio.mos \
@@ -29,12 +31,14 @@ PNlib.Examples.DisTest.OutputConflictBeneGreedy.mos \
 PNlib.Examples.DisTest.OutputConflictBeneQuotient.mos \
 PNlib.Examples.DisTest.OutputConflictBeneBaB.mos \
 PNlib.Examples.DisTest.PDtoTD.mos \
+PNlib.Examples.DisTest.PDtoTDfunction.mos \
 PNlib.Examples.DisTest.PrioTest.mos \
 PNlib.Examples.DisTest.NoInputConflict.mos \
 PNlib.Examples.DisTest.SinglePD.mos \
 PNlib.Examples.DisTest.SingleTD.mos \
 PNlib.Examples.DisTest.SixConflictProb.mos \
 PNlib.Examples.DisTest.TDtoPD.mos \
+PNlib.Examples.DisTest.TDtoPDfunction.mos \
 PNlib.Examples.DisTest.TFDtest.mos \
 PNlib.Examples.DisTest.TFDoutCap.mos \
 PNlib.Examples.DisTest.TFDinputConflict.mos \
@@ -76,9 +80,11 @@ PNlib.Examples.HybTest.OutputConflictPrio.mos \
 PNlib.Examples.HybTest.OutputConflictProb.mos \
 PNlib.Examples.HybTest.OutputConflictType3.mos \
 PNlib.Examples.HybTest.PCtoTD.mos \
+PNlib.Examples.HybTest.PCtoTDfunction.mos \
 PNlib.Examples.HybTest.SixConflictProb.mos \
 PNlib.Examples.HybTest.TCwithPD.mos \
 PNlib.Examples.HybTest.TDtoPC.mos \
+PNlib.Examples.HybTest.TDtoPCfunction.mos \
 PNlib.Examples.Models.BicoloredPlaces.Aquarium.mos \
 PNlib.Examples.Models.FiliP.ModellStationen.Station1.mos \
 
