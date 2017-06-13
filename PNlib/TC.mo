@@ -42,7 +42,7 @@ protected
   Boolean enableIn[nIn] "Is the transition enabled by all its discrete input transitions?";
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
   //activation process
-  Blocks.activationCon activation(testValue=testValue, testValueInt=testValueInt, normalArc=normalArc, nIn=nIn, nOut=nOut, tIn=tIn, tOut=tOut, tIntIn=tIntIn, tIntOut=tIntOut, arcType=arcType, arcWeightIn=pre(arcWeightIn), arcWeightOut=pre(arcWeightOut), arcWeightIntIn=pre(arcWeightIntIn), arcWeightIntOut=pre(arcWeightIntOut), minTokens=minTokens, maxTokens=maxTokens, minTokensInt=minTokensInt, maxTokensInt=maxTokensInt, firingCon=firingCon, fed=fed, emptied=emptied, disPlaceIn=disPlaceIn, disPlaceOut=disPlaceOut);
+  Blocks.activationCon activation(testValue=testValue, testValueInt=testValueInt, normalArc=normalArc, nIn=nIn, nOut=nOut, tIn=tIn, tOut=tOut, tIntIn=tIntIn, tIntOut=tIntOut, arcType=arcType, arcWeightIn=arcWeightIn, arcWeightOut=arcWeightOut, arcWeightIntIn=arcWeightIntIn, arcWeightIntOut=arcWeightIntOut, minTokens=minTokens, maxTokens=maxTokens, minTokensInt=minTokensInt, maxTokensInt=maxTokensInt, firingCon=firingCon, fed=fed, emptied=emptied, disPlaceIn=disPlaceIn, disPlaceOut=disPlaceOut);
   //firing process
   Boolean fire_ = Functions.OddsAndEnds.allTrue(/* hack for Dymola 2017 */ Functions.OddsAndEnds.boolOr(enableIn, not disPlaceIn));
   //****BLOCKS END****//
@@ -50,8 +50,8 @@ public
   Interfaces.TransitionIn[nIn] inPlaces(
     each active=activation.active,
     each fire=fire,
-    arcWeight=pre(arcWeightIn),
-    arcWeightint=pre(arcWeightIntIn),
+    arcWeight=arcWeightIn,
+    arcWeightint=arcWeightIntIn,
     each disTransition = false,
     each instSpeed = instantaneousSpeed,
     each prelimSpeed = prelimSpeed,
@@ -73,8 +73,8 @@ public
     each active=activation.active,
     each fire=fire,
     each enabledByInPlaces = true,
-    arcWeight=pre(arcWeightOut),
-    arcWeightint=pre(arcWeightIntOut),
+    arcWeight=arcWeightOut,
+    arcWeightint=arcWeightIntOut,
     each disTransition = false,
     each instSpeed = instantaneousSpeed,
     each prelimSpeed = prelimSpeed,
