@@ -135,9 +135,9 @@ equation
   der(t_)=conMarkChange;
   //calculation of discrete mark change
   disMarkChange=firingSumIn.disFiringSum-firingSumOut.disFiringSum;
-  disMarksInOut=disMarksOut.anytrue or disMarksIn.anytrue;
+  disMarksInOut=pre(disMarksOut.anytrue) or pre(disMarksIn.anytrue);
   when {disMarksInOut, reStart} then
-    reinit(t_, if reStart then reStartMarks else t_ + disMarkChange);
+    reinit(t_, if reStart then reStartMarks else t_ + pre(disMarkChange));
   end when;
   //Conversion of tokens to level concentrations
   levelCon=t*settings.M/N;
