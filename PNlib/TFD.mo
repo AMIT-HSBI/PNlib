@@ -52,8 +52,8 @@ protected
 
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
   //activation process
-  Blocks.activationDisIn activationIn(testValue=testValue, testValueInt=testValueInt, normalArc=normalArc, nIn=nIn, tIn=tIn, tIntIn=tIntIn, arcType=arcType, arcWeightIn=pre(arcWeightIn), arcWeightIntIn=pre(arcWeightIntIn), minTokens=minTokens, minTokensInt=minTokensInt, firingCon=firingCon, disPlaceIn=disPlaceIn);
-  Blocks.activationDisOut activationOut(nOut=nOut, tOut=tOut, tIntOut=tIntOut, arcWeightOut=pre(arcWeightOut), arcWeightIntOut=pre(arcWeightIntOut), maxTokens=maxTokens, maxTokensInt=maxTokensInt, firingCon=firingCon, disPlaceOut=disPlaceOut);
+  Blocks.activationDisIn activationIn(testValue=testValue, testValueInt=testValueInt, normalArc=normalArc, nIn=nIn, tIn=tIn, tIntIn=tIntIn, arcType=arcType, arcWeightIn=arcWeightIn, arcWeightIntIn=arcWeightIntIn, minTokens=minTokens, minTokensInt=minTokensInt, firingCon=firingCon, disPlaceIn=disPlaceIn);
+  Blocks.activationDisOut activationOut(nOut=nOut, tOut=tOut, tIntOut=tIntOut, arcWeightOut=arcWeightOut, arcWeightIntOut=arcWeightIntOut, maxTokens=maxTokens, maxTokensInt=maxTokensInt, firingCon=firingCon, disPlaceOut=disPlaceOut);
   //Is the transition enabled by all input places?
   Boolean enabledByInPlaces = Functions.OddsAndEnds.allTrue(enableIn);
    //Is the transition enabled by all output places?
@@ -67,8 +67,8 @@ public
   Boolean fire( start=false, fixed=true) "Is the Transition fire?";
   PNlib.Interfaces.TransitionIn inPlaces[nIn](
     each active=durationPassedIn,
-    arcWeight=pre(arcWeightIn),
-    arcWeightint=pre(arcWeightIntIn),
+    arcWeight=arcWeightIn,
+    arcWeightint=arcWeightIntIn,
     each fire=fireIn,
     each disTransition=true,
     each instSpeed=0,
@@ -86,8 +86,8 @@ public
     normalArc=normalArc) if nIn > 0 "connector for input places" annotation(Placement(transformation(extent={{-56, -10}, {-40, 10}}, rotation=0)));
   PNlib.Interfaces.TransitionOut outPlaces[nOut](
     each active=durationPassedOut,
-    arcWeight=pre(arcWeightOut),
-    arcWeightint=pre(arcWeightIntOut),
+    arcWeight=arcWeightOut,
+    arcWeightint=arcWeightIntOut,
     each fire=fireOut,
     each enabledByInPlaces= true,
     each disTransition=true,

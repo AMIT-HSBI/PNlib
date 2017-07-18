@@ -110,11 +110,11 @@ equation
   //****MAIN BEGIN****//
   //recalculation of tokens
   pret=pre(t);
-  tokeninout = firingSumIn.firingSum > 0 or firingSumOut.firingSum > 0;
+  tokeninout = pre(firingSumIn.firingSum) > 0 or pre(firingSumOut.firingSum) > 0;
   when pre(reStart) then
     t = reStartTokens;
-  elsewhen {firingSumIn.firingSum > 0, firingSumOut.firingSum > 0} then
-    t = pret + firingSumIn.firingSum - firingSumOut.firingSum;
+  elsewhen {pre(firingSumIn.firingSum) > 0, pre(firingSumOut.firingSum) > 0} then
+    t = pret + pre(firingSumIn.firingSum) - pre(firingSumOut.firingSum);
   end when;
   //Conversion of tokens to level concentrations
   levelCon=t*settings.M/N;

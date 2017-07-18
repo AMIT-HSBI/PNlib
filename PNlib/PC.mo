@@ -134,8 +134,8 @@ equation
   conMarkChange=firingSumIn.conFiringSum-firingSumOut.conFiringSum;
   der(t_)=conMarkChange;
   //calculation of discrete mark change
-  disMarkChange=firingSumIn.disFiringSum-firingSumOut.disFiringSum;
-  disMarksInOut=disMarksOut.anytrue or disMarksIn.anytrue;
+  disMarkChange=pre(firingSumIn.disFiringSum)-pre(firingSumOut.disFiringSum);
+  disMarksInOut=pre(disMarksOut.anytrue) or pre(disMarksIn.anytrue);
   when {disMarksInOut, reStart} then
     reinit(t_, if reStart then reStartMarks else t_ + disMarkChange);
   end when;

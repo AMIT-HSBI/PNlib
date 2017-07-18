@@ -49,7 +49,7 @@ protected
 
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
   //activation process
-  Blocks.activationDis activation(testValue=testValue, testValueInt=testValueInt, normalArc=normalArc, nIn=nIn, nOut=nOut, tIn=tIn, tOut=tOut, tIntIn=tIntIn, tIntOut=tIntOut, arcType=arcType, arcWeightIn=pre(arcWeightIn), arcWeightIntIn=pre(arcWeightIntIn), arcWeightOut=pre(arcWeightOut), arcWeightIntOut=pre(arcWeightIntOut), minTokens=minTokens, maxTokens=maxTokens, minTokensInt=minTokensInt, maxTokensInt=maxTokensInt, firingCon=firingCon, disPlaceIn=disPlaceIn, disPlaceOut=disPlaceOut);
+  Blocks.activationDis activation(testValue=testValue, testValueInt=testValueInt, normalArc=normalArc, nIn=nIn, nOut=nOut, tIn=tIn, tOut=tOut, tIntIn=tIntIn, tIntOut=tIntOut, arcType=arcType, arcWeightIn=arcWeightIn, arcWeightIntIn=arcWeightIntIn, arcWeightOut=arcWeightOut, arcWeightIntOut=arcWeightIntOut, minTokens=minTokens, maxTokens=maxTokens, minTokensInt=minTokensInt, maxTokensInt=maxTokensInt, firingCon=firingCon, disPlaceIn=disPlaceIn, disPlaceOut=disPlaceOut);
   //Is the transition enabled by all input places?
   Boolean enabledByInPlaces = Functions.OddsAndEnds.allTrue(enableIn);
    //Is the transition enabled by all output places?
@@ -60,8 +60,8 @@ public
   Boolean fire "Does the transition fire?";
   PNlib.Interfaces.TransitionIn inPlaces[nIn](
     each active=delayPassed,
-    arcWeight=pre(arcWeightIn),
-    arcWeightint=pre(arcWeightIntIn),
+    arcWeight=arcWeightIn,
+    arcWeightint=arcWeightIntIn,
     each fire=fire,
     each disTransition=true,
     each instSpeed=0,
@@ -79,8 +79,8 @@ public
     normalArc=normalArc) if nIn > 0 "connector for input places" annotation(Placement(transformation(extent={{-56, -10}, {-40, 10}}, rotation=0)));
   PNlib.Interfaces.TransitionOut outPlaces[nOut](
     each active=delayPassed,
-    arcWeight=pre(arcWeightOut),
-    arcWeightint=pre(arcWeightIntOut),
+    arcWeight=arcWeightOut,
+    arcWeightint=arcWeightIntOut,
     each fire=fire,
     each enabledByInPlaces=enabledByInPlaces,
     each disTransition=true,
