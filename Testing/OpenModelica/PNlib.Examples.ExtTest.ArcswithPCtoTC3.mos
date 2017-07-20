@@ -62,7 +62,7 @@ vars := {
 // Warning: The Tearing heuristic has chosen variables with annotation attribute 'tearingSelect = avoid'. Use -d=tearingdump and -d=tearingdumpV for more information.
 // "
 // {"P1.t","P2.t","P3.t","P4.t","P5.t","P6.t","P7.t","P8.t","T1.fire","T1.instantaneousSpeed","T1.maximumSpeed","T2.fire","T2.instantaneousSpeed","T2.maximumSpeed","T3.fire","T3.instantaneousSpeed","T3.maximumSpeed","T4.fire","T4.instantaneousSpeed","T4.maximumSpeed","T5.fire","T5.instantaneousSpeed","T5.maximumSpeed"}
-// {"Files Equal!"}
-// ""
 //
+// ""
+// Files Equal!
 // endResult
