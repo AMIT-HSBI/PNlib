@@ -49,6 +49,9 @@ PNlib.Examples.DisTest.TTcircle.mos \
 PNlib.Examples.DisTest.TEtest.mos \
 PNlib.Examples.DisTest.TEnoInput.mos \
 PNlib.Examples.DisTest.FiveTimes.mos \
+PNlib.Examples.ExtTest.ArcswithPCtoTC.mos \
+PNlib.Examples.ExtTest.ArcswithPCtoTC2.mos \
+PNlib.Examples.ExtTest.ArcswithPCtoTC3.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPCtoTC.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPTtoTD.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPTtoTD2.mos \
@@ -61,12 +64,12 @@ PNlib.Examples.ExtTest.TAwithPCtoTC.mos \
 PNlib.Examples.ExtTest.TAwithPDtoTD.mos \
 PNlib.Examples.ExtTest.TAwithPDtoTD2.mos \
 PNlib.Examples.ExtTest.TAwithWeaklyActivation.mos \
-PNlib.Examples.ExtTest.ArcswithPCtoTC.mos \
 PNlib.Examples.ExtTest.TSTest.mos \
 PNlib.Examples.ExtTest.TStriangular.mos \
 PNlib.Examples.ExtTest.TSuniform.mos \
 PNlib.Examples.ExtTest.TSdiscrete.mos \
 PNlib.Examples.ExtTest.TFDStest.mos \
+PNlib.Examples.ExtTest.NoTokens.mos \
 PNlib.Examples.HybTest.ConflictPrio.mos \
 PNlib.Examples.HybTest.ConflictProb.mos \
 PNlib.Examples.HybTest.ConflictType3.mos \
@@ -88,6 +91,10 @@ PNlib.Examples.HybTest.TDtoPCfunction.mos \
 PNlib.Examples.Models.BicoloredPlaces.Aquarium.mos \
 PNlib.Examples.Models.FiliP.ModellStationen.Station1.mos \
 
+
+
+#TESTFILES = \
+PNlib.Examples.ExtTest.ArcswithPCtoTC3.mos \
 
 # These tests are OS dependent. Move up when fixed.
 # Run make failingtest
