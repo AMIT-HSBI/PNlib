@@ -27,7 +27,10 @@ block activationCon "activation process of continuous transitions"
   output Boolean active "activation of transition";
   output Boolean weaklyInputActiveVec[nIn] "places that causes weakly input activation";
   output Boolean weaklyOutputActiveVec[nOut] "places that causes weakly output activation";
+
+  Boolean NoTokens;
 algorithm
+  NoTokens :=false;
   active := true;
   weaklyInputActiveVec := fill(false, nIn);
   weaklyOutputActiveVec := fill(false, nOut);
@@ -48,10 +51,11 @@ algorithm
       end if;
     else  //continuous place
       if arcType[i]==PNlib.Types.ArcType.NormalArc or not normalArc[i] then  //normal arc or double arc
+        NoTokens :=not (tIn[i]-minTokens[i] >= -Constants.almost_eps);
         if arcWeightIn[i] <= 0.0 then
-        elseif tIn[i]<=minTokens[i] and (not fed[i]) then
+        elseif NoTokens and (not fed[i]) then
           active := false;
-        elseif tIn[i]<=minTokens[i] and fed[i] then  //weakly input active??
+        elseif NoTokens and fed[i] then  //weakly input active??
           weaklyInputActiveVec[i] := true;
         end if;
       end if;
