@@ -32,11 +32,11 @@ vars := {
   "../../ReferenceFiles/PNlib.Examples.ExtTest.ArcswithPCtoTC.mat",
   "PNlib.Examples.ExtTest.ArcswithPCtoTC_diff", vars=vars); getErrorString();
 
-if success then
-  print("Files Equal!");
-else
-  filterSimulationResults("PNlib.Examples.ExtTest.ArcswithPCtoTC_res.mat", "../../ReferenceFiles/PNlib.Examples.ExtTest.ArcswithPCtoTC_minimal.mat", vars, 0); getErrorString();
-end if;
+  if success then
+    print("Files Equal!");
+  else
+    filterSimulationResults("PNlib.Examples.ExtTest.ArcswithPCtoTC_res.mat", "../../ReferenceFiles/PNlib.Examples.ExtTest.ArcswithPCtoTC_minimal.mat", vars, 0); getErrorString();
+  end if;
 
 // Result:
 // true

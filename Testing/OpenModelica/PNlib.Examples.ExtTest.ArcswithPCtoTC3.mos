@@ -31,13 +31,15 @@ vars := {
   "T5.maximumSpeed"
 };
 
-res := OpenModelica.Scripting.compareSimulationResults("PNlib.Examples.ExtTest.ArcswithPCtoTC3_res.mat",
+(success, failVars) := OpenModelica.Scripting.diffSimulationResults("PNlib.Examples.ExtTest.ArcswithPCtoTC3_res.mat",
   "../../ReferenceFiles/PNlib.Examples.ExtTest.ArcswithPCtoTC3.mat",
-  "PNlib.Examples.ExtTest.ArcswithPCtoTC3_diff.csv", 0.01, 0.0001, vars); getErrorString();
+  "PNlib.Examples.ExtTest.ArcswithPCtoTC3_diff", vars=vars); getErrorString();
 
-if res[1] <> "Files Equal!" then
-  filterSimulationResults("PNlib.Examples.ExtTest.ArcswithPCtoTC3_res.mat", "../../ReferenceFiles/PNlib.Examples.ExtTest.ArcswithPCtoTC3_minimal.mat", vars, 0); getErrorString();
-end if;
+  if success then
+    print("Files Equal!");
+  else
+    filterSimulationResults("PNlib.Examples.ExtTest.ArcswithPCtoTC3_res.mat", "../../ReferenceFiles/PNlib.Examples.ExtTest.ArcswithPCtoTC3_minimal.mat", vars, 0); getErrorString();
+  end if;
 
 // Result:
 // true

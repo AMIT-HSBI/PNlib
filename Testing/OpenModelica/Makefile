@@ -49,6 +49,9 @@ PNlib.Examples.DisTest.TTcircle.mos \
 PNlib.Examples.DisTest.TEtest.mos \
 PNlib.Examples.DisTest.TEnoInput.mos \
 PNlib.Examples.DisTest.FiveTimes.mos \
+PNlib.Examples.ExtTest.ArcswithPCtoTC.mos \
+PNlib.Examples.ExtTest.ArcswithPCtoTC2.mos \
+PNlib.Examples.ExtTest.ArcswithPCtoTC3.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPCtoTC.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPTtoTD.mos \
 PNlib.Examples.ExtTest.DoubleArcwithPTtoTD2.mos \
@@ -88,9 +91,7 @@ PNlib.Examples.HybTest.TDtoPCfunction.mos \
 PNlib.Examples.Models.BicoloredPlaces.Aquarium.mos \
 PNlib.Examples.Models.FiliP.ModellStationen.Station1.mos \
 
-# PNlib.Examples.ExtTest.ArcswithPCtoTC.mos \
-# PNlib.Examples.ExtTest.ArcswithPCtoTC2.mos \
-# PNlib.Examples.ExtTest.ArcswithPCtoTC3.mos \
+
 
 #TESTFILES = \
 PNlib.Examples.ExtTest.ArcswithPCtoTC3.mos \
