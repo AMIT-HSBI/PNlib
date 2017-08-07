@@ -119,5 +119,21 @@ equation
     assert(arcWeightOut[i]>=0, "Output arc weights must be positive.");
   end for;
   //****ERROR MESSENGES END****//
-  annotation(defaultComponentName = "T1", Icon(graphics={Rectangle(extent={{-40, 100}, {40, -100}}, lineColor={0, 0, 0}, fillColor=DynamicSelect({255, 255, 255}, color), fillPattern=FillPattern.Solid), Text(extent={{-2, -116}, {-2, -144}}, lineColor={0, 0, 0}, textString=DynamicSelect(" ", if animateSpeed1 and fire>0.5 then if instantaneousSpeed>0 then realString(instantaneousSpeed, 1, 2) else "0.0" else " ")), Text(extent={{-4, 139}, {-4, 114}}, lineColor={0, 0, 0}, textString="%name")}));
+  annotation(defaultComponentName = "T1",
+   Icon(graphics={Rectangle(extent={{-40, 100}, {40, -100}},
+    lineColor={0, 0, 0},
+     fillColor=DynamicSelect({255, 255, 255}, color),
+      fillPattern=FillPattern.Solid),
+       Text(
+          extent={{-2, -116}, {-2, -144}},
+          lineColor={0, 0, 0},
+          textString=DynamicSelect("vmax=%maximumSpeed ", if animateSpeed then "vmax=%maximumSpeed " else " ")),
+      Text(
+          extent={{-2, -150}, {-2, -178}},
+          lineColor={0, 0, 0},
+          textString=DynamicSelect(" ", if animateSpeed and fire then if instantaneousSpeed>0 then "vakt="+realString(instantaneousSpeed, 1, 2) else "vakt=0.0" else " ")),
+      Text(
+          extent={{-4, 139}, {-4, 114}},
+          lineColor={0, 0, 0},
+          textString="%name")}));
 end TC;
