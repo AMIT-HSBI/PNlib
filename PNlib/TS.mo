@@ -163,7 +163,7 @@ equation
 algorithm
    //****MAIN BEGIN****//
   //generate random putative fire time according to Next-Reaction method of Gibson and Bruck
-  when active then    //17.06.11 Reihenfolge getauscht!
+  when pre(fire) then    //17.06.11 Reihenfolge getauscht!
     (r128, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(pre(state128));
     if distributionType==PNlib.Types.DistributionType.Exponential then
         putDelay := PNlib.Functions.Random.randomexp(h, r128);
@@ -174,6 +174,8 @@ algorithm
     else
         putDelay := max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
     end if;
+  end when;
+  when active then
     putFireTime:=time + putDelay;
   end when;
    //****MAIN END****//
@@ -188,7 +190,7 @@ initial equation
   else
       putDelay = max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
   end if;
-  putFireTime:=time + putDelay;
+  putFireTime=time + putDelay;
 initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, settings.globalSeed);

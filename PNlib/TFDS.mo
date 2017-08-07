@@ -186,7 +186,7 @@ equation
 algorithm
    //****MAIN BEGIN****//
   //generate random putative fire time according to Next-Reaction method of Gibson and Bruck
-  when activeIn then    //17.06.11 Reihenfolge getauscht!
+  when pre(fireOut) then    //17.06.11 Reihenfolge getauscht!
     (r128, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(pre(state128));
     if distributionType==PNlib.Types.DistributionType.Exponential then
         putDuration := PNlib.Functions.Random.randomexp(h, r128);

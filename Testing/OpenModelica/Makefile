@@ -65,6 +65,7 @@ PNlib.Examples.ExtTest.TAwithPDtoTD.mos \
 PNlib.Examples.ExtTest.TAwithPDtoTD2.mos \
 PNlib.Examples.ExtTest.TAwithWeaklyActivation.mos \
 PNlib.Examples.ExtTest.TSTest.mos \
+PNlib.Examples.ExtTest.TSTestinterrupt.mos \
 PNlib.Examples.ExtTest.TStriangular.mos \
 PNlib.Examples.ExtTest.TSuniform.mos \
 PNlib.Examples.ExtTest.TSdiscrete.mos \
