@@ -129,7 +129,7 @@ equation
           lineColor={0, 0, 0},
           textString=DynamicSelect("vmax=%maximumSpeed ", if animateSpeed then "vmax=%maximumSpeed " else " ")),
       Text(
-          extent={{-2, -150}, {-2, -178}},
+          extent={{-2, -156}, {-2, -184}},
           lineColor={0, 0, 0},
           textString=DynamicSelect(" ", if animateSpeed and fire then if instantaneousSpeed>0 then "vakt="+realString(instantaneousSpeed, 1, 2) else "vakt=0.0" else " ")),
       Text(

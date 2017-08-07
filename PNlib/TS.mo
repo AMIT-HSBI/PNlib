@@ -24,6 +24,7 @@ model TS "Stochastic Transition with delay"
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   discrete Real putFireTime "putative firing time";
+  discrete Real putDelay "putative Dealy";
   Boolean showTransitionName=settings.showTransitionName
     "only for transition animation and display (Do not change!)";
   Boolean animatePutFireTime=settings.animatePutFireTime
@@ -165,27 +166,29 @@ algorithm
   when active then    //17.06.11 Reihenfolge getauscht!
     (r128, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(pre(state128));
     if distributionType==PNlib.Types.DistributionType.Exponential then
-        putFireTime := time + PNlib.Functions.Random.randomexp(h, r128);
+        putDelay := PNlib.Functions.Random.randomexp(h, r128);
     elseif distributionType==PNlib.Types.DistributionType.Triangular then
-        putFireTime := time +PNlib.Functions.Random.randomtriangular(a, b, c, r128);
+        putDelay := PNlib.Functions.Random.randomtriangular(a, b, c, r128);
     elseif distributionType==PNlib.Types.DistributionType.Uniform then
-        putFireTime := time +PNlib.Functions.Random.randomuniform(a, b, r128);
+        putDelay := PNlib.Functions.Random.randomuniform(a, b, r128);
     else
-        putFireTime := time +max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
+        putDelay := max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
     end if;
+    putFireTime:=time + putDelay;
   end when;
    //****MAIN END****//
 initial equation
   //to initialize the random generator otherwise the first random number is always the same in every simulation run
   if distributionType==PNlib.Types.DistributionType.Exponential then
-      putFireTime = time + PNlib.Functions.Random.randomexp(h, r128);
+      putDelay = PNlib.Functions.Random.randomexp(h, r128);
   elseif distributionType==PNlib.Types.DistributionType.Triangular then
-      putFireTime = time +PNlib.Functions.Random.randomtriangular(a, b, c, r128);
+      putDelay = PNlib.Functions.Random.randomtriangular(a, b, c, r128);
   elseif distributionType==PNlib.Types.DistributionType.Uniform then
-      putFireTime = time +PNlib.Functions.Random.randomuniform(a, b, r128);
+      putDelay = PNlib.Functions.Random.randomuniform(a, b, r128);
   else
-      putFireTime = time +max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
+      putDelay = max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
   end if;
+  putFireTime:=time + putDelay;
 initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, settings.globalSeed);
@@ -205,11 +208,11 @@ initial algorithm
         Text(
           extent={{-2, -112}, {-2, -140}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animateHazardFunc then "h="+realString(h, 1, 2) else " ")),
+          textString=DynamicSelect("%distributionType ", if animateHazardFunc then "%distributionType" else " ")),
         Text(
-          extent={{6, -152}, {6, -180}},
+          extent={{-2, -152}, {-2, -180}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animatePutFireTime then "pt="+realString(putFireTime, 1, 2) else " ")),
+          textString=DynamicSelect(" ", if animatePutFireTime then "d="+realString(putDelay, 1, 2) else " ")),
                                           Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},

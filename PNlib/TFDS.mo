@@ -229,11 +229,11 @@ initial equation
         Text(
           extent={{-2, -112}, {-2, -140}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animateHazardFunc then "h="+realString(h, 1, 2) else " ")),
+          textString=DynamicSelect("%distributionType ", if animateHazardFunc then "%distributionType" else " ")),
         Text(
-          extent={{6, -152}, {6, -180}},
+          extent={{-2, -152}, {-2, -180}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animateputDuration then "pt="+realString(putDuration, 1, 2) else " ")),
+          textString=DynamicSelect(" ", if animateputDuration then "fd="+realString(putDuration, 1, 2) else " ")),
                                           Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},
