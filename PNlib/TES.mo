@@ -1,5 +1,5 @@
 within PNlib;
-model TS "Stochastic Transition with delay"
+model TES "Stochastic Transition with delay"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
@@ -227,4 +227,4 @@ initial algorithm
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},
           textString="%name")}));
-end TS;
+end TES;

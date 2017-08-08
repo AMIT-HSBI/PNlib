@@ -13,11 +13,11 @@ TAwithWeaklyActivation
 ArcswithPCtoTC
 ArcswithPCtoTC2
 ArcswithPCtoTC3
-TSTest
-TSTestinterrupt
-TStriangular
-TSuniform
-TStruncatednormal
-TSdiscrete
+TDSTest
+TDSTestinterrupt
+TDStriangular
+TDSuniform
+TDStruncatednormal
+TDSdiscrete
 TFDStest
 NoTokens

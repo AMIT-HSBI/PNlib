@@ -28,7 +28,7 @@ model Maculation "maculation of the printing process"
     nOut=1,
     maxTokens=1)
     annotation(Placement(transformation(extent={{-128,-64},{-108,-44}})));
-  TS       pressing_button(nOut=1,
+  TDS       pressing_button(nOut=1,
     firingCon=start,
     nIn=1,
     h=1/time_between_macus)
@@ -38,7 +38,7 @@ model Maculation "maculation of the printing process"
     nIn=2,
     maxTokens=2)
     annotation(Placement(transformation(extent={{4,-28},{24,-8}})));
-  TS Stop_macu(
+  TDS Stop_macu(
     nIn=1,
     nOut=1,
     h=h,

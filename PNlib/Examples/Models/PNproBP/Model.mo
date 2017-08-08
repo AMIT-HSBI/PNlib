@@ -15,7 +15,7 @@ model Model "Top Model"
   parameter Real time_installation=4 "Time for installation";
   parameter Real time_accounting=1 "Time for order accounting";
 
-  TS RaiseRequest(nOut=1, h=1/time_between_requests)
+  TDS RaiseRequest(nOut=1, h=1/time_between_requests)
     "a request is raised from a customer"
     annotation(Placement(transformation(extent={{-400,90},{-380,110}})));
   PD Request(
