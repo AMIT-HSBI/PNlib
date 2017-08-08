@@ -1,6 +1,6 @@
 TEST = ./rtest -v
 
-TESTFILES = \
+#TESTFILES = \
 PNlib.Examples.ConTest.Conflict.mos \
 PNlib.Examples.ConTest.ConflictLoop.mos \
 PNlib.Examples.ConTest.LoopAndArcweight.mos \
@@ -68,6 +68,7 @@ PNlib.Examples.ExtTest.TSTest.mos \
 PNlib.Examples.ExtTest.TSTestinterrupt.mos \
 PNlib.Examples.ExtTest.TStriangular.mos \
 PNlib.Examples.ExtTest.TSuniform.mos \
+PNlib.Examples.ExtTest.TStruncatednormal.mos \
 PNlib.Examples.ExtTest.TSdiscrete.mos \
 PNlib.Examples.ExtTest.TFDStest.mos \
 PNlib.Examples.ExtTest.NoTokens.mos \
@@ -90,6 +91,17 @@ PNlib.Examples.HybTest.TCwithPD.mos \
 PNlib.Examples.HybTest.TDtoPC.mos \
 PNlib.Examples.HybTest.TDtoPCfunction.mos \
 PNlib.Examples.Models.BicoloredPlaces.Aquarium.mos \
+PNlib.Examples.Models.FiliP.ModellStationen.Station1.mos \
+
+# Mini Test
+TESTFILES = \
+PNlib.Examples.ExtTest.TSTest.mos \
+PNlib.Examples.ExtTest.TSTestinterrupt.mos \
+PNlib.Examples.ExtTest.TStriangular.mos \
+PNlib.Examples.ExtTest.TSuniform.mos \
+PNlib.Examples.ExtTest.TStruncatednormal.mos \
+PNlib.Examples.ExtTest.TSdiscrete.mos \
+PNlib.Examples.ExtTest.TFDStest.mos \
 PNlib.Examples.Models.FiliP.ModellStationen.Station1.mos \
 
 
