@@ -8,11 +8,15 @@ model TS "Stochastic Transition with delay"
   Real h=1
     "probability density" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Exponential then true else false, group = "Exponential distribution"));
   Real a=0
-    "Lower Limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular or distributionType==PNlib.Types.DistributionType.Uniform then true else false, group = "Triangular or Uniform distribution"));
+    "Lower Limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular or distributionType==PNlib.Types.DistributionType.Uniform or distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Triangular, Uniform or Truncated normal distribution"));
   Real b=1
-    "Upper Limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular or distributionType==PNlib.Types.DistributionType.Uniform then true else false, group = "Triangular or Uniform distribution"));
+    "Upper Limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular or distributionType==PNlib.Types.DistributionType.Uniform or distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Triangular, Uniform or Truncated normal distribution"));
   Real c=0.5
-    "Most likely value" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular then true else false, group = "Triangular or Uniform distribution"));
+    "Most likely value" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular then true else false, group = "Triangular distribution"));
+  Real mu=0.5
+    "Expected value" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = " Truncated normal distribution"));
+  Real sigma=1/6
+    "Standard deviation" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = " Truncated normal distribution"));
   Real E[:]={1, 2, 3, 4, 5, 6} "Events of Discrete Distribution"
     annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Discrete  then true else false, group = "Discrete Probability Distribution"));
   Real P[:]={1/6, 1/6, 1/6, 1/6, 1/6, 1/6} "Probability of Discrete Distribution"
@@ -170,7 +174,9 @@ algorithm
     elseif distributionType==PNlib.Types.DistributionType.Triangular then
         putDelay := PNlib.Functions.Random.randomtriangular(a, b, c, r128);
     elseif distributionType==PNlib.Types.DistributionType.Uniform then
-        putDelay := PNlib.Functions.Random.randomuniform(a, b, r128);
+        putDelay := Modelica.Math.Distributions.Uniform.quantile( max(r128,10 ^ (-10)), a, b);
+    elseif distributionType==PNlib.Types.DistributionType.TruncatedNormal then
+        putDelay := Modelica.Math.Distributions.TruncatedNormal.quantile( max(r128,10 ^ (-10)), a, b, mu, sigma);
     else
         putDelay := max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
     end if;
@@ -186,7 +192,9 @@ initial equation
   elseif distributionType==PNlib.Types.DistributionType.Triangular then
       putDelay = PNlib.Functions.Random.randomtriangular(a, b, c, r128);
   elseif distributionType==PNlib.Types.DistributionType.Uniform then
-      putDelay = PNlib.Functions.Random.randomuniform(a, b, r128);
+      putDelay = Modelica.Math.Distributions.Uniform.quantile( max(r128,10 ^ (-10)), a, b);
+  elseif distributionType==PNlib.Types.DistributionType.TruncatedNormal then
+      putDelay = Modelica.Math.Distributions.TruncatedNormal.quantile( max(r128,10 ^ (-10)), a, b, mu, sigma);
   else
       putDelay = max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
   end if;

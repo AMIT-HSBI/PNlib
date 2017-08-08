@@ -17,6 +17,7 @@ TSTest
 TSTestinterrupt
 TStriangular
 TSuniform
+TStruncatednormal
 TSdiscrete
 TFDStest
 NoTokens
