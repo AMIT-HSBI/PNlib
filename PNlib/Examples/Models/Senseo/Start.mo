@@ -2,7 +2,7 @@ within PNlib.Examples.Models.Senseo;
 model Start
   "User action: starting and stopping the machine (step 1, 2, 11), initiating the insertion of coffee pads (step 5) and the refill of water (step 3)."
   parameter Real EV_time=600;
-  TS starting(
+  TDS starting(
     h=1/EV_time,
     nIn=1,
     nOut=1)

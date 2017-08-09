@@ -1,18 +1,22 @@
 within PNlib;
-model TS "Stochastic Transition with delay"
+model TES "Stochastic Transition with event"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
   parameter PNlib.Types.DistributionType distributionType=PNlib.Types.DistributionType.Exponential
-    "distribution type of delay" annotation(Dialog(enable = true, group = "Distribution"));
+    "distribution type of event" annotation(Dialog(enable = true, group = "Distribution"));
   Real h=1
     "probability density" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Exponential then true else false, group = "Exponential distribution"));
   Real a=0
-    "Lower Limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular or distributionType==PNlib.Types.DistributionType.Uniform then true else false, group = "Triangular or Uniform distribution"));
+    "Lower Limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular or distributionType==PNlib.Types.DistributionType.Uniform or distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Triangular, Uniform or Truncated normal distribution"));
   Real b=1
-    "Upper Limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular or distributionType==PNlib.Types.DistributionType.Uniform then true else false, group = "Triangular or Uniform distribution"));
+    "Upper Limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular or distributionType==PNlib.Types.DistributionType.Uniform or distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Triangular, Uniform or Truncated normal distribution"));
   Real c=0.5
-    "Most likely value" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular then true else false, group = "Triangular or Uniform distribution"));
+    "Most likely value" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular then true else false, group = "Triangular distribution"));
+  Real mu=0.5
+    "Expected value" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Truncated normal distribution"));
+  Real sigma=1/6
+    "Standard deviation" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Truncated normal distribution"));
   Real E[:]={1, 2, 3, 4, 5, 6} "Events of Discrete Distribution"
     annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Discrete  then true else false, group = "Discrete Probability Distribution"));
   Real P[:]={1/6, 1/6, 1/6, 1/6, 1/6, 1/6} "Probability of Discrete Distribution"
@@ -24,6 +28,7 @@ model TS "Stochastic Transition with delay"
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   discrete Real putFireTime "putative firing time";
+  discrete Real putEvent "putative Event";
   Boolean showTransitionName=settings.showTransitionName
     "only for transition animation and display (Do not change!)";
   Boolean animatePutFireTime=settings.animatePutFireTime
@@ -59,7 +64,7 @@ protected
     "Integer test values of input arcs (for generating events!)";
   Boolean normalArc[nIn]
     "1=no, 2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
-  Boolean delayPassed(start=false, fixed=true) "Is the delay passed?";
+  Boolean eventPassed(start=false, fixed=true) "Is the event passed?";
   Boolean ani "for transition animation";
   Boolean disPlaceIn[nIn]
     "Are the input places discrete or continuous? true=discrete";
@@ -79,10 +84,11 @@ protected
   Blocks.anyTrue tokenChange(vec=tokenInOut);
   //****BLOCKS END****//
 public
+  Boolean TimeOver;
   Boolean active "Is the transition active?";
   Boolean fire "Does the transition fire?";
   PNlib.Interfaces.TransitionIn inPlaces[nIn](
-    each active=delayPassed,
+    each active=eventPassed,
     arcWeight=arcWeightIn,
     arcWeightint=arcWeightIntIn,
     each fire=fire,
@@ -103,7 +109,7 @@ public
     normalArc=normalArc) if nIn > 0 "connector for input places" annotation(Placement(transformation(extent={{-56, -10}, {-40, 10}}, rotation=0)));
 
   PNlib.Interfaces.TransitionOut outPlaces[nOut](
-    each active=delayPassed,
+    each active=eventPassed,
     arcWeight=arcWeightOut,
     arcWeightint=arcWeightIntOut,
     each fire=fire,
@@ -120,10 +126,10 @@ public
     enable=enableOut) if nOut > 0 "connector for output places" annotation(Placement(transformation(extent={{40, -10}, {56, 10}}, rotation=0)));
 equation
   //****MAIN BEGIN****//
-  //reset active when delay passed
-  active = activation.active and not pre(delayPassed);
-  //delay passed?
-  delayPassed = active and time  >= putFireTime;
+  //reset active when event passed
+  active = activation.active and not pre(eventPassed);
+  //event passed?
+  eventPassed = active and time  >= putFireTime;
   //firing process
   fire=if nOut==0 then enabledByInPlaces else enabledByOutPlaces;
   //****MAIN END****//
@@ -161,31 +167,38 @@ equation
    //****ERROR MESSENGES END****//
 algorithm
    //****MAIN BEGIN****//
+   TimeOver:=time>=putFireTime;
   //generate random putative fire time according to Next-Reaction method of Gibson and Bruck
-  when active then    //17.06.11 Reihenfolge getauscht!
+  when pre(TimeOver) then    //17.06.11 Reihenfolge getauscht!
     (r128, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(pre(state128));
     if distributionType==PNlib.Types.DistributionType.Exponential then
-        putFireTime := time + PNlib.Functions.Random.randomexp(h, r128);
+        putEvent := PNlib.Functions.Random.randomexp(h, r128);
     elseif distributionType==PNlib.Types.DistributionType.Triangular then
-        putFireTime := time +PNlib.Functions.Random.randomtriangular(a, b, c, r128);
+        putEvent := PNlib.Functions.Random.randomtriangular(a, b, c, r128);
     elseif distributionType==PNlib.Types.DistributionType.Uniform then
-        putFireTime := time +PNlib.Functions.Random.randomuniform(a, b, r128);
+        putEvent := Modelica.Math.Distributions.Uniform.quantile( max(r128,10 ^ (-10)), a, b);
+    elseif distributionType==PNlib.Types.DistributionType.TruncatedNormal then
+        putEvent := Modelica.Math.Distributions.TruncatedNormal.quantile( max(r128,10 ^ (-10)), a, b, mu, sigma);
     else
-        putFireTime := time +max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
+        putEvent := max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
     end if;
+    putFireTime:=time + putEvent;
   end when;
    //****MAIN END****//
 initial equation
   //to initialize the random generator otherwise the first random number is always the same in every simulation run
   if distributionType==PNlib.Types.DistributionType.Exponential then
-      putFireTime = time + PNlib.Functions.Random.randomexp(h, r128);
+      putEvent = PNlib.Functions.Random.randomexp(h, r128);
   elseif distributionType==PNlib.Types.DistributionType.Triangular then
-      putFireTime = time +PNlib.Functions.Random.randomtriangular(a, b, c, r128);
+      putEvent = PNlib.Functions.Random.randomtriangular(a, b, c, r128);
   elseif distributionType==PNlib.Types.DistributionType.Uniform then
-      putFireTime = time +PNlib.Functions.Random.randomuniform(a, b, r128);
+      putEvent = Modelica.Math.Distributions.Uniform.quantile( max(r128,10 ^ (-10)), a, b);
+  elseif distributionType==PNlib.Types.DistributionType.TruncatedNormal then
+      putEvent = Modelica.Math.Distributions.TruncatedNormal.quantile( max(r128,10 ^ (-10)), a, b, mu, sigma);
   else
-      putFireTime = time +max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
+      putEvent = max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
   end if;
+  putFireTime=time + putEvent;
 initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, settings.globalSeed);
@@ -196,22 +209,22 @@ initial algorithm
           lineColor={0, 0, 0},
           fillColor=DynamicSelect({0, 0, 0}, color),
           fillPattern=FillPattern.Solid),
-      Polygon(
-        points={{-40, 48}, {40, 74}, {-40, 8}, {-40, 10}, {-40, 6}, {-40, 8}, {-40, 48}},
-        lineColor={0, 0, 0},
-        smooth=Smooth.None,
-        fillColor={255, 255, 255},
-        fillPattern=FillPattern.Solid),
+        Text(
+        origin = {-3, 8},
+        lineColor = {255, 255, 255},
+        fillColor = {255, 255, 255},
+        extent = {{-35, 42}, {43, -52}},
+        textString = "S"),
         Text(
           extent={{-2, -112}, {-2, -140}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animateHazardFunc then "h="+realString(h, 1, 2) else " ")),
+          textString=DynamicSelect("%distributionType ", if animateHazardFunc then "%distributionType" else " ")),
         Text(
-          extent={{6, -152}, {6, -180}},
+          extent={{-2, -152}, {-2, -180}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animatePutFireTime then "pt="+realString(putFireTime, 1, 2) else " ")),
+          textString=DynamicSelect("e=?", if animatePutFireTime then "d="+realString(putEvent, 1, 2) else " ")),
                                           Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},
           textString="%name")}));
-end TS;
+end TES;

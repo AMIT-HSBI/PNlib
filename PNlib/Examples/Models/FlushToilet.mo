@@ -119,7 +119,7 @@ model FlushToilet "Model of a flush toilet"
     annotation(Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-62,88})));
-  TS entering(
+  TDS entering(
     nOut=1,
     nIn=1,
     h=1/10) "Visitor enters the toilet" annotation(Placement(transformation(
@@ -255,7 +255,7 @@ equation
                 Documentation(info="<html>
   <p>
  This is a hybrid model of a flush toilet represented by the xHPN formalism.
- A visitor enters the toilet; thereby, the time between two visitors is not exactly known so that it is modelled by a stochastic transition with an exponential distributed delay (TS, T1).
+ A visitor enters the toilet; thereby, the time between two visitors is not exactly known so that it is modelled by a stochastic transition with an exponential distributed delay (TDS, T1).
  The visitor (PD, P1) pushes (TD, T2) the lever (PD, P2) which lifts the flush valve flapper (PD, P3). Then the water can flow (TC, T5) from the tank (PC, P4)
  to the bowl (PC, P5) and afterwards to the sewer (TC, T6). When the water flows to the bowl, the float (PC, P6) sinks in the toilet tank.
  If the float falls below a specific level (IA), the tank fill-valve (PD, P7) is opened (TD, T7) and new water can flow (TC, T9) into the tank.

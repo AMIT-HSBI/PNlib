@@ -140,7 +140,7 @@ equation
         fillColor=DynamicSelect({0, 0, 0}, color),
         fillPattern=FillPattern.Solid),
         Text(
-          extent={{-2, -116}, {-2, -144}},
+          extent={{-2, -112}, {-2, -140}},
           lineColor={0, 0, 0},
           textString=DynamicSelect("d=%delay", if showTime then "d=%delay" else " ")),
                                           Text(

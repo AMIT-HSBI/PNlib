@@ -2,7 +2,7 @@ within PNlib.Examples.Models.Senseo;
 model Insert_Pad
   "Insert pad: coffee pads are inserted to the Senseo machine (step 5)."
 
-  TS       inserting2(
+  TDS       inserting2(
     nIn=1,
     nOut=1,
     arcWeightOut={1},

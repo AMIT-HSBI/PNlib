@@ -64,11 +64,14 @@ PNlib.Examples.ExtTest.TAwithPCtoTC.mos \
 PNlib.Examples.ExtTest.TAwithPDtoTD.mos \
 PNlib.Examples.ExtTest.TAwithPDtoTD2.mos \
 PNlib.Examples.ExtTest.TAwithWeaklyActivation.mos \
-PNlib.Examples.ExtTest.TSTest.mos \
-PNlib.Examples.ExtTest.TStriangular.mos \
-PNlib.Examples.ExtTest.TSuniform.mos \
-PNlib.Examples.ExtTest.TSdiscrete.mos \
+PNlib.Examples.ExtTest.TDSTest.mos \
+PNlib.Examples.ExtTest.TDSTestinterrupt.mos \
+PNlib.Examples.ExtTest.TDStriangular.mos \
+PNlib.Examples.ExtTest.TDSuniform.mos \
+PNlib.Examples.ExtTest.TDStruncatednormal.mos \
+PNlib.Examples.ExtTest.TDSdiscrete.mos \
 PNlib.Examples.ExtTest.TFDStest.mos \
+PNlib.Examples.ExtTest.TEStest.mos \
 PNlib.Examples.ExtTest.NoTokens.mos \
 PNlib.Examples.HybTest.ConflictPrio.mos \
 PNlib.Examples.HybTest.ConflictProb.mos \
@@ -89,6 +92,18 @@ PNlib.Examples.HybTest.TCwithPD.mos \
 PNlib.Examples.HybTest.TDtoPC.mos \
 PNlib.Examples.HybTest.TDtoPCfunction.mos \
 PNlib.Examples.Models.BicoloredPlaces.Aquarium.mos \
+PNlib.Examples.Models.FiliP.ModellStationen.Station1.mos \
+
+# Mini Test
+#TESTFILES = \
+PNlib.Examples.ExtTest.TDSTest.mos \
+PNlib.Examples.ExtTest.TDSTestinterrupt.mos \
+PNlib.Examples.ExtTest.TDStriangular.mos \
+PNlib.Examples.ExtTest.TDSuniform.mos \
+PNlib.Examples.ExtTest.TDStruncatednormal.mos \
+PNlib.Examples.ExtTest.TDSdiscrete.mos \
+PNlib.Examples.ExtTest.TFDStest.mos \
+PNlib.Examples.ExtTest.TEStest.mos \
 PNlib.Examples.Models.FiliP.ModellStationen.Station1.mos \
 
 

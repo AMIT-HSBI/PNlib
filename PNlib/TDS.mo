@@ -1,12 +1,12 @@
 within PNlib;
-model TFDS "Stochastic Transition with fire duration"
+model TDS "Stochastic Transition with delay"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
-  parameter  PNlib.Types.DistributionType distributionType= PNlib.Types.DistributionType.Exponential
-    "distribution type of duration" annotation(Dialog(enable = true, group = "Distribution"));
+  parameter PNlib.Types.DistributionType distributionType=PNlib.Types.DistributionType.Exponential
+    "distribution type of delay" annotation(Dialog(enable = true, group = "Distribution"));
   Real h=1
-    "probability density" annotation(Dialog(enable = if distributionType== PNlib.Types.DistributionType.Exponential then true else false, group = "Exponential distribution"));
+    "probability density" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Exponential then true else false, group = "Exponential distribution"));
   Real a=0
     "Lower Limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular or distributionType==PNlib.Types.DistributionType.Uniform or distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Triangular, Uniform or Truncated normal distribution"));
   Real b=1
@@ -27,18 +27,20 @@ model TFDS "Stochastic Transition with fire duration"
                                      annotation(Dialog(enable = true, group = "Arc Weights"));
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
-  discrete Real putDuration "putative firing time";
-  Boolean showTransitionName=settings.showTransitionName "only for transition animation and display (Do not change!)";
-  Boolean animateputDuration=settings.animatePutFireTime "only for transition animation and display (Do not change!)";
-  Boolean  animateHazardFunc=settings.animateHazardFunc "only for transition animation and display (Do not change!)";
+  discrete Real putFireTime "putative firing time";
+  discrete Real putDelay "putative Dealy";
+  Boolean showTransitionName=settings.showTransitionName
+    "only for transition animation and display (Do not change!)";
+  Boolean animatePutFireTime=settings.animatePutFireTime
+    "only for transition animation and display (Do not change!)";
+  Boolean animateHazardFunc=settings.animateHazardFunc
+    "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
   parameter Integer localSeed = PNlib.Functions.Random.counter() "Local seed to initialize random number generator" annotation(Dialog(enable = true, group = "Random Number Generator"));
 protected
   discrete Integer state128[4] "state of random number generator";
   Real r128 "random number";
   outer PNlib.Settings settings "global settings for animation and display";
-  Real firingTimeIn "next putative firing time";
-  Real firingTimeOut "next putative firing time";
   discrete Real fireTime "for transition animation";
   Real tIn[nIn] "tokens of input places";
   Real tOut[nOut] "tokens of output places";
@@ -57,15 +59,13 @@ protected
   Integer tIntOut[nOut]
     "Integer tokens of output places (for generating events!)";
   PNlib.Types.ArcType arcType[nIn]
-    "type of input arcs 1=normal, 2=test arc, 3=inhibitor arc, 4=read arc";
+      "type of input arcs 1=normal, 2=real test arc,  3=test arc, 4=real inhibitor arc, 5=inhibitor arc, 6=read arc";
   Integer testValueInt[nIn]
     "Integer test values of input arcs (for generating events!)";
   Boolean normalArc[nIn]
     "1=no, 2=yes, i.e. double arc: test and normal arc or inhibitor and normal arc";
-  Boolean durationPassedIn(start=false, fixed=true) "Is the duration passed?";
-  Boolean durationPassedOut(start=false, fixed=true) "Is the duration passed?";
+  Boolean delayPassed(start=false, fixed=true) "Is the delay passed?";
   Boolean ani "for transition animation";
-  Boolean prefire( start=false, fixed=true) "Was the Transition fire?";
   Boolean disPlaceIn[nIn]
     "Are the input places discrete or continuous? true=discrete";
   Boolean disPlaceOut[nOut]
@@ -75,8 +75,7 @@ protected
   Boolean tokenInOut[nIn] "Have the tokens of input places changed?";
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
   //activation process
-  Blocks.activationDisIn activationIn(testValue=testValue, testValueInt=testValueInt, normalArc=normalArc, nIn=nIn, tIn=tIn, tIntIn=tIntIn, arcType=arcType, arcWeightIn=arcWeightIn, arcWeightIntIn=arcWeightIntIn, minTokens=minTokens, minTokensInt=minTokensInt, firingCon=firingCon, disPlaceIn=disPlaceIn);
-  Blocks.activationDisOut activationOut(nOut=nOut, tOut=tOut, tIntOut=tIntOut, arcWeightOut=arcWeightOut, arcWeightIntOut=arcWeightIntOut, maxTokens=maxTokens, maxTokensInt=maxTokensInt, firingCon=firingCon, disPlaceOut=disPlaceOut);
+  Blocks.activationDis activation(testValue=testValue, testValueInt=testValueInt, normalArc=normalArc, nIn=nIn, nOut=nOut, tIn=tIn, tOut=tOut, tIntIn=tIntIn, tIntOut=tIntOut, arcType=arcType, arcWeightIn=arcWeightIn, arcWeightIntIn=arcWeightIntIn, arcWeightOut=arcWeightOut, arcWeightIntOut=arcWeightIntOut, minTokens=minTokens, maxTokens=maxTokens, minTokensInt=minTokensInt, maxTokensInt=maxTokensInt, firingCon=firingCon, disPlaceIn=disPlaceIn, disPlaceOut=disPlaceOut);
   //Is the transition enabled by all input places?
   Boolean enabledByInPlaces = Functions.OddsAndEnds.allTrue(enableIn);
   //Is the transition enabled by all output places?
@@ -85,16 +84,13 @@ protected
   Blocks.anyTrue tokenChange(vec=tokenInOut);
   //****BLOCKS END****//
 public
-  Boolean activeIn "Is the transition Input active?";
-  Boolean activeOut "Is the transition Output active?";
-  Boolean fireIn "Does the transition Input fire?";
-  Boolean fireOut "Does the transition Output fire?";
-  Boolean fire( start=false, fixed=true) "Is the Transition fire?";
+  Boolean active "Is the transition active?";
+  Boolean fire "Does the transition fire?";
   PNlib.Interfaces.TransitionIn inPlaces[nIn](
-    each active=durationPassedIn,
+    each active=delayPassed,
     arcWeight=arcWeightIn,
     arcWeightint=arcWeightIntIn,
-    each fire=fireIn,
+    each fire=fire,
     each disTransition=true,
     each instSpeed=0,
     each prelimSpeed=0,
@@ -112,11 +108,11 @@ public
     normalArc=normalArc) if nIn > 0 "connector for input places" annotation(Placement(transformation(extent={{-56, -10}, {-40, 10}}, rotation=0)));
 
   PNlib.Interfaces.TransitionOut outPlaces[nOut](
-    each active=durationPassedOut,
+    each active=delayPassed,
     arcWeight=arcWeightOut,
     arcWeightint=arcWeightIntOut,
-    each fire=fireOut,
-    each enabledByInPlaces=true,
+    each fire=fire,
+    each enabledByInPlaces=enabledByInPlaces,
     each disTransition=true,
     each instSpeed=0,
     each prelimSpeed=0,
@@ -129,34 +125,15 @@ public
     enable=enableOut) if nOut > 0 "connector for output places" annotation(Placement(transformation(extent={{40, -10}, {56, 10}}, rotation=0)));
 equation
   //****MAIN BEGIN****//
-   //reset active when duration passed
-   activeIn = activationIn.active  and not pre(durationPassedIn) and not prefire;
-   activeOut = activationOut.active and not pre(durationPassedOut) and prefire;
-   //save next putative firing time
-   when activeIn then
-      firingTimeIn = time+1e-6;
-   end when;
-   when activeOut then
-      firingTimeOut = if time>=firingTimeIn+putDuration-1e-6  then time+1e-6 else firingTimeIn+putDuration-1e-6;
-   end when;
-   //is the Transition fire?
-   prefire=pre(fire);
-    when {fireIn, fireOut} then
-    if durationPassedOut then
-      fire=false;
-    else
-      fire=true;
-    end if;
-   end when;
-  //duration passed?
-   durationPassedIn= activeIn and time>=firingTimeIn;
-   durationPassedOut= activeOut and time>=firingTimeOut;
-   //firing process
-   fireIn=enabledByInPlaces;
-   fireOut=enabledByOutPlaces;
+  //reset active when delay passed
+  active = activation.active and not pre(delayPassed);
+  //delay passed?
+  delayPassed = active and time  >= putFireTime;
+  //firing process
+  fire=if nOut==0 then enabledByInPlaces else enabledByOutPlaces;
   //****MAIN END****//
   //****ANIMATION BEGIN****//
-  when fireIn then
+  when fire then
      fireTime=time;
      ani=true;
    end when;
@@ -190,35 +167,39 @@ equation
 algorithm
    //****MAIN BEGIN****//
   //generate random putative fire time according to Next-Reaction method of Gibson and Bruck
-  when pre(fireOut) then    //17.06.11 Reihenfolge getauscht!
+  when pre(fire) then    //17.06.11 Reihenfolge getauscht!
     (r128, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(pre(state128));
     if distributionType==PNlib.Types.DistributionType.Exponential then
-        putDuration := PNlib.Functions.Random.randomexp(h, r128);
+        putDelay := PNlib.Functions.Random.randomexp(h, r128);
     elseif distributionType==PNlib.Types.DistributionType.Triangular then
-        putDuration := PNlib.Functions.Random.randomtriangular(a, b, c, r128);
+        putDelay := PNlib.Functions.Random.randomtriangular(a, b, c, r128);
     elseif distributionType==PNlib.Types.DistributionType.Uniform then
-        putDuration := Modelica.Math.Distributions.Uniform.quantile( max(r128,10 ^ (-10)), a, b);
+        putDelay := Modelica.Math.Distributions.Uniform.quantile( max(r128,10 ^ (-10)), a, b);
     elseif distributionType==PNlib.Types.DistributionType.TruncatedNormal then
-        putDuration := Modelica.Math.Distributions.TruncatedNormal.quantile( max(r128,10 ^ (-10)), a, b, mu, sigma);
+        putDelay := Modelica.Math.Distributions.TruncatedNormal.quantile( max(r128,10 ^ (-10)), a, b, mu, sigma);
     else
-        putDuration := max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
+        putDelay := max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
     end if;
+  end when;
+  when active then
+    putFireTime:=time + putDelay;
   end when;
    //****MAIN END****//
 initial equation
   //to initialize the random generator otherwise the first random number is always the same in every simulation run
   if distributionType==PNlib.Types.DistributionType.Exponential then
-      putDuration = PNlib.Functions.Random.randomexp(h, r128);
+      putDelay = PNlib.Functions.Random.randomexp(h, r128);
   elseif distributionType==PNlib.Types.DistributionType.Triangular then
-      putDuration = PNlib.Functions.Random.randomtriangular(a, b, c, r128);
+      putDelay = PNlib.Functions.Random.randomtriangular(a, b, c, r128);
   elseif distributionType==PNlib.Types.DistributionType.Uniform then
-      putDuration = Modelica.Math.Distributions.Uniform.quantile( max(r128,10 ^ (-10)), a, b);
+      putDelay = Modelica.Math.Distributions.Uniform.quantile( max(r128,10 ^ (-10)), a, b);
   elseif distributionType==PNlib.Types.DistributionType.TruncatedNormal then
-      putDuration = Modelica.Math.Distributions.TruncatedNormal.quantile( max(r128,10 ^ (-10)), a, b, mu, sigma);
+      putDelay = Modelica.Math.Distributions.TruncatedNormal.quantile( max(r128,10 ^ (-10)), a, b, mu, sigma);
   else
-      putDuration = max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
+      putDelay = max(PNlib.Functions.Random.randomdis(E, P, r128),1e-6);
   end if;
-  initial algorithm
+  putFireTime=time + putDelay;
+initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, settings.globalSeed);
   (r128, state128) := Modelica.Math.Random.Generators.Xorshift128plus.random(
@@ -241,9 +222,9 @@ initial equation
         Text(
           extent={{-2, -152}, {-2, -180}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect("fd=?", if animateputDuration then "fd="+realString(putDuration, 1, 2) else " ")),
+          textString=DynamicSelect("d=?", if animatePutFireTime then "d="+realString(putDelay, 1, 2) else " ")),
                                           Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},
           textString="%name")}));
-end TFDS;
+end TDS;
