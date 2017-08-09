@@ -14,9 +14,9 @@ model TDS "Stochastic Transition with delay"
   Real c=0.5
     "Most likely value" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular then true else false, group = "Triangular distribution"));
   Real mu=0.5
-    "Expected value" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = " Truncated normal distribution"));
+    "Expected value" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Truncated normal distribution"));
   Real sigma=1/6
-    "Standard deviation" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = " Truncated normal distribution"));
+    "Standard deviation" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Truncated normal distribution"));
   Real E[:]={1, 2, 3, 4, 5, 6} "Events of Discrete Distribution"
     annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Discrete  then true else false, group = "Discrete Probability Distribution"));
   Real P[:]={1/6, 1/6, 1/6, 1/6, 1/6, 1/6} "Probability of Discrete Distribution"
@@ -209,12 +209,12 @@ initial algorithm
           lineColor={0, 0, 0},
           fillColor=DynamicSelect({0, 0, 0}, color),
           fillPattern=FillPattern.Solid),
-      Polygon(
-        points={{-40, 48}, {40, 74}, {-40, 8}, {-40, 10}, {-40, 6}, {-40, 8}, {-40, 48}},
-        lineColor={0, 0, 0},
-        smooth=Smooth.None,
-        fillColor={255, 255, 255},
-        fillPattern=FillPattern.Solid),
+        Text(
+          origin = {-3, 8},
+          lineColor = {255, 255, 255},
+          fillColor = {255, 255, 255},
+          extent = {{-35, 42}, {43, -52}},
+          textString = "S"),
         Text(
           extent={{-2, -112}, {-2, -140}},
           lineColor={0, 0, 0},
@@ -222,7 +222,7 @@ initial algorithm
         Text(
           extent={{-2, -152}, {-2, -180}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animatePutFireTime then "d="+realString(putDelay, 1, 2) else " ")),
+          textString=DynamicSelect("d=?", if animatePutFireTime then "d="+realString(putDelay, 1, 2) else " ")),
                                           Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},

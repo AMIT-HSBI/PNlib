@@ -209,12 +209,12 @@ initial algorithm
           lineColor={0, 0, 0},
           fillColor=DynamicSelect({0, 0, 0}, color),
           fillPattern=FillPattern.Solid),
-      Polygon(
-        points={{-40, 48}, {40, 74}, {-40, 8}, {-40, 10}, {-40, 6}, {-40, 8}, {-40, 48}},
-        lineColor={0, 0, 0},
-        smooth=Smooth.None,
-        fillColor={255, 255, 255},
-        fillPattern=FillPattern.Solid),
+        Text(
+        origin = {-3, 8},
+        lineColor = {255, 255, 255},
+        fillColor = {255, 255, 255},
+        extent = {{-35, 42}, {43, -52}},
+        textString = "S"),
         Text(
           extent={{-2, -112}, {-2, -140}},
           lineColor={0, 0, 0},
@@ -222,7 +222,7 @@ initial algorithm
         Text(
           extent={{-2, -152}, {-2, -180}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animatePutFireTime then "d="+realString(putEvent, 1, 2) else " ")),
+          textString=DynamicSelect("e=?", if animatePutFireTime then "d="+realString(putEvent, 1, 2) else " ")),
                                           Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},
