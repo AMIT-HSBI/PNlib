@@ -53,5 +53,27 @@ equation
   assert((outTransition.disPlace and testValue-testValueInt<=0.0) or not outTransition.disPlace, "Test arcs connected to discrete places must have integer test values.");
   assert(testValue>=inPlace.minTokens, "Test values must be greater or equal than minimum values.");
   //****ERROR MESSENGES END****//
-  annotation(defaultComponentName = "TA1", Icon(coordinateSystem(preserveAspectRatio=true, extent={{-98, 4}, {28, 48}}), graphics={Rectangle(extent={{-98, 48}, {28, 4}}, lineColor={0, 0, 0}, fillColor=DynamicSelect({255, 255, 255}, testColor), fillPattern=FillPattern.Solid), Line(points={{-94, 24}, {22, 24}}, color={0, 0, 0}, smooth=Smooth.None, pattern=LinePattern.Dash), Polygon(points={{14, 32}, {14, 16}, {26, 24}, {14, 32}}, lineColor={0, 0, 0}, smooth=Smooth.None, fillColor={0, 0, 0}, fillPattern=FillPattern.Solid), Text(extent={{-38, -4}, {-38, -16}}, lineColor={0, 0, 0}, lineThickness=0.5, textString=DynamicSelect(" ", if animateWeightTIarc then realString(testValue, 1, 1) else " "))}), Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-98, 0}, {28, 48}}), graphics));
+  annotation(defaultComponentName = "TA1", Icon(coordinateSystem(preserveAspectRatio=true, extent={{-98, 4},
+            {28, 48}}),
+                   graphics={
+        Rectangle(
+          extent={{-98, 48}, {28, 4}},
+          lineColor={0, 0, 0},
+          fillColor=DynamicSelect({255, 255, 255}, testColor),
+          fillPattern=FillPattern.Solid),
+        Line(
+          points={{-94, 24}, {22, 24}},
+          color={0, 0, 0},
+          smooth=Smooth.None),
+        Ellipse(
+          extent={{14, 30}, {26, 18}},
+          lineColor={0, 0, 0},
+          fillColor={0, 0, 0},
+          fillPattern=FillPattern.Solid),
+       Text(
+          extent={{-38, -4}, {-38, -16}},
+          lineColor={0, 0, 0},
+          lineThickness=0.5,
+          textString=DynamicSelect(" ", if animateWeightTIarc then realString(testValue, 1, 1) else " "))}), Diagram(coordinateSystem(
+          preserveAspectRatio=true, extent={{-98, 0}, {28, 48}}), graphics));
 end TA;
