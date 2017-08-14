@@ -52,7 +52,7 @@ algorithm
         arcWeightSum:=0;
         for i in 1: nOut loop  //discrete transitions are proven at first
           Index:=Modelica.Math.Vectors.find(i,enablingPrio);
-           if Index>0 and disTAout[Index] and ((t-(arcWeightSum+arcWeight[Index])>=minMarks) or Functions.OddsAndEnds.isEqual(arcWeight[Index], 0.0)) then
+           if Index>0 and disTAout[Index] and ((t-arcWeightSum-arcWeight[Index]-minMarks>=-Constants.almost_eps) or Functions.OddsAndEnds.isEqual(arcWeight[Index], 0.0)) then
              TEout[Index]:=true;
              arcWeightSum:=arcWeightSum + arcWeight[Index];
            end if;
