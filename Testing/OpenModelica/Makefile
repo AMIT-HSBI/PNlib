@@ -49,6 +49,7 @@ PNlib.Examples.DisTest.TTcircle.mos \
 PNlib.Examples.DisTest.TEtest.mos \
 PNlib.Examples.DisTest.TEnoInput.mos \
 PNlib.Examples.DisTest.FiveTimes.mos \
+PNlib.Examples.DisTest.Ttest.mos \
 PNlib.Examples.ExtTest.ArcswithPCtoTC.mos \
 PNlib.Examples.ExtTest.ArcswithPCtoTC2.mos \
 PNlib.Examples.ExtTest.ArcswithPCtoTC3.mos \
@@ -96,15 +97,7 @@ PNlib.Examples.Models.FiliP.ModellStationen.Station1.mos \
 
 # Mini Test
 #TESTFILES = \
-PNlib.Examples.ExtTest.TDSTest.mos \
-PNlib.Examples.ExtTest.TDSTestinterrupt.mos \
-PNlib.Examples.ExtTest.TDStriangular.mos \
-PNlib.Examples.ExtTest.TDSuniform.mos \
-PNlib.Examples.ExtTest.TDStruncatednormal.mos \
-PNlib.Examples.ExtTest.TDSdiscrete.mos \
-PNlib.Examples.ExtTest.TFDStest.mos \
-PNlib.Examples.ExtTest.TEStest.mos \
-PNlib.Examples.Models.FiliP.ModellStationen.Station1.mos \
+PNlib.Examples.DisTest.Ttest.mos \
 
 
 

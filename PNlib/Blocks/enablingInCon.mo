@@ -52,7 +52,7 @@ algorithm
           arcWeightSum:=0;
           for i in 1:nIn loop
             Index:=Modelica.Math.Vectors.find(i,enablingPrio);
-            if Index>0 and disTAin[Index] and ((t+(arcWeightSum+arcWeight[Index])<=maxMarks) or Functions.OddsAndEnds.isEqual(arcWeight[Index], 0.0)) then
+            if Index>0 and disTAin[Index] and ((t+arcWeightSum+arcWeight[Index]-maxMarks<=Constants.almost_eps) or Functions.OddsAndEnds.isEqual(arcWeight[Index], 0.0)) then
               TEin[Index]:=true;
               arcWeightSum:=arcWeightSum + arcWeight[Index];
             end if;
