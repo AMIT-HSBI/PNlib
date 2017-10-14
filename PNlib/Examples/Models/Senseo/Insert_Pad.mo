@@ -2,18 +2,18 @@ within PNlib.Examples.Models.Senseo;
 model Insert_Pad
   "Insert pad: coffee pads are inserted to the Senseo machine (step 5)."
 
-  TDS       inserting2(
+  Components.TS inserting2(
     nIn=1,
     nOut=1,
     arcWeightOut={1},
-    h=1/20)   annotation(Placement(transformation(
+    h=1/20) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={62,40})));
-  PD       puffer(
+  Components.PD puffer(
     nOut=1,
     maxTokens=1,
-    nIn=1)       annotation(Placement(transformation(
+    nIn=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={4,40})));

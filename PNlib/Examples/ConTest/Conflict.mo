@@ -2,20 +2,22 @@ within PNlib.Examples.ConTest;
 model Conflict
   extends Modelica.Icons.Example;
 
-  PNlib.TC T1(nOut = 1) annotation(Placement(transformation(extent={{-40, -10}, {
-            -20, 10}})));
-  PNlib.TC T2(maximumSpeed = 2, nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{20, 10},
-            {40, 30}})));
-  PNlib.TC T3(nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{20, -30},
-            {40, -10}})));
-  PNlib.PC P1(nIn = 1, nOut = 2) annotation(Placement(transformation(extent={{-10, -10},
-            {10, 10}})));
-  PNlib.PC P2(nIn = 1) annotation(Placement(transformation(extent={{50, 10}, {70,
-            30}})));
-  PNlib.PC P3(nIn = 1) annotation(Placement(transformation(extent={{50, -30}, {70,
-            -10}})));
-  inner PNlib.Settings settings annotation(Placement(transformation(extent={{-40, 20},
-            {-20, 40}})));
+  PNlib.Components.TC T1(nOut=1)
+    annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
+  PNlib.Components.TC T2(
+    maximumSpeed=2,
+    nIn=1,
+    nOut=1) annotation (Placement(transformation(extent={{20,10},{40,30}})));
+  PNlib.Components.TC T3(nIn=1, nOut=1)
+    annotation (Placement(transformation(extent={{20,-30},{40,-10}})));
+  PNlib.Components.PC P1(nIn=1, nOut=2)
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
+  PNlib.Components.PC P2(nIn=1)
+    annotation (Placement(transformation(extent={{50,10},{70,30}})));
+  PNlib.Components.PC P3(nIn=1)
+    annotation (Placement(transformation(extent={{50,-30},{70,-10}})));
+  inner PNlib.Components.Settings settings
+    annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
 equation
   connect(T1.outPlaces[1], P1.inTransition[1]) annotation(Line(points={{-25.2, 0},
           {-10.8, 0}}, color = {0, 0, 0}, smooth = Smooth.None));

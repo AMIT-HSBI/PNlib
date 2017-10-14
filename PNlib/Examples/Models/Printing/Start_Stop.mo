@@ -12,40 +12,43 @@ model Start_Stop "starting and stop the printing machine"
  Real stopTime2;
  Real startTime;
  Boolean reStart;
- PD  Start(nIn=1, nOut=1,
+  PNlib.Components.PD Start(
+    nIn=1,
+    nOut=1,
     maxTokens=1,
-    startTokens=0)        annotation(Placement(transformation(
+    startTokens=0) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-80,0})));
-  TD starting(
+  PNlib.Components.TD starting(
     nOut=2,
     nIn=1,
-    delay=setupTime)            annotation(Placement(transformation(
+    delay=setupTime) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-50,0})));
-  PD Stop(
+  PNlib.Components.PD Stop(
     nIn=1,
     maxTokens=1,
     nOut=1,
-    startTokens=0)        annotation(Placement(transformation(
+    startTokens=0) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={36,0})));
-  PD Counter_Orders(nIn=1)    annotation(Placement(transformation(
+  PNlib.Components.PD Counter_Orders(nIn=1) annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-22,48})));
-  TD stopping(
+  PNlib.Components.TD stopping(
     nIn=2,
     nOut=1,
-    arcWeightIn={1,1})      annotation(Placement(transformation(
+    arcWeightIn={1,1}) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={60,0})));
-  TA TA5(testValue=number_exemplars)
-         annotation(Placement(transformation(
+  PNlib.Components.TA TA5(testValue=number_exemplars) annotation (Placement(
+        transformation(
         extent={{-11,-3.99998},{11,3.99998}},
         rotation=90,
         origin={78,-29})));
@@ -76,19 +79,18 @@ model Start_Stop "starting and stop the printing machine"
   Modelica.Blocks.Interfaces.RealOutput time_counter_ annotation(Placement(
         transformation(extent={{62,74},{82,94}}), iconTransformation(extent={{80,-20},
             {100,0}})));
-  PNlib.TD shutDown(
+  PNlib.Components.TD shutDown(
     nIn=1,
     nOut=2,
-    delay=timeStopping)
-            annotation(Placement(transformation(
+    delay=timeStopping) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={8,0})));
-  PNlib.PD Stop2(
+  PNlib.Components.PD Stop2(
     nIn=1,
     nOut=1,
     startTokens=1,
-    maxTokens=1)                 annotation(Placement(transformation(
+    maxTokens=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-24,0})));
@@ -178,9 +180,9 @@ equation
       smooth=Smooth.None));
   connect(Counter_Orders.pd_t, integerToReal.u) annotation(Line(
       points={{-22,37.4},{-22,38},{-22,38},{-22,28},{-22,28},{-26,28},{-26,28}},
-
       color={255,127,0},
       smooth=Smooth.None));
+
   connect(integerToReal.y, orders_) annotation(Line(
       points={{-49,28},{-54,28},{-54,48}},
       color={0,0,127},

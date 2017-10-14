@@ -1,15 +1,39 @@
 within PNlib.Examples.ExtTest;
 model IATest
   extends Modelica.Icons.Example;
-  inner PNlib.Settings settings annotation(Placement(transformation(extent={{100, 20}, {120, 40}})));
-  IA IA1(normalArc=false, testValue=1) annotation(Placement(transformation(extent={{-44, -2}, {-30, 2}})));
-  IA IA2(testValue=2) annotation(Placement(transformation(extent={{-6, -3}, {6, 3}}, rotation=0, origin={50, -1})));
-  PC P1(nOut=2, nIn=1, startMarks=2) annotation(Placement(transformation(extent={{-70, -10}, {-50, 10}})));
-  PC P2(nIn=1, nOut=1, startMarks=1) annotation(Placement(transformation(extent={{10, -10}, {30, 10}})));
-  PC P3(nIn=1) annotation(Placement(transformation(extent={{90, -10}, {110, 10}})));
-  TC T1(nOut=1, nIn=1) annotation(Placement(transformation(extent={{-20, -10}, {0, 10}})));
-  TC T2(nOut=1, maximumSpeed=1.5) annotation(Placement(transformation(extent={{-100, -10}, {-80, 10}})));
-  TC T3(nIn=2, arcWeightIn={1, 2}, maximumSpeed=2, nOut=1) annotation(Placement(transformation(extent={{-10, -10}, {10, 10}}, rotation=0, origin={80, 0})));
+  inner PNlib.Components.Settings settings
+    annotation (Placement(transformation(extent={{100,20},{120,40}})));
+  Components.IA IA1(normalArc=2, testValue=1)
+    annotation (Placement(transformation(extent={{-44,-2},{-30,2}})));
+  Components.IA IA2(testValue=2, normalArc=1) annotation (Placement(
+        transformation(
+        extent={{-6,-3},{6,3}},
+        rotation=0,
+        origin={50,-1})));
+  Components.PC P1(
+    nOut=2,
+    nIn=1,
+    startMarks=2)
+    annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
+  Components.PC P2(
+    nIn=1,
+    nOut=1,
+    startMarks=1)
+    annotation (Placement(transformation(extent={{10,-10},{30,10}})));
+  Components.PC P3(nIn=1)
+    annotation (Placement(transformation(extent={{90,-10},{110,10}})));
+  Components.TC T1(nOut=1, nIn=1)
+    annotation (Placement(transformation(extent={{-20,-10},{0,10}})));
+  Components.TC T2(nOut=1, maximumSpeed=1.5)
+    annotation (Placement(transformation(extent={{-100,-10},{-80,10}})));
+  Components.TC T3(
+    nIn=2,
+    arcWeightIn={1,2},
+    maximumSpeed=2,
+    nOut=1) annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=0,
+        origin={80,0})));
 equation
   connect(T1.outPlaces[1], P2.inTransition[1]) annotation(Line(points={{-5.2, 0}, {9.2, 0}}, color={0, 0, 0}));
   connect(P1.outTransition[1], IA1.inPlace) annotation(Line(points={{-49.2, -0.5}, {-48, -0.5}, {-48, 0}, {-45.1111, 0}}, color={0, 0, 0}));

@@ -13,8 +13,14 @@ model CTC
   PNlib.Interfaces.TransitionIn[nIn, numColors] inPlaces annotation(Placement(transformation(extent={{-56,-10},{-40,10}})));
   PNlib.Interfaces.TransitionOut[nOut, numColors] outPlaces annotation(Placement(transformation(extent={{40,-10},{56,10}})));
 protected
-  outer PNlib.Settings settings "global settings for animation and display";
-  TC transition_(nIn=numColors*nIn, nOut=numColors*nOut, maximumSpeed=maximumSpeed, arcWeightIn=arcWeightIn_flat, arcWeightOut=arcWeightOut_flat);
+  outer PNlib.Components.Settings settings
+    "global settings for animation and display";
+  Components.TC transition_(
+    nIn=numColors*nIn,
+    nOut=numColors*nOut,
+    maximumSpeed=maximumSpeed,
+    arcWeightIn=arcWeightIn_flat,
+    arcWeightOut=arcWeightOut_flat);
   Real arcWeightIn_flat[nIn*numColors];
   Real arcWeightOut_flat[nOut*numColors];
 equation
@@ -32,5 +38,6 @@ equation
     end for;
   end for;
 
-  annotation(Icon(graphics={Rectangle(extent={{-40,100},{40,-100}}, lineColor={0,0,0}, fillColor=DynamicSelect({255,255,255}, color), fillPattern=FillPattern.Solid)}));
+  annotation(Icon(graphics={Rectangle(extent={{-40,100},{40,-100}}, lineColor={0,0,0}, fillColor=DynamicSelect({255,255,255}, color),
+            fillPattern =                                                                                                                         FillPattern.Solid)}));
 end CTC;

@@ -1,4 +1,4 @@
-within PNlib.Examples.Models;
+﻿within PNlib.Examples.Models;
 package Senseo "Model of a Senseo coffee machine"
   extends Modelica.Icons.ExamplesPackage;
 

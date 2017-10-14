@@ -11,67 +11,67 @@ model Maculation "maculation of the printing process"
  Boolean macu=bundle_channelOut.t>0;
  Real color[3]=if macu then {255,0,0} else {0,255,0};
  Real h=if pre(bundle_channelOut.t) > 1 then 1/time_macu else 1/time_macu_roleChnage;
-  TD channelOut1(
+  Components.TD channelOut1(
     nIn=2,
     arcWeightOut={1},
     nOut=1,
     delay=time_channel_out)
-    annotation(Placement(transformation(extent={{-66,-6},{-46,14}})));
-  TD channelOut(
+    annotation (Placement(transformation(extent={{-66,-6},{-46,14}})));
+  Components.TD channelOut(
     nIn=2,
     arcWeightOut={2},
     nOut=1,
     delay=1)
-    annotation(Placement(transformation(extent={{-64,-64},{-44,-44}})));
-  PD start_channelOut(
+    annotation (Placement(transformation(extent={{-64,-64},{-44,-44}})));
+  Components.PD start_channelOut(
     nIn=1,
     nOut=1,
     maxTokens=1)
-    annotation(Placement(transformation(extent={{-128,-64},{-108,-44}})));
-  TDS       pressing_button(nOut=1,
+    annotation (Placement(transformation(extent={{-128,-64},{-108,-44}})));
+  Components.TS pressing_button(
+    nOut=1,
     firingCon=start,
     nIn=1,
     h=1/time_between_macus)
-    annotation(Placement(transformation(extent={{-190,-64},{-170,-44}})));
-  PD bundle_channelOut(
+    annotation (Placement(transformation(extent={{-190,-64},{-170,-44}})));
+  Components.PD bundle_channelOut(
     nOut=4,
     nIn=2,
     maxTokens=2)
-    annotation(Placement(transformation(extent={{4,-28},{24,-8}})));
-  TDS Stop_macu(
+    annotation (Placement(transformation(extent={{4,-28},{24,-8}})));
+  Components.TS Stop_macu(
     nIn=1,
     nOut=1,
     h=h,
-    arcWeightIn={pre(bundle_channelOut.t)})
-    annotation(Placement(transformation(extent={{-10,-10},{10,10}},
+    arcWeightIn={pre(bundle_channelOut.t)}) annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
         rotation=90,
         origin={56,8})));
-  PD bundle_not_channelOut(
+  Components.PD bundle_not_channelOut(
     startTokens=1,
     maxTokens=1,
     nOut=3,
-    nIn=2) annotation(Placement(transformation(
+    nIn=2) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-14,36})));
-  TA       TA4(testValue=0)
-               annotation(Placement(transformation(extent={{-10.0003,-3.5},{10.0001,
-            3.50001}},
+  Components.TA TA4(testValue=0) annotation (Placement(transformation(
+        extent={{-10.0003,-3.5},{10.0001,3.50001}},
         rotation=90,
         origin={-54.0001,84.5})));
-  TA       TA3(testValue=0)
-               annotation(Placement(transformation(extent={{-12.0001,
-            -3.99999},{11.9999,4}},
+  Components.TA TA3(testValue=0) annotation (Placement(transformation(
+        extent={{-12.0001,-3.99999},{11.9999,4}},
         rotation=0,
         origin={102,-18})));
-  TC Macu_press(
+  Components.TC Macu_press(
     nIn=2,
     nOut=1,
     maximumSpeed=speed,
     arcWeightIn={0,1})
-    annotation(Placement(transformation(extent={{128,-28},{148,-8}})));
-  PC Bundle_in_macu_press(nIn=1, reStart=reStart)
-    annotation(Placement(transformation(extent={{172,-28},{192,-8}})));
+    annotation (Placement(transformation(extent={{128,-28},{148,-8}})));
+  Components.PC Bundle_in_macu_press(nIn=1, reStart=reStart)
+    annotation (Placement(transformation(extent={{172,-28},{192,-8}})));
   Interfaces.TransitionIn ausschleussen_[2]
     annotation(Placement(transformation(extent={{-198,-6},{-178,14}}),
         iconTransformation(extent={{-200,-10},{-180,10}})));
@@ -98,17 +98,16 @@ public
   Modelica.Blocks.Interfaces.RealOutput macuBundle_  annotation(Placement(
         transformation(extent={{172,2},{192,22}}), iconTransformation(extent={{180,
             -12},{200,8}})));
-  TD T1(
+  Components.TD T1(
     nIn=2,
     nOut=2,
     arcWeightIn={pre(bundle_channelOut.t),1})
-    annotation(Placement(transformation(extent={{-154,46},{-134,66}})));
-  TD T2(nIn=1, nOut=1)
-    annotation(Placement(transformation(extent={{-154,-6},{-134,14}})));
-  PD P1(nIn=2, nOut=1)
-    annotation(Placement(transformation(extent={{-110,-6},{-90,14}})));
-  IA IA1(testValue=1)
-         annotation(Placement(transformation(
+    annotation (Placement(transformation(extent={{-154,46},{-134,66}})));
+  Components.TD T2(nIn=1, nOut=1)
+    annotation (Placement(transformation(extent={{-154,-6},{-134,14}})));
+  Components.PD P1(nIn=2, nOut=1)
+    annotation (Placement(transformation(extent={{-110,-6},{-90,14}})));
+  Components.IA IA1(testValue=1) annotation (Placement(transformation(
         extent={{-11,-3.99999},{11.0001,3.99999}},
         rotation=180,
         origin={-75,-76})));
@@ -189,7 +188,7 @@ equation
           -17.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(bundle_channelOut.outTransition[3], T1.inPlaces[1])     annotation(
+  connect(bundle_channelOut.outTransition[3], T1.inPlaces[1])     annotation (
       Line(
       points={{24.8,-17.75},{72,-18},{72,94},{-172,94},{-172,55.5},{
           -148.8,55.5}},
@@ -226,7 +225,7 @@ equation
           -85.4545}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(IA1.outTransition,pressing_button. inPlaces[1]) annotation(
+  connect(IA1.outTransition,pressing_button. inPlaces[1]) annotation (
       Line(
       points={{-75.5239,-85.4545},{-196,-85.4545},{-196,-54},{-184.8,-54}},
       color={0,0,0},

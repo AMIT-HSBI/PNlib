@@ -5,11 +5,8 @@ block enablingInDis "enabling process of discrete input transitions"
   input Integer t "current token number";
   input Integer maxTokens "maximum capacity";
   input Boolean TAein[:] "active previous transitions which are already enabled by their input places";
-  input PNlib.Types.EnablingType enablingType "resolution of actual conflicts";
-  input Integer enablingPrio[:] "enabling priorities of input transitions";
+  input Integer enablingType "resolution of actual conflicts";
   input Real enablingProb[:] "enabling probabilites of input transitions";
-  input Real enablingBene[:] "enabling benefit of input transitions";
-  input PNlib.Types.BenefitType benefitType "algorithm for benefit";
   input Boolean disTransition[:] "type of input transitions";
   input Boolean delayPassed "Does any delayPassed of a output transition";
   input Boolean active[:] "Are the input transitions active?";
@@ -29,10 +26,6 @@ protected
   discrete Real randNum "uniform distributed random number";
   discrete Real sumEnablingProbTAin "sum of the enabling probabilities of the active input transitions";
   Boolean endWhile;
-  Integer Index "priority Index";
-  discrete Real benefitMax "theoretical benefit";
-  Boolean valid "valid solution";
-  discrete Real benefitLimit "best valid benefit";
 initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, globalSeed);
@@ -40,30 +33,21 @@ initial algorithm
       state128);
 algorithm
   TEin:=fill(false, nIn);
-  arcWeightSum := 0;
   when delayPassed then
     if nIn>0 then
       arcWeightSum:=Functions.OddsAndEnds.conditionalSumInt(arcWeight, TAein);  //arc weight sum of all active input transitions which are already enabled by their input places
       if t + arcWeightSum <= maxTokens then  //Place has no actual conflict; all active input transitions are enabled
         TEin:=TAein;
       else                          //Place has an actual conflict
-        if enablingType==PNlib.Types.EnablingType.Priority then     //deterministic enabling according to priorities
+        if enablingType==1 then     //deterministic enabling according to priorities
           arcWeightSum:=0;
           for i in 1:nIn loop
-            Index:=Modelica.Math.Vectors.find(i,enablingPrio);
-            if Index>0 and TAein[Index] and disTransition[Index] and t+(arcWeightSum+arcWeight[Index])<=maxTokens then  ///new 07.03.2011
-              TEin[Index]:=true;
-              arcWeightSum:=arcWeightSum + arcWeight[Index];
+            if TAein[i] and disTransition[i] and t+(arcWeightSum+arcWeight[i])<=maxTokens then  ///new 07.03.2011
+              TEin[i]:=true;
+              arcWeightSum:=arcWeightSum + arcWeight[i];
             end if;
           end for;
-          for i in 1: nIn loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
-          Index:=Modelica.Math.Vectors.find(i,enablingPrio);
-            if TAein[Index] and not disTransition[Index] and t+(arcWeightSum+arcWeight[Index])<=maxTokens then
-              TEin[Index] := true;
-              arcWeightSum := arcWeightSum + arcWeight[Index];
-            end if;
-          end for;
-        elseif enablingType==PNlib.Types.EnablingType.Probability then                        //probabilistic enabling according to enabling probabilities
+        else                        //probabilistic enabling according to enabling probabilities
           arcWeightSum:=0;
           remTAin:=zeros(nIn);
           nremTAin:=0;
@@ -111,18 +95,6 @@ algorithm
               end if;
             end if;
           end for;
-        else
-          if benefitType==PNlib.Types.BenefitType.Greedy then
-            TEin:=PNlib.Functions.Enabling.benefitGreedyDisIn(nIn, arcWeight, t, maxTokens, TAein, enablingBene, disTransition);
-          elseif benefitType==PNlib.Types.BenefitType.BenefitQuotient then
-            TEin:=PNlib.Functions.Enabling.benefitQuotientDisIn(nIn, arcWeight, t, maxTokens, TAein, enablingBene, disTransition);
-          else
-            //TEin:=fill(false, nIn);
-            arcWeightSum := 0;
-            benefitMax:=sum(enablingBene);
-            benefitLimit:=0;
-            (TEin, arcWeightSum,  benefitMax, valid, benefitLimit):=PNlib.Functions.Enabling.benefitBaBDisIn(1, nIn, enablingBene, arcWeight, enablingBene ./arcWeight, t, benefitMax, maxTokens, TEin, 0, benefitLimit, TAein, disTransition);
-           end if;
         end if;
       end if;
     else
@@ -137,10 +109,6 @@ algorithm
       state128 := pre(state128);
       sumEnablingProbTAin := 0;
       endWhile := false;
-      Index := 0;
-      benefitMax:=0 ;
-      valid:=false ;
-      benefitLimit:=0 ;
     end if;
   end when;
   // hack for Dymola 2017

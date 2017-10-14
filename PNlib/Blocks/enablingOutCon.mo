@@ -5,8 +5,7 @@ block enablingOutCon "enabling process of output transitions (continuous places)
   input Real t "current marks";
   input Real minMarks "minimum capacity";
   input Boolean TAout[:] "active output transitions with passed delay";
-  input PNlib.Types.EnablingType enablingType "resolution of actual conflicts";
-  input Integer enablingPrio[:] "enabling priorities of output transitions";
+  input Integer enablingType "resolution of actual conflicts";
   input Real enablingProb[:] "enabling probabilites of output transitions";
   input Boolean disTransition[:] "discrete transition?";
   input Boolean delayPassed "Does any delayPassed of a output transition";
@@ -27,7 +26,6 @@ protected
   discrete Real randNum "uniform distributed random number";
   discrete Real sumEnablingProbTAout "sum of the enabling probabilities of the active output transitions";
   Boolean endWhile;
-  Integer Index;
 initial algorithm
   // Generate initial state from localSeed and globalSeed
   state128 := Modelica.Math.Random.Generators.Xorshift128plus.initialState(localSeed, globalSeed);
@@ -48,14 +46,13 @@ algorithm
       // hack for Dymola 2017
       // TEout := TAout and not disTransition;
       TEout := Functions.OddsAndEnds.boolAnd(TAout, not disTransition);
-      if enablingType==PNlib.Types.EnablingType.Priority then     //deterministic enabling according to priorities
+      if enablingType==1 then     //deterministic enabling according to priorities
         arcWeightSum:=0;
-        for i in 1: nOut loop  //discrete transitions are proven at first
-          Index:=Modelica.Math.Vectors.find(i,enablingPrio);
-           if Index>0 and disTAout[Index] and ((t-arcWeightSum-arcWeight[Index]-minMarks>=-Constants.almost_eps) or Functions.OddsAndEnds.isEqual(arcWeight[Index], 0.0)) then
-             TEout[Index]:=true;
-             arcWeightSum:=arcWeightSum + arcWeight[Index];
-           end if;
+        for i in 1: nOut loop
+          if disTAout[i] and ((t-(arcWeightSum+arcWeight[i])>=minMarks) or Functions.OddsAndEnds.isEqual(arcWeight[i], 0.0)) then
+            TEout[i]:=true;
+            arcWeightSum:=arcWeightSum + arcWeight[i];
+          end if;
         end for;
       else                        //probabilistic enabling according to enabling probabilities
         arcWeightSum:=0;
@@ -120,7 +117,6 @@ algorithm
       state128 := pre(state128);
       sumEnablingProbTAout := 0.0;
       endWhile := false;
-      Index := 0;
     end if;
   end when;
   // hack for Dymola 2017

@@ -15,119 +15,122 @@ model Model "Top Model"
   parameter Real time_installation=4 "Time for installation";
   parameter Real time_accounting=1 "Time for order accounting";
 
-  TDS RaiseRequest(nOut=1, h=1/time_between_requests)
+  Components.TS RaiseRequest(nOut=1, h=1/time_between_requests)
     "a request is raised from a customer"
-    annotation(Placement(transformation(extent={{-400,90},{-380,110}})));
-  PD Request(
+    annotation (Placement(transformation(extent={{-400,90},{-380,110}})));
+  Components.PD Request(
     nIn=1,
-    enablingType=PNlib.Types.EnablingType.Probability,
+    enablingType=2,
     nOut=1) "Request of a custumer is available"
-    annotation(Placement(transformation(extent={{-358,90},{-338,110}})));
-  PD Consultants(
-    enablingType=PNlib.Types.EnablingType.Probability,
+    annotation (Placement(transformation(extent={{-358,90},{-338,110}})));
+  Components.PD Consultants(
+    enablingType=2,
     nOut=1,
     nIn=1,
     startTokens=Nr_Consultant,
-    maxTokens=Nr_Consultant)
-           annotation(Placement(transformation(
+    maxTokens=Nr_Consultant) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={-302,140})));
-  PD Solution(nOut=1, nIn=1) "A solution for the customer wish has been found"
-    annotation(Placement(transformation(extent={{10,10},{-10,-10}},
+  Components.PD Solution(nOut=1, nIn=1)
+    "A solution for the customer wish has been found" annotation (Placement(
+        transformation(
+        extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-154,104})));
-  PD Complete(nIn=1, nOut=1) "Consulting is completed"
-    annotation(Placement(transformation(extent={{-256,90},{-236,110}})));
-  PD Offer(nOut=1, nIn=1) "The offer is complete"
-    annotation(Placement(transformation(extent={{-42,94},{-22,114}})));
-  PD No_Solution(nIn=1) "No solution for the costumer wish has been found"
-    annotation(Placement(transformation(extent={{-164,60},{-144,80}})));
-  PD Advisor1(
+  Components.PD Complete(nIn=1, nOut=1) "Consulting is completed"
+    annotation (Placement(transformation(extent={{-256,90},{-236,110}})));
+  Components.PD Offer(nOut=1, nIn=1) "The offer is complete"
+    annotation (Placement(transformation(extent={{-42,94},{-22,114}})));
+  Components.PD No_Solution(nIn=1)
+    "No solution for the costumer wish has been found"
+    annotation (Placement(transformation(extent={{-164,60},{-144,80}})));
+  Components.PD Advisor1(
     nOut=1,
-    enablingType=PNlib.Types.EnablingType.Probability,
+    enablingType=2,
     nIn=1,
-    startTokens=Nr_Advisor1)                    annotation(Placement(
-        transformation(
+    startTokens=Nr_Advisor1) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={-96,144})));
-  TD Offer_to_Customer(
+  Components.TD Offer_to_Customer(
     nOut=1,
     delay=8,
     nIn=1,
     arcWeightIn={pre(Offer.t)},
     arcWeightOut={pre(Offer.t)}) "The offers of a day are sent to the customer"
-    annotation(Placement(transformation(extent={{4,94},{24,114}})));
-  PD Offer_at_Customer(nIn=1, nOut=1) "The offer has arrived the customer"
-    annotation(Placement(transformation(extent={{56,94},{76,114}})));
+    annotation (Placement(transformation(extent={{4,94},{24,114}})));
+  Components.PD Offer_at_Customer(nIn=1, nOut=1)
+    "The offer has arrived the customer"
+    annotation (Placement(transformation(extent={{56,94},{76,114}})));
   PNproBP.XOR Replying(upperProb=0.8, lowerProb=0.2)
     "Does the customer answer to the offer?"
     annotation(Placement(transformation(extent={{202,94},{222,114}})));
-  PD Answer(nOut=1, nIn=1) "Answer from the customer"
-    annotation(Placement(transformation(extent={{-10,10},{10,-10}},
+  Components.PD Answer(nOut=1, nIn=1) "Answer from the customer" annotation (
+      Placement(transformation(
+        extent={{-10,10},{10,-10}},
         rotation=0,
         origin={270,108})));
-  PD Order(nIn=2, nOut=1) "The customer gives the order"
-    annotation(Placement(transformation(extent={{376,56},{396,76}})));
-  PD No_Order(nIn=2) "no order"
-    annotation(Placement(transformation(extent={{10,10},{-10,-10}},
+  Components.PD Order(nIn=2, nOut=1) "The customer gives the order"
+    annotation (Placement(transformation(extent={{376,56},{396,76}})));
+  Components.PD No_Order(nIn=2) "no order" annotation (Placement(transformation(
+        extent={{10,10},{-10,-10}},
         rotation=180,
         origin={392,114})));
-  PD Advisor2(
-    enablingType=PNlib.Types.EnablingType.Probability,
+  Components.PD Advisor2(
+    enablingType=2,
     startTokens=Nr_Advisor2,
     nOut=1,
-    nIn=1) annotation(Placement(transformation(
+    nIn=1) annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={324,-32})));
-  PD planned_order(nIn=1, nOut=1) "The order is planned"
-    annotation(Placement(transformation(extent={{-10,-10},{10,10}},
+  Components.PD planned_order(nIn=1, nOut=1) "The order is planned" annotation
+    (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=180,
         origin={234,-112})));
-  PD material_order(nIn=1, nOut=1)
-    "The planning is complete and the material can be ordered"
-    annotation(Placement(transformation(extent={{-10,-10},{10,10}},
+  Components.PD material_order(nIn=1, nOut=1)
+    "The planning is complete and the material can be ordered" annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=180,
         origin={240,-68})));
-  PD Material_supplied(nIn=1, nOut=1) "The required material is supplied"
-    annotation(Placement(transformation(extent={{-10,-10},{10,10}},
+  Components.PD Material_supplied(nIn=1, nOut=1)
+    "The required material is supplied" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=180,
         origin={124,-68})));
-  PD Installation_possible(nIn=1, nOut=1) "the installation is possible"
-                                               annotation(Placement(
-        transformation(
+  Components.PD Installation_possible(nIn=1, nOut=1)
+    "the installation is possible" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={8,-68})));
-  PD Installer(
+  Components.PD Installer(
     startTokens=Nr_Installer,
     nOut=1,
-    nIn=1)  annotation(Placement(transformation(
+    nIn=1) annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-46,-28})));
-  PD Installation_complete(nIn=1, nOut=1) "The installtion is complete"
-                                                    annotation(Placement(
-        transformation(
+  Components.PD Installation_complete(nIn=1, nOut=1)
+    "The installtion is complete" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-124,-66})));
-  PD Invoice(nIn=1, nOut=1)
-    "the invoice is complete and is sent to the customer"
-                                       annotation(Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={-242,-66})));
-  PD Order_complete(nIn=1) "the order is completed"
-                                            annotation(Placement(
+  Components.PD Invoice(nIn=1, nOut=1)
+    "the invoice is complete and is sent to the customer" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
+        origin={-242,-66})));
+  Components.PD Order_complete(nIn=1) "the order is completed" annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
         origin={-334,-66})));
-  inner Settings settings(scale=10)
-    annotation(Placement(transformation(extent={{-420,166},{-386,200}})));
+  inner Components.Settings settings(scale=10, showCapacity=2)
+    annotation (Placement(transformation(extent={{-420,166},{-386,200}})));
   PNproBP.Parallel Consulting(
     nIn=2,
     nOut=2,
@@ -217,13 +220,14 @@ model Model "Top Model"
         extent={{-5,-5},{5,5}},
         rotation=90,
         origin={-33,129})));
-  PD No_Answer(nOut=1, nIn=1) "Nor answer from the customer"
-    annotation(Placement(transformation(extent={{260,60},{280,80}})));
+  Components.PD No_Answer(nOut=1, nIn=1) "Nor answer from the customer"
+    annotation (Placement(transformation(extent={{260,60},{280,80}})));
   PNproBP.XOR Calling(upperProb=0.8, lowerProb=0.2)
     "Call the customer to get the answer"
     annotation(Placement(transformation(extent={{310,60},{330,80}})));
-  PD WaitingTime_over(nOut=1, nIn=1) "The waiting time of the answer is over"
-    annotation(Placement(transformation(extent={{150,94},{170,114}})));
+  Components.PD WaitingTime_over(nOut=1, nIn=1)
+    "The waiting time of the answer is over"
+    annotation (Placement(transformation(extent={{150,94},{170,114}})));
   PNproBP.Waiting Waiting(delay=40) "Waiting of the answer from the customer"
     annotation(Placement(transformation(extent={{102,94},{122,114}})));
   PNproBP.Waiting Supply(delay=40) "Waitin on the required material"
@@ -236,10 +240,10 @@ model Model "Top Model"
     annotation(Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-280,-66})));
-  PD Accountant(
+  Components.PD Accountant(
     startTokens=Nr_Accountant,
     nOut=1,
-    nIn=1) annotation(Placement(transformation(
+    nIn=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-178,-22})));
@@ -248,12 +252,11 @@ model Model "Top Model"
         extent={{-5,-5},{5,5}},
         rotation=90,
         origin={-179,5})));
-  PD Controller(
-    enablingType=PNlib.Types.EnablingType.Probability,
+  Components.PD Controller(
+    enablingType=2,
     nOut=1,
     nIn=1,
-    startTokens=Nr_Controller)
-           annotation(Placement(transformation(
+    startTokens=Nr_Controller) annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={72,-24})));
@@ -262,7 +265,7 @@ model Model "Top Model"
         rotation=90,
         origin={71,5})));
 equation
-  connect(RaiseRequest.outPlaces[1], Request.inTransition[1])    annotation(
+  connect(RaiseRequest.outPlaces[1], Request.inTransition[1])    annotation (
       Line(
       points={{-385.2,100},{-358.8,100}},
       color={0,0,0},
@@ -277,7 +280,7 @@ equation
       arrow={Arrow.None,Arrow.Filled}));
 
   connect(Offer.outTransition[1], Offer_to_Customer.inPlaces[1])
-                                                                annotation(
+                                                                annotation (
       Line(
       points={{-21.2,104},{-21.2,104},{9.2,104}},
       color={0,0,0},
@@ -384,14 +387,14 @@ equation
       color={0,0,0},
       smooth=Smooth.Bezier,
       arrow={Arrow.None,Arrow.Filled}));
-  connect(Replying.outPlaces2, No_Answer.inTransition[1])         annotation(
+  connect(Replying.outPlaces2, No_Answer.inTransition[1])         annotation (
       Line(
       points={{223,100},{236,100},{236,70},{259.2,70}},
       color={0,0,0},
       smooth=Smooth.Bezier,
       arrow={Arrow.None,Arrow.Filled}));
   connect(Offer_at_Customer.outTransition[1], Waiting.inPlaces1)
-                                                                annotation(
+                                                                annotation (
       Line(
       points={{76.8,104},{101,104}},
       color={0,0,0},
@@ -432,7 +435,7 @@ equation
       points={{-155,125},{-155,125.5},{-154,125.5},{-154,114.6}},
       color={255,127,0},
       smooth=Smooth.Bezier));
-  connect(w_Advisor.u, Advisor1.pd_t)                              annotation(
+  connect(w_Advisor.u, Advisor1.pd_t)                              annotation (
       Line(
       points={{-95,163},{-96,154.6}},
       color={255,127,0},
@@ -459,7 +462,7 @@ equation
       color={0,0,0},
       smooth=Smooth.Bezier,
       arrow={Arrow.None,Arrow.Filled}));
-  connect(Planning.outPlaces1[2], material_order.inTransition[1]) annotation(
+  connect(Planning.outPlaces1[2], material_order.inTransition[1]) annotation (
       Line(
       points={{315,-68},{250.8,-68}},
       color={0,0,0},
@@ -470,13 +473,13 @@ equation
       color={0,0,0},
       smooth=Smooth.None,
       arrow={Arrow.None,Arrow.Filled}));
-  connect(Supply.outPlaces1, Material_supplied.inTransition[1]) annotation(
+  connect(Supply.outPlaces1, Material_supplied.inTransition[1]) annotation (
       Line(
       points={{171,-68},{134.8,-68}},
       color={0,0,0},
       smooth=Smooth.None,
       arrow={Arrow.None,Arrow.Filled}));
-  connect(Planning.outPlaces1[3], planned_order.inTransition[1]) annotation(
+  connect(Planning.outPlaces1[3], planned_order.inTransition[1]) annotation (
       Line(
       points={{315,-68.6667},{282,-68.6667},{282,-112},{244.8,-112}},
       color={0,0,0},
@@ -493,7 +496,7 @@ equation
       color={0,0,0},
       smooth=Smooth.None,
       arrow={Arrow.None,Arrow.Filled}));
-  connect(planned_order.outTransition[1], Controlling.inPlaces1[2]) annotation(
+  connect(planned_order.outTransition[1], Controlling.inPlaces1[2]) annotation (
      Line(
       points={{223.2,-112},{102,-112},{102,-68},{85,-68}},
       color={0,0,0},
@@ -504,13 +507,13 @@ equation
       points={{-2.8,-68},{-18.9,-68},{-18.9,-67.5},{-35,-67.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(Installer.outTransition[1], Installation.inPlaces1[2]) annotation(
+  connect(Installer.outTransition[1], Installation.inPlaces1[2]) annotation (
       Line(
       points={{-35.2,-28},{-22,-28},{-22,-68.5},{-35,-68.5}},
       color={0,0,0},
       smooth=Smooth.Bezier,
       arrow={Arrow.None,Arrow.Filled}));
-  connect(Installation.outPlaces1[1], Installer.inTransition[1]) annotation(
+  connect(Installation.outPlaces1[1], Installer.inTransition[1]) annotation (
       Line(
       points={{-57,-67.5},{-72,-67.5},{-72,-28},{-56.8,-28}},
       color={0,0,0},
@@ -527,13 +530,13 @@ equation
       points={{-134.8,-66},{-148.9,-66},{-148.9,-65.5},{-163,-65.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(Accountant.outTransition[1], Accounting.inPlaces1[2]) annotation(
+  connect(Accountant.outTransition[1], Accounting.inPlaces1[2]) annotation (
       Line(
       points={{-167.2,-22},{-150,-22},{-150,-66.5},{-163,-66.5}},
       color={0,0,0},
       smooth=Smooth.Bezier,
       arrow={Arrow.None,Arrow.Filled}));
-  connect(Accounting.outPlaces1[1], Accountant.inTransition[1]) annotation(
+  connect(Accounting.outPlaces1[1], Accountant.inTransition[1]) annotation (
       Line(
       points={{-185,-65.5},{-212,-65.5},{-212,-22},{-188.8,-22}},
       color={0,0,0},
@@ -573,10 +576,10 @@ equation
       points={{386,76.6},{386,76.6},{386,85},{387,85}},
       color={255,127,0},
       smooth=Smooth.Bezier));
-  annotation(
+  annotation (
     Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-420,-145},
             {420,200}}),
                     graphics),
-    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-420,-145},{420,200}}))/*,
-    experiment(StopTime=320, Tolerance = 1e-6)*/);
+    Icon(coordinateSystem(preserveAspectRatio=true, extent={{-420,-145},{420,200}})),
+    experiment(StopTime=320, Tolerance = 1e-6));
 end Model;

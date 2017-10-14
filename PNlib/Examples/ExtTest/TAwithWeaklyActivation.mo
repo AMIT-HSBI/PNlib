@@ -1,13 +1,26 @@
 within PNlib.Examples.ExtTest;
 model TAwithWeaklyActivation
   extends Modelica.Icons.Example;
-  inner PNlib.Settings settings annotation(Placement(transformation(extent={{-80, 60}, {-60, 80}})));
-  PNlib.PC P1(nIn=1, nOut=2, startMarks=4) annotation(Placement(transformation(extent={{-40, 30}, {-20, 50}})));
-  PNlib.PC P2(nIn=1, maxMarks=3) annotation(Placement(transformation(extent={{50, 10}, {70, 30}})));
-  PNlib.TA TA1(normalArc=false, testValue=5) annotation(Placement(transformation(extent={{-7, -2}, {7, 2}}, rotation=0, origin={9, 20})));
-  PNlib.TC T1(nOut=1, maximumSpeed=if time > 2 then 2 else 1) annotation(Placement(transformation(extent={{-70, 30}, {-50, 50}})));
-  PNlib.TC T2(nOut=1, nIn=1) annotation(Placement(transformation(extent={{20, 10}, {40, 30}})));
-  PNlib.TC T3(nIn=1, maximumSpeed=if time > 3 then 2 else 0) annotation(Placement(transformation(extent={{20, 50}, {40, 70}})));
+  inner PNlib.Components.Settings settings
+    annotation (Placement(transformation(extent={{-80,60},{-60,80}})));
+  PNlib.Components.PC P1(
+    nIn=1,
+    nOut=2,
+    startMarks=4)
+    annotation (Placement(transformation(extent={{-40,30},{-20,50}})));
+  PNlib.Components.PC P2(nIn=1, maxMarks=3)
+    annotation (Placement(transformation(extent={{50,10},{70,30}})));
+  PNlib.Components.TA TA1(normalArc=2, testValue=5) annotation (Placement(
+        transformation(
+        extent={{-7,-2},{7,2}},
+        rotation=0,
+        origin={9,20})));
+  PNlib.Components.TC T1(nOut=1, maximumSpeed=if time > 2 then 2 else 1)
+    annotation (Placement(transformation(extent={{-70,30},{-50,50}})));
+  PNlib.Components.TC T2(nOut=1, nIn=1)
+    annotation (Placement(transformation(extent={{20,10},{40,30}})));
+  PNlib.Components.TC T3(nIn=1, maximumSpeed=if time > 3 then 2 else 0)
+    annotation (Placement(transformation(extent={{20,50},{40,70}})));
 equation
   connect(P1.outTransition[1], TA1.inPlace) annotation(Line(points={{-19.2, 39.5}, {-10, 39.5}, {-10, 20}, {0.888889, 20}}, color={0, 0, 0}));
   connect(T1.outPlaces[1], P1.inTransition[1]) annotation(Line(points={{-55.2, 40}, {-40.8, 40}}, color={0, 0, 0}));

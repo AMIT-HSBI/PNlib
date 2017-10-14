@@ -46,8 +46,8 @@ model Model "Top model"
     hmax=15000,
     text="duration")
     annotation(Placement(transformation(extent={{14,54},{48,88}})));
-  inner Settings settings
-    annotation(Placement(transformation(extent={{-122,-122},{-102,-102}})));
+  inner Components.Settings settings
+    annotation (Placement(transformation(extent={{-122,-122},{-102,-102}})));
 equation
   when reStart then
     orders__=orders_.levelSensor_;
@@ -62,7 +62,7 @@ equation
       color={0,0,127},
       smooth=Smooth.None));
   connect(printing_machine.number_exemplars_, exemplars_.levelSensor)
-                                                                 annotation(
+                                                                 annotation (
       Line(
       points={{53.2,5.76},{71,5.76},{71,22.3}},
       color={0,0,127},
@@ -71,7 +71,7 @@ equation
       points={{-64.82,-16.3},{-32.12,-16.3},{-32.12,-16}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(role_change.rollenwechsel_, maculation.ausschleussen_)   annotation(
+  connect(role_change.rollenwechsel_, maculation.ausschleussen_)   annotation (
       Line(
       points={{-64.82,-33.7},{-40,-34},{-40,-101},{-25.9,-101}},
       color={0,0,0},
@@ -90,12 +90,12 @@ equation
       points={{-64,57.4},{-64,54.7},{-33.9,54.7}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(role_change.meter_role_, role_.levelSensor)       annotation(
+  connect(role_change.meter_role_, role_.levelSensor)       annotation (
       Line(
       points={{-98.3,-1.8},{-98.3,-4.5},{-98,-4.5},{-98,11.4}},
       color={0,0,127},
       smooth=Smooth.None));
-  connect(start_Stop.rollen_wechsel_, role_change.start_)     annotation(
+  connect(start_Stop.rollen_wechsel_, role_change.start_)     annotation (
      Line(
       points={{-33.9,43.2},{-76.6,43.2},{-76.6,-1.8}},
       color={0,0,0},
@@ -194,6 +194,6 @@ equation
           fillPattern=FillPattern.Solid,
           textString=DynamicSelect("0",realString(duration__,1,0)))}), Icon(coordinateSystem(preserveAspectRatio=true,
           extent={{-125,-125},{125,125}})),
-    //experiment(StopTime=32000, Tolerance = 1e-6),
+    experiment(StopTime=32000, Tolerance = 1e-6),
     __Dymola_experimentSetupOutput);
 end Model;

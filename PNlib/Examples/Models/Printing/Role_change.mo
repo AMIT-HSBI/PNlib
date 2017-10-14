@@ -5,51 +5,52 @@ model Role_change "change of the paper role"
   parameter Real cutting_at=500 "length by which the rest is cut";
   parameter Real display_time=100 "for animation";
 
-  TD new_role(
+  PNlib.Components.TD new_role(
     nOut=2,
     delay=1,
     nIn=1,
     arcWeightIn={1},
     firingCon=pre(start),
     arcWeightOut={Role_length,1})
-    annotation(Placement(transformation(extent={{-88,-20},{-68,0}})));
-  TD cutting_rest(
+    annotation (Placement(transformation(extent={{-88,-20},{-68,0}})));
+  PNlib.Components.TD cutting_rest(
     nIn=1,
     nOut=1,
     delay=2,
     firingCon=pre(start))
-    annotation(Placement(transformation(extent={{-20,38},{0,58}})));
-  PD P1(
+    annotation (Placement(transformation(extent={{-20,38},{0,58}})));
+  PNlib.Components.PD P1(
     maxTokens=1,
     nIn=2,
-    nOut=1) annotation(Placement(transformation(extent={{10,38},{30,58}})));
-  TD       T1(
+    nOut=1) annotation (Placement(transformation(extent={{10,38},{30,58}})));
+  PNlib.Components.TD T1(
     nIn=2,
     nOut=1,
     firingCon=pre(start),
     arcWeightIn={1,Role.t})
-            annotation(Placement(transformation(extent={{42,38},{62,58}})));
-  PNlib.PD P2(nIn=1, nOut=1,
+    annotation (Placement(transformation(extent={{42,38},{62,58}})));
+  PNlib.Components.PD P2(
+    nIn=1,
+    nOut=1,
     maxTokens=1)
-    annotation(Placement(transformation(extent={{68,38},{88,58}})));
-  IA       IA2(testValue=cutting_at)
-               annotation(Placement(transformation(
+    annotation (Placement(transformation(extent={{68,38},{88,58}})));
+  PNlib.Components.IA IA2(testValue=cutting_at) annotation (Placement(
+        transformation(
         extent={{-8.5,-2.50012},{8.5,2.50012}},
         rotation=90,
         origin={-32.5,38.5})));
-  PNlib.PD Role_change(
+  PNlib.Components.PD Role_change(
     nIn=1,
     maxTokens=1,
-    nOut=2)
-    annotation(Placement(transformation(extent={{-10,-90},{10,-70}})));
-  PC Role(
+    nOut=2) annotation (Placement(transformation(extent={{-10,-90},{10,-70}})));
+  PNlib.Components.PC Role(
     nIn=1,
     nOut=3,
     minMarks=0,
     maxMarks=PNlib.Constants.inf,
     startMarks=0,
     reStart=reStart) "[m]"
-    annotation(Placement(transformation(extent={{-56,-20},{-36,0}})));
+    annotation (Placement(transformation(extent={{-56,-20},{-36,0}})));
   Interfaces.PlaceOut rollenwechsel_[2]
                                      annotation(Placement(transformation(
           extent={{100,-86},{116,-66}}),
@@ -107,7 +108,7 @@ equation
       points={{88.8,48},{98,48},{98,72},{-96,72},{-96,-10},{-82.8,-10}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(new_role.outPlaces[2], Role_change.inTransition[1])     annotation(
+  connect(new_role.outPlaces[2], Role_change.inTransition[1])     annotation (
       Line(
       points={{-73.2,-9.5},{-72,-10},{-68,-10},{-68,-80},{-10.8,-80}},
       color={0,0,0},

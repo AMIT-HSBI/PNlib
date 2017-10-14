@@ -2,12 +2,12 @@ within PNlib.Examples.ConTest;
 model TCtoPC
   extends Modelica.Icons.Example;
 
-  inner PNlib.Settings settings annotation(Placement(transformation(extent={{20, 20},
-            {40, 40}})));
-  PNlib.TC T1(nOut = 1) annotation(Placement(transformation(extent={{-40, -10}, {
-            -20, 10}})));
-  PNlib.PC P1(nIn = 1) annotation(Placement(transformation(extent={{-10, -10}, {
-            10, 10}})));
+  inner PNlib.Components.Settings settings
+    annotation (Placement(transformation(extent={{20,20},{40,40}})));
+  PNlib.Components.TC T1(nOut=1)
+    annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
+  PNlib.Components.PC P1(nIn=1)
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 equation
   connect(T1.outPlaces[1], P1.inTransition[1]) annotation(Line(points={{-25.2, 0},
           {-10.8, 0}}, color = {0, 0, 0}, smooth = Smooth.None));

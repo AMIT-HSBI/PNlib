@@ -10,63 +10,64 @@ model Parallel
   parameter Integer nOut=0 "number of output places" annotation(Dialog(connectorSizing=true));
   Boolean fire "firability of continuous transition";
   Integer fireColor[3] "for animation";
-  TD T1(
+  Components.TD T1(
     delay=delay,
     nIn=1,
-    nOut=1) annotation(Placement(transformation(extent={{2,74},{22,94}})));
-  TD puffern(
+    nOut=1) annotation (Placement(transformation(extent={{2,74},{22,94}})));
+  Components.TD puffern(
     nOut=1,
     nIn=nIn,
     arcWeightIn=arcWeightIn,
     delay=0.001)
-             annotation(Placement(transformation(extent={{-100,4},{-80,24}})));
-  PD Puffer(nIn=1, nOut=6)
-    annotation(Placement(transformation(extent={{-70,4},{-50,24}})));
-  TD T2(
+    annotation (Placement(transformation(extent={{-100,4},{-80,24}})));
+  Components.PD Puffer(nIn=1, nOut=6)
+    annotation (Placement(transformation(extent={{-70,4},{-50,24}})));
+  Components.TD T2(
     delay=delay,
     nIn=1,
     nOut=1,
     firingCon=noParallel > 1)
-           annotation(Placement(transformation(extent={{2,40},{22,60}})));
-  TD T3(
+    annotation (Placement(transformation(extent={{2,40},{22,60}})));
+  Components.TD T3(
     delay=delay,
     nIn=1,
     nOut=1,
     firingCon=noParallel > 2)
-            annotation(Placement(transformation(extent={{2,6},{22,26}})));
-  TD T4(
+    annotation (Placement(transformation(extent={{2,6},{22,26}})));
+  Components.TD T4(
     delay=delay,
     nIn=1,
     nOut=1,
     firingCon=noParallel > 3)
-            annotation(Placement(transformation(extent={{2,-28},{22,-8}})));
-  TD T5(
+    annotation (Placement(transformation(extent={{2,-28},{22,-8}})));
+  Components.TD T5(
     delay=delay,
     nIn=1,
     nOut=1,
     firingCon=noParallel > 4)
-            annotation(Placement(transformation(extent={{2,-62},{22,-42}})));
-  TD T6(
+    annotation (Placement(transformation(extent={{2,-62},{22,-42}})));
+  Components.TD T6(
     delay=delay,
     nIn=1,
     nOut=1,
     firingCon=noParallel > 5)
-            annotation(Placement(transformation(extent={{2,-96},{22,-76}})));
+    annotation (Placement(transformation(extent={{2,-96},{22,-76}})));
   Interfaces.TransitionIn inPlaces1[nIn]
     annotation(Placement(transformation(extent={{-120,-10},{-100,10}})));
-  PD P1(nIn=6, nOut=1)
-    annotation(Placement(transformation(extent={{46,0},{66,20}})));
-  TD T7(
+  Components.PD P1(nIn=6, nOut=1)
+    annotation (Placement(transformation(extent={{46,0},{66,20}})));
+  Components.TD T7(
     nOut=nOut,
     nIn=1,
     arcWeightOut=arcWeightOut,
     delay=0.0001)
-            annotation(Placement(transformation(extent={{70,0},{90,20}})));
+    annotation (Placement(transformation(extent={{70,0},{90,20}})));
   Interfaces.TransitionOut outPlaces1[nOut]
     annotation(Placement(transformation(extent={{100,-10},{120,10}})));
   Boolean ani "for transition animation";
 protected
-  outer Settings settings "global settings for animation and display";
+  outer Components.Settings settings
+    "global settings for animation and display";
   discrete Real fireTime;
 equation
   fire=T1.fire or T2.fire or T3.fire or T4.fire or T5.fire or T6.fire;
@@ -74,7 +75,7 @@ equation
      fireTime=time;
      ani=true;
   end when;
-  fireColor=if (fireTime+settings.timeFire>=time and settings.animateTransition and ani) then {255,255,0} else {128,255,0};
+  fireColor=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255,255,0} else {128,255,0};
 
   connect(puffern.outPlaces[1], Puffer.inTransition[1]) annotation(Line(
       points={{-85.2,14},{-70.8,14}},

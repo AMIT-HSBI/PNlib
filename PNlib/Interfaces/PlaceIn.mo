@@ -18,5 +18,6 @@ connector PlaceIn "part of place model to connect places to input transitions"
   output Boolean disPlace "Type of the place (discrete or continuous)" annotation(HideResult=true);
   output Boolean emptied "Is the continuous place emptied by output transitions?" annotation(HideResult=true);
   output Real speedSum "Output speed of a continuous place" annotation(HideResult=true);
-  annotation(Icon(graphics={Polygon(points={{-100, 100}, {98, 0}, {-100, -100}, {-100, 100}}, lineColor={0, 0, 0}, fillColor={255, 0, 0}, fillPattern=FillPattern.Solid)}));
+  annotation(Icon(graphics={Polygon(points={{-100, 100}, {98, 0}, {-100, -100}, {-100, 100}}, lineColor={0, 0, 0}, fillColor={255, 0, 0},
+            fillPattern =                                                                                                                             FillPattern.Solid)}));
 end PlaceIn;

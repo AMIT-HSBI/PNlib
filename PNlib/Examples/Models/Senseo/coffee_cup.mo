@@ -12,7 +12,7 @@ model coffee_cup "Animation of coffee cup"
   parameter Real color[3]={0,0,255};
 equation
   level=levelSensor/hmax;
-  annotation(
+  annotation (
     Diagram(coordinateSystem(
           preserveAspectRatio=true,
           extent={{-100,-100},{100,100}},

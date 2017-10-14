@@ -18,15 +18,13 @@ model Senseo_Model "Top Model"
     annotation(Placement(transformation(extent={{-24,44},{-4,64}})));
   Counter_real counter_real(text="Temperature", hmax=90)
     annotation(Placement(transformation(extent={{66,42},{104,80}})));
-  inner PNlib.Settings settings annotation(
-    Placement(visible = true, transformation(origin = {-90, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(senseo_Maschine.amount_cups_, amount_cups.levelSensor)
     annotation(Line(
       points={{27.5238,37.6},{27.5238,38},{28,38},{28,51.4}},
       color={255,127,0},
       smooth=Smooth.None));
-  connect(refill_Water.refill_[2], water_tank.inTransition1) annotation(
+  connect(refill_Water.refill_[2], water_tank.inTransition1) annotation (
       Line(
       points={{20,-72.65},{20,-68},{84,-68},{84,-52}},
       color={0,0,0},
@@ -50,13 +48,13 @@ equation
       points={{-89.04,-40.8},{-88.7,-40.8},{-88.7,-90.2},{0.2,-90.2}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(senseo_Maschine.stopornext_, start.stopornext_) annotation(
+  connect(senseo_Maschine.stopornext_, start.stopornext_) annotation (
       Line(
       points={{-6.7619,-36.8},{-42.24,-36.8}},
       color={0,0,0},
       smooth=Smooth.None));
 
-  connect(start.start_[1], senseo_Maschine.startheating_) annotation(
+  connect(start.start_[1], senseo_Maschine.startheating_) annotation (
       Line(
       points={{-44.4,11.6},{-46,11.6},{-46,14.56},{-7.2381,14.56}},
       color={0,0,0},
@@ -65,12 +63,12 @@ equation
       points={{-44.4,15.6},{-44.4,14},{-34,14},{-34,50},{-25,50}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(insert_Pad.insertpad_, senseo_Maschine.padinsert_) annotation(
+  connect(insert_Pad.insertpad_, senseo_Maschine.padinsert_) annotation (
       Line(
       points={{-3,50},{10,50},{10,37.6},{10.381,37.6}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(senseo_Maschine.coffee_cup_, coffe_cup.levelSensor) annotation(
+  connect(senseo_Maschine.coffee_cup_, coffe_cup.levelSensor) annotation (
      Line(
       points={{41.8095,4},{69.22,4},{69.22,4.4}},
       color={0,0,127},
@@ -82,6 +80,6 @@ equation
   annotation(Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-100,
             -100},{120,80}}),
                       graphics), Icon(coordinateSystem(
-          preserveAspectRatio=true, extent={{-100,-100},{120,80}}))/*,
-    experiment(StopTime=18000, Tolerance = 1e-6)*/);
+          preserveAspectRatio=true, extent={{-100,-100},{120,80}})),
+    experiment(StopTime=18000, Tolerance = 1e-6));
 end Senseo_Model;

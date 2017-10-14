@@ -7,20 +7,20 @@ model Puffer
 
   Real arcWeightOut[nOut]=fill(1,nOut) "arc weights of output place"
                                      annotation(Dialog(enable = true, group = "Arc Weights"));
-  TD T1(
+  Components.TD T1(
     nIn=1,
     nOut=nOut,
     delay=delay,
     arcWeightOut=arcWeightOut)
-             annotation(Placement(transformation(extent={{-18,-10},{2,10}})));
-  PD P1(nIn=1, nOut=1)
-    annotation(Placement(transformation(extent={{-54,-10},{-34,10}})));
-  TD T3(
+    annotation (Placement(transformation(extent={{-18,-10},{2,10}})));
+  Components.PD P1(nIn=1, nOut=1)
+    annotation (Placement(transformation(extent={{-54,-10},{-34,10}})));
+  Components.TD T3(
     nOut=1,
     nIn=nIn,
     arcWeightIn=arcWeightIn,
     delay=0.0001)
-             annotation(Placement(transformation(extent={{-88,-10},{-68,10}})));
+    annotation (Placement(transformation(extent={{-88,-10},{-68,10}})));
   Interfaces.TransitionIn inPlaces1[nIn]
     annotation(Placement(transformation(extent={{-120,-10},{-100,10}})));
   Interfaces.TransitionOut outPlaces1[nOut]
@@ -29,7 +29,8 @@ model Puffer
   Integer fireColor[3] "for animation";
    Boolean ani "for transition animation";
 protected
-  outer Settings settings "global settings for animation and display";
+  outer Components.Settings settings
+    "global settings for animation and display";
   discrete Real fireTime;
 equation
   fire=T1.fire;
@@ -37,7 +38,7 @@ equation
      fireTime=time;
      ani=true;
   end when;
-  fireColor=if (fireTime+settings.timeFire>=time and settings.animateTransition and ani) then {255,255,0} else {255,128,8};
+  fireColor=if (fireTime+settings.timeFire>=time and settings.animateTransition==1 and ani) then {255,255,0} else {255,128,8};
   connect(T3.outPlaces[1], P1.inTransition[1]) annotation(Line(
       points={{-73.2,0},{-54.8,0}},
       color={0,0,0},

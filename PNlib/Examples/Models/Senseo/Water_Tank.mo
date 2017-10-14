@@ -2,11 +2,11 @@ within PNlib.Examples.Models.Senseo;
 model Water_Tank "Water tank: the water tank of the Senseo machine."
   Real level "Tank level in % of max height";
   parameter Real color[3]={0,0,255};
-  PC       water_tank(
+  Components.PC water_tank(
     nOut=3,
     startMarks=0.5,
     maxMarks=0.75,
-    nIn=1) "cold water in tank" annotation(Placement(transformation(
+    nIn=1) "cold water in tank" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-8,6})));
@@ -41,7 +41,7 @@ equation
       points={{2.8,6.66667},{55.9,6.66667},{55.9,-10},{110,-10}},
       color={0,0,0},
       smooth=Smooth.None));
-  annotation(
+  annotation (
     Diagram(coordinateSystem(
           preserveAspectRatio=true,
           extent={{-100,-100},{100,100}},

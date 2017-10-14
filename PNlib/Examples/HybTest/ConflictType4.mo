@@ -2,14 +2,26 @@ within PNlib.Examples.HybTest;
 
 model ConflictType4
   extends Modelica.Icons.Example;
-  inner PNlib.Settings settings annotation(Placement(transformation(extent={{-60, 40}, {-40, 60}})));
-  PNlib.PC P1(nOut=1, startMarks=10) annotation(Placement(transformation(extent={{-50, 10}, {-30, 30}})));
-  PNlib.PC P2(nIn=1) annotation(Placement(transformation(extent={{30, 10}, {50, 30}})));
-  PNlib.PC P3(nOut=1, startMarks=10) annotation(Placement(transformation(extent={{-50, -50}, {-30, -30}})));
-  PNlib.PC P4(nIn=1) annotation(Placement(transformation(extent={{30, -50}, {50, -30}})));
-  PNlib.TC T1(nIn=2, nOut=2) annotation(Placement(transformation(extent={{-10, -50}, {10, -30}})));
-  PNlib.TC T2(nIn=2, nOut=2) annotation(Placement(transformation(extent={{-10, 10}, {10, 30}})));
-  PNlib.PD P5(nOut=2, nIn=2, startTokens=1) annotation(Placement(transformation(extent={{10, -20}, {-10, 0}})));
+  inner PNlib.Components.Settings settings
+    annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
+  PNlib.Components.PC P1(nOut=1, startMarks=10)
+    annotation (Placement(transformation(extent={{-50,10},{-30,30}})));
+  PNlib.Components.PC P2(nIn=1)
+    annotation (Placement(transformation(extent={{30,10},{50,30}})));
+  PNlib.Components.PC P3(nOut=1, startMarks=10)
+    annotation (Placement(transformation(extent={{-50,-50},{-30,-30}})));
+  PNlib.Components.PC P4(nIn=1)
+    annotation (Placement(transformation(extent={{30,-50},{50,-30}})));
+  PNlib.Components.TC T1(nIn=2, nOut=2)
+    annotation (Placement(transformation(extent={{-10,-50},{10,-30}})));
+  PNlib.Components.TC T2(nIn=2, nOut=2)
+    annotation (Placement(transformation(extent={{-10,10},{10,30}})));
+  PNlib.Components.PD P5(
+    nOut=2,
+    nIn=2,
+    startTokens=1,
+    enablingType=1)
+    annotation (Placement(transformation(extent={{10,-20},{-10,0}})));
 equation
   connect(P1.outTransition[1], T2.inPlaces[1]) annotation(Line(points={{-29.2, 20}, {-28, 20}, {-28, 20}, {-16, 20}, {-16, 19.5}, {-4.8, 19.5}}, color={0, 0, 0}));
   connect(T2.outPlaces[1], P2.inTransition[1]) annotation(Line(points={{4.8, 19.5}, {12, 19.5}, {12, 20}, {29.2, 20}}, color={0, 0, 0}));

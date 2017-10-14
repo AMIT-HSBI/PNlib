@@ -2,54 +2,54 @@ within PNlib.Examples.Models.Senseo;
 model Start
   "User action: starting and stopping the machine (step 1, 2, 11), initiating the insertion of coffee pads (step 5) and the refill of water (step 3)."
   parameter Real EV_time=600;
-  TDS starting(
+  Components.TS starting(
     h=1/EV_time,
     nIn=1,
-    nOut=1)
-    annotation(Placement(transformation(extent={{12,-26},{32,-6}})));
+    nOut=1) annotation (Placement(transformation(extent={{12,-26},{32,-6}})));
    Real colorHead[3]=if stop.t>0 then {255,0,0} else {0,255,0};
-  PD       start(       nOut=2,
+  Components.PD start(
+    nOut=2,
     nIn=3,
-    maxTokens=1)                                       annotation(Placement(transformation(
+    enablingType=1,
+    maxTokens=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={60,10})));
-  PD       stop(nIn=1,
+  Components.PD stop(
+    nIn=1,
     startTokens=1,
     nOut=1,
     maxTokens=1)
-    annotation(Placement(transformation(extent={{-20,-26},{0,-6}})));
+    annotation (Placement(transformation(extent={{-20,-26},{0,-6}})));
   Interfaces.PlaceOut refill_ annotation(Placement(transformation(extent={{100,-18},
             {120,2}}), iconTransformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-64,-82})));
-  TD       T8(
+  Components.TD T8(
     nIn=1,
     nOut=1,
-    delay=1)
-           annotation(Placement(transformation(extent={{-54,-26},{-34,-6}})));
-  TD       T6(
+    delay=1) annotation (Placement(transformation(extent={{-54,-26},{-34,-6}})));
+  Components.TD T6(
     nOut=1,
     nIn=1,
-    delay=1)
-           annotation(Placement(transformation(extent={{-54,22},{-34,42}})));
-  PD       nextcoffee(
+    delay=1) annotation (Placement(transformation(extent={{-54,22},{-34,42}})));
+  Components.PD nextcoffee(
     nIn=1,
     maxTokens=1,
     startTokens=0,
-    nOut=1) annotation(Placement(transformation(extent={{-18,22},{2,42}})));
-  TD       T10(nIn=1, nOut=1) annotation(Placement(transformation(
+    nOut=1) annotation (Placement(transformation(extent={{-18,22},{2,42}})));
+  Components.TD T10(nIn=1, nOut=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={24,32})));
-  PD       P1(
+  Components.PD P1(
     nIn=1,
     nOut=2,
-    enablingType=PNlib.Types.EnablingType.Probability,
+    enablingType=2,
     enablingProbOut={0.2,0.8},
     maxTokens=1)
-    annotation(Placement(transformation(extent={{-90,-4},{-70,16}})));
+    annotation (Placement(transformation(extent={{-90,-4},{-70,16}})));
   Interfaces.PlaceIn stopornext_ annotation(Placement(transformation(extent={{-120,-4},
             {-100,16}}), iconTransformation(
         extent={{-10,-10},{10,10}},
@@ -60,8 +60,8 @@ model Start
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-50,-82})));
-  TD T1(nIn=1, nOut=2)
-    annotation(Placement(transformation(extent={{78,22},{98,42}})));
+  Components.TD T1(nIn=1, nOut=2)
+    annotation (Placement(transformation(extent={{78,22},{98,42}})));
   Interfaces.TransitionOut start_[2]
     annotation(Placement(transformation(extent={{100,24},{120,44}}),
         iconTransformation(extent={{50,44},{70,64}})));
