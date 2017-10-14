@@ -1,4 +1,4 @@
-within PNlib.Examples.Models.Senseo;
+﻿within PNlib.Examples.Models.Senseo;
 model Senseo_Maschine
   "Senseo machine: the functionality of the Senseo machine (step 4, 6, 7, 8, 9, 10)."
   parameter Real Psenseo=1.450 "power of senseo machine [kW]";
@@ -7,168 +7,170 @@ model Senseo_Maschine
   parameter Real TE=20 "Environment temperature [°C]";
   parameter Real TC=10 "Temperature of new water [°C]";
 
-  PNlib.TC heating(
+  PNlib.Components.TC heating(
     nIn=3,
     nOut=1,
-    maximumSpeed=Psenseo/(c*water_hc.t))
-                            annotation(Placement(transformation(
+    maximumSpeed=Psenseo/(c*water_hc.t)) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-14,82})));
-  PNlib.TA TA1(testValue=0)
-               annotation(Placement(transformation(
+  PNlib.Components.TA TA1(testValue=0) annotation (Placement(transformation(
         extent={{-5.99995,-2.00001},{6.00002,2.00001}},
         rotation=270,
         origin={-40,96})));
-  PNlib.TA TA2(testValue=0.34)
-    annotation(Placement(transformation(extent={{-86,78},{-70,84}})));
-  PNlib.PC TW(
+  PNlib.Components.TA TA2(testValue=0.34)
+    annotation (Placement(transformation(extent={{-86,78},{-70,84}})));
+  PNlib.Components.PC TW(
     nIn=2,
     nOut=3,
     maxMarks=90,
     startMarks=20) "water temperature"
-    annotation(Placement(transformation(extent={{10,72},{30,92}})));
-  PNlib.TC pumping(
+    annotation (Placement(transformation(extent={{10,72},{30,92}})));
+  PNlib.Components.TC pumping(
     maximumSpeed=0.1,
     nOut=2,
     nIn=1,
-    arcWeightOut={1,TC/water_hc.t})
-            annotation(Placement(transformation(
+    arcWeightOut={1,TC/water_hc.t}) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-144,64})));
-  PNlib.TC cooling(
+  PNlib.Components.TC cooling(
     nIn=2,
     maximumSpeed=k*(TW.t - TE),
     firingCon=TW.t > TE)
-    annotation(Placement(transformation(extent={{62,72},{82,92}})));
-  PNlib.TD stopornext(
+    annotation (Placement(transformation(extent={{62,72},{82,92}})));
+  PNlib.Components.TD stopornext(
     nIn=2,
     firingCon=true,
     delay=1,
-    nOut=1)
-    annotation(Placement(transformation(extent={{158,100},{178,120}})));
-  PNlib.PC water_hc(
+    nOut=1) annotation (Placement(transformation(extent={{158,100},{178,120}})));
+  PNlib.Components.PC water_hc(
     nIn=1,
     nOut=2,
     startMarks=0.25,
-    maxMarks=0.25) "water in heating chamber" annotation(Placement(
+    maxMarks=0.25) "water in heating chamber" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-144,30})));
-  PNlib.TD T1(
+  PNlib.Components.TD T1(
     nIn=2,
     nOut=1,
     arcWeightIn={90,1},
-    delay=1) annotation(Placement(transformation(
+    delay=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={52,36})));
-  PNlib.TA TA3(testValue=90)
-               annotation(Placement(transformation(
+  PNlib.Components.TA TA3(testValue=90) annotation (Placement(transformation(
         extent={{-6,-2},{6,2}},
         rotation=270,
         origin={46,60})));
-  PNlib.PD decision(
+  PNlib.Components.PD decision(
     nIn=1,
     maxTokens=1,
     nOut=2,
-    enablingType=PNlib.Types.EnablingType.Probability,
-    enablingProbOut={0.7,0.3}) annotation(Placement(transformation(
+    enablingType=2,
+    enablingProbOut={0.7,0.3}) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={32,-32})));
-  PNlib.TD T2(
+  PNlib.Components.TD T2(
     nIn=1,
     nOut=1,
-    delay=1)
-            annotation(Placement(transformation(
+    delay=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-10,-10})));
-  PNlib.TD T3(
+  PNlib.Components.TD T3(
     nIn=1,
     nOut=1,
-    delay=1)
-            annotation(Placement(transformation(
+    delay=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-8,-54})));
-  PNlib.PD onecup(nIn=1, nOut=1,
-    maxTokens=1)                 annotation(Placement(transformation(
+  PNlib.Components.PD onecup(
+    nIn=1,
+    nOut=1,
+    maxTokens=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-46,-10})));
-  PNlib.PD twocups(nIn=1, nOut=1,
-    maxTokens=1)                  annotation(Placement(transformation(
+  PNlib.Components.PD twocups(
+    nIn=1,
+    nOut=1,
+    maxTokens=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-46,-54})));
-  PNlib.TD T4(nIn=1, nOut=1,
-    arcWeightOut={1})        annotation(Placement(transformation(
+  PNlib.Components.TD T4(
+    nIn=1,
+    nOut=1,
+    arcWeightOut={1}) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-74,-10})));
-  PNlib.TD T5(nIn=1, nOut=1,
-    arcWeightOut={2})        annotation(Placement(transformation(
+  PNlib.Components.TD T5(
+    nIn=1,
+    nOut=1,
+    arcWeightOut={2}) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-74,-54})));
-  PNlib.TC scalding(
+  PNlib.Components.TC scalding(
     maximumSpeed=0.003125,
     nIn=3,
     nOut=2,
-    arcWeightIn={1,1,TW.t/water_hc.t})
-            annotation(Placement(transformation(
+    arcWeightIn={1,1,TW.t/water_hc.t}) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-144,-30})));
-  TA       RA1(testValue=0)
-               annotation(Placement(transformation(extent={{-7,-2.00002},
-            {7,2.00002}},
+  Components.TA RA1(testValue=0) annotation (Placement(transformation(
+        extent={{-7,-2.00002},{7,2.00002}},
         rotation=90,
         origin={-36,41})));
-  PNlib.PC coffee_cup(nIn=1, nOut=1)
-                         annotation(Placement(transformation(
+  PNlib.Components.PC coffee_cup(nIn=1, nOut=1) annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-144,-74})));
-  inner PNlib.Settings settings
-    annotation(Placement(transformation(extent={{156,-158},{182,-132}})));
-  PNlib.PD ready(
+  inner PNlib.Components.Settings settings
+    annotation (Placement(transformation(extent={{156,-158},{182,-132}})));
+  PNlib.Components.PD ready(
     maxTokens=1,
     nIn=1,
     nOut=1,
     startTokens=0)
-    annotation(Placement(transformation(extent={{-102,-130},{-82,-110}})));
-  PNlib.TD T7(
+    annotation (Placement(transformation(extent={{-102,-130},{-82,-110}})));
+  PNlib.Components.TD T7(
     nIn=2,
     nOut=2,
     firingCon=pre(disamount.t) > 0,
     arcWeightIn={pre(disamount.t)*0.125,pre(disamount.t)},
     arcWeightOut={pre(disamount.t),1},
-    delay=1)                             annotation(Placement(transformation(
+    delay=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-144,-108})));
-  PNlib.PD amountCups(nIn=1) annotation(Placement(transformation(
+  PNlib.Components.PD amountCups(nIn=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-144,-152})));
-  PNlib.PD disamount(nIn=3, nOut=2) annotation(Placement(transformation(
+  PNlib.Components.PD disamount(nIn=3, nOut=2) annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-106,-32})));
-  PNlib.PD P1(
+  PNlib.Components.PD P1(
     nOut=3,
     maxTokens=1,
-    nIn=1)  annotation(Placement(transformation(
+    nIn=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-34,158})));
-  PNlib.PD P3(       nOut=1, nIn=1,
-    maxTokens=1)             annotation(Placement(transformation(
+  PNlib.Components.PD P3(
+    nOut=1,
+    nIn=1,
+    maxTokens=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={92,142})));
@@ -215,8 +217,8 @@ model Senseo_Maschine
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={110,152})));
-  IA IA1(testValue=1)
-    annotation(Placement(transformation(extent={{24,134},{40,140}})));
+  Components.IA IA1(testValue=1)
+    annotation (Placement(transformation(extent={{24,134},{40,140}})));
 equation
   connect(TA1.outTransition, heating.inPlaces[1]) annotation(Line(
       points={{-34.303,90.0173},{-34.303,82.009},{-18.8,82.009},{-18.8,
@@ -403,7 +405,7 @@ equation
       points={{41.2698,137},{60,137},{60,82.5},{67.2,82.5}},
       color={0,0,0},
       smooth=Smooth.None));
-  annotation(
+  annotation (
     Diagram(coordinateSystem(preserveAspectRatio=true, extent={{-200,-200},
             {220,200}}),
                     graphics),

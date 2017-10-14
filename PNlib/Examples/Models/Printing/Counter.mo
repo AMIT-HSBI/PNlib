@@ -13,7 +13,7 @@ model Counter "counter for paper, examples, maculations, ..."
   Real levelSensor_=if levelSensor>0 then levelSensor else 0;
 equation
   count=levelSensor_/hmax;
-  annotation(
+  annotation (
     Diagram(coordinateSystem(
           preserveAspectRatio=true,
           extent={{-100,-100},{100,100}},

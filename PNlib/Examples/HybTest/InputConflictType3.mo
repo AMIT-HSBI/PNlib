@@ -1,13 +1,29 @@
 within PNlib.Examples.HybTest;
 model InputConflictType3
   extends Modelica.Icons.Example;
-  PNlib.PC P1(nIn = 2, nOut = 1, maxMarks=2) annotation(Placement(transformation(extent={{10, -10}, {30, 10}})));
-  PNlib.TC T1(nIn = 1) annotation(Placement(transformation(extent = {{40, -10}, {60, 10}})));
-  PNlib.TD T2(nIn = 1, nOut = 1) annotation(Placement(transformation(extent = {{-20, 10}, {0, 30}})));
-  PNlib.TC T3(nIn = 1, nOut = 1, maximumSpeed=2) annotation(Placement(transformation(extent = {{-20, -30}, {0, -10}})));
-  PNlib.PD P2(startTokens = 5, nOut = 1) annotation(Placement(transformation(extent = {{-50, 10}, {-30, 30}})));
-  PNlib.PC P3(nOut = 1, startMarks=5) annotation(Placement(transformation(extent = {{-50, -30}, {-30, -10}})));
-  inner PNlib.Settings settings annotation(Placement(transformation(extent = {{40, 20}, {60, 40}})));
+  PNlib.Components.PC P1(
+    nIn=2,
+    nOut=1,
+    maxMarks=2)
+    annotation (Placement(transformation(extent={{10,-10},{30,10}})));
+  PNlib.Components.TC T1(nIn=1)
+    annotation (Placement(transformation(extent={{40,-10},{60,10}})));
+  PNlib.Components.TD T2(nIn=1, nOut=1)
+    annotation (Placement(transformation(extent={{-20,10},{0,30}})));
+  PNlib.Components.TC T3(
+    nIn=1,
+    nOut=1,
+    maximumSpeed=2)
+    annotation (Placement(transformation(extent={{-20,-30},{0,-10}})));
+  PNlib.Components.PD P2(startTokens=5, nOut=1)
+    annotation (Placement(transformation(extent={{-50,10},{-30,30}})));
+  PNlib.Components.PC P3(
+    enablingType=1,
+    nOut=1,
+    startMarks=5)
+    annotation (Placement(transformation(extent={{-50,-30},{-30,-10}})));
+  inner PNlib.Components.Settings settings
+    annotation (Placement(transformation(extent={{40,20},{60,40}})));
 equation
   connect(P2.outTransition[1], T2.inPlaces[1]) annotation(Line(points = {{-29.2, 20}, {-14.8, 20}}, color = {0, 0, 0}, smooth = Smooth.None));
   connect(P3.outTransition[1], T3.inPlaces[1]) annotation(Line(points = {{-29.2, -20}, {-14.8, -20}}, color = {0, 0, 0}, smooth = Smooth.None));

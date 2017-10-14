@@ -2,32 +2,32 @@ within PNlib.Examples.Models.Senseo;
 model Refill_Water
   "Refilling water: the water tank of the Senseo machine is refilled (step 3)."
 
-  TD       refilling2(
+  Components.TD refilling2(
     nIn=1,
     nOut=2,
     arcWeightOut={1,0.7 - watertank_.t},
-    delay=30) annotation(Placement(transformation(
+    delay=30) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={62,40})));
-  PD       puffer(
+  Components.PD puffer(
     nIn=1,
     nOut=1,
-    maxTokens=1) annotation(Placement(transformation(
+    maxTokens=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={36,40})));
-  TD       refilling1(
+  Components.TD refilling1(
     delay=1,
     arcWeightOut={1},
     nOut=1,
     nIn=2,
-    arcWeightIn={1,0.36})   annotation(Placement(transformation(
+    arcWeightIn={1,0.36}) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={8,40})));
-  IA       IA1(testValue=0.36)
-    annotation(Placement(transformation(extent={{-74,-20},{-62,-16}})));
+  Components.IA IA1(testValue=0.36)
+    annotation (Placement(transformation(extent={{-74,-20},{-62,-16}})));
   Interfaces.TransitionIn watertank_
     annotation(Placement(transformation(extent={{-120,-28},{-100,-8}}),
         iconTransformation(

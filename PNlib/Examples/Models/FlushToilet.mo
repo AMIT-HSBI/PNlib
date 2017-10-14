@@ -1,132 +1,140 @@
 within PNlib.Examples.Models;
 model FlushToilet "Model of a flush toilet"
   extends Modelica.Icons.Example;
-  PD Lever(nIn=1,
+  Components.PD Lever(
+    nIn=1,
     maxTokens=1,
-    nOut=1) "Lever of the toilet" annotation(Placement(transformation(
+    nOut=1) "Lever of the toilet" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-62,46})));
-  TD pushing(
+  Components.TD pushing(
     nOut=1,
     arcWeightIn={1},
     nIn=1,
-    delay=3) "visitor pushes the lever" annotation(Placement(transformation(
+    delay=3) "visitor pushes the lever" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-62,68})));
-  TD lifting(
+  Components.TD lifting(
     nOut=1,
     nIn=1,
-    delay=0.02) "Lift the flush valve flapper"
-               annotation(Placement(transformation(
+    delay=0.02) "Lift the flush valve flapper" annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-62,22})));
-  PD FlushValveFlapper(
+  Components.PD FlushValveFlapper(
     nIn=1,
     nOut=3,
-    maxTokens=1)                         annotation(Placement(transformation(
+    maxTokens=1) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-62,-8})));
-  TC flowing(
+  Components.TC flowing(
     nOut=1,
     nIn=3,
     arcWeightIn={0,1,2.5},
-    maximumSpeed=5) "Water flows in the bowl"
-                    annotation(Placement(transformation(
+    maximumSpeed=5) "Water flows in the bowl" annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-62,-72})));
-  PC WaterInBowl(nIn=1, nOut=1) "Water in the toilet bowl"
-                              annotation(Placement(transformation(
+  Components.PC WaterInBowl(nIn=1, nOut=1) "Water in the toilet bowl"
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-62,-96})));
-  TA TA1(testValue=0)
-         annotation(Placement(transformation(
+  Components.TA TA1(testValue=0) annotation (Placement(transformation(
         extent={{-7.99999,-3.00001},{7.99999,3.00003}},
         rotation=-90,
         origin={-71,-42})));
-  PC WaterInTank(
+  Components.PC WaterInTank(
     nOut=1,
     nIn=1,
     maxMarks=12,
-    startMarks=12) "Water in the toilet tank"
-                                     annotation(Placement(transformation(
+    startMarks=12) "Water in the toilet tank" annotation (Placement(
+        transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-14,-14})));
-  PC LevelOfFloat(
+  Components.PC LevelOfFloat(
     nOut=3,
     nIn=1,
     maxMarks=30,
-    startMarks=30) "Level of the float" annotation(Placement(transformation(
+    startMarks=30) "Level of the float" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={16,-14})));
-  TD opening(
+  Components.TD opening(
     nOut=1,
     nIn=1,
     arcWeightIn={6},
     delay=0.1) "Open the tank fill valve"
-    annotation(Placement(transformation(extent={{62,-40},{82,-20}})));
-  PD TankFillValve(
+    annotation (Placement(transformation(extent={{62,-40},{82,-20}})));
+  Components.PD TankFillValve(
     nIn=1,
     nOut=2,
     maxTokens=1)
-    annotation(Placement(transformation(extent={{88,-40},{108,-20}})));
-  TC filling(
+    annotation (Placement(transformation(extent={{88,-40},{108,-20}})));
+  Components.TC filling(
     nIn=1,
     nOut=2,
     arcWeightOut={2.5,1},
     arcWeightIn={0},
     maximumSpeed=6) "Water flows to the toilet tank"
-    annotation(Placement(transformation(extent={{64,30},{44,10}})));
-  TA TA3(testValue=0)
-    annotation(Placement(transformation(extent={{98,16},{80,22}})));
-  IA IA1(testValue=6)
-    annotation(Placement(transformation(extent={{32,-34},{48,-28}})));
-  TA TA2(testValue=29.9)
-    annotation(Placement(transformation(extent={{32,-60},{48,-54}})));
-  TD closing(
+    annotation (Placement(transformation(extent={{64,30},{44,10}})));
+  Components.TA TA3(testValue=0)
+    annotation (Placement(transformation(extent={{98,16},{80,22}})));
+  Components.IA IA1(testValue=6)
+    annotation (Placement(transformation(extent={{32,-34},{48,-28}})));
+  Components.TA TA2(testValue=29.9)
+    annotation (Placement(transformation(extent={{32,-60},{48,-54}})));
+  Components.TD closing(
     nIn=2,
     arcWeightIn={1,29.999},
-    delay=0.1) "Close the tank fill valve"
-                        annotation(Placement(transformation(
+    delay=0.1) "Close the tank fill valve" annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={76,-74})));
-  TD sinking(nIn=1, delay=2) "Sink the flush valve flapper"
-                                       annotation(Placement(transformation(
+  Components.TD sinking(nIn=1, delay=2) "Sink the flush valve flapper"
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-98,22})));
-  TC Sewer(nIn=1, maximumSpeed=4) "Sewer"
-                                         annotation(Placement(
+  Components.TC Sewer(nIn=1, maximumSpeed=4) "Sewer" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-62,-118})));
-  inner Settings settings(scale=5, timeFire=0.1)
-    annotation(Placement(transformation(extent={{42,66},{74,98}})));
-  PD Visitor(
+  inner Components.Settings settings(
+    scale=5,
+    timeFire=0.1,
+    animateMarking=1,
+    animatePlace=1,
+    animateTransition=1,
+    animatePutFireTime=1,
+    animateHazardFunc=1,
+    animateSpeed=1,
+    animateWeightTIarc=1,
+    animateTIarc=1)
+    annotation (Placement(transformation(extent={{42,66},{74,98}})));
+  Components.PD Visitor(
     nOut=1,
     nIn=1,
     startTokens=1,
-    maxTokens=1) "Visitor of the toilet"
-    annotation(Placement(transformation(extent={{-10,-10},{10,10}},
+    maxTokens=1) "Visitor of the toilet" annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-62,88})));
-  TDS entering(
+  Components.TS entering(
     nOut=1,
     nIn=1,
-    h=1/10) "Visitor enters the toilet" annotation(Placement(transformation(
+    h=1/10) "Visitor enters the toilet" annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-62,108})));
-  IA IA2 annotation(Placement(transformation(
+  Components.IA IA2 annotation (Placement(transformation(
         extent={{-10.5,-3.5},{10.5,3.5}},
         rotation=90,
         origin={-37.5,70.5})));
@@ -147,12 +155,11 @@ equation
       smooth=Smooth.None));
   connect(FlushValveFlapper.outTransition[1], TA1.inPlace)
                                                     annotation(Line(
-      points={{-62.6667,-18.8},{-62.6667,-31.8312},{-63.0101,-31.8312}},
+      points={{-62.6667,-18.8},{-62.6667,-32.7302},{-71,-32.7302}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(TA1.outTransition, flowing.inPlaces[1])  annotation(Line(
-      points={{-63.0101,-50.3709},{-63.0101,-48.6876},{-62.6667,-48.6876},{
-          -62.6667,-67.2}},
+      points={{-71,-51.2698},{-71,-48.6876},{-62.6667,-48.6876},{-62.6667,-67.2}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(WaterInTank.outTransition[1], flowing.inPlaces[2])
@@ -214,7 +221,7 @@ equation
       points={{49.2698,-57},{76,-57},{76,-69.2},{75.5,-69.2}},
       color={0,0,0},
       smooth=Smooth.None));
-  connect(WaterInBowl.outTransition[1], Sewer.inPlaces[1])      annotation(
+  connect(WaterInBowl.outTransition[1], Sewer.inPlaces[1])      annotation (
       Line(
       points={{-62,-106.8},{-62,-113.2}},
       color={0,0,0},
@@ -239,23 +246,23 @@ equation
       smooth=Smooth.None));
   connect(FlushValveFlapper.outTransition[3], IA2.inPlace) annotation(Line(
       points={{-61.3333,-18.8},{-61.3333,-20},{-61.3333,-24},{-36,-24},{-36,48},
-          {-35.803,48},{-35.803,48.3636}},
+          {-37.5,48},{-37.5,58.3333}},
       color={0,0,0},
       smooth=Smooth.None));
   connect(IA2.outTransition, entering.inPlaces[1]) annotation(Line(
-      points={{-35.803,72.697},{-35.803,96},{-35.803,120},{-62,120},{-62,112.8}},
+      points={{-37.5,82.6667},{-37.5,82.6667},{-37.5,120},{-62,120},{-62,112.8}},
       color={0,0,0},
       smooth=Smooth.None));
-  annotation(                                                       Diagram(
+  annotation (                                                      Diagram(
         coordinateSystem(preserveAspectRatio=true, extent={{-125,-125},{125,125}}),
         graphics),
     Icon(coordinateSystem(preserveAspectRatio=true, extent={{-125,-125},{125,125}})),
-    //experiment(StopTime=100, Tolerance = 1e-6),
+    experiment(StopTime=100, Tolerance = 1e-6),
     __Dymola_experimentSetupOutput,
                 Documentation(info="<html>
   <p>
  This is a hybrid model of a flush toilet represented by the xHPN formalism.
- A visitor enters the toilet; thereby, the time between two visitors is not exactly known so that it is modelled by a stochastic transition with an exponential distributed delay (TDS, T1).
+ A visitor enters the toilet; thereby, the time between two visitors is not exactly known so that it is modelled by a stochastic transition with an exponential distributed delay (TS, T1).
  The visitor (PD, P1) pushes (TD, T2) the lever (PD, P2) which lifts the flush valve flapper (PD, P3). Then the water can flow (TC, T5) from the tank (PC, P4)
  to the bowl (PC, P5) and afterwards to the sewer (TC, T6). When the water flows to the bowl, the float (PC, P6) sinks in the toilet tank.
  If the float falls below a specific level (IA), the tank fill-valve (PD, P7) is opened (TD, T7) and new water can flow (TC, T9) into the tank.

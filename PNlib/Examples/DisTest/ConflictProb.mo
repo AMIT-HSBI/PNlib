@@ -2,25 +2,33 @@ within PNlib.Examples.DisTest;
 model ConflictProb
   extends Modelica.Icons.Example;
 
-  PNlib.PD P1(nIn = 1, startTokens = 2, nOut = 2, enablingType = PNlib.Types.EnablingType.Probability, enablingProbOut = {0.5, 0.5},
+  PNlib.Components.PD P1(
+    nIn=1,
+    startTokens=2,
+    nOut=2,
+    enablingType=2,
+    enablingProbOut={0.5,0.5},
     localSeedIn=1,
-    localSeedOut=2)                                                                               annotation(Placement(transformation(extent={{-30, -10},
-            {-10, 10}})));
-  PNlib.TD T1(nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{0, 10}, {
-            20, 30}})));
-  PNlib.TD T2(nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{0, -30},
-            {20, -10}})));
-  PNlib.PD P2(nIn = 1,
+    localSeedOut=2)
+    annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
+  PNlib.Components.TD T1(nIn=1, nOut=1)
+    annotation (Placement(transformation(extent={{0,10},{20,30}})));
+  PNlib.Components.TD T2(nIn=1, nOut=1)
+    annotation (Placement(transformation(extent={{0,-30},{20,-10}})));
+  PNlib.Components.PD P2(
+    nIn=1,
     localSeedIn=3,
-    localSeedOut=4)    annotation(Placement(transformation(extent={{30, 10}, {50, 30}})));
-  PNlib.PD P3(nIn = 1,
+    localSeedOut=4)
+    annotation (Placement(transformation(extent={{30,10},{50,30}})));
+  PNlib.Components.PD P3(
+    nIn=1,
     localSeedIn=5,
-    localSeedOut=6)    annotation(Placement(transformation(extent={{30, -30}, {50,
-            -10}})));
-  PNlib.TD T3(nOut = 1) annotation(Placement(transformation(extent={{-60, -10}, {-40,
-            10}})));
-  inner PNlib.Settings settings annotation(Placement(transformation(extent={{-60, 20},
-            {-40, 40}})));
+    localSeedOut=6)
+    annotation (Placement(transformation(extent={{30,-30},{50,-10}})));
+  PNlib.Components.TD T3(nOut=1)
+    annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
+  inner PNlib.Components.Settings settings
+    annotation (Placement(transformation(extent={{-60,20},{-40,40}})));
 equation
   connect(T3.outPlaces[1], P1.inTransition[1]) annotation(Line(points={{-45.2, 0},
           {-30.8, 0}}, color = {0, 0, 0}, smooth = Smooth.None));

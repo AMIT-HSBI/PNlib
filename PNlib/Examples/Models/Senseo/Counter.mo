@@ -11,7 +11,7 @@ model Counter "Integer Counter"
   parameter Integer hmax=20;
 equation
   count=if levelSensor/hmax<1 then levelSensor/hmax else 1;
-  annotation(
+  annotation (
     Diagram(coordinateSystem(
           preserveAspectRatio=true,
           extent={{-100,-100},{100,100}},
