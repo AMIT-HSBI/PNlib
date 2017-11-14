@@ -15,7 +15,7 @@ model TC "Continuous Transition"
   Boolean animateSpeed=settings.animateSpeed "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
 protected
-  outer PNlib.Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   Real prelimSpeed "preliminary speed";
   Real tIn[nIn] "tokens of input places";
   Real tOut[nOut] "tokens of output places";

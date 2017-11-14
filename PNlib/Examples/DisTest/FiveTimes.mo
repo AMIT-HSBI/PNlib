@@ -1,39 +1,39 @@
 within PNlib.Examples.DisTest;
 model FiveTimes
   extends Modelica.Icons.Example;
-  inner PNlib.Settings settings
+  inner PNlib.Components.Settings settings
     annotation(Placement(visible = true, transformation(extent = {{-60, 80}, {-40, 100}}, rotation = 0)));
-  PNlib.PD P1(nIn = 1, nOut = 1, startTokens = 3)  annotation(
+  PNlib.Components.PD P1(nIn = 1, nOut = 1, startTokens = 3)  annotation(
     Placement(visible = true, transformation(origin = {-30, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PD P2(nIn = 1)  annotation(
+  PNlib.Components.PD P2(nIn = 1)  annotation(
     Placement(visible = true, transformation(origin = {30, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PD P3(nIn = 1, nOut = 1, startTokens = 3)  annotation(
+  PNlib.Components.PD P3(nIn = 1, nOut = 1, startTokens = 3)  annotation(
     Placement(visible = true, transformation(origin = {-30, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PD P4(nIn = 1)  annotation(
+  PNlib.Components.PD P4(nIn = 1)  annotation(
     Placement(visible = true, transformation(origin = {30, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PD P5( nIn = 1, nOut = 1, startTokens = 3)  annotation(
+  PNlib.Components.PD P5( nIn = 1, nOut = 1, startTokens = 3)  annotation(
     Placement(visible = true, transformation(origin = {-30, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PD P6(nIn = 1)  annotation(
+  PNlib.Components.PD P6(nIn = 1)  annotation(
     Placement(visible = true, transformation(origin = {30, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PD P7(nIn = 1, nOut = 1, startTokens = 3)  annotation(
+  PNlib.Components.PD P7(nIn = 1, nOut = 1, startTokens = 3)  annotation(
     Placement(visible = true, transformation(origin = {-30, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PD P8(nIn = 1)  annotation(
+  PNlib.Components.PD P8(nIn = 1)  annotation(
     Placement(visible = true, transformation(origin = {30, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TD T1(nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.TD T1(nIn = 1, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {0, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TE T2(event = {1, 3, 4, 5, 6, 9}, nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.TE T2(event = {1, 3, 4, 5, 6, 9}, nIn = 1, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {0, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TFD T3(nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.TFD T3(nIn = 1, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {0, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TT T4(nIn = 1, nOut = 1, tactStart = 2)  annotation(
+  PNlib.Components.TT T4(nIn = 1, nOut = 1, tactStart = 2)  annotation(
     Placement(visible = true, transformation(origin = {0, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TE T6(arcWeightOut = {3, 3, 3, 3, 3}, event = {5.5}, nOut = 5)  annotation(
+  PNlib.Components.TE T6(arcWeightOut = {3, 3, 3, 3, 3}, event = {5.5}, nOut = 5)  annotation(
     Placement(visible = true, transformation(origin = {-70, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PC P9(nIn = 1, nOut = 1, startMarks = 3)  annotation(
+  PNlib.Components.PC P9(nIn = 1, nOut = 1, startMarks = 3)  annotation(
     Placement(visible = true, transformation(origin = {-30, -100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PC P10(nIn = 1)  annotation(
+  PNlib.Components.PC P10(nIn = 1)  annotation(
     Placement(visible = true, transformation(origin = {30, -100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TC T5(nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.TC T5(nIn = 1, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {0, -100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T6.outPlaces[5], P9.inTransition[1]) annotation(

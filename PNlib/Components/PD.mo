@@ -37,7 +37,7 @@ model PD "Discrete Place"
   parameter Integer localSeedIn = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for input conflicts" annotation(Dialog(enable = true, group = "Random Number Generator"));
   parameter Integer localSeedOut = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for output conflicts" annotation(Dialog(enable = true, group = "Random Number Generator"));
 protected
-  outer PNlib.Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   Real tokenscale "only for place animation and display";
   discrete Integer pret "pre marking";
   Integer arcWeightIn[nIn] "Integer weights of input arcs";

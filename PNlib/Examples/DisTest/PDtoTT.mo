@@ -2,9 +2,9 @@ within PNlib.Examples.DisTest;
 model PDtoTT
   extends Modelica.Icons.Example;
 
-  inner PNlib.Settings settings annotation(Placement(transformation(extent={{20, 20},
+  inner PNlib.Components.Settings settings annotation(Placement(transformation(extent={{20, 20},
             {40, 40}})));
-  PNlib.PD P1(nOut = 1, startTokens = 10) annotation(Placement(transformation(extent={{-30, -10},
+  PNlib.Components.PD P1(nOut = 1, startTokens = 10) annotation(Placement(transformation(extent={{-30, -10},
             {-10, 10}})));
   TT T1(nIn = 1)  annotation(
     Placement(visible = true, transformation(origin = {18, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

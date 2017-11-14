@@ -35,7 +35,7 @@ model PC "Continuous Place"
   parameter Integer localSeedIn = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for input conflicts" annotation(Dialog(enable = true, group = "Random Number Generator"));
   parameter Integer localSeedOut = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for output conflicts" annotation(Dialog(enable = true, group = "Random Number Generator"));
 protected
-  outer PNlib.Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   Real disMarkChange "discrete mark change";
   Real conMarkChange "continuous mark change";
   Real arcWeightIn[nIn] "weights of input arcs";

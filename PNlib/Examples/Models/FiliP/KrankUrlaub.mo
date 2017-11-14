@@ -2,15 +2,15 @@ within PNlib.Examples.Models.FiliP;
 model KrankUrlaub
   parameter Real UrlaubStartTermine[:] = {10,20,30} "Begin Urlaub";
   parameter Real UrlaubEndTermine[:] = {15,25,35} "Ende Urlaub";
-    PNlib.TD Gesund1(nIn = 1, delay = 0, nOut = 1) annotation(
+    PNlib.Components.TD Gesund1(nIn = 1, delay = 0, nOut = 1) annotation(
       Placement(visible = true, transformation(extent = {{14, -90}, {-6, -70}}, rotation = 0)));
     PNlib.Examples.Models.FiliP.PNerweiterungen.PDwkeit Krankpruefer1(enablingProbOut = {WK, 1 - WK}, enablingType = PNlib.Types.EnablingType.Probability, nIn = 1, nOut = 2) annotation(
       Placement(visible = true, transformation(extent = {{40, -90}, {20, -70}}, rotation = 0)));
-    PNlib.TD Arbeitet1(nIn = 1, nOut = 1, delay = 0) annotation(
+    PNlib.Components.TD Arbeitet1(nIn = 1, nOut = 1, delay = 0) annotation(
       Placement(visible = true, transformation(extent = {{66, -90}, {46, -70}}, rotation = 0)));
-    PNlib.TD T12(nIn = 1, nOut = 1, delay = 0) annotation(
+    PNlib.Components.TD T12(nIn = 1, nOut = 1, delay = 0) annotation(
       Placement(visible = true, transformation(extent = {{-54, -90}, {-74, -70}}, rotation = 0)));
-    PNlib.PD KannArbeiteten(nIn = 3, nOut = 1) annotation(
+    PNlib.Components.PD KannArbeiteten(nIn = 3, nOut = 1) annotation(
       Placement(visible = true, transformation(extent = {{-30, -90}, {-50, -70}}, rotation = 0)));
     PNlib.Interfaces.TransitionOut transitionOut annotation(
       Placement(visible = true, transformation(origin = {-116.06, 0.392857}, extent = {{16.7164, -20}, {-16.7164, 20}}, rotation = 0), iconTransformation(origin = {-117.955, -2.23214}, extent = {{18.6119, -22.2679}, {-18.6119, 22.2679}}, rotation = 0)));
@@ -18,24 +18,24 @@ model KrankUrlaub
       Placement(visible = true, transformation(origin = {116.236, -0.234045}, extent = {{16.8909, -19.766}, {-16.8909, 19.766}}, rotation = 0), iconTransformation(origin = {120.636, 0.191491}, extent = {{18.6364, -21.8085}, {-18.6364, 21.8085}}, rotation = 0)));
     Real WK;
     //Real WU;
-    PNlib.TFDS Krank(E =1:31, P = {75 / 237, 41 / 237, 24 / 237, 19 / 237, 22 / 237, 10 / 237, 13 / 237, 4 / 237, 2 / 237, 3 / 237, 2 / 237, 1 / 237, 3 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237}, distributionType = PNlib.Types.DistributionType.Discrete, nIn = 1, nOut = 1) annotation(
+    PNlib.Components.TFDS Krank(E =1:31, P = {75 / 237, 41 / 237, 24 / 237, 19 / 237, 22 / 237, 10 / 237, 13 / 237, 4 / 237, 2 / 237, 3 / 237, 2 / 237, 1 / 237, 3 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237}, distributionType = PNlib.Components.Types.DistributionType.Discrete, nIn = 1, nOut = 1) annotation(
       Placement(visible = true, transformation(origin = {4, -40}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-    PNlib.TE TUrlaubEnde(event = UrlaubEndTermine,nIn = 1, nOut = 1) annotation(
+    PNlib.Components.TE TUrlaubEnde(event = UrlaubEndTermine,nIn = 1, nOut = 1) annotation(
       Placement(visible = true, transformation(origin = {4, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-    PNlib.TE TUrlaubStart(event = UrlaubStartTermine, nOut = 1) annotation(
+    PNlib.Components.TE TUrlaubStart(event = UrlaubStartTermine, nOut = 1) annotation(
       Placement(visible = true, transformation(origin = {4, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    PNlib.PD ImUrlaub(nIn = 1, nOut = 1) annotation(
+    PNlib.Components.PD ImUrlaub(nIn = 1, nOut = 1) annotation(
       Placement(visible = true, transformation(origin = {30, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  PNlib.TD Urlaubgeber(delay = 0, nIn = 2, nOut = 1)  annotation(
+  PNlib.Components.TD Urlaubgeber(delay = 0, nIn = 2, nOut = 1)  annotation(
       Placement(visible = true, transformation(origin = {56, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  PNlib.PD P1(nIn = 1, nOut = 2)  annotation(
+  PNlib.Components.PD P1(nIn = 1, nOut = 2)  annotation(
       Placement(visible = true, transformation(origin = {50, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TE T1(event = UrlaubEndTermine, nIn = 1) annotation(
+  PNlib.Components.TE T1(event = UrlaubEndTermine, nIn = 1) annotation(
       Placement(visible = true, transformation(origin = {84, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PD Urlaubpruefer(nIn = 3, nOut = 2)  annotation(
+  PNlib.Components.PD Urlaubpruefer(nIn = 3, nOut = 2)  annotation(
       Placement(visible = true, transformation(origin = {80, -80}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   protected
-    outer PNlib.Settings settings "global settings for animation and display";
+    outer PNlib.Components.Settings settings "global settings for animation and display";
   equation
     connect(Urlaubpruefer.outTransition[2], Arbeitet1.inPlaces[1]) annotation(
       Line(points = {{70, -80}, {60, -80}, {60, -80}, {60, -80}}, thickness = 0.5));

@@ -13,7 +13,7 @@ model CPC
   PNlib.Interfaces.PlaceOut[nOut, numColors] outTransition annotation(Placement(transformation(extent={{100,-10},{120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
   Boolean animateMarking=settings.animateMarking "only for place animation and display (Do not change!)";
 protected
-  outer PNlib.Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   PC place1(nIn=nIn, nOut=nOut, startMarks=startMarks[1], minMarks=minMarks[1], maxMarks=maxMarks[1]);
   PC place2(nIn=nIn, nOut=nOut, startMarks=startMarks[2], minMarks=minMarks[2], maxMarks=maxMarks[2]);
 equation

@@ -39,7 +39,7 @@ model IA "Inhibitor Arc"
             {48, 36}}), iconTransformation(extent={{28, 16},
             {48, 36}})));
 protected
-  outer PNlib.Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   Integer testValueInt "integer test value (for generating events!)";
 equation
   if outTransition.disPlace then

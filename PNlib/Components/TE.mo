@@ -9,7 +9,7 @@ model TE "Discrete Transition with event"
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
 protected
-  outer PNlib.Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   Boolean showTransitionName=settings.showTransitionName "only for transition animation and display (Do not change!)";
   Boolean showevent=settings.showTime "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";

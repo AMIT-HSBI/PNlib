@@ -36,7 +36,7 @@ model TFDS "Stochastic Transition with fire duration"
 protected
   discrete Integer state128[4] "state of random number generator";
   Real r128 "random number";
-  outer PNlib.Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   Real firingTimeIn "next putative firing time";
   Real firingTimeOut "next putative firing time";
   discrete Real fireTime "for transition animation";

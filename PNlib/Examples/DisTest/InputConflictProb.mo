@@ -2,25 +2,25 @@ within PNlib.Examples.DisTest;
 model InputConflictProb
   extends Modelica.Icons.Example;
 
-  PNlib.PD P1(maxTokens = 2, nIn = 2, nOut = 1, enablingType = PNlib.Types.EnablingType.Probability,
+  PNlib.Components.PD P1(maxTokens = 2, nIn = 2, nOut = 1, enablingType = PNlib.Types.EnablingType.Probability,
     localSeedIn=1,
     localSeedOut=2)                                               annotation(Placement(transformation(extent={{10, -10},
             {30, 10}})));
-  PNlib.TD T1(nIn = 1) annotation(Placement(transformation(extent={{40, -10}, {60,
+  PNlib.Components.TD T1(nIn = 1) annotation(Placement(transformation(extent={{40, -10}, {60,
             10}})));
-  PNlib.TD T2(nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{-20, 10},
+  PNlib.Components.TD T2(nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{-20, 10},
             {0, 30}})));
-  PNlib.TD T3(nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{-20, -30},
+  PNlib.Components.TD T3(nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{-20, -30},
             {0, -10}})));
-  PNlib.PD P2(startTokens = 5, nOut = 1,
+  PNlib.Components.PD P2(startTokens = 5, nOut = 1,
     localSeedIn=3,
     localSeedOut=4)                      annotation(Placement(transformation(extent={{-50, 10},
             {-30, 30}})));
-  PNlib.PD P3(startTokens = 5, nOut = 1,
+  PNlib.Components.PD P3(startTokens = 5, nOut = 1,
     localSeedIn=5,
     localSeedOut=6)                                        annotation(Placement(transformation(extent={{-50, -30},
             {-30, -10}})));
-  inner PNlib.Settings settings annotation(Placement(transformation(extent={{40, 20},
+  inner PNlib.Components.Settings settings annotation(Placement(transformation(extent={{40, 20},
             {60, 40}})));
 equation
   connect(P2.outTransition[1], T2.inPlaces[1]) annotation(Line(points={{-29.2, 20},

@@ -1,29 +1,29 @@
 within PNlib.Examples.DisTest;
 model ConflictBeneBaB
   extends Modelica.Icons.Example;
-  PNlib.PD P1(nIn = 1) annotation(Placement(visible = true, transformation(extent = {{30, 70}, {50, 90}}, rotation = 0)));
-  PNlib.TD T1(arcWeightIn = {4},nIn = 1, nOut = 1) annotation(Placement(visible = true, transformation(extent = {{-6, 70}, {14, 90}}, rotation = 0)));
-  PNlib.TD T2(arcWeightIn = {3},nIn = 1, nOut = 1) annotation(Placement(visible = true, transformation(extent = {{-6, 30}, {14, 50}}, rotation = 0)));
-  PNlib.PD P2(nIn = 1) annotation(Placement(visible = true, transformation(extent = {{30, 30}, {50, 50}}, rotation = 0)));
-  PNlib.PD P3(nIn = 1) annotation(Placement(visible = true, transformation(extent = {{30, -10}, {50, 10}}, rotation = 0)));
-  inner PNlib.Settings settings annotation(Placement(visible = true, transformation(extent = {{-60, 80}, {-40, 100}}, rotation = 0)));
-  PNlib.TD T3(arcWeightIn = {1},nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.PD P1(nIn = 1) annotation(Placement(visible = true, transformation(extent = {{30, 70}, {50, 90}}, rotation = 0)));
+  PNlib.Components.TD T1(arcWeightIn = {4},nIn = 1, nOut = 1) annotation(Placement(visible = true, transformation(extent = {{-6, 70}, {14, 90}}, rotation = 0)));
+  PNlib.Components.TD T2(arcWeightIn = {3},nIn = 1, nOut = 1) annotation(Placement(visible = true, transformation(extent = {{-6, 30}, {14, 50}}, rotation = 0)));
+  PNlib.Components.PD P2(nIn = 1) annotation(Placement(visible = true, transformation(extent = {{30, 30}, {50, 50}}, rotation = 0)));
+  PNlib.Components.PD P3(nIn = 1) annotation(Placement(visible = true, transformation(extent = {{30, -10}, {50, 10}}, rotation = 0)));
+  inner PNlib.Components.Settings settings annotation(Placement(visible = true, transformation(extent = {{-60, 80}, {-40, 100}}, rotation = 0)));
+  PNlib.Components.TD T3(arcWeightIn = {1},nIn = 1, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {4, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TD T4(arcWeightIn = {1},nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.TD T4(arcWeightIn = {1},nIn = 1, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {4, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TD T5(arcWeightIn = {1},nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.TD T5(arcWeightIn = {1},nIn = 1, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {4, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PD P4(nIn = 1)  annotation(
+  PNlib.Components.PD P4(nIn = 1)  annotation(
     Placement(visible = true, transformation(origin = {40, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PD P5(maxTokens = 1,nIn = 1, nOut = 1, startTokens = 1)  annotation(
     Placement(visible = true, transformation(origin = {40, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PD P7(benefitType = PNlib.Types.BenefitType.BranchAndBound, enablingBeneOut = {6, 5, 3, 4, 2, 0}, enablingType = PNlib.Types.EnablingType.Benefit,nIn = 1, nOut = 6, startTokens = 4)  annotation(
     Placement(visible = true, transformation(origin = {-30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TD T7(arcWeightOut = {4},delay = 2, nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.TD T7(arcWeightOut = {4},delay = 2, nIn = 1, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {-40, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PNlib.TD T6(arcWeightIn = {1},nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.TD T6(arcWeightIn = {1},nIn = 1, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {4, -120}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PD P6(nIn = 1)  annotation(
+  PNlib.Components.PD P6(nIn = 1)  annotation(
     Placement(visible = true, transformation(origin = {40, -120}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T6.inPlaces[1], P7.outTransition[6]) annotation(

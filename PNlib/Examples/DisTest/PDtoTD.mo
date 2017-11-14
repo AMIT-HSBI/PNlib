@@ -2,11 +2,11 @@ within PNlib.Examples.DisTest;
 model PDtoTD
   extends Modelica.Icons.Example;
 
-  inner PNlib.Settings settings annotation(Placement(transformation(extent={{20, 20},
+  inner PNlib.Components.Settings settings annotation(Placement(transformation(extent={{20, 20},
             {40, 40}})));
-  PNlib.PD P1(nOut = 1, startTokens = 10) annotation(Placement(transformation(extent={{-30, -10},
+  PNlib.Components.PD P1(nOut = 1, startTokens = 10) annotation(Placement(transformation(extent={{-30, -10},
             {-10, 10}})));
-  PNlib.TD T1(nIn = 1) annotation(Placement(transformation(extent={{10, -10}, {30,
+  PNlib.Components.TD T1(nIn = 1) annotation(Placement(transformation(extent={{10, -10}, {30,
             10}})));
 equation
   connect(T1.inPlaces[1], P1.outTransition[1]) annotation(Line(points={{15.2, 0},

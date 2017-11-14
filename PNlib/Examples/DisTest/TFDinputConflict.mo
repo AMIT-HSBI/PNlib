@@ -2,19 +2,19 @@ within PNlib.Examples.DisTest;
 
 model TFDinputConflict
   extends Modelica.Icons.Example;
-  inner PNlib.Settings settings annotation(
+  inner PNlib.Components.Settings settings annotation(
     Placement(visible = true, transformation(extent = {{40, 20}, {60, 40}}, rotation = 0)));
-  PNlib.PD P1(nIn = 1, nOut = 1, startTokens = 0) annotation(
+  PNlib.Components.PD P1(nIn = 1, nOut = 1, startTokens = 0) annotation(
     Placement(visible = true, transformation(extent = {{-34, -28}, {-14, -8}}, rotation = 0)));
-  PNlib.PD P2(enablingPrioIn = {2, 1}, maxTokens = 1, nIn = 2, nOut = 1, startTokens = 0) annotation(
+  PNlib.Components.PD P2(enablingPrioIn = {2, 1}, maxTokens = 1, nIn = 2, nOut = 1, startTokens = 0) annotation(
     Placement(visible = true, transformation(origin = {22, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TFD T1(nIn = 1, nOut = 1) annotation(
+  PNlib.Components.TFD T1(nIn = 1, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {-2, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TE T2(event = {1, 2.5, 3.8}, nOut = 1)  annotation(
+  PNlib.Components.TE T2(event = {1, 2.5, 3.8}, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {-50, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TE T3(event = {1.8, 2.3, 3.9}, nIn = 1)  annotation(
+  PNlib.Components.TE T3(event = {1.8, 2.3, 3.9}, nIn = 1)  annotation(
     Placement(visible = true, transformation(origin = {44, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  TE T4(event = {1.5, 3.5}, nOut = 1)  annotation(
+  PNlib.Components.TE T4(event = {1.5, 3.5}, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {-2, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T4.outPlaces[1], P2.inTransition[2]) annotation(

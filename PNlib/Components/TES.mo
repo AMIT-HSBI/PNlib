@@ -40,7 +40,7 @@ model TES "Stochastic Transition with event"
 protected
   discrete Integer state128[4] "state of random number generator";
   Real r128 "random number";
-  outer PNlib.Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   discrete Real fireTime "for transition animation";
   Real tIn[nIn] "tokens of input places";
   Real tOut[nOut] "tokens of output places";

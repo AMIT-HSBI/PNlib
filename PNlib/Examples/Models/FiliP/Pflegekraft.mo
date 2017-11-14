@@ -20,60 +20,60 @@ model Pflegekraft
   Real GeleisteteArbeistzeitGesammt=GeleisteteArbeistzeit.t;
   protected
   extends PNlib.Examples.Models.FiliP.AllgemeineParameter;
-  PNlib.PD IstImFruehDienst(nIn = 1, nOut = 1) annotation(
+  PNlib.Components.PD IstImFruehDienst(nIn = 1, nOut = 1) annotation(
     Placement(transformation(extent = {{-10, 240}, {10, 260}})));
-  PNlib.PD IstImSpaetDienst(nIn = 1, nOut = 1) annotation(
+  PNlib.Components.PD IstImSpaetDienst(nIn = 1, nOut = 1) annotation(
     Placement(transformation(extent = {{-10, 150}, {10, 170}})));
-  PNlib.PD IstImNachtDienst(nIn = 1, nOut = 1) annotation(
+  PNlib.Components.PD IstImNachtDienst(nIn = 1, nOut = 1) annotation(
     Placement(transformation(extent = {{-10, 62}, {10, 82}})));
-  PNlib.TT FSB(nOut = 2, nIn = 2, tactIntervall = 1, tactStart = BeginFruehschicht/24, arcWeightIn = {1, DauerFruehschicht - 0.5}) annotation(
+  PNlib.Components.TT FSB(nOut = 2, nIn = 2, tactIntervall = 1, tactStart = BeginFruehschicht/24, arcWeightIn = {1, DauerFruehschicht - 0.5}) annotation(
     Placement(transformation(extent = {{-94, 240}, {-74, 260}})));
-  PNlib.TT SSB(nOut = 2, nIn = 2, tactIntervall = 1, tactStart = BeginSpaetschicht/24, arcWeightIn = {1, DauerSpaetschicht - 0.5}) annotation(
+  PNlib.Components.TT SSB(nOut = 2, nIn = 2, tactIntervall = 1, tactStart = BeginSpaetschicht/24, arcWeightIn = {1, DauerSpaetschicht - 0.5}) annotation(
     Placement(transformation(extent = {{-92, 150}, {-72, 170}})));
-  PNlib.TT NSB(nOut = 2, nIn = 2, tactIntervall = 1, tactStart = BeginNachtschicht/24, arcWeightIn = {1, DauerNachtschicht - 0.75}) annotation(
+  PNlib.Components.TT NSB(nOut = 2, nIn = 2, tactIntervall = 1, tactStart = BeginNachtschicht/24, arcWeightIn = {1, DauerNachtschicht - 0.75}) annotation(
     Placement(transformation(extent = {{-94, 62}, {-74, 82}})));
-  PNlib.TD FSE(nIn = 2, nOut = 2, delay = DauerFruehschicht/24, arcWeightOut = {1, DauerFruehschicht - 0.5}) annotation(
+  PNlib.Components.TD FSE(nIn = 2, nOut = 2, delay = DauerFruehschicht/24, arcWeightOut = {1, DauerFruehschicht - 0.5}) annotation(
     Placement(transformation(extent = {{74, 240}, {94, 260}})));
-  PNlib.TD SSE(nIn = 2, nOut = 2, delay = DauerSpaetschicht/24, arcWeightOut = {1, DauerSpaetschicht - 0.5}) annotation(
+  PNlib.Components.TD SSE(nIn = 2, nOut = 2, delay = DauerSpaetschicht/24, arcWeightOut = {1, DauerSpaetschicht - 0.5}) annotation(
     Placement(transformation(extent = {{74, 150}, {94, 170}})));
-  PNlib.TD NSE(nIn = 2, nOut = 2, delay = DauerNachtschicht/24, arcWeightOut = {1, DauerNachtschicht - 0.75}) annotation(
+  PNlib.Components.TD NSE(nIn = 2, nOut = 2, delay = DauerNachtschicht/24, arcWeightOut = {1, DauerNachtschicht - 0.75}) annotation(
     Placement(transformation(extent = {{74, 62}, {94, 82}})));
-  PNlib.PC GeleisteteArbeistzeit(nIn = 3) annotation(
+  PNlib.Components.PC GeleisteteArbeistzeit(nIn = 3) annotation(
     Placement(transformation(extent = {{242, -48}, {262, -28}})));
-  PNlib.PD Ruhe(nOut = 2, nIn = 3) annotation(
+  PNlib.Components.PD Ruhe(nOut = 2, nIn = 3) annotation(
     Placement(transformation(extent = {{90, -90}, {70, -70}})));
-  PNlib.PD Dienstbereit(nIn = 1, nOut = 5, startTokens = 1) annotation(
+  PNlib.Components.PD Dienstbereit(nIn = 1, nOut = 5, startTokens = 1) annotation(
     Placement(transformation(extent = {{-130, -88}, {-150, -68}})));
-  PNlib.TD RuheZeitEnde(nIn = 1, delay = 11/24, nOut = 1) annotation(
+  PNlib.Components.TD RuheZeitEnde(nIn = 1, delay = 11/24, nOut = 1) annotation(
     Placement(transformation(extent = {{62, -90}, {42, -70}})));
-  PNlib.PC ArbeitszeitKontingent( nIn = 1,nOut = 4, startMarks = if WEF == 2 then 57.75 * Stelle else 11 * Stelle) annotation(
+  PNlib.Components.PC ArbeitszeitKontingent( nIn = 1,nOut = 4, startMarks = if WEF == 2 then 57.75 * Stelle else 11 * Stelle) annotation(
     Placement(transformation(extent = {{-266, -84}, {-246, -64}})));
-  PNlib.Interfaces.TransitionOut transitionOut[3] annotation(
+  PNlib.Components.Interfaces.TransitionOut transitionOut[3] annotation(
     Placement(transformation(extent = {{-300, 154}, {-360, 252}})));
-  PNlib.Interfaces.TransitionIn transitionIn[3] annotation(
+  PNlib.Components.Interfaces.TransitionIn transitionIn[3] annotation(
     Placement(transformation(extent = {{360, 152}, {300, 250}})));
-  PNlib.TT ArbeitszeitGeber(nOut = 1, tactIntervall = 14, tactStart = if WEF == 2 then 9 else 2, arcWeightOut = {2 * 38.5 * Stelle}, nIn = 1, arcWeightIn = {ArbeitszeitKontingent.t}) annotation(
+  PNlib.Components.TT ArbeitszeitGeber(nOut = 1, tactIntervall = 14, tactStart = if WEF == 2 then 9 else 2, arcWeightOut = {2 * 38.5 * Stelle}, nIn = 1, arcWeightIn = {ArbeitszeitKontingent.t}) annotation(
     Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-256, -168})));
-  PNlib.TT WochenEndSignal(nOut = 1, tactIntervall = if WEF == 3 then 7 else 14, tactStart = if WEF == 2 then 9 else 2) annotation(
+  PNlib.Components.TT WochenEndSignal(nOut = 1, tactIntervall = if WEF == 3 then 7 else 14, tactStart = if WEF == 2 then 9 else 2) annotation(
     Placement(transformation(extent = {{198, -278}, {178, -258}})));
-  PNlib.TD WochenEndGeber2(nIn = 2, nOut = 1, delay = 0) annotation(
+  PNlib.Components.TD WochenEndGeber2(nIn = 2, nOut = 1, delay = 0) annotation(
     Placement(transformation(extent = {{44, -192}, {24, -172}})));
-  PNlib.TD WochenEndGeber1(nIn = 2, nOut = 1, delay = 0) annotation(
+  PNlib.Components.TD WochenEndGeber1(nIn = 2, nOut = 1, delay = 0) annotation(
     Placement(transformation(extent = {{-130, -190}, {-110, -170}})));
-  PNlib.PD SollInsWochenEnde(nOut = 3, nIn = 1, maxTokens = 1) annotation(
+  PNlib.Components.PD SollInsWochenEnde(nOut = 3, nIn = 1, maxTokens = 1) annotation(
     Placement(transformation(extent = {{10, -10}, {-10, 10}}, rotation = -90, origin = {-8, -228})));
-  PNlib.PD ImWochenEnde(nOut = 1, nIn = 2) annotation(
+  PNlib.Components.PD ImWochenEnde(nOut = 1, nIn = 2) annotation(
     Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 0, origin = {-78, -158})));
-  PNlib.TT WochenEndEnde(nIn = 1, tactIntervall = if WEF == 3 then 7 else 14, tactStart = if WEF == 2 then 11 else 4, nOut = 1) annotation(
+  PNlib.Components.TT WochenEndEnde(nIn = 1, tactIntervall = if WEF == 3 then 7 else 14, tactStart = if WEF == 2 then 11 else 4, nOut = 1) annotation(
     Placement(transformation(extent = {{-34, -168}, {-14, -148}})));
-  PNlib.TD EinTagWiederholer(nOut = 1, nIn = 1, delay = 1) annotation(
+  PNlib.Components.TD EinTagWiederholer(nOut = 1, nIn = 1, delay = 1) annotation(
     Placement(transformation(extent = {{-58, -128}, {-38, -108}})));
-  PNlib.TD WEenderbeiKrank(nIn = 1, delay = 2) annotation(
+  PNlib.Components.TD WEenderbeiKrank(nIn = 1, delay = 2) annotation(
     Placement(transformation(extent = {{102, -228}, {122, -208}})));
-  PNlib.Examples.Models.FiliP.KrankUrlaub krankurlaub (UrlaubEndTermine = UrlaubEndTermine, UrlaubStartTermine = UrlaubStartTermine)  annotation(
+  PNlib.Components.Examples.Models.FiliP.KrankUrlaub krankurlaub (UrlaubEndTermine = UrlaubEndTermine, UrlaubStartTermine = UrlaubStartTermine)  annotation(
     Placement(visible = true, transformation(origin = {-80, -78}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 protected
-  outer PNlib.Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
 equation
   connect(WochenEndEnde.outPlaces[1], krankurlaub.placeIn[3]) annotation(
     Line(points = {{-20, -158}, {0, -158}, {0, -80}, {-52, -80}, {-52, -78}, {-56, -78}}, thickness = 0.5));
