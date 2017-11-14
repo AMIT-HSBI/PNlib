@@ -1,4 +1,4 @@
-within PNlib;
+﻿within PNlib.UsersGuide;
 model Contact
 extends Modelica.Icons.Contact;
  annotation(Documentation(info="<html>

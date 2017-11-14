@@ -1,4 +1,4 @@
-within PNlib;
+﻿within PNlib.UsersGuide;
 model UserGuide
  extends Modelica.Icons.Information;
   annotation(Documentation(info="<html>

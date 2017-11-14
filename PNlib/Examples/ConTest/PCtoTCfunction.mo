@@ -1,4 +1,4 @@
-within PNlib.Components.Examples.ConTest;
+within PNlib.Examples.ConTest;
 model PCtoTCfunction
   extends Modelica.Icons.Example;
 

@@ -1,4 +1,4 @@
-within PNlib.Components.Examples.Models.FiliP;
+within PNlib.Examples.Models.FiliP;
 
 model Station
   parameter Integer nP = 1 "Anzahl der Pflegekraefte" annotation(

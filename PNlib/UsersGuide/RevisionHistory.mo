@@ -1,4 +1,4 @@
-within PNlib;
+﻿within PNlib.UsersGuide;
 model RevisionHistory
 extends Modelica.Icons.ReleaseNotes;
 annotation(Documentation(
