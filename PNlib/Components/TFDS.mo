@@ -1,4 +1,4 @@
-within PNlib;
+within PNlib.Components;
 model TFDS "Stochastic Transition with fire duration"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));

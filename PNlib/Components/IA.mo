@@ -1,4 +1,4 @@
-within PNlib;
+within PNlib.Components;
 model IA "Inhibitor Arc"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   parameter Real testValue=1 "marking that has to be deceeded to enable firing" annotation(Dialog(enable = true, group = "Inhibitor Arc"));

@@ -1,4 +1,4 @@
-within PNlib;
+within PNlib.Components;
 model PC "Continuous Place"
   Real t "marking";
   parameter Integer nIn=0 "number of input transitions" annotation(Dialog(connectorSizing=true));

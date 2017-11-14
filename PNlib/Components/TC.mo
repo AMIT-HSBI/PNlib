@@ -1,4 +1,4 @@
-within PNlib;
+within PNlib.Components;
 model TC "Continuous Transition"
   parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));

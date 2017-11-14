@@ -1,4 +1,4 @@
-within PNlib;
+within PNlib.Components;
 model PD "Discrete Place"
   discrete Integer t(start = startTokens, fixed=true) "marking";
   parameter Integer nIn=0 "number of input transitions" annotation(Dialog(connectorSizing=true));
