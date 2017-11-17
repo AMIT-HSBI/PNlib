@@ -48,9 +48,9 @@ model Pflegekraft
     Placement(transformation(extent = {{62, -90}, {42, -70}})));
   PNlib.Components.PC ArbeitszeitKontingent( nIn = 1,nOut = 4, startMarks = if WEF == 2 then 57.75 * Stelle else 11 * Stelle) annotation(
     Placement(transformation(extent = {{-266, -84}, {-246, -64}})));
-  PNlib.Components.Interfaces.TransitionOut transitionOut[3] annotation(
+  PNlib.Interfaces.TransitionOut transitionOut[3] annotation(
     Placement(transformation(extent = {{-300, 154}, {-360, 252}})));
-  PNlib.Components.Interfaces.TransitionIn transitionIn[3] annotation(
+  PNlib.Interfaces.TransitionIn transitionIn[3] annotation(
     Placement(transformation(extent = {{360, 152}, {300, 250}})));
   PNlib.Components.TT ArbeitszeitGeber(nOut = 1, tactIntervall = 14, tactStart = if WEF == 2 then 9 else 2, arcWeightOut = {2 * 38.5 * Stelle}, nIn = 1, arcWeightIn = {ArbeitszeitKontingent.t}) annotation(
     Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-256, -168})));
@@ -70,7 +70,7 @@ model Pflegekraft
     Placement(transformation(extent = {{-58, -128}, {-38, -108}})));
   PNlib.Components.TD WEenderbeiKrank(nIn = 1, delay = 2) annotation(
     Placement(transformation(extent = {{102, -228}, {122, -208}})));
-  PNlib.Components.Examples.Models.FiliP.KrankUrlaub krankurlaub (UrlaubEndTermine = UrlaubEndTermine, UrlaubStartTermine = UrlaubStartTermine)  annotation(
+  PNlib.Examples.Models.FiliP.KrankUrlaub krankurlaub (UrlaubEndTermine = UrlaubEndTermine, UrlaubStartTermine = UrlaubStartTermine)  annotation(
     Placement(visible = true, transformation(origin = {-80, -78}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 protected
   outer PNlib.Components.Settings settings "global settings for animation and display";

@@ -10,7 +10,7 @@ model ZeroArcWeight
     annotation(Placement(transformation(extent={{-10, -10}, {10, 10}})));
   PNlib.Components.PC P3(nIn=1)
     annotation(Placement(transformation(extent={{30, -10}, {50, 10}})));
-  inner Settings settings
+  inner PNlib.Components.Settings settings
     annotation(Placement(transformation(extent={{30, 20}, {50, 40}})));
 equation
   connect(P1.outTransition[1], T1.inPlaces[1]) annotation(Line(points={{-29.2, 20},

@@ -18,7 +18,7 @@ model KrankUrlaub
       Placement(visible = true, transformation(origin = {116.236, -0.234045}, extent = {{16.8909, -19.766}, {-16.8909, 19.766}}, rotation = 0), iconTransformation(origin = {120.636, 0.191491}, extent = {{18.6364, -21.8085}, {-18.6364, 21.8085}}, rotation = 0)));
     Real WK;
     //Real WU;
-    PNlib.Components.TFDS Krank(E =1:31, P = {75 / 237, 41 / 237, 24 / 237, 19 / 237, 22 / 237, 10 / 237, 13 / 237, 4 / 237, 2 / 237, 3 / 237, 2 / 237, 1 / 237, 3 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237}, distributionType = PNlib.Components.Types.DistributionType.Discrete, nIn = 1, nOut = 1) annotation(
+    PNlib.Components.TFDS Krank(E =1:31, P = {75 / 237, 41 / 237, 24 / 237, 19 / 237, 22 / 237, 10 / 237, 13 / 237, 4 / 237, 2 / 237, 3 / 237, 2 / 237, 1 / 237, 3 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237, 1 / 237}, distributionType = PNlib.Types.DistributionType.Discrete, nIn = 1, nOut = 1) annotation(
       Placement(visible = true, transformation(origin = {4, -40}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
     PNlib.Components.TE TUrlaubEnde(event = UrlaubEndTermine,nIn = 1, nOut = 1) annotation(
       Placement(visible = true, transformation(origin = {4, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));

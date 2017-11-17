@@ -14,8 +14,8 @@ model CPC
   Boolean animateMarking=settings.animateMarking "only for place animation and display (Do not change!)";
 protected
   outer PNlib.Components.Settings settings "global settings for animation and display";
-  PC place1(nIn=nIn, nOut=nOut, startMarks=startMarks[1], minMarks=minMarks[1], maxMarks=maxMarks[1]);
-  PC place2(nIn=nIn, nOut=nOut, startMarks=startMarks[2], minMarks=minMarks[2], maxMarks=maxMarks[2]);
+  PNlib.Components.PC place1(nIn=nIn, nOut=nOut, startMarks=startMarks[1], minMarks=minMarks[1], maxMarks=maxMarks[1]);
+  PNlib.Components.PC place2(nIn=nIn, nOut=nOut, startMarks=startMarks[2], minMarks=minMarks[2], maxMarks=maxMarks[2]);
 equation
   color = {place1.t, place2.t};
 

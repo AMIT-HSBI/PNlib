@@ -15,9 +15,9 @@ model ConflictBeneBaB
     Placement(visible = true, transformation(origin = {4, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PNlib.Components.PD P4(nIn = 1)  annotation(
     Placement(visible = true, transformation(origin = {40, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PD P5(maxTokens = 1,nIn = 1, nOut = 1, startTokens = 1)  annotation(
+  PNlib.Components.PD P5(maxTokens = 1,nIn = 1, nOut = 1, startTokens = 1)  annotation(
     Placement(visible = true, transformation(origin = {40, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PD P7(benefitType = PNlib.Types.BenefitType.BranchAndBound, enablingBeneOut = {6, 5, 3, 4, 2, 0}, enablingType = PNlib.Types.EnablingType.Benefit,nIn = 1, nOut = 6, startTokens = 4)  annotation(
+  PNlib.Components.PD P7(benefitType = PNlib.Types.BenefitType.BranchAndBound, enablingBeneOut = {6, 5, 3, 4, 2, 0}, enablingType = PNlib.Types.EnablingType.Benefit,nIn = 1, nOut = 6, startTokens = 4)  annotation(
     Placement(visible = true, transformation(origin = {-30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PNlib.Components.TD T7(arcWeightOut = {4},delay = 2, nIn = 1, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {-40, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
