@@ -1,8 +1,8 @@
 within PNlib.Components;
 model PC "Continuous Place"
   Real t "marking";
-  parameter Integer nIn=0 "number of input transitions" annotation(Dialog(connectorSizing=true));
-  parameter Integer nOut=0 "number of output transitions" annotation(Dialog(connectorSizing=true));
+  parameter Integer nIn(min=0)= 0 "number of input transitions" annotation(Dialog(enable=true,group="Connector sizing"));
+parameter Integer nOut(min=0)= 0 "number of output transitions" annotation(Dialog(enable=true,group="Connector sizing"));
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   parameter Real startMarks = 0 "start marks" annotation(Dialog(enable = true, group = "Marks"));
   parameter Real minMarks = 0 "minimum capacity" annotation(Dialog(enable = true, group = "Marks"));

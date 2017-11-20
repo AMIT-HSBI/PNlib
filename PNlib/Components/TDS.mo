@@ -1,8 +1,8 @@
 within PNlib.Components;
 model TDS "Stochastic Transition with delay"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
-  parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
-  parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
+  parameter Integer nIn(min=0)= 0 "number of input places" annotation(Dialog(enable=true,group="Connector sizing"));
+  parameter Integer nOut(min=0)= 0 "number of output places" annotation(Dialog(enable=true,group="Connector sizing"));
   parameter PNlib.Types.DistributionType distributionType=PNlib.Types.DistributionType.Exponential
     "distribution type of delay" annotation(Dialog(enable = true, group = "Distribution"));
   Real h=1

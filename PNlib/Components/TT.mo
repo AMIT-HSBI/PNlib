@@ -1,7 +1,7 @@
 within PNlib.Components;
 model TT "Discrete Transition"
-  parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
-  parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
+  parameter Integer nIn(min=0)= 0 "number of input places" annotation(Dialog(enable=true,group="Connector sizing"));
+  parameter Integer nOut(min=0)= 0 "number of output places" annotation(Dialog(enable=true,group="Connector sizing"));
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   parameter Real tactIntervall = 1 "tact intervall of timed transition" annotation(Dialog(enable = true, group = "Takt"));
   parameter Real tactStart = 1 "tact start of timed transition" annotation(Dialog(enable = true, group = "Takt"));

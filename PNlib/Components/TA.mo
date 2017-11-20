@@ -2,8 +2,8 @@ within PNlib.Components;
 model TA "Test Arc"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   parameter Real testValue=1 "marking that has to be exceeded to enable firing" annotation(Dialog(enable = true, group = "Test Arc"));
-  parameter Boolean realTestArc=true "real Test arc >, Test arc >=" annotation(Dialog(enable = true, group = "Test Arc"));
-  parameter Boolean normalArc=true "Double arc: test and normal arc?" annotation(Dialog(enable = true, group = "Test Arc"));
+  parameter Integer nIn(min=0)= 0 "number of input places" annotation(Dialog(enable=true,group="Connector sizing"));
+  parameter Integer nOut(min=0)= 0 "number of output places" annotation(Dialog(enable=true,group="Connector sizing"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   Boolean animateWeightTIarc=settings.animateWeightTIarc "only for transition animation and display (Do not change!)";
   Integer testColor[3] "only for transition animation and display (Do not change!)";

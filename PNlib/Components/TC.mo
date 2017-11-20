@@ -1,7 +1,7 @@
 within PNlib.Components;
 model TC "Continuous Transition"
-  parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
-  parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
+  parameter Integer nIn(min=0)= 0 "number of input places" annotation(Dialog(enable=true,group="Connector sizing"));
+  parameter Integer nOut(min=0)= 0 "number of output places" annotation(Dialog(enable=true,group="Connector sizing"));
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   Real maximumSpeed=1 "maximum speed" annotation(Dialog(enable = true, group = "Maximum Speed"));
   Real arcWeightIn[nIn]=fill(1, nIn) "arc weights of input places" annotation(Dialog(enable = true, group = "Arc Weights"));
