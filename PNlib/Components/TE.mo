@@ -1,28 +1,31 @@
-within PNlib;
-model T "Discrete Transition with delay "
-  parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
-  parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
+within PNlib.Components;
+model TE "Discrete Transition with event"
+  parameter Integer nIn(min=0)= 0 "number of input places" annotation(Dialog(enable=true,group="Connector sizing"));
+  parameter Integer nOut(min=0)= 0 "number of output places" annotation(Dialog(enable=true,group="Connector sizing"));
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
+  Real event[:] = {1,2,3} "Event time of timed transition" annotation(Dialog(enable = true, group = "Event"));
   Real arcWeightIn[nIn] = fill(1, nIn) "arc weights of input places" annotation(Dialog(enable = true, group = "Arc Weights"));
   Real arcWeightOut[nOut] = fill(1, nOut) "arc weights of output places" annotation(Dialog(enable = true, group = "Arc Weights"));
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
 protected
-  outer PNlib.Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   Boolean showTransitionName=settings.showTransitionName "only for transition animation and display (Do not change!)";
-  Boolean showDelay=settings.showTime "only for transition animation and display (Do not change!)";
+  Boolean showevent=settings.showTime "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";
   Real tIn[nIn] "tokens of input places";
   Real tOut[nOut] "tokens of output places";
   Real testValue[nIn] "test values of input arcs";
+  Real firingTime "next putative firing time";
   Real fireTime "for transition animation";
   Real minTokens[nIn] "minimum tokens of input places";
   Real maxTokens[nOut] "maximum tokens of output places";
+  Real event_[:]= Functions.OddsAndEnds.addElement(event) "solves last-time problem";
   Integer tIntIn[nIn] "integer tokens of input places (for generating events!)";
   Integer tIntOut[nOut]
     "integer tokens of output places (for generating events!)";
   PNlib.Types.ArcType arcType[nIn]
-    "type of input arcs 1=normal, 2=real test arc,  3=test arc, 4=real inhibitor arc, 5=inhibitor arc";
+      "type of input arcs 1=normal, 2=real test arc,  3=test arc, 4=real inhibitor arc, 5=inhibitor arc, 6=read arc";
   Integer arcWeightIntIn[nIn]
     "Integer arc weights of discrete input places (for generating events!)";
   Integer arcWeightIntOut[nOut]
@@ -41,7 +44,9 @@ protected
     "Are the output places discrete or continuous? true=discrete";
   Boolean enableIn[nIn] "Is the transition enabled by input places?";
   Boolean enableOut[nOut] "Is the transition enabled by output places?";
+  Boolean eventPassed(start=false, fixed=true) "Is the event passed?";
   Boolean ani "for transition animation";
+  Integer eventIndex(start=1, fixed=true);
 
   //****BLOCKS BEGIN****// since no events are generated within functions!!!
   //activation process
@@ -52,10 +57,10 @@ protected
   Boolean enabledByOutPlaces = Functions.OddsAndEnds.allTrue(enableOut);
   //****BLOCKS END****//
 public
-  Boolean active (start=false, fixed=true)"Is the transition active?";
+  Boolean active "Is the transition active?";
   Boolean fire "Does the transition fire?";
   PNlib.Interfaces.TransitionIn inPlaces[nIn](
-    each active=active,
+    each active=eventPassed,
     arcWeight=arcWeightIn,
     arcWeightint=arcWeightIntIn,
     each fire=fire,
@@ -74,7 +79,7 @@ public
     testValueint=testValueInt,
     normalArc=normalArc) if nIn > 0 "connector for input places" annotation(Placement(transformation(extent={{-56, -10}, {-40, 10}}, rotation=0)));
   PNlib.Interfaces.TransitionOut outPlaces[nOut](
-    each active=active,
+    each active=eventPassed,
     arcWeight=arcWeightOut,
     arcWeightint=arcWeightIntOut,
     each fire=fire,
@@ -89,10 +94,20 @@ public
     maxTokensint=maxTokensInt,
     disPlace=disPlaceOut,
     enable=enableOut) if nOut > 0 "connector for output places" annotation(Placement(transformation(extent={{40, -10}, {56, 10}}, rotation=0)));
+algorithm
+when time>=event_[eventIndex] then
+    eventIndex:=eventIndex+1;
+end when;
 equation
   //****MAIN BEGIN****//
-   //reset active
-   active = activation.active and not pre(active);
+   //reset active when event passed
+   active = activation.active and not pre(eventPassed);
+   //save next putative firing time
+   when active then
+      firingTime =event_[eventIndex];
+   end when;
+   //event passed?
+   eventPassed= active and time>= firingTime;
    //firing process
    fire=if nOut==0 then enabledByInPlaces else enabledByOutPlaces;
    //****MAIN END****//
@@ -122,6 +137,7 @@ equation
       assert((disPlaceOut[i] and arcWeightOut[i]-arcWeightIntOut[i]<=0.0) or not disPlaceOut[i], "Output arcs connected to discrete places must have integer weights.");
       assert(arcWeightOut[i]>=0, "Output arc weights must be positive.");
    end for;
+   assert(Functions.OddsAndEnds.eventCheck(event), "The event time must be greater than zero and must be specified in a larger order");
    //****ERROR MESSENGES END****//
 
   annotation(defaultComponentName = "T1", Icon(graphics={Rectangle(
@@ -130,7 +146,11 @@ equation
         fillColor=DynamicSelect({0, 0, 0}, color),
         fillPattern=FillPattern.Solid),
         Text(
+          extent={{-2, -112}, {-2, -140}},
+          lineColor={0, 0, 0},
+          textString=DynamicSelect("e=%event", if showevent then "e=%event" else " ")),
+                                          Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},
           textString="%name")}), Diagram(graphics));
-end T;
+end TE;

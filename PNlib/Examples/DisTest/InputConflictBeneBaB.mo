@@ -2,18 +2,18 @@ within PNlib.Examples.DisTest;
 model InputConflictBeneBaB
   extends Modelica.Icons.Example;
 
-  PNlib.PD P1(benefitType = PNlib.Types.BenefitType.BranchAndBound, enablingBeneIn = {6, 5}, enablingType = PNlib.Types.EnablingType.Benefit,maxTokens = 5, nIn = 2, nOut = 1) annotation(Placement(transformation(extent={{10, -10},
+  PNlib.Components.PD P1(benefitType = PNlib.Types.BenefitType.BranchAndBound, enablingBeneIn = {6, 5}, enablingType = PNlib.Types.EnablingType.Benefit,maxTokens = 5, nIn = 2, nOut = 1) annotation(Placement(transformation(extent={{10, -10},
             {30, 10}})));
-  PNlib.TD T1(arcWeightIn = {3}, nIn = 1) annotation(Placement(visible = true, transformation(extent = {{40, -10}, {60, 10}}, rotation = 0)));
-  PNlib.TD T2(arcWeightOut = {3},nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{-20, 10},
+  PNlib.Components.TD T1(arcWeightIn = {3}, nIn = 1) annotation(Placement(visible = true, transformation(extent = {{40, -10}, {60, 10}}, rotation = 0)));
+  PNlib.Components.TD T2(arcWeightOut = {3},nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{-20, 10},
             {0, 30}})));
-  PNlib.TD T3(arcWeightOut = {2},nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{-20, -30},
+  PNlib.Components.TD T3(arcWeightOut = {2},nIn = 1, nOut = 1) annotation(Placement(transformation(extent={{-20, -30},
             {0, -10}})));
-  PNlib.PD P2(startTokens = 5, nOut = 1) annotation(Placement(transformation(extent={{-50, 10},
+  PNlib.Components.PD P2(startTokens = 5, nOut = 1) annotation(Placement(transformation(extent={{-50, 10},
             {-30, 30}})));
-  PNlib.PD P3(startTokens = 5, nOut = 1) annotation(Placement(transformation(extent={{-50, -30},
+  PNlib.Components.PD P3(startTokens = 5, nOut = 1) annotation(Placement(transformation(extent={{-50, -30},
             {-30, -10}})));
-  inner PNlib.Settings settings annotation(Placement(transformation(extent={{40, 20},
+  inner PNlib.Components.Settings settings annotation(Placement(transformation(extent={{40, 20},
             {60, 40}})));
 equation
   connect(T1.inPlaces[1], P1.outTransition[1]) annotation(Line(points = {{45, 0}, {30.8, 0}}));

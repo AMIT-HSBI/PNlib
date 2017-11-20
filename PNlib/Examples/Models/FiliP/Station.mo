@@ -17,30 +17,30 @@ model Station
   Real BesetzungsDefizitNacht = DefizizNachtSchicht.t;
   protected
   extends PNlib.Examples.Models.FiliP.AllgemeineParameter;
-  PNlib.PD DefizitFruehschicht(nIn = 1) annotation(
+  PNlib.Components.PD DefizitFruehschicht(nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {164, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PD DefizitSpaetSchicht(nIn = 1) annotation(
+  PNlib.Components.PD DefizitSpaetSchicht(nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {162, -104}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PD DefizizNachtSchicht(nIn = 1) annotation(
+  PNlib.Components.PD DefizizNachtSchicht(nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {162, -146}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
-  PNlib.PD PersonalImFruedienst(enablingProbIn = fill(1 / nP, nP), enablingProbOut = fill(1 / nP, nP), enablingType = PNlib.Types.EnablingType.Probability, maxTokens = APFD, nIn = nP, nOut = nP) annotation(
+  PNlib.Components.PD PersonalImFruedienst(enablingProbIn = fill(1 / nP, nP), enablingProbOut = fill(1 / nP, nP), enablingType = PNlib.Types.EnablingType.Probability, maxTokens = APFD, nIn = nP, nOut = nP) annotation(
     Placement(visible = true, transformation(extent = {{-10, 30}, {10, 50}}, rotation = 0)));
-  PNlib.PD PersonalImSpaetdienst(enablingProbIn = fill(1 / nP, nP), enablingProbOut = fill(1 / nP, nP), enablingType = PNlib.Types.EnablingType.Probability, maxTokens = APSD, nIn = nP, nOut = nP) annotation(
+  PNlib.Components.PD PersonalImSpaetdienst(enablingProbIn = fill(1 / nP, nP), enablingProbOut = fill(1 / nP, nP), enablingType = PNlib.Types.EnablingType.Probability, maxTokens = APSD, nIn = nP, nOut = nP) annotation(
     Placement(transformation(extent = {{-10, -10}, {10, 10}})));
-  PNlib.PD PersonalImNachtdienst(enablingProbIn = fill(1 / nP, nP), enablingProbOut = fill(1 / nP, nP), enablingType = PNlib.Types.EnablingType.Probability, maxTokens = APND, nIn = nP, nOut = nP) annotation(
+  PNlib.Components.PD PersonalImNachtdienst(enablingProbIn = fill(1 / nP, nP), enablingProbOut = fill(1 / nP, nP), enablingType = PNlib.Types.EnablingType.Probability, maxTokens = APND, nIn = nP, nOut = nP) annotation(
     Placement(visible = true, transformation(extent = {{-10, -50}, {10, -30}}, rotation = 0)));
   PNlib.Interfaces.PlaceOut placeOut[3 * nP] annotation(
     Placement(transformation(extent = {{200, -52}, {304, 52}})));
   PNlib.Interfaces.PlaceIn placeIn[3 * nP] annotation(
     Placement(visible = true, transformation(extent = {{-298, -50}, {-196, 48}}, rotation = 0), iconTransformation(extent = {{-298, -50}, {-196, 48}}, rotation = 0)));
-  PNlib.TT BeginnFrueh(nOut = 1, tactIntervall = 1, tactStart = (BeginFruehschicht + 1) / 24, arcWeightOut = {APFD - PersonalImFruedienst.t}) annotation(
+  PNlib.Components.TT BeginnFrueh(nOut = 1, tactIntervall = 1, tactStart = (BeginFruehschicht + 1) / 24, arcWeightOut = {APFD - PersonalImFruedienst.t}) annotation(
     Placement(visible = true, transformation(extent = {{106, -70}, {126, -50}}, rotation = 0)));
-  PNlib.TT BeginnSpaet(nOut = 1, tactIntervall = 1, tactStart = (BeginSpaetschicht + 1) / 24, arcWeightOut = {APSD - PersonalImSpaetdienst.t}) annotation(
+  PNlib.Components.TT BeginnSpaet(nOut = 1, tactIntervall = 1, tactStart = (BeginSpaetschicht + 1) / 24, arcWeightOut = {APSD - PersonalImSpaetdienst.t}) annotation(
     Placement(visible = true, transformation(extent = {{106, -114}, {126, -94}}, rotation = 0)));
-  PNlib.TT BeginnNacht(nOut = 1, tactIntervall = 1, tactStart = (BeginNachtschicht + 1) / 24, arcWeightOut = {APND - PersonalImNachtdienst.t}) annotation(
+  PNlib.Components.TT BeginnNacht(nOut = 1, tactIntervall = 1, tactStart = (BeginNachtschicht + 1) / 24, arcWeightOut = {APND - PersonalImNachtdienst.t}) annotation(
     Placement(visible = true, transformation(extent = {{106, -156}, {126, -136}}, rotation = 0)));
-  outer PNlib.Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
 equation
   connect(BeginnNacht.outPlaces[1], DefizizNachtSchicht.inTransition[1]) annotation(
     Line(points = {{121, -146}, {149, -146}}, thickness = 0.5));

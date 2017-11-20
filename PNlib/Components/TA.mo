@@ -1,4 +1,4 @@
-within PNlib;
+within PNlib.Components;
 model TA "Test Arc"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   parameter Real testValue=1 "marking that has to be exceeded to enable firing" annotation(Dialog(enable = true, group = "Test Arc"));
@@ -32,7 +32,7 @@ model TA "Test Arc"
     normalArc=normalArc,
     speedSum=inPlace.speedSum) "connector for transition" annotation(Placement(transformation(extent={{28, 16}, {48, 36}}), iconTransformation(extent={{28, 16}, {48, 36}})));
 protected
-  outer PNlib.Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   Integer testValueInt "integer test value (for generating events!)";
 equation
   if outTransition.disPlace then

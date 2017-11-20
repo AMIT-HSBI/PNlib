@@ -2,21 +2,21 @@ within PNlib.Examples.ExtTest;
 
 model NoTokens
   extends Modelica.Icons.Example;
-  inner PNlib.Settings settings annotation(
+  inner PNlib.Components.Settings settings annotation(
     Placement(visible = true, transformation(extent = {{-100, 60}, {-80, 80}}, rotation = 0)));
-  PNlib.PC P1(nOut = 1, startMarks = 5) annotation(
+  PNlib.Components.PC P1(nOut = 1, startMarks = 5) annotation(
     Placement(visible = true, transformation(origin = {-80, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PC P3(nOut = 1, startMarks = 5) annotation(
+  PNlib.Components.PC P3(nOut = 1, startMarks = 5) annotation(
     Placement(visible = true, transformation(origin = {-80, -42}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PC P2(nOut = 2, startMarks = 5) annotation(
+  PNlib.Components.PC P2(nOut = 2, startMarks = 5) annotation(
     Placement(visible = true, transformation(origin = {-80, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TC T1(nIn = 2, nOut = 1) annotation(
+  PNlib.Components.TC T1(nIn = 2, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {-16, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.TC T2(nIn = 2, nOut = 1) annotation(
+  PNlib.Components.TC T2(nIn = 2, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {-16, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.PC P4(nIn = 2) annotation(
+  PNlib.Components.PC P4(nIn = 2) annotation(
     Placement(visible = true, transformation(origin = {40, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.IA IA1 annotation(
+  PNlib.Components.IA IA1 annotation(
     Placement(visible = true, transformation(origin = {-46, -22}, extent = {{-9.8, 0.4}, {2.8, 4.8}}, rotation = 0)));
 equation
   connect(T2.outPlaces[1], P4.inTransition[2]) annotation(

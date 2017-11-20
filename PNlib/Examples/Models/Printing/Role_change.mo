@@ -29,7 +29,7 @@ model Role_change "change of the paper role"
     firingCon=pre(start),
     arcWeightIn={1,Role.t})
             annotation(Placement(transformation(extent={{42,38},{62,58}})));
-  PNlib.PD P2(nIn=1, nOut=1,
+  PNlib.Components.PD P2(nIn=1, nOut=1,
     maxTokens=1)
     annotation(Placement(transformation(extent={{68,38},{88,58}})));
   IA       IA2(testValue=cutting_at)
@@ -37,7 +37,7 @@ model Role_change "change of the paper role"
         extent={{-8.5,-2.50012},{8.5,2.50012}},
         rotation=90,
         origin={-32.5,38.5})));
-  PNlib.PD Role_change(
+  PNlib.Components.D Role_change(
     nIn=1,
     maxTokens=1,
     nOut=2)

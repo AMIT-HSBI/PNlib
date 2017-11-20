@@ -4,7 +4,7 @@ model Station20
   extends PNlib.Examples.Models.FiliP.AllgemeineParameter;
     PNlib.Examples.Models.FiliP.Station station(nP = 20, APFD = 4, APSD = 3, APND = 1) annotation(
       Placement(visible = true, transformation(extent = {{-48, 268}, {-8, 308}}, rotation = 0)));
-  inner PNlib.Settings settings annotation(
+  inner PNlib.Components.Settings settings annotation(
     Placement(visible = true, transformation(origin = {306, 290}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
     PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft1(Stelle = 0.75) annotation(

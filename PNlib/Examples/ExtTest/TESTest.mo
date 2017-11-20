@@ -1,12 +1,12 @@
 within PNlib.Examples.ExtTest;
 model TESTest
   extends Modelica.Icons.Example;
-  inner PNlib.Settings settings annotation(Placement(transformation(extent={{20, 20}, {40, 40}})));
-  PNlib.PD P1(nIn = 1, nOut = 1, startTokens= 1) annotation(Placement(visible = true, transformation(extent = {{-48, -20}, {-28, 0}}, rotation = 0)));
-  PNlib.PD P2(nIn=1) annotation(Placement(visible = true, transformation(extent = {{12, -20}, {32, 0}}, rotation = 0)));
-  PNlib.TE T2(event = {3, 4, 5, 9}, nOut = 1)  annotation(
+  inner PNlib.Components.Settings settings annotation(Placement(transformation(extent={{20, 20}, {40, 40}})));
+  PNlib.Components.PD P1(nIn = 1, nOut = 1, startTokens= 1) annotation(Placement(visible = true, transformation(extent = {{-48, -20}, {-28, 0}}, rotation = 0)));
+  PNlib.Components.PD P2(nIn=1) annotation(Placement(visible = true, transformation(extent = {{12, -20}, {32, 0}}, rotation = 0)));
+  PNlib.Components.TE T2(event = {3, 4, 5, 9}, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {-66, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  TES T1(distributionType = PNlib.Types.DistributionType.Triangular, nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.TES T1(distributionType = PNlib.Types.DistributionType.Triangular, nIn = 1, nOut = 1)  annotation(
     Placement(visible = true, transformation(origin = {-8, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T1.outPlaces[1], P2.inTransition[1]) annotation(

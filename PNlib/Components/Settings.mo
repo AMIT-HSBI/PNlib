@@ -1,4 +1,4 @@
-within PNlib;
+within PNlib.Components;
 model Settings "Global Settings for Animation and Display"
   parameter Boolean showPlaceName=true "show names of places" annotation(Dialog(enable = true, group = "Display"));
   parameter Boolean showTransitionName=true "show names of transitions" annotation(Dialog(enable = true, group = "Display"));

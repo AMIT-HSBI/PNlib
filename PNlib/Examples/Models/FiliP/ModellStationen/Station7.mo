@@ -18,7 +18,7 @@ model Station7
     Placement(visible = true, transformation(extent = {{-38, -242}, {22, -182}}, rotation = 0)));
   PNlib.Examples.Models.FiliP.Pflegekraft pflegekraft7(UrlaubEndTermine = {187, 215, 243}, UrlaubStartTermine = {173, 201, 229})  annotation(
     Placement(visible = true, transformation(extent = {{-38, -330}, {22, -270}}, rotation = 0)));
-  inner PNlib.Settings settings annotation(
+  inner PNlib.Components.Settings settings annotation(
     Placement(visible = true, transformation(origin = {140, 340}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(station.placeIn[21], pflegekraft7.transitionOut[3]);

@@ -1,11 +1,11 @@
 within PNlib.Examples.DisTest;
 model NoInputConflict
   extends Modelica.Icons.Example;
-  PNlib.TD T1(nOut = 1) annotation(Placement(visible = true, transformation(extent = {{-30, 10}, {-10, 30}}, rotation = 0)));
-  PNlib.TD T2(delay = 2, nOut = 1) annotation(Placement(visible = true, transformation(extent = {{-30, -30}, {-10, -10}}, rotation = 0)));
-  inner PNlib.Settings settings annotation(Placement(transformation(extent={{-60, 20},
+  PNlib.Components.TD T1(nOut = 1) annotation(Placement(visible = true, transformation(extent = {{-30, 10}, {-10, 30}}, rotation = 0)));
+  PNlib.Components.TD T2(delay = 2, nOut = 1) annotation(Placement(visible = true, transformation(extent = {{-30, -30}, {-10, -10}}, rotation = 0)));
+  inner PNlib.Components.Settings settings annotation(Placement(transformation(extent={{-60, 20},
             {-40, 40}})));
-  PNlib.PD P1(enablingPrioIn = {2, 1}, maxTokens = 1, nIn = 2)  annotation(
+  PNlib.Components.PD P1(enablingPrioIn = {2, 1}, maxTokens = 1, nIn = 2)  annotation(
     Placement(visible = true, transformation(origin = {16, 2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T1.outPlaces[1], P1.inTransition[1]) annotation(

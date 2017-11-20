@@ -13,8 +13,8 @@ model CTC
   PNlib.Interfaces.TransitionIn[nIn, numColors] inPlaces annotation(Placement(transformation(extent={{-56,-10},{-40,10}})));
   PNlib.Interfaces.TransitionOut[nOut, numColors] outPlaces annotation(Placement(transformation(extent={{40,-10},{56,10}})));
 protected
-  outer PNlib.Settings settings "global settings for animation and display";
-  TC transition_(nIn=numColors*nIn, nOut=numColors*nOut, maximumSpeed=maximumSpeed, arcWeightIn=arcWeightIn_flat, arcWeightOut=arcWeightOut_flat);
+  outer PNlib.Components.Settings settings "global settings for animation and display";
+  PNlib.Components.TC transition_(nIn=numColors*nIn, nOut=numColors*nOut, maximumSpeed=maximumSpeed, arcWeightIn=arcWeightIn_flat, arcWeightOut=arcWeightOut_flat);
   Real arcWeightIn_flat[nIn*numColors];
   Real arcWeightOut_flat[nOut*numColors];
 equation

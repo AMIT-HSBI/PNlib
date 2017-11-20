@@ -76,7 +76,7 @@ model Start_Stop "starting and stop the printing machine"
   Modelica.Blocks.Interfaces.RealOutput time_counter_ annotation(Placement(
         transformation(extent={{62,74},{82,94}}), iconTransformation(extent={{80,-20},
             {100,0}})));
-  PNlib.TD shutDown(
+  PNlib.Components.TD shutDown(
     nIn=1,
     nOut=2,
     delay=timeStopping)
@@ -84,7 +84,7 @@ model Start_Stop "starting and stop the printing machine"
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={8,0})));
-  PNlib.PD Stop2(
+  PNlib.Components.PD Stop2(
     nIn=1,
     nOut=1,
     startTokens=1,

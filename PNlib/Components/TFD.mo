@@ -1,7 +1,7 @@
-within PNlib;
+within PNlib.Components;
 model TFD "Discrete Transition with fire duration"
-  parameter Integer nIn = 0 "number of input places" annotation(Dialog(connectorSizing=true));
-  parameter Integer nOut = 0 "number of output places" annotation(Dialog(connectorSizing=true));
+  parameter Integer nIn(min=0)= 0 "number of input places" annotation(Dialog(enable=true,group="Connector sizing"));
+  parameter Integer nOut(min=0)= 0 "number of output places" annotation(Dialog(enable=true,group="Connector sizing"));
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   Real duration = 1 "duration of timed transition" annotation(Dialog(enable = true, group = "Duration"));
   Real arcWeightIn[nIn] = fill(1, nIn) "arc weights of input places" annotation(Dialog(enable = true, group = "Arc Weights"));
@@ -9,7 +9,7 @@ model TFD "Discrete Transition with fire duration"
   Boolean firingCon=true "additional firing condition" annotation(Dialog(enable = true, group = "Firing Condition"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
 protected
-  outer PNlib.Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   Boolean showTransitionName=settings.showTransitionName "only for transition animation and display (Do not change!)";
   Boolean showDuration=settings.showTime "only for transition animation and display (Do not change!)";
   Real color[3] "only for transition animation and display (Do not change!)";

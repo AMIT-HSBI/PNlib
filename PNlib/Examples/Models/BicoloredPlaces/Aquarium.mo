@@ -1,7 +1,7 @@
 within PNlib.Examples.Models.BicoloredPlaces;
 model Aquarium
   extends Modelica.Icons.Example;
-  inner PNlib.Settings settings annotation(Placement(transformation(extent={{-60, 20}, {-40, 40}})));
+  inner PNlib.Components.Settings settings annotation(Placement(transformation(extent={{-60, 20}, {-40, 40}})));
   PNlib.Examples.Models.BicoloredPlaces.CPC P1(nIn=1, nOut=1, startMarks={50, 0}) annotation(Placement(transformation(extent={{-30, -10}, {-10, 10}})));
   PNlib.Examples.Models.BicoloredPlaces.CPC P2(nIn=1, startMarks={0, 0}) annotation(Placement(transformation(extent={{30, -10}, {50, 10}})));
   PNlib.Examples.Models.BicoloredPlaces.CTC t1(nOut=1, arcWeightOut={{0, 1}}) annotation(Placement(transformation(extent={{-60, -10}, {-40, 10}})));

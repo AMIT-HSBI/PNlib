@@ -1,8 +1,8 @@
-within PNlib;
+within PNlib.Components;
 model PD "Discrete Place"
   discrete Integer t(start = startTokens, fixed=true) "marking";
-  parameter Integer nIn=0 "number of input transitions" annotation(Dialog(connectorSizing=true));
-  parameter Integer nOut=0 "number of output transitions" annotation(Dialog(connectorSizing=true));
+  parameter Integer nIn(min=0)= 0 "number of input transitions" annotation(Dialog(enable=true,group="Connector sizing"));
+  parameter Integer nOut(min=0)= 0 "number of output transitions" annotation(Dialog(enable=true,group="Connector sizing"));
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   parameter Integer startTokens = 0 "start tokens" annotation(Dialog(enable = true, group = "Tokens"));
   parameter Integer minTokens = 0 "minimum capacity" annotation(Dialog(enable = true, group = "Tokens"));
@@ -37,7 +37,7 @@ model PD "Discrete Place"
   parameter Integer localSeedIn = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for input conflicts" annotation(Dialog(enable = true, group = "Random Number Generator"));
   parameter Integer localSeedOut = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for output conflicts" annotation(Dialog(enable = true, group = "Random Number Generator"));
 protected
-  outer PNlib.Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   Real tokenscale "only for place animation and display";
   discrete Integer pret "pre marking";
   Integer arcWeightIn[nIn] "Integer weights of input arcs";
