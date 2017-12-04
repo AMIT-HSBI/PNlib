@@ -2,7 +2,7 @@ within PNlib.Components;
 model IA "Inhibitor Arc"
   //****MODIFIABLE PARAMETERS AND VARIABLES BEGIN****//
   parameter Real testValue=1 "marking that has to be deceeded to enable firing" annotation(Dialog(enable = true, group = "Inhibitor Arc"));
-  parameter Boolean realInhibitorArc=true "real Inhibitor arc <, Inhibitor arc <=" annotation(Dialog(enable = true, group = "Inhibitor Arc"));                                                                               annotation(Dialog(enable = true, group = "Inhibitor Arc"));
+  parameter Boolean realInhibitorArc=true "real Inhibitor arc <, Inhibitor arc <=" annotation(Dialog(enable = true, group = "Inhibitor Arc"));
   parameter Boolean normalArc=true "double arc: inhibitor and normal arc?" annotation(Dialog(enable = true, group = "Inhibitor Arc"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//
   Boolean animateWeightTIarc=settings.animateWeightTIarc
