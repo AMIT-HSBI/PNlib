@@ -5,21 +5,21 @@ model TDS "Stochastic Transition with delay"
   parameter Integer nOut(min=0)= 0 "number of output places" annotation(Dialog(enable=true,group="Connector sizing"));
   parameter PNlib.Types.DistributionType distributionType=PNlib.Types.DistributionType.Exponential
     "distribution type of delay" annotation(Dialog(enable = true, group = "Distribution"));
-  Real h=1
+  parameter  Real h=1
     "probability density" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Exponential then true else false, group = "Exponential distribution"));
-  Real a=0
+  parameter  Real a=0
     "Lower Limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular or distributionType==PNlib.Types.DistributionType.Uniform or distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Triangular, Uniform or Truncated normal distribution"));
-  Real b=1
+  parameter Real b=1
     "Upper Limit" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular or distributionType==PNlib.Types.DistributionType.Uniform or distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Triangular, Uniform or Truncated normal distribution"));
-  Real c=0.5
+  parameter Real c=0.5
     "Most likely value" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Triangular then true else false, group = "Triangular distribution"));
-  Real mu=0.5
+  parameter Real mu=0.5
     "Expected value" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Truncated normal distribution"));
-  Real sigma=1/6
+  parameter Real sigma=1/6
     "Standard deviation" annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Truncated normal distribution"));
-  Real E[:]={1, 2, 3, 4, 5, 6} "Events of Discrete Distribution"
+  parameter Real E[:]={1, 2, 3, 4, 5, 6} "Events of Discrete Distribution"
     annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Discrete  then true else false, group = "Discrete Probability Distribution"));
-  Real P[:]={1/6, 1/6, 1/6, 1/6, 1/6, 1/6} "Probability of Discrete Distribution"
+  parameter Real P[:]={1/6, 1/6, 1/6, 1/6, 1/6, 1/6} "Probability of Discrete Distribution"
     annotation(Dialog(enable = if distributionType==PNlib.Types.DistributionType.Discrete  then true else false, group = "Discrete Probability Distribution"));
   Real arcWeightIn[nIn]=fill(1, nIn) "arc weights of input places"
                                          annotation(Dialog(enable = true, group = "Arc Weights"));
