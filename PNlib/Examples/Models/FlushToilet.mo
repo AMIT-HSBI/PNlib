@@ -1,6 +1,14 @@
 within PNlib.Examples.Models;
 model FlushToilet "Model of a flush toilet"
   extends Modelica.Icons.Example;
+  import PNlib.Components.PC;
+  import PNlib.Components.PD;
+  import PNlib.Components.TD;
+  import PNlib.Components.TC;
+  import PNlib.Components.TA;
+  import PNlib.Components.IA;
+  import PNlib.Components.Settings;
+  import PNlib.Components.TDS;
   PD Lever(nIn=1,
     maxTokens=1,
     nOut=1) "Lever of the toilet" annotation(Placement(transformation(

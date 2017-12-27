@@ -1,5 +1,19 @@
 within PNlib.Examples.Models.PNproBP;
 model Puffer
+  import PNlib.Components.PD;
+  import PNlib.Components.PC;
+  import PNlib.Components.T;
+  import PNlib.Components.TD;
+  import PNlib.Components.TDS;
+  import PNlib.Components.TE;
+  import PNlib.Components.TES;
+  import PNlib.Components.TFD;
+  import PNlib.Components.TFDS;
+  import PNlib.Components.TT;
+  import PNlib.Components.TC;
+  import PNlib.Components.TA;
+  import PNlib.Components.IA;
+  import PNlib.Components.Settings;
  parameter Real delay=1;
  parameter Integer nIn=0 "number of input places" annotation(Dialog(connectorSizing=true));
   parameter Integer nOut=0 "number of output places" annotation(Dialog(connectorSizing=true));
