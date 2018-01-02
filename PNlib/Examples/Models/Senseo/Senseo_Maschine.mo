@@ -1,6 +1,20 @@
 within PNlib.Examples.Models.Senseo;
 model Senseo_Maschine
   "Senseo machine: the functionality of the Senseo machine (step 4, 6, 7, 8, 9, 10)."
+  import PNlib.Components.PD;
+  import PNlib.Components.PC;
+  import PNlib.Components.T;
+  import PNlib.Components.TD;
+  import PNlib.Components.TDS;
+  import PNlib.Components.TE;
+  import PNlib.Components.TES;
+  import PNlib.Components.TFD;
+  import PNlib.Components.TFDS;
+  import PNlib.Components.TT;
+  import PNlib.Components.TC;
+  import PNlib.Components.TA;
+  import PNlib.Components.IA;
+  import PNlib.Components.Settings;
   parameter Real Psenseo=1.450 "power of senseo machine [kW]";
   parameter Real c=4.182 "specific heat capacity [kJ/(kg*K)]";
   parameter Real k=0.01177 "proportionality factor for cooling water";

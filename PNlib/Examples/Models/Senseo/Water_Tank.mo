@@ -1,6 +1,20 @@
 within PNlib.Examples.Models.Senseo;
 model Water_Tank "Water tank: the water tank of the Senseo machine."
   Real level "Tank level in % of max height";
+  import PNlib.Components.PD;
+  import PNlib.Components.PC;
+  import PNlib.Components.T;
+  import PNlib.Components.TD;
+  import PNlib.Components.TDS;
+  import PNlib.Components.TE;
+  import PNlib.Components.TES;
+  import PNlib.Components.TFD;
+  import PNlib.Components.TFDS;
+  import PNlib.Components.TT;
+  import PNlib.Components.TC;
+  import PNlib.Components.TA;
+  import PNlib.Components.IA;
+  import PNlib.Components.Settings;
   parameter Real color[3]={0,0,255};
   PC       water_tank(
     nOut=3,
