@@ -8,19 +8,15 @@ model Workload
         rotation=0,
         origin={-120,0})));
   Integer[3] color;
-//protected
+protected
   Real help1;
-  Real help2 = time - help1;
-  Real help3 = (max_tokens - u) * help2;
-  Integer i(start = 0);
 algorithm
   when pre(u)==u and u <> max_tokens  then
     help1:=time;
     color:={255,0,0};
   elsewhen pre(u) <> max_tokens and pre(u) <> u then
-    cap:= cap + help3;
+    cap:= cap + (time - help1) * (max_tokens - pre(u));
     color:={128,255,0};
-    i:= i+1;
   end when;
 
   annotation(Icon(coordinateSystem(
