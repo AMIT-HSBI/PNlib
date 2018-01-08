@@ -1,6 +1,20 @@
 within PNlib.Examples.Models.Senseo;
 model Start
   "User action: starting and stopping the machine (step 1, 2, 11), initiating the insertion of coffee pads (step 5) and the refill of water (step 3)."
+  import PNlib.Components.PD;
+  import PNlib.Components.PC;
+  import PNlib.Components.T;
+  import PNlib.Components.TD;
+  import PNlib.Components.TDS;
+  import PNlib.Components.TE;
+  import PNlib.Components.TES;
+  import PNlib.Components.TFD;
+  import PNlib.Components.TFDS;
+  import PNlib.Components.TT;
+  import PNlib.Components.TC;
+  import PNlib.Components.TA;
+  import PNlib.Components.IA;
+  import PNlib.Components.Settings;
   parameter Real EV_time=600;
   TDS starting(
     h=1/EV_time,

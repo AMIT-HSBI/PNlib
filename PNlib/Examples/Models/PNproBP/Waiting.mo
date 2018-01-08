@@ -1,5 +1,19 @@
 within PNlib.Examples.Models.PNproBP;
 model Waiting
+  import PNlib.Components.PD;
+  import PNlib.Components.PC;
+  import PNlib.Components.T;
+  import PNlib.Components.TD;
+  import PNlib.Components.TDS;
+  import PNlib.Components.TE;
+  import PNlib.Components.TES;
+  import PNlib.Components.TFD;
+  import PNlib.Components.TFDS;
+  import PNlib.Components.TT;
+  import PNlib.Components.TC;
+  import PNlib.Components.TA;
+  import PNlib.Components.IA;
+  import PNlib.Components.Settings;
   parameter Real delay=1;
    Integer arcWeight=1;
   Boolean fire "firability of continuous transition";

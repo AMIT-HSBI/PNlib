@@ -1,5 +1,19 @@
 within PNlib.Examples.Models.PNproBP;
 model XOR
+  import PNlib.Components.PD;
+  import PNlib.Components.PC;
+  import PNlib.Components.T;
+  import PNlib.Components.TD;
+  import PNlib.Components.TDS;
+  import PNlib.Components.TE;
+  import PNlib.Components.TES;
+  import PNlib.Components.TFD;
+  import PNlib.Components.TFDS;
+  import PNlib.Components.TT;
+  import PNlib.Components.TC;
+  import PNlib.Components.TA;
+  import PNlib.Components.IA;
+  import PNlib.Components.Settings;
  parameter Real upperProb=0.5;
  parameter Real lowerProb=0.5;
  Real arcWeightOut1=1 "arc weights of output place"
