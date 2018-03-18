@@ -195,21 +195,21 @@ model Model "Top Model"
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-46,-68})));
-  PNproBP.Workload w_Consultants
+  PNproBP.Workload w_Consultants(max_tokens = Nr_Consultant) 
                              annotation(Placement(transformation(
         extent={{-5,-5},{5,5}},
         rotation=90,
         origin={-303,169})));
-  PNproBP.Workload w_Advisor                annotation(Placement(
+  PNproBP.Workload w_Advisor(max_tokens = Nr_Advisor1)                 annotation(Placement(
         transformation(
         extent={{-5,-5},{5,5}},
         rotation=90,
         origin={-95,169})));
-  PNproBP.Workload w_Advisor2
+  PNproBP.Workload w_Advisor2(max_tokens = Nr_Advisor2) 
     annotation(Placement(transformation(extent={{-5,-5},{5,5}},
         rotation=90,
         origin={323,-3})));
-  PNproBP.Workload w_Installer
+  PNproBP.Workload w_Installer(max_tokens = 2) 
                               annotation(Placement(transformation(
         extent={{-5,-5},{5,5}},
         rotation=90,
@@ -257,7 +257,7 @@ model Model "Top Model"
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-178,-22})));
-  PNproBP.Workload w_Accountant             annotation(Placement(
+  PNproBP.Workload w_Accountant(max_tokens = Nr_Accountant)              annotation(Placement(
         transformation(
         extent={{-5,-5},{5,5}},
         rotation=90,
@@ -271,7 +271,7 @@ model Model "Top Model"
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={72,-24})));
-  PNproBP.Workload w_Advisor1
+  PNproBP.Workload w_Advisor1(max_tokens = Nr_Controller) 
     annotation(Placement(transformation(extent={{-5,-5},{5,5}},
         rotation=90,
         origin={71,5})));
