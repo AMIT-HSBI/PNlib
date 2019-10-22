@@ -142,7 +142,7 @@ equation
         Text(
           extent={{-2, -112}, {-2, -140}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect("d=%delay", if showTime then "d=%delay" else " ")),
+          textString=DynamicSelect("d=%delay", if showDelay then "d=%delay" else " ")),
                                           Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},

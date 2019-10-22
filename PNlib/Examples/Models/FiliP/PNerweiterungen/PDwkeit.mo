@@ -101,6 +101,6 @@ equation
 //****ERROR MESSENGES END****//
   annotation(
     defaultComponentName = "P1",
-    Icon(graphics = {Ellipse(extent = {{-100, 96}, {100, -100}}, lineColor = {0, 0, 0}, fillColor = DynamicSelect({255, 255, 255}, color), fillPattern = FillPattern.Solid), Text(extent = {{-1.5, 25.5}, {-1.5, -21.5}}, lineColor = {0, 0, 0}, textString = DynamicSelect("%startTokens", if animateMarking then realString(t, 1, 0) else " ")), Text(extent = {{-90, 130}, {-90, 116}}, lineColor = {0, 0, 0}, textString = DynamicSelect(" ", if showCapacity then if maxTokens > 1073741822 then "[%minTokens, inf]" else "[%minTokens, %maxTokens]" else " ")), Text(extent = {{-74, -113}, {-74, -138}}, lineColor = {0, 0, 0}, textString = "%name")}),
+    Icon(graphics = {Ellipse(extent = {{-100, 96}, {100, -100}}, lineColor = {0, 0, 0}, fillColor = DynamicSelect({255, 255, 255}, color), fillPattern = FillPattern.Solid), Text(extent = {{-1.5, 25.5}, {-1.5, -21.5}}, lineColor = {0, 0, 0}, textString = DynamicSelect("%startTokens", if animateMarking then String(t) else " ")), Text(extent = {{-90, 130}, {-90, 116}}, lineColor = {0, 0, 0}, textString = DynamicSelect(" ", if showCapacity then if maxTokens > 1073741822 then "[%minTokens, inf]" else "[%minTokens, %maxTokens]" else " ")), Text(extent = {{-74, -113}, {-74, -138}}, lineColor = {0, 0, 0}, textString = "%name")}),
     Diagram(graphics));
 end PDwkeit;

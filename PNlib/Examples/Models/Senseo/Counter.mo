@@ -33,6 +33,6 @@ equation
           rotation=90),
           Text(
             extent={{-1,-34},{-1,17}},
-            textString=DynamicSelect(" ",realString(levelSensor,1,0)),
+            textString=DynamicSelect(" ",String(levelSensor)),
             lineColor={0,0,0})}));
 end Counter;

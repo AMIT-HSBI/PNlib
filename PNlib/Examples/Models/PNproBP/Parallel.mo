@@ -158,5 +158,5 @@ equation
           textString="%name"), Text(
           extent={{0,-15},{0,-32}},
           lineColor={0,0,0},
-          textString=DynamicSelect("","d="+realString(delay,1,0)))}));
+          textString=DynamicSelect("","d="+String(delay)))}));
 end Parallel;

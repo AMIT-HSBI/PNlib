@@ -131,7 +131,7 @@ equation
       Text(
           extent={{-2, -156}, {-2, -184}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect(" ", if animateSpeed and fire then if instantaneousSpeed>0 then "vakt="+realString(instantaneousSpeed, 1, 2) else "vakt=0.0" else " ")),
+          textString=DynamicSelect(" ", if animateSpeed and fire then if instantaneousSpeed>0 then "vakt="+String(instantaneousSpeed) else "vakt=0.0" else " ")),
       Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},

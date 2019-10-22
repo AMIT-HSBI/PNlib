@@ -241,7 +241,7 @@ initial equation
         Text(
           extent={{-2, -152}, {-2, -180}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect("fd=?", if animateputDuration then "fd="+realString(putDuration, 1, 2) else " ")),
+          textString=DynamicSelect("fd=?", if animateputDuration then "fd="+String(putDuration) else " ")),
                                           Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},

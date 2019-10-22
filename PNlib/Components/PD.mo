@@ -138,7 +138,7 @@ equation
       Text(
         extent={{-1.5, 25.5}, {-1.5, -21.5}},
         lineColor={0, 0, 0},
-        textString=DynamicSelect("%startTokens", if animateMarking then realString(t, 1, 0) else " ")),
+        textString=DynamicSelect("%startTokens", if animateMarking then String(t) else " ")),
         Text(
           extent={{-90, 130}, {-90, 116}},
           lineColor={0, 0, 0},

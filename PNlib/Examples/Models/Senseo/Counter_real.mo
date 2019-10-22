@@ -42,6 +42,6 @@ equation
           rotation=90),
           Text(
             extent={{0,-27},{0,12}},
-            textString=DynamicSelect("0",realString(levelSensor_,1,0)),
+            textString=DynamicSelect("0",String(levelSensor_)),
             lineColor={0,0,0})}));
 end Counter_real;

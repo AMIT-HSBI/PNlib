@@ -21,7 +21,7 @@ algorithm
           lineColor={0,0,0},
           fillColor={170,255,213},
           fillPattern=FillPattern.Solid), Text(
-          textString=DynamicSelect(" ",realString(total,0,0)),
+          textString=DynamicSelect(" ",String(total)),
           extent={{2,12},{2,-4}},
           lineColor={0,0,0},
           fillColor={170,255,213},

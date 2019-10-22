@@ -222,7 +222,7 @@ initial algorithm
         Text(
           extent={{-2, -152}, {-2, -180}},
           lineColor={0, 0, 0},
-          textString=DynamicSelect("d=?", if animatePutFireTime then "d="+realString(putDelay, 1, 2) else " ")),
+          textString=DynamicSelect("d=?", if animatePutFireTime then "d="+String(putDelay) else " ")),
                                           Text(
           extent={{-4, 139}, {-4, 114}},
           lineColor={0, 0, 0},

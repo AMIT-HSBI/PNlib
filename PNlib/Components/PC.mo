@@ -177,7 +177,7 @@ equation
         lineColor={0, 0, 0},
         origin={0.5, -0.5},
         rotation=0,
-        textString=DynamicSelect("%startMarks", if animateMarking then if t>0 then realString(t, 1, 2) else "0.0" else " ")),
+        textString=DynamicSelect("%startMarks", if animateMarking then if t>0 then String(t) else "0.0" else " ")),
         Text(
           extent={{-90, 130}, {-90, 116}},
           lineColor={0, 0, 0},

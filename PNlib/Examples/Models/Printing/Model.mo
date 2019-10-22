@@ -136,7 +136,7 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          textString=DynamicSelect("0",realString(orders__,1,0))),
+          textString=DynamicSelect("0",String(orders__))),
         Text(
           extent={{-68,118},{-36,110}},
           lineColor={0,0,255},
@@ -150,7 +150,7 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          textString=DynamicSelect("0",realString(exemplars__,1,0))),
+          textString=DynamicSelect("0",String(exemplars__))),
         Text(
           extent={{-18,118},{14,110}},
           lineColor={0,0,255},
@@ -164,7 +164,7 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          textString=DynamicSelect("0",realString(maculation__,1,0))),
+          textString=DynamicSelect("0",String(maculation__))),
         Text(
           extent={{36,118},{60,110}},
           lineColor={0,0,255},
@@ -178,7 +178,7 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          textString=DynamicSelect("0",realString(paper__,1,0))),
+          textString=DynamicSelect("0",String(paper__))),
         Text(
           extent={{78,118},{106,110}},
           lineColor={0,0,255},
@@ -192,7 +192,7 @@ equation
           lineThickness=0.5,
           fillColor={255,255,255},
           fillPattern=FillPattern.Solid,
-          textString=DynamicSelect("0",realString(duration__,1,0)))}), Icon(coordinateSystem(preserveAspectRatio=true,
+          textString=DynamicSelect("0",String(duration__)))}), Icon(coordinateSystem(preserveAspectRatio=true,
           extent={{-125,-125},{125,125}})),
     //experiment(StopTime=32000, Tolerance = 1e-6),
     __Dymola_experimentSetupOutput);
