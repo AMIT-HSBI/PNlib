@@ -17,11 +17,11 @@ The main package PNlib is divided into the following sub-packages:
  * _Examples_: contains several examples and unit tests.
 
 ## Current release
-Download [PNlib v2.0 (2016-12-05)](../../archive/v2.0.zip)
+Download [PNlib v2.2 (2019-10-24)](../../archive/v2.2.zip)
 
 ## Compatibility
 * Works in OpenModelica (latest release) ([trend](http://libraries.openmodelica.org/branches/history/master/PNlib.svg), [coverage](http://libraries.openmodelica.org/branches/master/PNlib/PNlib.html))
-* Works in Dymola 2017
+* Works in Dymola 2017/2019/2020
 
 ## License
 This Modelica package is free software and the use is completely at your own risk;
