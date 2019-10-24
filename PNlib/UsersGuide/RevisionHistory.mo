@@ -68,6 +68,30 @@ info="<html>
         <li>Minor bug fixes</li>
       </ul></td>
     </tr>
+
+    <tr>
+      <td valign=\"top\">2.1</td>
+      <td valign=\"top\">2017-11-20</td>
+      <td valign=\"top\">Timo Lask</td>
+      <td valign=\"top\"><ul>
+        <li>Added new time concepts (event, time tact, fire duration, immediate)</li>
+        <li>Added benefit conflict solution for PD</li>
+        <li>Modified (real) test arc</li>
+        <li>Modified (real) inhibitor arc</li>
+        <li>New stochastic transitions (TES, TFDS)</li>
+        <li>New distributions (uniform, triangular, trunked normal, discrete)</li>
+        <li>Minor bug fixes</li>
+      </ul></td>
+    </tr>
+
+    <tr>
+      <td valign=\"top\">2.2</td>
+      <td valign=\"top\">2019-10-24</td>
+      <td valign=\"top\">Timo Lask, Lennart Ochel</td>
+      <td valign=\"top\"><ul>
+        <li>Minor bug fixes</li>
+      </ul></td>
+    </tr>
 </table>
 </html>"));
 end RevisionHistory;
