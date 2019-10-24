@@ -29,9 +29,9 @@ end if;
 
 // Result:
 // true
-// "Notification: Automatically loaded package Modelica 3.2.2 due to uses annotation.
-// Notification: Automatically loaded package Complex 3.2.2 due to uses annotation.
-// Notification: Automatically loaded package ModelicaServices 3.2.2 due to uses annotation.
+// "Notification: Automatically loaded package Modelica 3.2.3 due to uses annotation.
+// Notification: Automatically loaded package Complex 3.2.3 due to uses annotation.
+// Notification: Automatically loaded package ModelicaServices 3.2.3 due to uses annotation.
 // "
 // record SimulationResult
 //     resultFile = "PNlib.Examples.DisTest.InputConflictPrio_res.mat",
