@@ -12,20 +12,20 @@ model Start_Stop "starting and stop the printing machine"
  Real stopTime2;
  Real startTime;
  Boolean reStart;
- PD  Start(nIn=1, nOut=1,
+ PNlib.Components.PD  Start(nIn=1, nOut=1,
     maxTokens=1,
     startTokens=0)        annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-80,0})));
-  TD starting(
+  PNlib.Components.TD starting(
     nOut=2,
     nIn=1,
     delay=setupTime)            annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-50,0})));
-  PD Stop(
+  PNlib.Components.PD Stop(
     nIn=1,
     maxTokens=1,
     nOut=1,
@@ -33,18 +33,18 @@ model Start_Stop "starting and stop the printing machine"
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={36,0})));
-  PD Counter_Orders(nIn=1)    annotation(Placement(transformation(
+  PNlib.Components.PD Counter_Orders(nIn=1)    annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-22,48})));
-  TD stopping(
+  PNlib.Components.TD stopping(
     nIn=2,
     nOut=1,
     arcWeightIn={1,1})      annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={60,0})));
-  TA TA5(testValue=number_exemplars)
+  PNlib.Components.TA TA5(testValue=number_exemplars)
          annotation(Placement(transformation(
         extent={{-11,-3.99998},{11,3.99998}},
         rotation=90,

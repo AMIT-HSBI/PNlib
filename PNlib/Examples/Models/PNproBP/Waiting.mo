@@ -4,7 +4,7 @@ model Waiting
    Integer arcWeight=1;
   Boolean fire "firability of continuous transition";
   Integer fireColor[3] "for animation";
-  TD T1(
+  PNlib.Components.TD T1(
     nIn=1,
     nOut=1,
     delay=0.001,
@@ -12,9 +12,9 @@ model Waiting
     arcWeightOut={pre(Puffer.t)},
     firingCon=pre(Puffer.t) > 0 and pre(P1.t) == 0)
             annotation(Placement(transformation(extent={{-20,74},{0,94}})));
-  PD Puffer(nOut=24, nIn=1)
+  PNlib.Components.PD Puffer(nOut=24, nIn=1)
     annotation(Placement(transformation(extent={{-70,4},{-50,24}})));
-  TD T2(
+  PNlib.Components.TD T2(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -22,7 +22,7 @@ model Waiting
     arcWeightOut={pre(Puffer.t)},
     firingCon=pre(Puffer.t) > 0 and pre(P2.t) == 0)
             annotation(Placement(transformation(extent={{-20,40},{0,60}})));
-  TD T3(
+  PNlib.Components.TD T3(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -30,7 +30,7 @@ model Waiting
     arcWeightOut={pre(Puffer.t)},
     firingCon=pre(Puffer.t) > 0 and pre(P3.t) == 0)
             annotation(Placement(transformation(extent={{-22,6},{-2,26}})));
-  TD T4(
+  PNlib.Components.TD T4(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -38,7 +38,7 @@ model Waiting
     arcWeightOut={pre(Puffer.t)},
     firingCon=pre(Puffer.t) > 0 and pre(P4.t) == 0)
             annotation(Placement(transformation(extent={{-22,-28},{-2,-8}})));
-  TD T5(
+  PNlib.Components.TD T5(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -46,7 +46,7 @@ model Waiting
     arcWeightOut={pre(Puffer.t)},
     firingCon=pre(Puffer.t) > 0 and pre(P5.t) == 0)
             annotation(Placement(transformation(extent={{-22,-60},{-2,-40}})));
-  TD T6(
+  PNlib.Components.TD T6(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -54,9 +54,9 @@ model Waiting
     arcWeightOut={pre(Puffer.t)},
     firingCon=pre(Puffer.t) > 0 and pre(P6.t) == 0)
             annotation(Placement(transformation(extent={{-22,-94},{-2,-74}})));
-  PD P1(nOut=1, nIn=1)
+  PNlib.Components.PD P1(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{8,74},{28,94}})));
-  TD T7(
+  PNlib.Components.TD T7(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -66,20 +66,20 @@ model Waiting
             annotation(Placement(transformation(extent={{48,74},{68,94}})));
   Boolean ani "for transition animation";
 protected
-  outer Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   discrete Real fireTime;
 public
-  PD P2(nOut=1, nIn=1)
+  PNlib.Components.PD P2(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{8,40},{28,60}})));
-  PD P3(nOut=1, nIn=1)
+  PNlib.Components.PD P3(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{6,6},{26,26}})));
-  PD P4(nOut=1, nIn=1)
+  PNlib.Components.PD P4(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{6,-28},{26,-8}})));
-  PD P5(nOut=1, nIn=1)
+  PNlib.Components.PD P5(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{6,-62},{26,-42}})));
-  PD P6(nOut=1, nIn=1)
+  PNlib.Components.PD P6(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{8,-96},{28,-76}})));
-  TD T8(
+  PNlib.Components.TD T8(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -87,7 +87,7 @@ public
     arcWeightOut={pre(P2.t)},
     firingCon=pre(P2.t) > 0)
             annotation(Placement(transformation(extent={{46,40},{66,60}})));
-  TD T9(
+  PNlib.Components.TD T9(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -95,7 +95,7 @@ public
     arcWeightOut={pre(P3.t)},
     firingCon=pre(P3.t) > 0)
             annotation(Placement(transformation(extent={{46,6},{66,26}})));
-  TD T10(
+  PNlib.Components.TD T10(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -103,7 +103,7 @@ public
     arcWeightOut={pre(P4.t)},
     firingCon=pre(P4.t) > 0)
             annotation(Placement(transformation(extent={{46,-28},{66,-8}})));
-  TD T11(
+  PNlib.Components.TD T11(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -111,7 +111,7 @@ public
     arcWeightOut={pre(P5.t)},
     firingCon=pre(P5.t) > 0)
             annotation(Placement(transformation(extent={{46,-62},{66,-42}})));
-  TD T12(
+  PNlib.Components.TD T12(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -119,9 +119,9 @@ public
     arcWeightOut={pre(P6.t)},
     firingCon=pre(P6.t) > 0)
             annotation(Placement(transformation(extent={{46,-96},{66,-76}})));
-  PD P7(nIn=24, nOut=1)
+  PNlib.Components.PD P7(nIn=24, nOut=1)
     annotation(Placement(transformation(extent={{104,-132},{124,-112}})));
-  TD T13(
+  PNlib.Components.TD T13(
     nOut=1,
     nIn=1,
     arcWeightIn={arcWeight},
@@ -131,7 +131,7 @@ public
     annotation(Placement(transformation(extent={{-98,4},{-78,24}})));
   Interfaces.TransitionIn inPlaces1 annotation(Placement(transformation(extent=
            {{-120,4},{-100,24}}), iconTransformation(extent={{-120,-10},{-100,10}})));
-  TD T14(
+  PNlib.Components.TD T14(
     nIn=1,
     delay=0.001,
     arcWeightIn={pre(P7.t)},
@@ -143,7 +143,7 @@ public
           extent={{176,-136},{196,-116}}),
                                        iconTransformation(extent={{100,-10},{120,
             10}})));
-  TD T15(
+  PNlib.Components.TD T15(
     nIn=1,
     nOut=1,
     delay=0.001,
@@ -151,9 +151,9 @@ public
     arcWeightOut={pre(Puffer.t)},
     firingCon=pre(Puffer.t) > 0 and pre(P8.t) == 0)
             annotation(Placement(transformation(extent={{-22,-126},{-2,-106}})));
-  PD P8(nOut=1, nIn=1)
+  PNlib.Components.PD P8(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{6,-126},{26,-106}})));
-  TD T16(
+  PNlib.Components.TD T16(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -161,7 +161,7 @@ public
     arcWeightOut={pre(P8.t)},
     firingCon=pre(P8.t) > 0)
             annotation(Placement(transformation(extent={{46,-126},{66,-106}})));
-  TD T17(
+  PNlib.Components.TD T17(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -170,9 +170,9 @@ public
     firingCon=pre(Puffer.t) > 0 and pre(P9.t) == 0)
             annotation(Placement(transformation(extent={{-22,-160},{-2,-140}})));
 public
-  PD P9(nOut=1, nIn=1)
+  PNlib.Components.PD P9(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{6,-160},{26,-140}})));
-  TD T18(
+  PNlib.Components.TD T18(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -180,7 +180,7 @@ public
     arcWeightOut={pre(P9.t)},
     firingCon=pre(P9.t) > 0)
             annotation(Placement(transformation(extent={{44,-160},{64,-140}})));
-  TD T19(
+  PNlib.Components.TD T19(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -188,7 +188,7 @@ public
     arcWeightOut={pre(Puffer.t)},
     firingCon=pre(Puffer.t) > 0 and pre(P10.t) == 0)
             annotation(Placement(transformation(extent={{-24,-194},{-4,-174}})));
-  TD T20(
+  PNlib.Components.TD T20(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -196,7 +196,7 @@ public
     arcWeightOut={pre(Puffer.t)},
     firingCon=pre(Puffer.t) > 0 and pre(P11.t) == 0)
             annotation(Placement(transformation(extent={{-24,-228},{-4,-208}})));
-  TD T21(
+  PNlib.Components.TD T21(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -204,7 +204,7 @@ public
     arcWeightOut={pre(Puffer.t)},
     firingCon=pre(Puffer.t) > 0 and pre(P12.t) == 0)
             annotation(Placement(transformation(extent={{-24,-260},{-4,-240}})));
-  TD T22(
+  PNlib.Components.TD T22(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -212,15 +212,15 @@ public
     arcWeightOut={pre(Puffer.t)},
     firingCon=pre(Puffer.t) > 0 and pre(P13.t) == 0)
             annotation(Placement(transformation(extent={{-24,-294},{-4,-274}})));
-  PD P10(nOut=1, nIn=1)
+  PNlib.Components.PD P10(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{4,-194},{24,-174}})));
-  PD P11(nOut=1, nIn=1)
+  PNlib.Components.PD P11(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{4,-228},{24,-208}})));
-  PD P12(nOut=1, nIn=1)
+  PNlib.Components.PD P12(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{4,-262},{24,-242}})));
-  PD P13(nOut=1, nIn=1)
+  PNlib.Components.PD P13(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{6,-296},{26,-276}})));
-  TD T23(
+  PNlib.Components.TD T23(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -228,7 +228,7 @@ public
     arcWeightOut={pre(P10.t)},
     firingCon=pre(P10.t) > 0)
             annotation(Placement(transformation(extent={{44,-194},{64,-174}})));
-  TD T24(
+  PNlib.Components.TD T24(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -236,7 +236,7 @@ public
     arcWeightOut={pre(P11.t)},
     firingCon=pre(P11.t) > 0)
             annotation(Placement(transformation(extent={{44,-228},{64,-208}})));
-  TD T25(
+  PNlib.Components.TD T25(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -244,7 +244,7 @@ public
     arcWeightOut={pre(P12.t)},
     firingCon=pre(P12.t) > 0)
             annotation(Placement(transformation(extent={{44,-262},{64,-242}})));
-  TD T26(
+  PNlib.Components.TD T26(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -252,7 +252,7 @@ public
     arcWeightOut={pre(P13.t)},
     firingCon=pre(P13.t) > 0)
             annotation(Placement(transformation(extent={{44,-296},{64,-276}})));
-  TD T27(
+  PNlib.Components.TD T27(
     nIn=1,
     nOut=1,
     delay=0.001,
@@ -260,7 +260,7 @@ public
     arcWeightOut={pre(Puffer.t)},
     firingCon=pre(Puffer.t) > 0 and pre(P14.t) == 0)
             annotation(Placement(transformation(extent={{-20,-334},{0,-314}})));
-  TD T28(
+  PNlib.Components.TD T28(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -268,7 +268,7 @@ public
     arcWeightOut={pre(Puffer.t)},
     firingCon=pre(Puffer.t) > 0 and pre(P15.t) == 0)
             annotation(Placement(transformation(extent={{-20,-368},{0,-348}})));
-  TD T29(
+  PNlib.Components.TD T29(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -277,7 +277,7 @@ public
     firingCon=pre(Puffer.t) > 0 and pre(P16.t) == 0)
             annotation(Placement(transformation(extent={{-22,-402},{-2,
             -382}})));
-  TD T30(
+  PNlib.Components.TD T30(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -286,7 +286,7 @@ public
     firingCon=pre(Puffer.t) > 0 and pre(P17.t) == 0)
             annotation(Placement(transformation(extent={{-22,-436},{-2,
             -416}})));
-  TD T31(
+  PNlib.Components.TD T31(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -295,7 +295,7 @@ public
     firingCon=pre(Puffer.t) > 0 and pre(P18.t) == 0)
             annotation(Placement(transformation(extent={{-22,-468},{-2,
             -448}})));
-  TD T32(
+  PNlib.Components.TD T32(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -304,9 +304,9 @@ public
     firingCon=pre(Puffer.t) > 0 and pre(P19.t) == 0)
             annotation(Placement(transformation(extent={{-22,-502},{-2,
             -482}})));
-  PD P14(nOut=1, nIn=1)
+  PNlib.Components.PD P14(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{8,-334},{28,-314}})));
-  TD T33(
+  PNlib.Components.TD T33(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -315,17 +315,17 @@ public
     firingCon=pre(P14.t) > 0)
             annotation(Placement(transformation(extent={{48,-334},{68,-314}})));
 public
-  PD P15(nOut=1, nIn=1)
+  PNlib.Components.PD P15(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{8,-368},{28,-348}})));
-  PD P16(nOut=1, nIn=1)
+  PNlib.Components.PD P16(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{6,-402},{26,-382}})));
-  PD P17(nOut=1, nIn=1)
+  PNlib.Components.PD P17(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{6,-436},{26,-416}})));
-  PD P18(nOut=1, nIn=1)
+  PNlib.Components.PD P18(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{6,-470},{26,-450}})));
-  PD P19(nOut=1, nIn=1)
+  PNlib.Components.PD P19(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{8,-504},{28,-484}})));
-  TD T34(
+  PNlib.Components.TD T34(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -333,7 +333,7 @@ public
     arcWeightOut={pre(P15.t)},
     firingCon=pre(P15.t) > 0)
             annotation(Placement(transformation(extent={{46,-368},{66,-348}})));
-  TD T35(
+  PNlib.Components.TD T35(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -341,7 +341,7 @@ public
     arcWeightOut={pre(P16.t)},
     firingCon=pre(P16.t) > 0)
             annotation(Placement(transformation(extent={{46,-402},{66,-382}})));
-  TD T36(
+  PNlib.Components.TD T36(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -349,7 +349,7 @@ public
     arcWeightOut={pre(P17.t)},
     firingCon=pre(P17.t) > 0)
             annotation(Placement(transformation(extent={{46,-436},{66,-416}})));
-  TD T37(
+  PNlib.Components.TD T37(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -357,7 +357,7 @@ public
     arcWeightOut={pre(P18.t)},
     firingCon=pre(P18.t) > 0)
             annotation(Placement(transformation(extent={{44,-470},{64,-450}})));
-  TD T38(
+  PNlib.Components.TD T38(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -365,7 +365,7 @@ public
     arcWeightOut={pre(P19.t)},
     firingCon=pre(P19.t) > 0)
             annotation(Placement(transformation(extent={{46,-504},{66,-484}})));
-  TD T39(
+  PNlib.Components.TD T39(
     nIn=1,
     nOut=1,
     delay=0.001,
@@ -374,9 +374,9 @@ public
     firingCon=pre(Puffer.t) > 0 and pre(P20.t) == 0)
             annotation(Placement(transformation(extent={{-22,-534},{-2,
             -514}})));
-  PD P20(nOut=1, nIn=1)
+  PNlib.Components.PD P20(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{6,-534},{26,-514}})));
-  TD T40(
+  PNlib.Components.TD T40(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -384,7 +384,7 @@ public
     arcWeightOut={pre(P20.t)},
     firingCon=pre(P20.t) > 0)
             annotation(Placement(transformation(extent={{46,-534},{66,-514}})));
-  TD T41(
+  PNlib.Components.TD T41(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -394,9 +394,9 @@ public
             annotation(Placement(transformation(extent={{-22,-568},{-2,
             -548}})));
 public
-  PD P21(nOut=1, nIn=1)
+  PNlib.Components.PD P21(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{6,-568},{26,-548}})));
-  TD T42(
+  PNlib.Components.TD T42(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -404,15 +404,15 @@ public
     arcWeightOut={pre(P21.t)},
     firingCon=pre(P21.t) > 0)
             annotation(Placement(transformation(extent={{44,-568},{64,-548}})));
-  PD P22(nOut=1, nIn=1)
+  PNlib.Components.PD P22(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{4,-602},{24,-582}})));
-  PD P23(nOut=1, nIn=1)
+  PNlib.Components.PD P23(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{4,-636},{24,-616}})));
-  PD P24(nOut=1, nIn=1)
+  PNlib.Components.PD P24(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{4,-670},{24,-650}})));
-  PD P25(nOut=1, nIn=1)
+  PNlib.Components.PD P25(nOut=1, nIn=1)
     annotation(Placement(transformation(extent={{6,-704},{26,-684}})));
-  TD T43(
+  PNlib.Components.TD T43(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -420,7 +420,7 @@ public
     arcWeightOut={pre(P22.t)},
     firingCon=pre(P22.t) > 0)
             annotation(Placement(transformation(extent={{44,-602},{64,-582}})));
-  TD T44(
+  PNlib.Components.TD T44(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -428,7 +428,7 @@ public
     arcWeightOut={pre(P23.t)},
     firingCon=pre(P23.t) > 0)
             annotation(Placement(transformation(extent={{44,-636},{64,-616}})));
-  TD T45(
+  PNlib.Components.TD T45(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -436,7 +436,7 @@ public
     arcWeightOut={pre(P24.t)},
     firingCon=pre(P24.t) > 0)
             annotation(Placement(transformation(extent={{44,-670},{64,-650}})));
-  TD T46(
+  PNlib.Components.TD T46(
     nOut=1,
     nIn=1,
     delay=delay,
@@ -444,7 +444,7 @@ public
     arcWeightOut={pre(P25.t)},
     firingCon=pre(P25.t) > 0)
             annotation(Placement(transformation(extent={{46,-704},{66,-684}})));
-  TD T47(
+  PNlib.Components.TD T47(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -453,7 +453,7 @@ public
     firingCon=pre(Puffer.t) > 0 and pre(P22.t) == 0)
             annotation(Placement(transformation(extent={{-24,-602},{-4,
             -582}})));
-  TD T48(
+  PNlib.Components.TD T48(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -462,7 +462,7 @@ public
     firingCon=pre(Puffer.t) > 0 and pre(P23.t) == 0)
             annotation(Placement(transformation(extent={{-24,-636},{-4,
             -616}})));
-  TD T49(
+  PNlib.Components.TD T49(
     nIn=1,
     delay=0.001,
     nOut=1,
@@ -471,7 +471,7 @@ public
     firingCon=pre(Puffer.t) > 0 and pre(P24.t) == 0)
             annotation(Placement(transformation(extent={{-24,-668},{-4,
             -648}})));
-  TD T50(
+  PNlib.Components.TD T50(
     nIn=1,
     delay=0.001,
     nOut=1,

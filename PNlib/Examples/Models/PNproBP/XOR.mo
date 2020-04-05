@@ -6,26 +6,26 @@ model XOR
                                      annotation(Dialog(enable = true, group = "Arc Weights"));
  Real arcWeightOut2=1 "arc weights of output place"
                                      annotation(Dialog(enable = true, group = "Arc Weights"));
-  TD T1(
+  PNlib.Components.TD T1(
     nIn=1,
     nOut=1,
     arcWeightOut={arcWeightOut1},
     delay=0.0001)
              annotation(Placement(transformation(extent={{-18,30},{2,50}})));
-  TD T2(
+  PNlib.Components.TD T2(
     nIn=1,
     nOut=1,
     arcWeightOut={arcWeightOut2},
     delay=0.0001)
              annotation(Placement(transformation(extent={{-18,-50},{2,-30}})));
-  PD P1(
+  PNlib.Components.PD P1(
     nIn=1,
     nOut=2,
     enablingType=PNlib.Types.EnablingType.Probability,
     enablingProbOut={upperProb,lowerProb},
     maxTokens=1)
     annotation(Placement(transformation(extent={{-62,-10},{-42,10}})));
-  TD T3(
+  PNlib.Components.TD T3(
     nOut=1,
     nIn=1,
     delay=0.0001)
@@ -40,7 +40,7 @@ model XOR
   Integer fireColor[3] "for animation";
    Boolean ani "for transition animation";
 protected
-  outer Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   discrete Real fireTime;
 equation
   fire=T1.fire or T2.fire;

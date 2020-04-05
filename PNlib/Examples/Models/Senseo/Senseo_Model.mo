@@ -8,15 +8,15 @@ model Senseo_Model "Top Model"
   PNlib.Examples.Models.Senseo.coffee_cup coffe_cup(color={80,0,0}, hmax=
         0.25)
     annotation(Placement(transformation(extent={{64,-10},{100,26}})));
-  Counter amount_cups
+  PNlib.Examples.Models.Senseo.Counter amount_cups
     annotation(Placement(transformation(extent={{10,46},{46,82}})));
-  Start start(EV_time=1200)
+  PNlib.Examples.Models.Senseo.Start start(EV_time=1200)
     annotation(Placement(transformation(extent={{-102,-48},{-30,32}})));
-  Refill_Water refill_Water
+  PNlib.Examples.Models.Senseo.Refill_Water refill_Water
     annotation(Placement(transformation(extent={{2,-98},{38,-72}})));
-  Insert_Pad insert_Pad
+  PNlib.Examples.Models.Senseo.Insert_Pad insert_Pad
     annotation(Placement(transformation(extent={{-24,44},{-4,64}})));
-  Counter_real counter_real(text="Temperature", hmax=90)
+  PNlib.Examples.Models.Senseo.Counter_real counter_real(text="Temperature", hmax=90)
     annotation(Placement(transformation(extent={{66,42},{104,80}})));
   inner PNlib.Components.Settings settings annotation(
     Placement(visible = true, transformation(origin = {-90, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

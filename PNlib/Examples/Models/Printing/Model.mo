@@ -17,36 +17,36 @@ model Model "Top model"
   PNlib.Examples.Models.Printing.Maculation maculation(time_between_macus=
         9000, time_macu=1200)
     annotation(Placement(transformation(extent={{-28,-122},{56,-80}})));
-  Counter maculation_(hmax=40000, text="maculation")
+  PNlib.Examples.Models.Printing.Counter maculation_(hmax=40000, text="maculation")
     annotation(Placement(transformation(extent={{62,-86},{108,-40}})));
-  Counter exemplars_(
+  PNlib.Examples.Models.Printing.Counter exemplars_(
     color={0,255,0},
     text="exemplars",
     hmax=start_Stop.number_exemplars)
     annotation(Placement(transformation(extent={{50,16},{92,58}})));
   PNlib.Examples.Models.Printing.Role_change role_change(display_time=200)
     annotation(Placement(transformation(extent={{-120,-54},{-58,4}})));
-  Counter orders_(
+  PNlib.Examples.Models.Printing.Counter orders_(
     color={0,255,0},
     hmax=25,
     text="orders")
     annotation(Placement(transformation(extent={{-82,52},{-46,88}})));
-  Counter role_(
+  PNlib.Examples.Models.Printing.Counter role_(
     hmax=20000,
     color={85,170,255},
     text="meters on role")
     annotation(Placement(transformation(extent={{-116,6},{-80,42}})));
-  Counter paper_(
+  PNlib.Examples.Models.Printing.Counter paper_(
     hmax=60000,
     color={85,170,255},
     text=" paper")
     annotation(Placement(transformation(extent={{84,18},{126,60}})));
-  Counter duration_(
+  PNlib.Examples.Models.Printing.Counter duration_(
     color={0,255,0},
     hmax=15000,
     text="duration")
     annotation(Placement(transformation(extent={{14,54},{48,88}})));
-  inner Settings settings
+  inner PNlib.Components.Settings settings
     annotation(Placement(transformation(extent={{-122,-122},{-102,-102}})));
 equation
   when reStart then

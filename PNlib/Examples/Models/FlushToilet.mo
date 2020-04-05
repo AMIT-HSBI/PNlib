@@ -1,5 +1,6 @@
 within PNlib.Examples.Models;
 model FlushToilet "Model of a flush toilet"
+  import PNlib.Components.*;
   extends Modelica.Icons.Example;
   PD Lever(nIn=1,
     maxTokens=1,

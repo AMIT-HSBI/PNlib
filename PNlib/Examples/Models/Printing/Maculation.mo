@@ -5,40 +5,41 @@ model Maculation "maculation of the printing process"
  parameter Real time_channel_out=1000
     "Time from pressing the button to the first channel out";
  parameter Real time_macu=600 "expected time of the maculation (button press)";
- parameter Real time_macu_roleChnage=300
+ parameter Real time_macu_roleChange=300
     "expected time of the maculation (role chnage)";
  Real NumberMacu=Bundle_in_macu_press.t;
  Boolean macu=bundle_channelOut.t>0;
  Real color[3]=if macu then {255,0,0} else {0,255,0};
- Real h=if pre(bundle_channelOut.t) > 1 then 1/time_macu else 1/time_macu_roleChnage;
-  TD channelOut1(
+ // Real h=if pre(bundle_channelOut.t) > 1 then 1/time_macu else 1/time_macu_roleChange;
+ parameter Real h=1/time_macu_roleChange;
+  PNlib.Components.TD channelOut1(
     nIn=2,
     arcWeightOut={1},
     nOut=1,
     delay=time_channel_out)
     annotation(Placement(transformation(extent={{-66,-6},{-46,14}})));
-  TD channelOut(
+  PNlib.Components.TD channelOut(
     nIn=2,
     arcWeightOut={2},
     nOut=1,
     delay=1)
     annotation(Placement(transformation(extent={{-64,-64},{-44,-44}})));
-  PD start_channelOut(
+  PNlib.Components.PD start_channelOut(
     nIn=1,
     nOut=1,
     maxTokens=1)
     annotation(Placement(transformation(extent={{-128,-64},{-108,-44}})));
-  TDS       pressing_button(nOut=1,
+  PNlib.Components.TDS       pressing_button(nOut=1,
     firingCon=start,
     nIn=1,
     h=1/time_between_macus)
     annotation(Placement(transformation(extent={{-190,-64},{-170,-44}})));
-  PD bundle_channelOut(
+  PNlib.Components.PD bundle_channelOut(
     nOut=4,
     nIn=2,
     maxTokens=2)
     annotation(Placement(transformation(extent={{4,-28},{24,-8}})));
-  TDS Stop_macu(
+  PNlib.Components.TDS Stop_macu(
     nIn=1,
     nOut=1,
     h=h,
@@ -46,7 +47,7 @@ model Maculation "maculation of the printing process"
     annotation(Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={56,8})));
-  PD bundle_not_channelOut(
+  PNlib.Components.PD bundle_not_channelOut(
     startTokens=1,
     maxTokens=1,
     nOut=3,
@@ -54,23 +55,23 @@ model Maculation "maculation of the printing process"
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-14,36})));
-  TA       TA4(testValue=0)
+  PNlib.Components.TA       TA4(testValue=0)
                annotation(Placement(transformation(extent={{-10.0003,-3.5},{10.0001,
             3.50001}},
         rotation=90,
         origin={-54.0001,84.5})));
-  TA       TA3(testValue=0)
+  PNlib.Components.TA       TA3(testValue=0)
                annotation(Placement(transformation(extent={{-12.0001,
             -3.99999},{11.9999,4}},
         rotation=0,
         origin={102,-18})));
-  TC Macu_press(
+  PNlib.Components.TC Macu_press(
     nIn=2,
     nOut=1,
     maximumSpeed=speed,
     arcWeightIn={0,1})
     annotation(Placement(transformation(extent={{128,-28},{148,-8}})));
-  PC Bundle_in_macu_press(nIn=1, reStart=reStart)
+  PNlib.Components.PC Bundle_in_macu_press(nIn=1, reStart=reStart)
     annotation(Placement(transformation(extent={{172,-28},{192,-8}})));
   Interfaces.TransitionIn ausschleussen_[2]
     annotation(Placement(transformation(extent={{-198,-6},{-178,14}}),
@@ -98,16 +99,16 @@ public
   Modelica.Blocks.Interfaces.RealOutput macuBundle_  annotation(Placement(
         transformation(extent={{172,2},{192,22}}), iconTransformation(extent={{180,
             -12},{200,8}})));
-  TD T1(
+  PNlib.Components.TD T1(
     nIn=2,
     nOut=2,
     arcWeightIn={pre(bundle_channelOut.t),1})
     annotation(Placement(transformation(extent={{-154,46},{-134,66}})));
-  TD T2(nIn=1, nOut=1)
+  PNlib.Components.TD T2(nIn=1, nOut=1)
     annotation(Placement(transformation(extent={{-154,-6},{-134,14}})));
-  PD P1(nIn=2, nOut=1)
+  PNlib.Components.PD P1(nIn=2, nOut=1)
     annotation(Placement(transformation(extent={{-110,-6},{-90,14}})));
-  IA IA1(testValue=1)
+  PNlib.Components.IA IA1(testValue=1)
          annotation(Placement(transformation(
         extent={{-11,-3.99999},{11.0001,3.99999}},
         rotation=180,

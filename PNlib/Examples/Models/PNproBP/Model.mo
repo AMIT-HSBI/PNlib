@@ -15,15 +15,15 @@ model Model "Top Model"
   parameter Real time_installation=4 "Time for installation";
   parameter Real time_accounting=1 "Time for order accounting";
 
-  TDS RaiseRequest(nOut=1, h=1/time_between_requests)
+  PNlib.Components.TDS RaiseRequest(nOut=1, h=1/time_between_requests)
     "a request is raised from a customer"
     annotation(Placement(transformation(extent={{-400,90},{-380,110}})));
-  PD Request(
+  PNlib.Components.PD Request(
     nIn=1,
     enablingType=PNlib.Types.EnablingType.Probability,
     nOut=1) "Request of a custumer is available"
     annotation(Placement(transformation(extent={{-358,90},{-338,110}})));
-  PD Consultants(
+  PNlib.Components.PD Consultants(
     enablingType=PNlib.Types.EnablingType.Probability,
     nOut=1,
     nIn=1,
@@ -33,17 +33,17 @@ model Model "Top Model"
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={-302,140})));
-  PD Solution(nOut=1, nIn=1) "A solution for the customer wish has been found"
+  PNlib.Components.PD Solution(nOut=1, nIn=1) "A solution for the customer wish has been found"
     annotation(Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-154,104})));
-  PD Complete(nIn=1, nOut=1) "Consulting is completed"
+  PNlib.Components.PD Complete(nIn=1, nOut=1) "Consulting is completed"
     annotation(Placement(transformation(extent={{-256,90},{-236,110}})));
-  PD Offer(nOut=1, nIn=1) "The offer is complete"
+  PNlib.Components.PD Offer(nOut=1, nIn=1) "The offer is complete"
     annotation(Placement(transformation(extent={{-42,94},{-22,114}})));
-  PD No_Solution(nIn=1) "No solution for the costumer wish has been found"
+  PNlib.Components.PD No_Solution(nIn=1) "No solution for the costumer wish has been found"
     annotation(Placement(transformation(extent={{-164,60},{-144,80}})));
-  PD Advisor1(
+  PNlib.Components.PD Advisor1(
     nOut=1,
     enablingType=PNlib.Types.EnablingType.Probability,
     nIn=1,
@@ -52,29 +52,29 @@ model Model "Top Model"
         extent={{-10,10},{10,-10}},
         rotation=180,
         origin={-96,144})));
-  TD Offer_to_Customer(
+  PNlib.Components.TD Offer_to_Customer(
     nOut=1,
     delay=8,
     nIn=1,
     arcWeightIn={pre(Offer.t)},
     arcWeightOut={pre(Offer.t)}) "The offers of a day are sent to the customer"
     annotation(Placement(transformation(extent={{4,94},{24,114}})));
-  PD Offer_at_Customer(nIn=1, nOut=1) "The offer has arrived the customer"
+  PNlib.Components.PD Offer_at_Customer(nIn=1, nOut=1) "The offer has arrived the customer"
     annotation(Placement(transformation(extent={{56,94},{76,114}})));
   PNproBP.XOR Replying(upperProb=0.8, lowerProb=0.2)
     "Does the customer answer to the offer?"
     annotation(Placement(transformation(extent={{202,94},{222,114}})));
-  PD Answer(nOut=1, nIn=1) "Answer from the customer"
+  PNlib.Components.PD Answer(nOut=1, nIn=1) "Answer from the customer"
     annotation(Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=0,
         origin={270,108})));
-  PD Order(nIn=2, nOut=1) "The customer gives the order"
+  PNlib.Components.PD Order(nIn=2, nOut=1) "The customer gives the order"
     annotation(Placement(transformation(extent={{376,56},{396,76}})));
-  PD No_Order(nIn=2) "no order"
+  PNlib.Components.PD No_Order(nIn=2) "no order"
     annotation(Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
         origin={392,114})));
-  PD Advisor2(
+  PNlib.Components.PD Advisor2(
     enablingType=PNlib.Types.EnablingType.Probability,
     startTokens=Nr_Advisor2,
     nOut=1,
@@ -82,51 +82,51 @@ model Model "Top Model"
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={324,-32})));
-  PD planned_order(nIn=1, nOut=1) "The order is planned"
+  PNlib.Components.PD planned_order(nIn=1, nOut=1) "The order is planned"
     annotation(Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={234,-112})));
-  PD material_order(nIn=1, nOut=1)
+  PNlib.Components.PD material_order(nIn=1, nOut=1)
     "The planning is complete and the material can be ordered"
     annotation(Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={240,-68})));
-  PD Material_supplied(nIn=1, nOut=1) "The required material is supplied"
+  PNlib.Components.PD Material_supplied(nIn=1, nOut=1) "The required material is supplied"
     annotation(Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={124,-68})));
-  PD Installation_possible(nIn=1, nOut=1) "the installation is possible"
+  PNlib.Components.PD Installation_possible(nIn=1, nOut=1) "the installation is possible"
                                                annotation(Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={8,-68})));
-  PD Installer(
+  PNlib.Components.PD Installer(
     startTokens=Nr_Installer,
     nOut=1,
     nIn=1)  annotation(Placement(transformation(
         extent={{10,10},{-10,-10}},
         rotation=180,
         origin={-46,-28})));
-  PD Installation_complete(nIn=1, nOut=1) "The installtion is complete"
+  PNlib.Components.PD Installation_complete(nIn=1, nOut=1) "The installtion is complete"
                                                     annotation(Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-124,-66})));
-  PD Invoice(nIn=1, nOut=1)
+  PNlib.Components.PD Invoice(nIn=1, nOut=1)
     "the invoice is complete and is sent to the customer"
                                        annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-242,-66})));
-  PD Order_complete(nIn=1) "the order is completed"
+  PNlib.Components.PD Order_complete(nIn=1) "the order is completed"
                                             annotation(Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-334,-66})));
-  inner Settings settings(scale=10)
+  inner PNlib.Components.Settings settings(scale=10)
     annotation(Placement(transformation(extent={{-420,166},{-386,200}})));
   PNproBP.Parallel Consulting(
     nIn=2,
@@ -217,12 +217,12 @@ model Model "Top Model"
         extent={{-5,-5},{5,5}},
         rotation=90,
         origin={-33,129})));
-  PD No_Answer(nOut=1, nIn=1) "Nor answer from the customer"
+  PNlib.Components.PD No_Answer(nOut=1, nIn=1) "Nor answer from the customer"
     annotation(Placement(transformation(extent={{260,60},{280,80}})));
   PNproBP.XOR Calling(upperProb=0.8, lowerProb=0.2)
     "Call the customer to get the answer"
     annotation(Placement(transformation(extent={{310,60},{330,80}})));
-  PD WaitingTime_over(nOut=1, nIn=1) "The waiting time of the answer is over"
+  PNlib.Components.PD WaitingTime_over(nOut=1, nIn=1) "The waiting time of the answer is over"
     annotation(Placement(transformation(extent={{150,94},{170,114}})));
   PNproBP.Waiting Waiting(delay=40) "Waiting of the answer from the customer"
     annotation(Placement(transformation(extent={{102,94},{122,114}})));
@@ -236,7 +236,7 @@ model Model "Top Model"
     annotation(Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-280,-66})));
-  PD Accountant(
+  PNlib.Components.PD Accountant(
     startTokens=Nr_Accountant,
     nOut=1,
     nIn=1) annotation(Placement(transformation(
@@ -248,7 +248,7 @@ model Model "Top Model"
         extent={{-5,-5},{5,5}},
         rotation=90,
         origin={-179,5})));
-  PD Controller(
+  PNlib.Components.PD Controller(
     enablingType=PNlib.Types.EnablingType.Probability,
     nOut=1,
     nIn=1,

@@ -1,7 +1,7 @@
 within PNlib.Examples.Models.Senseo;
 model Refill_Water
   "Refilling water: the water tank of the Senseo machine is refilled (step 3)."
-
+  import PNlib.Components.*;
   TD       refilling2(
     nIn=1,
     nOut=2,

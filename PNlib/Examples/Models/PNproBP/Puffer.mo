@@ -7,15 +7,15 @@ model Puffer
 
   Real arcWeightOut[nOut]=fill(1,nOut) "arc weights of output place"
                                      annotation(Dialog(enable = true, group = "Arc Weights"));
-  TD T1(
+  PNlib.Components.TD T1(
     nIn=1,
     nOut=nOut,
     delay=delay,
     arcWeightOut=arcWeightOut)
              annotation(Placement(transformation(extent={{-18,-10},{2,10}})));
-  PD P1(nIn=1, nOut=1)
+  PNlib.Components.PD P1(nIn=1, nOut=1)
     annotation(Placement(transformation(extent={{-54,-10},{-34,10}})));
-  TD T3(
+  PNlib.Components.TD T3(
     nOut=1,
     nIn=nIn,
     arcWeightIn=arcWeightIn,
@@ -29,7 +29,7 @@ model Puffer
   Integer fireColor[3] "for animation";
    Boolean ani "for transition animation";
 protected
-  outer Settings settings "global settings for animation and display";
+  outer PNlib.Components.Settings settings "global settings for animation and display";
   discrete Real fireTime;
 equation
   fire=T1.fire;

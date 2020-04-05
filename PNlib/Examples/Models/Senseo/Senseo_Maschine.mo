@@ -124,7 +124,7 @@ model Senseo_Maschine
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-144,-30})));
-  TA       RA1(testValue=0)
+  PNlib.Components.TA       RA1(testValue=0)
                annotation(Placement(transformation(extent={{-7,-2.00002},
             {7,2.00002}},
         rotation=90,
@@ -215,7 +215,7 @@ model Senseo_Maschine
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={110,152})));
-  IA IA1(testValue=1)
+  PNlib.Components.IA IA1(testValue=1)
     annotation(Placement(transformation(extent={{24,134},{40,140}})));
 equation
   connect(TA1.outTransition, heating.inPlaces[1]) annotation(Line(

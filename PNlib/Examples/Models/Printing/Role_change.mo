@@ -5,7 +5,7 @@ model Role_change "change of the paper role"
   parameter Real cutting_at=500 "length by which the rest is cut";
   parameter Real display_time=100 "for animation";
 
-  TD new_role(
+  PNlib.Components.TD new_role(
     nOut=2,
     delay=1,
     nIn=1,
@@ -13,17 +13,17 @@ model Role_change "change of the paper role"
     firingCon=pre(start),
     arcWeightOut={Role_length,1})
     annotation(Placement(transformation(extent={{-88,-20},{-68,0}})));
-  TD cutting_rest(
+  PNlib.Components.TD cutting_rest(
     nIn=1,
     nOut=1,
     delay=2,
     firingCon=pre(start))
     annotation(Placement(transformation(extent={{-20,38},{0,58}})));
-  PD P1(
+  PNlib.Components.PD P1(
     maxTokens=1,
     nIn=2,
     nOut=1) annotation(Placement(transformation(extent={{10,38},{30,58}})));
-  TD       T1(
+  PNlib.Components.TD       T1(
     nIn=2,
     nOut=1,
     firingCon=pre(start),
@@ -32,17 +32,17 @@ model Role_change "change of the paper role"
   PNlib.Components.PD P2(nIn=1, nOut=1,
     maxTokens=1)
     annotation(Placement(transformation(extent={{68,38},{88,58}})));
-  IA       IA2(testValue=cutting_at)
+  PNlib.Components.IA       IA2(testValue=cutting_at)
                annotation(Placement(transformation(
         extent={{-8.5,-2.50012},{8.5,2.50012}},
         rotation=90,
         origin={-32.5,38.5})));
-  PNlib.Components.D Role_change(
+  PNlib.Components.TD Role_change(
     nIn=1,
     maxTokens=1,
     nOut=2)
     annotation(Placement(transformation(extent={{-10,-90},{10,-70}})));
-  PC Role(
+  PNlib.Components.PC Role(
     nIn=1,
     nOut=3,
     minMarks=0,
@@ -50,11 +50,11 @@ model Role_change "change of the paper role"
     startMarks=0,
     reStart=reStart) "[m]"
     annotation(Placement(transformation(extent={{-56,-20},{-36,0}})));
-  Interfaces.PlaceOut rollenwechsel_[2]
+  PNlib.Interfaces.PlaceOut rollenwechsel_[2]
                                      annotation(Placement(transformation(
           extent={{100,-86},{116,-66}}),
                                        iconTransformation(extent={{68,-40},{88,-20}})));
-  Interfaces.PlaceOut rolle_ annotation(Placement(transformation(extent={{100,-50},
+  PNlib.Interfaces.PlaceOut rolle_ annotation(Placement(transformation(extent={{100,-50},
             {116,-30}}),
                        iconTransformation(extent={{68,20},{88,40}})));
             Real fireAni[3];
@@ -70,7 +70,7 @@ public
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-30,80})));
-  Interfaces.PlaceIn start_ annotation(Placement(transformation(
+  PNlib.Interfaces.PlaceIn start_ annotation(Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={8,110}),iconTransformation(

@@ -1,126 +1,126 @@
 within PNlib.Examples.Models.Printing;
 model PrintingMachine "printing machine"
 
-  TC printing(
+  PNlib.Components.TC printing(
     nOut=2,
     maximumSpeed=speed,
     nIn=1)
     annotation(Placement(transformation(extent={{-146,70},{-126,90}})));
-  PC printed_paper(
+  PNlib.Components.PC printed_paper(
     nIn=1,
     nOut=1,
     reStart=reStart) "[m]"
     annotation(Placement(transformation(extent={{-94,70},{-74,90}})));
-  TC cutting(
+  PNlib.Components.TC cutting(
     nIn=1,
     nOut=1,
     maximumSpeed=speed,
     arcWeightIn={1.2})
     annotation(Placement(transformation(extent={{-64,70},{-44,90}})));
-  PC Sections(
+  PNlib.Components.PC Sections(
     nIn=1,
     nOut=1,
     reStart=reStart) "m"
     annotation(Placement(transformation(extent={{-30,70},{-10,90}})));
-  TC fold(
+  PNlib.Components.TC fold(
     nIn=1,
     nOut=1,
     arcWeightOut={2},
     maximumSpeed=speed)
     annotation(Placement(transformation(extent={{4,70},{24,90}})));
-  PC FoldedSections(
+  PNlib.Components.PC FoldedSections(
     nIn=1,
     nOut=1,
     reStart=reStart)
     annotation(Placement(transformation(extent={{40,70},{60,90}})));
-  TC bundle(
+  PNlib.Components.TC bundle(
     nIn=1,
     nOut=1,
     arcWeightIn={2},
     maximumSpeed=speed)
     annotation(Placement(transformation(extent={{74,70},{94,90}})));
-  PC Bundle(
+  PNlib.Components.PC Bundle(
     nIn=1,
     nOut=1,
     reStart=reStart)
     annotation(Placement(transformation(extent={{-172,-6},{-152,14}})));
-  TC chainUp(
+  PNlib.Components.TC chainUp(
     nIn=1,
     nOut=2,
     maximumSpeed=speed)
     annotation(Placement(transformation(extent={{-140,-6},{-120,14}})));
-  PC Bundle_on_chain(
+  PNlib.Components.PC Bundle_on_chain(
     nIn=1,
     nOut=1,
     reStart=reStart)
     annotation(Placement(transformation(extent={{-96,-6},{-76,14}})));
-  TC       Chain_to_macu_press(
+  PNlib.Components.TC       Chain_to_macu_press(
     nIn=2,
     nOut=1,
     arcWeightIn={1,999},
     maximumSpeed=speed)
     annotation(Placement(transformation(extent={{-54,-6},{-34,14}})));
- PC bundle_at_macu_press(
+ PNlib.Components.PC bundle_at_macu_press(
     nIn=1,
     nOut=2,
     reStart=reStart)
             annotation(Placement(transformation(extent={{-6,-6},{14,14}})));
-  PC                        Chain_full(nOut=1, nIn=1,
+  PNlib.Components.PC                        Chain_full(nOut=1, nIn=1,
     reStart=reStart)
     annotation(Placement(transformation(extent={{-100,-42},{-80,-22}})));
-  TA       TA1(testValue=999)
+  PNlib.Components.TA       TA1(testValue=999)
     annotation(Placement(transformation(extent={{-7.49998,-2.50001},{7.49994,2.50001}},
         rotation=90,
         origin={-62.5,-6.5})));
-  TC       chain_up2(
+  PNlib.Components.TC       chain_up2(
     nOut=2,
     maximumSpeed=speed,
     arcWeightIn={1,0},
     nIn=2) annotation(Placement(transformation(extent={{50,-6},{70,14}})));
-  PC Bundle_on_chain2(
+  PNlib.Components.PC Bundle_on_chain2(
     nIn=1,
     nOut=1,
     reStart=reStart)
     annotation(Placement(transformation(extent={{104,-6},{124,14}})));
-  TC       chain1(
+  PNlib.Components.TC       chain1(
     nIn=2,
     nOut=2,
     arcWeightIn={1,999},
     maximumSpeed=speed)
     annotation(Placement(transformation(extent={{156,-6},{176,14}})));
-  PC                        Chain_full2(nIn=1, nOut=1,
+  PNlib.Components.PC                        Chain_full2(nIn=1, nOut=1,
     reStart=reStart)
     annotation(Placement(transformation(extent={{102,-42},{122,-22}})));
-  TA       TA2(testValue=999)
+  PNlib.Components.TA       TA2(testValue=999)
                annotation(Placement(transformation(extent={{-8.5,-2.50012},{8.5,
             2.50015}},
         rotation=90,
         origin={135.5,-5.5})));
-  PC                        Counter_exemplars(nIn=1, nOut=1,
+  PNlib.Components.PC                        Counter_exemplars(nIn=1, nOut=1,
     reStart=reStart)
     annotation(Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={180,68})));
-  PC                        Exemplars(nIn=1, nOut=1,
+  PNlib.Components.PC                        Exemplars(nIn=1, nOut=1,
     reStart=reStart)
     annotation(Placement(transformation(extent={{-164,-100},{-144,-80}})));
-  TC Exemplars_Packets(
+  PNlib.Components.TC Exemplars_Packets(
     nIn=1,
     nOut=1,
     arcWeightIn={240},
     maximumSpeed=1)
     annotation(Placement(transformation(extent={{-122,-100},{-102,-80}})));
-  PC Packets(
+  PNlib.Components.PC Packets(
     nIn=1,
     nOut=1,
     reStart=reStart)
     annotation(Placement(transformation(extent={{-84,-100},{-64,-80}})));
-  TC Packets_Pallet(
+  PNlib.Components.TC Packets_Pallet(
     nIn=1,
     nOut=1,
     arcWeightIn={100})
     annotation(Placement(transformation(extent={{-42,-100},{-22,-80}})));
-  PC Pallets(nIn=1, reStart=reStart)
+  PNlib.Components.PC Pallets(nIn=1, reStart=reStart)
     annotation(Placement(transformation(extent={{-4,-100},{16,-80}})));
   Interfaces.TransitionIn drucken_
     annotation(Placement(transformation(extent={{-214,70},{-194,90}}),
@@ -153,7 +153,7 @@ public
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-90,120})));
-  PC Counter_paper(nIn=1, reStart=reStart)
+  PNlib.Components.PC Counter_paper(nIn=1, reStart=reStart)
     annotation(Placement(transformation(extent={{-96,102},{-76,122}})));
   Modelica.Blocks.Interfaces.RealOutput papier_total_ annotation(
       Placement(transformation(
