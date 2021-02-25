@@ -6,43 +6,36 @@ extends Modelica.Icons.Contact;
  <p>This package is developed and maintained by the following contributors</p>
   <table border=1 cellspacing=0 cellpadding=2>
     <tr>
-      <th></th>
       <th>Name</th>
       <th>Affiliation</th>
     </tr>
     <tr>
-      <td valign=top>Library officer</td>
       <td valign=top>
       <a>Lennart Ochel</a><br>
-      <a>mailto: lennart.ochel@fh-bielefeld.de</a><br>
-      <td valign=top>University of Applied Sciences Bielefeld</td><br>
+      <a>mailto: lennart.ochel@ri.se</a><br>
+      <td valign=top>RISE - Autonoma system<br>
+        58183 Linköping<br>
+        Sweden
+      </td>
+    </tr>
+    <tr>
+      <td valign=top>
+      <a>S. Proß</a><br>
+      <a>mailto: sabrina.pross@fh-bielefeld.de</a><br>
+      <td valign=top>University of Applied Sciences Bielefeld<br>
         <a>Department of engineering and mathematics</a><br>
         33609 Bielefeld<br>
         Germany
       </td>
     </tr>
     <tr>
-      <td valign=top>Library officer</td>
-      <td valign=top>
-      <a>S. Proß</a><br>
-      <a>mailto: sabrina.pross@fh-bielefeld.de</a><br>
-      <td valign=top>University of Applied Sciences Bielefeld</td><br>
-        <a>Department of engineering and mathematics</a><br>
-        33609 Bielefeld<br>
-        Germany<br>
-       <a>http://www.fh-bielefeld.de/ammo<a>
-      </td>
-    </tr>
-    <tr>
-      <td valign=top>Contributor</td>
       <td valign=top>
       <a>B. Bachmann</a><br>
       <a>mailto: bernhard.bachmann@fh-bielefeld.de</a><br>
-      <td valign=top>University of Applied Sciences Bielefeld</td><br>
+      <td valign=top>University of Applied Sciences Bielefeld<br>
         <a>Department of engineering and mathematics</a><br>
         33609 Bielefeld<br>
-        Germany<br>
-       <a>http://www.fh-bielefeld.de/ammo<a>
+        Germany
       </td>
     </tr>
   </table>
