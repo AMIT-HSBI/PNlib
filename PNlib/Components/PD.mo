@@ -34,6 +34,8 @@ model PD "Discrete Place"
   Boolean animateMarking=settings.animateMarking
     "only for place animation and display (Do not change!)";
   Real color[3] "only for place animation and display (Do not change!)";
+  parameter Boolean showTokenFlow = settings.showTokenFlow annotation(Dialog(enable = true, group = "Token flow"));
+  Blocks.tokenFlowDis tokenFlow(nIn=nIn, nOut=nOut, fireIn=fireIn, fireOut=fireOut, arcWeightIn=arcWeightIn, arcWeightOut=arcWeightOut) if showTokenFlow;
   parameter Integer localSeedIn = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for input conflicts" annotation(Dialog(enable = true, group = "Random Number Generator"));
   parameter Integer localSeedOut = PNlib.Functions.Random.counter() "Local seed to initialize random number generator for output conflicts" annotation(Dialog(enable = true, group = "Random Number Generator"));
 protected
