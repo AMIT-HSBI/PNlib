@@ -20,6 +20,15 @@ extends Modelica.Icons.Contact;
     </tr>
     <tr>
       <td valign=top>
+      <a>Christoph Brinkrolf</a><br>
+      <td valign=top>Bielefeld University<br>
+        <a>Bioinformatics/Medical Informatics Department</a><br>
+        33615 Bielefeld<br>
+        Germany
+      </td>
+    </tr>
+    <tr>
+      <td valign=top>
       <a>S. Proß</a><br>
       <a>mailto: sabrina.pross@fh-bielefeld.de</a><br>
       <td valign=top>University of Applied Sciences Bielefeld<br>
