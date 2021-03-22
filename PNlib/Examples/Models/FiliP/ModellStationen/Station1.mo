@@ -19,6 +19,6 @@ equation
   connect(station.placeIn[3], pflegekraft.transitionOut[3]);
   annotation(
     Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}})),
-    Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}})),
-    experiment(StartTime = 0, StopTime = 365, Tolerance = 1e-06));
+    Icon(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}}))/*,
+    experiment(StartTime = 0, StopTime = 365, Tolerance = 1e-06)*/);
 end Station1;
