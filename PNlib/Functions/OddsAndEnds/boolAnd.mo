@@ -1,4 +1,5 @@
 within PNlib.Functions.OddsAndEnds;
+
 function boolAnd "hack for Dymola 2017"
   input Boolean a[:];
   input Boolean b[:];
@@ -7,5 +8,6 @@ algorithm
   for i in 1:size(a, 1) loop
     result[i] := a[i] and b[i];
   end for;
-  annotation(Inline = true);
+  annotation(
+    Inline = true);
 end boolAnd;

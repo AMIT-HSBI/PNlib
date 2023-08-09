@@ -1,4 +1,5 @@
 within PNlib.Blocks;
+
 block firingSumDis "calculates the firing sum of discrete places"
   input Boolean fire[:] "firability of transitions";
   input Integer arcWeight[:] "arc weights";

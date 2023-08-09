@@ -1,12 +1,11 @@
 within PNlib.Functions.OddsAndEnds;
+
 function sort "Sort elements of vector in ascending or descending order"
   extends Modelica.Icons.Function;
   input Real v[:] "Vector to be sorted";
-  input Boolean ascending = true
-    "= true if ascending order, otherwise descending order";
-  output Real sorted_v[size(v,1)] = v "Sorted vector";
-  output Integer indices[size(v,1)] = 1:size(v,1) "sorted_v = v[indices]";
-
+  input Boolean ascending = true "= true if ascending order, otherwise descending order";
+  output Real sorted_v[size(v, 1)] = v "Sorted vector";
+  output Integer indices[size(v, 1)] = 1:size(v, 1) "sorted_v = v[indices]";
   /* shellsort algorithm; should be improved later */
 protected
   Integer gap;
@@ -14,48 +13,47 @@ protected
   Integer j;
   Real wv;
   Integer wi;
-  Integer nv = size(v,1);
+  Integer nv = size(v, 1);
   Boolean swap;
 algorithm
-  gap := div(nv,2);
-
+  gap := div(nv, 2);
   while gap > 0 loop
-     i := gap;
-     while i < nv loop
-        j := i-gap;
-        if j>=0 then
-           if ascending then
-              swap := sorted_v[j+1] > sorted_v[j + gap + 1];
-           else
-              swap := sorted_v[j+1] < sorted_v[j + gap + 1];
-           end if;
+    i := gap;
+    while i < nv loop
+      j := i - gap;
+      if j >= 0 then
+        if ascending then
+          swap := sorted_v[j + 1] > sorted_v[j + gap + 1];
         else
-           swap := false;
+          swap := sorted_v[j + 1] < sorted_v[j + gap + 1];
         end if;
-
-        while swap loop
-           wv := sorted_v[j+1];
-           wi := indices[j+1];
-           sorted_v[j+1] := sorted_v[j+gap+1];
-           sorted_v[j+gap+1] := wv;
-           indices[j+1] := indices[j+gap+1];
-           indices[j+gap+1] := wi;
-           j := j - gap;
-           if j >= 0 then
-              if ascending then
-                 swap := sorted_v[j+1] > sorted_v[j + gap + 1];
-              else
-                 swap := sorted_v[j+1] < sorted_v[j + gap + 1];
-              end if;
-           else
-              swap := false;
-           end if;
-        end while;
-        i := i + 1;
-     end while;
-     gap := div(gap,2);
+      else
+        swap := false;
+      end if;
+      while swap loop
+        wv := sorted_v[j + 1];
+        wi := indices[j + 1];
+        sorted_v[j + 1] := sorted_v[j + gap + 1];
+        sorted_v[j + gap + 1] := wv;
+        indices[j + 1] := indices[j + gap + 1];
+        indices[j + gap + 1] := wi;
+        j := j - gap;
+        if j >= 0 then
+          if ascending then
+            swap := sorted_v[j + 1] > sorted_v[j + gap + 1];
+          else
+            swap := sorted_v[j + 1] < sorted_v[j + gap + 1];
+          end if;
+        else
+          swap := false;
+        end if;
+      end while;
+      i := i + 1;
+    end while;
+    gap := div(gap, 2);
   end while;
-  annotation(Documentation(info="<HTML>
+  annotation(
+    Documentation(info = "<HTML>
 <h4>Syntax</h4>
 <blockquote><pre>
            sorted_v = Vectors.<b>sort</b>(v);

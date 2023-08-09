@@ -93,21 +93,11 @@ PNlib.Examples.HybTest.TCwithPD.mos \
 PNlib.Examples.HybTest.TDtoPC.mos \
 PNlib.Examples.HybTest.TDtoPCfunction.mos \
 PNlib.Examples.Models.BicoloredPlaces.Aquarium.mos \
-PNlib.Examples.Models.FiliP.ModellStationen.Station1.mos \
-
-# Mini Test
-#TESTFILES = \
-PNlib.Examples.DisTest.Ttest.mos \
-
-
-
-#TESTFILES = \
-PNlib.Examples.ExtTest.ArcswithPCtoTC3.mos \
 
 # These tests are OS dependent. Move up when fixed.
 # Run make failingtest
 FAILINGTESTFILES = \
-
+PNlib.Examples.Models.FiliP.ModellStationen.Station1.mos \
 
 # Dependency files that are not .mo .mos or Makefile
 # Add them here or they will be cleaned.

@@ -1,4 +1,5 @@
-within ;
 package PNlib
-  annotation(uses(Modelica(version="3.2.3")), version="2.2");
+  annotation(
+    uses(Modelica(version = "4.0.0")),
+    version = "2.2");
 end PNlib;

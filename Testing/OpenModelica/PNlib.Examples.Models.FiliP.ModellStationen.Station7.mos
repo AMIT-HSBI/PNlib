@@ -112,18 +112,18 @@ else
 end if;
 // Result:
 // true
-// "Notification: Automatically loaded package Modelica 3.2.3 due to uses annotation.
-// Notification: Automatically loaded package Complex 3.2.3 due to uses annotation.
-// Notification: Automatically loaded package ModelicaServices 3.2.3 due to uses annotation.
+// "Notification: Automatically loaded package Modelica 4.0.0 due to uses annotation from PNlib.
+// Notification: Automatically loaded package Complex 4.0.0 due to uses annotation from Modelica.
+// Notification: Automatically loaded package ModelicaServices 4.0.0 due to uses annotation from Modelica.
 // "
 // record SimulationResult
 //     resultFile = "PNlib.Examples.Models.FiliP.ModellStationen.Station7_res.mat",
 //     simulationOptions = "startTime = 0.0, stopTime = 365.0, numberOfIntervals = 500, tolerance = 1e-06, method = 'dassl', fileNamePrefix = 'PNlib.Examples.Models.FiliP.ModellStationen.Station7', options = '', outputFormat = 'mat', variableFilter = '.*', cflags = '', simflags = ''",
-//     messages = "stdout            | info    | The initialization finished successfully without homotopy method.
-// stdout | info    | The simulation finished successfully.
+//     messages = "LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.
+// LOG_SUCCESS | info    | The simulation finished successfully.
 // "
 // end SimulationResult;
-// "Warning: The initial conditions are not fully specified. For more information set -d=initialization. In OMEdit Tools->Options->Simulation->OMCFlags, in OMNotebook call setCommandLineOptions("-d=initialization").
+// "Warning: The initial conditions are not fully specified. For more information set -d=initialization. In OMEdit Tools->Options->Simulation->Show additional information from the initialization process, in OMNotebook call setCommandLineOptions(\"-d=initialization\").
 // "
 // {"pflegekraft1.HatFruehDienst","pflegekraft1.HatSpaetDienst","pflegekraft1.HatNachtDienst","pflegekraft1.IstKrank","pflegekraft1.HatUrlaubt","pflegekraft1.HatWochenende","pflegekraft1.HatRuhezeit","pflegekraft1.Dienstfaehig","pflegekraft1.ArbeitszeitKontingentPlanungsPeriode","pflegekraft1.GeleisteteArbeistzeitGesammt","pflegekraft2.HatFruehDienst","pflegekraft2.HatSpaetDienst","pflegekraft2.HatNachtDienst","pflegekraft2.IstKrank","pflegekraft2.HatUrlaubt","pflegekraft2.HatWochenende","pflegekraft2.HatRuhezeit","pflegekraft2.Dienstfaehig","pflegekraft2.ArbeitszeitKontingentPlanungsPeriode","pflegekraft2.GeleisteteArbeistzeitGesammt","pflegekraft3.HatFruehDienst","pflegekraft3.HatSpaetDienst","pflegekraft3.HatNachtDienst","pflegekraft3.IstKrank","pflegekraft3.HatUrlaubt","pflegekraft3.HatWochenende","pflegekraft3.HatRuhezeit","pflegekraft3.Dienstfaehig","pflegekraft3.ArbeitszeitKontingentPlanungsPeriode","pflegekraft3.GeleisteteArbeistzeitGesammt","pflegekraft4.HatFruehDienst","pflegekraft4.HatSpaetDienst","pflegekraft4.HatNachtDienst","pflegekraft4.IstKrank","pflegekraft4.HatUrlaubt","pflegekraft4.HatWochenende","pflegekraft4.HatRuhezeit","pflegekraft4.Dienstfaehig","pflegekraft4.ArbeitszeitKontingentPlanungsPeriode","pflegekraft4.GeleisteteArbeistzeitGesammt","pflegekraft5.HatFruehDienst","pflegekraft5.HatSpaetDienst","pflegekraft5.HatNachtDienst","pflegekraft5.IstKrank","pflegekraft5.HatUrlaubt","pflegekraft5.HatWochenende","pflegekraft5.HatRuhezeit","pflegekraft5.Dienstfaehig","pflegekraft5.ArbeitszeitKontingentPlanungsPeriode","pflegekraft5.GeleisteteArbeistzeitGesammt","pflegekraft6.HatFruehDienst","pflegekraft6.HatSpaetDienst","pflegekraft6.HatNachtDienst","pflegekraft6.IstKrank","pflegekraft6.HatUrlaubt","pflegekraft6.HatWochenende","pflegekraft6.HatRuhezeit","pflegekraft6.Dienstfaehig","pflegekraft6.ArbeitszeitKontingentPlanungsPeriode","pflegekraft6.GeleisteteArbeistzeitGesammt","pflegekraft7.HatFruehDienst","pflegekraft7.HatSpaetDienst","pflegekraft7.HatNachtDienst","pflegekraft7.IstKrank","pflegekraft7.HatUrlaubt","pflegekraft7.HatWochenende","pflegekraft7.HatRuhezeit","pflegekraft7.Dienstfaehig","pflegekraft7.ArbeitszeitKontingentPlanungsPeriode","pflegekraft7.GeleisteteArbeistzeitGesammt","station.BesetzungFruehDienst","station.BesetzungSpaetDienst","station.BesetzungNachtDienst","station.BesetzungsDefizit"}
 //

@@ -2,7 +2,7 @@ within PNlib.Examples.DisTest;
 
 model OutputConflictBeneGreedy
   extends Modelica.Icons.Example;
-  PNlib.Components.PD P1(enablingBeneOut = {2, 1}, enablingType = PNlib.Types.EnablingType.Benefit,minTokens = 2, nIn = 1, nOut = 2, startTokens = 2) annotation(
+  PNlib.Components.PD P1(enablingBeneOut = {2, 1}, enablingType = PNlib.Types.EnablingType.Benefit, minTokens = 2, nIn = 1, nOut = 2, startTokens = 2) annotation(
     Placement(transformation(extent = {{-30, -10}, {-10, 10}})));
   PNlib.Components.TD T1(nIn = 1, nOut = 1) annotation(
     Placement(transformation(extent = {{0, 10}, {20, 30}})));

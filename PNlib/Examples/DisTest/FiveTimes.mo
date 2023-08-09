@@ -1,39 +1,40 @@
 within PNlib.Examples.DisTest;
+
 model FiveTimes
   extends Modelica.Icons.Example;
-  inner PNlib.Components.Settings settings
-    annotation(Placement(visible = true, transformation(extent = {{-60, 80}, {-40, 100}}, rotation = 0)));
-  PNlib.Components.PD P1(nIn = 1, nOut = 1, startTokens = 3)  annotation(
+  inner PNlib.Components.Settings settings annotation(
+    Placement(visible = true, transformation(extent = {{-60, 80}, {-40, 100}}, rotation = 0)));
+  PNlib.Components.PD P1(nIn = 1, nOut = 1, startTokens = 3) annotation(
     Placement(visible = true, transformation(origin = {-30, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.PD P2(nIn = 1)  annotation(
+  PNlib.Components.PD P2(nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {30, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.PD P3(nIn = 1, nOut = 1, startTokens = 3)  annotation(
+  PNlib.Components.PD P3(nIn = 1, nOut = 1, startTokens = 3) annotation(
     Placement(visible = true, transformation(origin = {-30, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.PD P4(nIn = 1)  annotation(
+  PNlib.Components.PD P4(nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {30, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.PD P5( nIn = 1, nOut = 1, startTokens = 3)  annotation(
+  PNlib.Components.PD P5(nIn = 1, nOut = 1, startTokens = 3) annotation(
     Placement(visible = true, transformation(origin = {-30, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.PD P6(nIn = 1)  annotation(
+  PNlib.Components.PD P6(nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {30, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.PD P7(nIn = 1, nOut = 1, startTokens = 3)  annotation(
+  PNlib.Components.PD P7(nIn = 1, nOut = 1, startTokens = 3) annotation(
     Placement(visible = true, transformation(origin = {-30, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.PD P8(nIn = 1)  annotation(
+  PNlib.Components.PD P8(nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {30, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.TD T1(nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.TD T1(nIn = 1, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {0, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.TE T2(event = {1, 3, 4, 5, 6, 9}, nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.TE T2(event = {1, 3, 4, 5, 6, 9}, nIn = 1, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {0, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.TFD T3(nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.TFD T3(nIn = 1, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {0, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.TT T4(nIn = 1, nOut = 1, tactStart = 2)  annotation(
+  PNlib.Components.TT T4(nIn = 1, nOut = 1, tactStart = 2) annotation(
     Placement(visible = true, transformation(origin = {0, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.TE T6(arcWeightOut = {3, 3, 3, 3, 3}, event = {5.5}, nOut = 5)  annotation(
+  PNlib.Components.TE T6(arcWeightOut = {3, 3, 3, 3, 3}, event = {5.5}, nOut = 5) annotation(
     Placement(visible = true, transformation(origin = {-70, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.PC P9(nIn = 1, nOut = 1, startMarks = 3)  annotation(
+  PNlib.Components.PC P9(nIn = 1, nOut = 1, startMarks = 3) annotation(
     Placement(visible = true, transformation(origin = {-30, -100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.PC P10(nIn = 1)  annotation(
+  PNlib.Components.PC P10(nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {30, -100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.TC T5(nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.TC T5(nIn = 1, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {0, -100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T6.outPlaces[5], P9.inTransition[1]) annotation(
@@ -66,6 +67,7 @@ equation
     Line(points = {{4, 60}, {18, 60}, {18, 60}, {20, 60}}));
   connect(P1.outTransition[1], T1.inPlaces[1]) annotation(
     Line(points = {{-20, 60}, {-4, 60}, {-4, 60}, {-4, 60}}));
-  annotation(Diagram(coordinateSystem(preserveAspectRatio = false, extent={{-80, -120},
-            {60, 100}}), graphics), experiment(StartTime=0.0, StopTime=10.0, Tolerance = 1e-6));
+  annotation(
+    Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-80, -120}, {60, 100}}), graphics),
+    experiment(StartTime = 0.0, StopTime = 10.0, Tolerance = 1e-6));
 end FiveTimes;

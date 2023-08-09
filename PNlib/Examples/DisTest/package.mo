@@ -1,4 +1,5 @@
 within PNlib.Examples;
-package DisTest 
+
+package DisTest
   extends Modelica.Icons.ExamplesPackage;
 end DisTest;
