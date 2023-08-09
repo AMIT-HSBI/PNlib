@@ -1,0 +1,35 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+
+jobs:
+  test:
+    #runs-on: 'ubuntu-latest'  currently not working because we don't have omc-diff on ubuntu
+    runs-on: 'windows-latest'
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: "Set up OpenModelica Compiler"
+        uses: AnHeuermann/setup-openmodelica@main
+        with:
+          version: 'stable'
+          packages: |
+            omc
+          libraries: |
+            'Modelica 3.2.3'
+
+      - name: "Test OpenModelica"
+        run: "make -C Testing openmodelica"
+
+      - name: "Upload openmodelica.log"
+        uses: actions/upload-artifact@v3
+        with:
+          name: openmodelicar.-log
+          path: Testing/openmodelica.log
+
