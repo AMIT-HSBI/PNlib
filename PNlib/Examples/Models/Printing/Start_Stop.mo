@@ -40,7 +40,7 @@ model Start_Stop "starting and stop the printing machine"
   Modelica.Blocks.Math.IntegerToReal integerToReal annotation(
     Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 180, origin = {-38, 28})));
 equation
-  reStart = if Stop2.t > 0 then true else false;
+  reStart = Stop2.t > 0;
   when Stop.t > 0 then
     stopTime = time;
   end when;
