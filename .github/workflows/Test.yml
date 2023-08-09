@@ -17,8 +17,7 @@ jobs:
       - name: "Set up OpenModelica Compiler"
         uses: AnHeuermann/setup-openmodelica@main
         with:
-          version:
-            - 'stable'
+          version: 'stable'
           packages: |
             omc
           libraries: |
