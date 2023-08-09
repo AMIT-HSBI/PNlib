@@ -1,4 +1,5 @@
 within PNlib.Blocks;
+
 block tokenFlowDis "Calculates the token flow for a discrete place."
   parameter input Integer nIn "number of input transitions";
   parameter input Integer nOut "number of output transitions";
@@ -15,7 +16,6 @@ equation
     inflow[i] = pre(inflow[i]) + (if pre(fireIn[i]) then arcWeightIn[i] else 0);
   end for;
   inflowSum = sum(inflow);
-
   for i in 1:nOut loop
     outflow[i] = pre(outflow[i]) + (if pre(fireOut[i]) then arcWeightOut[i] else 0);
   end for;

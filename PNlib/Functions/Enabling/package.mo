@@ -1,4 +1,4 @@
 within PNlib.Functions;
-package Enabling "enabling functions"
 
+package Enabling "enabling functions"
 end Enabling;

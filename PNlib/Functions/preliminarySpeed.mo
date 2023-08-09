@@ -1,4 +1,5 @@
 within PNlib.Functions;
+
 function preliminarySpeed "calculates the preliminary speed of a continuous transition"
   parameter input Integer nIn "number of input places";
   parameter input Integer nOut "number of output places";
@@ -15,7 +16,6 @@ protected
   Real arcWeight;
 algorithm
   prelimSpeed := max(maximumSpeed, 0.0);
-
   for i in 1:nIn loop
     speedSum := max(speedSumIn[i], 0.0);
     arcWeight := max(arcWeightIn[i], 0.0);
@@ -23,7 +23,6 @@ algorithm
       prelimSpeed := speedSum/arcWeight;
     end if;
   end for;
-
   for i in 1:nOut loop
     speedSum := max(speedSumOut[i], 0.0);
     arcWeight := max(arcWeightOut[i], 0.0);

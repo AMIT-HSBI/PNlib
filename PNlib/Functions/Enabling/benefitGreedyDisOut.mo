@@ -1,4 +1,5 @@
 within PNlib.Functions.Enabling;
+
 function benefitGreedyDisOut "Enabling Output Transition by Benefit and Greedy"
   extends Modelica.Icons.Function;
   input Integer nOut "number of output transitions";
@@ -13,28 +14,28 @@ protected
   Integer arcWeightSum "arc weight sum";
   Integer Index "priority Index";
   Real MaxBenefit "Max Benefit";
-  Real enablingBene_[nOut]  "Benefit";
+  Real enablingBene_[nOut] "Benefit";
 algorithm
-    TEout:=fill(false, nOut);
-    enablingBene_:=enablingBene;
-    arcWeightSum := 0;
-    for i in 1: nOut loop  //discrete transitions are proven at first
-      MaxBenefit:=max(enablingBene_);
-      Index:=Modelica.Math.Vectors.find(MaxBenefit,enablingBene_);
-      if Index>0 and TAout[Index] and disTransition[Index] and t-(arcWeightSum+arcWeight[Index]) >= minTokens then
-        TEout[Index] := true;
-        arcWeightSum := arcWeightSum + arcWeight[Index];
-      end if;
-      enablingBene_[Index]:=-1;
-    end for;
-    enablingBene_:=enablingBene;
-    for i in 1: nOut loop  //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
-      MaxBenefit:=max(enablingBene_);
-      Index:=Modelica.Math.Vectors.find(MaxBenefit,enablingBene_);
-      if Index>0 and TAout[Index] and not disTransition[Index] and t-(arcWeightSum+arcWeight[Index]) >= minTokens then
-        TEout[Index] := true;
-        arcWeightSum := arcWeightSum + arcWeight[Index];
-      end if;
-      enablingBene_[Index]:=-1;
-    end for;
+  TEout := fill(false, nOut);
+  enablingBene_ := enablingBene;
+  arcWeightSum := 0;
+  for i in 1:nOut loop //discrete transitions are proven at first
+    MaxBenefit := max(enablingBene_);
+    Index := Modelica.Math.Vectors.find(MaxBenefit, enablingBene_);
+    if Index > 0 and TAout[Index] and disTransition[Index] and t - (arcWeightSum + arcWeight[Index]) >= minTokens then
+      TEout[Index] := true;
+      arcWeightSum := arcWeightSum + arcWeight[Index];
+    end if;
+    enablingBene_[Index] := -1;
+  end for;
+  enablingBene_ := enablingBene;
+  for i in 1:nOut loop //continuous transitions afterwards (discrete transitions have priority over continuous transitions)
+    MaxBenefit := max(enablingBene_);
+    Index := Modelica.Math.Vectors.find(MaxBenefit, enablingBene_);
+    if Index > 0 and TAout[Index] and not disTransition[Index] and t - (arcWeightSum + arcWeight[Index]) >= minTokens then
+      TEout[Index] := true;
+      arcWeightSum := arcWeightSum + arcWeight[Index];
+    end if;
+    enablingBene_[Index] := -1;
+  end for;
 end benefitGreedyDisOut;

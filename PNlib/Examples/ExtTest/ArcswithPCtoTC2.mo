@@ -36,7 +36,7 @@ model ArcswithPCtoTC2
     Placement(visible = true, transformation(origin = {-8, -22}, extent = {{-9.8, 0.4}, {2.8, 4.8}}, rotation = 0)));
   PNlib.Components.IA IA2(realInhibitorArc = false) annotation(
     Placement(visible = true, transformation(origin = {-6, -62}, extent = {{-9.8, 0.4}, {2.8, 4.8}}, rotation = 0)));
-  PNlib.Components.TC T5(nOut = 4)  annotation(
+  PNlib.Components.TC T5(nOut = 4) annotation(
     Placement(visible = true, transformation(origin = {-84, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T5.outPlaces[4], P7.inTransition[1]) annotation(

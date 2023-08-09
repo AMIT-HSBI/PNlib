@@ -1,7 +1,9 @@
-﻿within PNlib.UsersGuide;
+within PNlib.UsersGuide;
+
 model UserGuide
- extends Modelica.Icons.Information;
-  annotation(Documentation(info="<html>
+  extends Modelica.Icons.Information;
+  annotation(
+    Documentation(info = "<html>
 <h1>Extended Hybrid Petri Nets (xHPN)</h1>
 <p>
 The xHPN formalism comprises of three different processes, called <b>transitions</b>: discrete, stochastic, and continuous transition,

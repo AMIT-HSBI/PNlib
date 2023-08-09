@@ -15,7 +15,7 @@ model Station
   Real BesetzungsDefizitFrueh = DefizitFruehschicht.t;
   Real BesetzungsDefizitSpaet = DefizitSpaetSchicht.t;
   Real BesetzungsDefizitNacht = DefizizNachtSchicht.t;
-  protected
+protected
   extends PNlib.Examples.Models.FiliP.AllgemeineParameter;
   PNlib.Components.PD DefizitFruehschicht(nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {164, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -23,22 +23,21 @@ model Station
     Placement(visible = true, transformation(origin = {162, -104}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PNlib.Components.PD DefizizNachtSchicht(nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {162, -146}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-
-  PNlib.Components.PD PersonalImFruedienst(enablingProbIn = fill(1 / nP, nP), enablingProbOut = fill(1 / nP, nP), enablingType = PNlib.Types.EnablingType.Probability, maxTokens = APFD, nIn = nP, nOut = nP) annotation(
+  PNlib.Components.PD PersonalImFruedienst(enablingProbIn = fill(1/nP, nP), enablingProbOut = fill(1/nP, nP), enablingType = PNlib.Types.EnablingType.Probability, maxTokens = APFD, nIn = nP, nOut = nP) annotation(
     Placement(visible = true, transformation(extent = {{-10, 30}, {10, 50}}, rotation = 0)));
-  PNlib.Components.PD PersonalImSpaetdienst(enablingProbIn = fill(1 / nP, nP), enablingProbOut = fill(1 / nP, nP), enablingType = PNlib.Types.EnablingType.Probability, maxTokens = APSD, nIn = nP, nOut = nP) annotation(
+  PNlib.Components.PD PersonalImSpaetdienst(enablingProbIn = fill(1/nP, nP), enablingProbOut = fill(1/nP, nP), enablingType = PNlib.Types.EnablingType.Probability, maxTokens = APSD, nIn = nP, nOut = nP) annotation(
     Placement(transformation(extent = {{-10, -10}, {10, 10}})));
-  PNlib.Components.PD PersonalImNachtdienst(enablingProbIn = fill(1 / nP, nP), enablingProbOut = fill(1 / nP, nP), enablingType = PNlib.Types.EnablingType.Probability, maxTokens = APND, nIn = nP, nOut = nP) annotation(
+  PNlib.Components.PD PersonalImNachtdienst(enablingProbIn = fill(1/nP, nP), enablingProbOut = fill(1/nP, nP), enablingType = PNlib.Types.EnablingType.Probability, maxTokens = APND, nIn = nP, nOut = nP) annotation(
     Placement(visible = true, transformation(extent = {{-10, -50}, {10, -30}}, rotation = 0)));
-  PNlib.Interfaces.PlaceOut placeOut[3 * nP] annotation(
+  PNlib.Interfaces.PlaceOut placeOut[3*nP] annotation(
     Placement(transformation(extent = {{200, -52}, {304, 52}})));
-  PNlib.Interfaces.PlaceIn placeIn[3 * nP] annotation(
+  PNlib.Interfaces.PlaceIn placeIn[3*nP] annotation(
     Placement(visible = true, transformation(extent = {{-298, -50}, {-196, 48}}, rotation = 0), iconTransformation(extent = {{-298, -50}, {-196, 48}}, rotation = 0)));
-  PNlib.Components.TT BeginnFrueh(nOut = 1, tactIntervall = 1, tactStart = (BeginFruehschicht + 1) / 24, arcWeightOut = {APFD - PersonalImFruedienst.t}) annotation(
+  PNlib.Components.TT BeginnFrueh(nOut = 1, tactIntervall = 1, tactStart = (BeginFruehschicht + 1)/24, arcWeightOut = {APFD - PersonalImFruedienst.t}) annotation(
     Placement(visible = true, transformation(extent = {{106, -70}, {126, -50}}, rotation = 0)));
-  PNlib.Components.TT BeginnSpaet(nOut = 1, tactIntervall = 1, tactStart = (BeginSpaetschicht + 1) / 24, arcWeightOut = {APSD - PersonalImSpaetdienst.t}) annotation(
+  PNlib.Components.TT BeginnSpaet(nOut = 1, tactIntervall = 1, tactStart = (BeginSpaetschicht + 1)/24, arcWeightOut = {APSD - PersonalImSpaetdienst.t}) annotation(
     Placement(visible = true, transformation(extent = {{106, -114}, {126, -94}}, rotation = 0)));
-  PNlib.Components.TT BeginnNacht(nOut = 1, tactIntervall = 1, tactStart = (BeginNachtschicht + 1) / 24, arcWeightOut = {APND - PersonalImNachtdienst.t}) annotation(
+  PNlib.Components.TT BeginnNacht(nOut = 1, tactIntervall = 1, tactStart = (BeginNachtschicht + 1)/24, arcWeightOut = {APND - PersonalImNachtdienst.t}) annotation(
     Placement(visible = true, transformation(extent = {{106, -156}, {126, -136}}, rotation = 0)));
   outer PNlib.Components.Settings settings "global settings for animation and display";
 equation
@@ -49,17 +48,17 @@ equation
   connect(BeginnFrueh.outPlaces[1], DefizitFruehschicht.inTransition[1]) annotation(
     Line(points = {{120, -60}, {152, -60}, {152, -60}, {154, -60}}, thickness = 0.5));
   for i in 1:nP loop
-    connect(PersonalImFruedienst.inTransition[i], placeIn[1 + 3 * (i - 1)]) annotation(
+    connect(PersonalImFruedienst.inTransition[i], placeIn[1 + 3*(i - 1)]) annotation(
       Line(points = {{-10.8, 122}, {-148, 122}, {-148, -1}, {-247, -1}}, color = {0, 0, 0}, smooth = Smooth.None));
-    connect(PersonalImFruedienst.outTransition[i], placeOut[1 + 3 * (i - 1)]) annotation(
+    connect(PersonalImFruedienst.outTransition[i], placeOut[1 + 3*(i - 1)]) annotation(
       Line(points = {{10.8, 122}, {166, 122}, {166, 0}, {252, 0}}, color = {0, 0, 0}, smooth = Smooth.None));
-    connect(PersonalImSpaetdienst.outTransition[i], placeOut[2 + 3 * (i - 1)]) annotation(
+    connect(PersonalImSpaetdienst.outTransition[i], placeOut[2 + 3*(i - 1)]) annotation(
       Line(points = {{10.8, 0}, {252, 0}}, color = {0, 0, 0}, smooth = Smooth.None));
-    connect(PersonalImSpaetdienst.inTransition[i], placeIn[2 + 3 * (i - 1)]) annotation(
+    connect(PersonalImSpaetdienst.inTransition[i], placeIn[2 + 3*(i - 1)]) annotation(
       Line(points = {{-10.8, 0}, {-128, 0}, {-128, -1}, {-247, -1}}, color = {0, 0, 0}, smooth = Smooth.None));
-    connect(PersonalImNachtdienst.outTransition[i], placeOut[3 + 3 * (i - 1)]) annotation(
+    connect(PersonalImNachtdienst.outTransition[i], placeOut[3 + 3*(i - 1)]) annotation(
       Line(points = {{10.8, -60}, {58, -60}, {58, 0}, {252, 0}}, color = {0, 0, 0}, smooth = Smooth.None));
-    connect(PersonalImNachtdienst.inTransition[i], placeIn[3 + 3 * (i - 1)]) annotation(
+    connect(PersonalImNachtdienst.inTransition[i], placeIn[3 + 3*(i - 1)]) annotation(
       Line(points = {{-10.8, -60}, {-60, -60}, {-60, -1}, {-247, -1}}, color = {0, 0, 0}, smooth = Smooth.None));
   end for;
   annotation(

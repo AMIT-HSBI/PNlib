@@ -4,9 +4,9 @@ model OutputConflictBeneQuotient
   extends Modelica.Icons.Example;
   PNlib.Components.PD P1(benefitType = PNlib.Types.BenefitType.BenefitQuotient, enablingBeneOut = {8, 7}, enablingType = PNlib.Types.EnablingType.Benefit, minTokens = 8, nIn = 1, nOut = 2, startTokens = 8) annotation(
     Placement(transformation(extent = {{-30, -10}, {-10, 10}})));
-  PNlib.Components.TD T1(arcWeightIn = {4},nIn = 1, nOut = 1) annotation(
+  PNlib.Components.TD T1(arcWeightIn = {4}, nIn = 1, nOut = 1) annotation(
     Placement(transformation(extent = {{0, 10}, {20, 30}})));
-  PNlib.Components.TD T2(arcWeightIn = {3},nIn = 1, nOut = 1) annotation(
+  PNlib.Components.TD T2(arcWeightIn = {3}, nIn = 1, nOut = 1) annotation(
     Placement(transformation(extent = {{0, -30}, {20, -10}})));
   PNlib.Components.PD P2(nIn = 1) annotation(
     Placement(transformation(extent = {{30, 10}, {50, 30}})));

@@ -4,17 +4,17 @@ model TFDoutputConflict
   extends Modelica.Icons.Example;
   inner PNlib.Components.Settings settings annotation(
     Placement(visible = true, transformation(extent = {{40, 20}, {60, 40}}, rotation = 0)));
-  PNlib.Components.PD P1(enablingType = PNlib.Types.EnablingType.Probability, localSeedIn = 1, localSeedOut = 2,nIn = 1, nOut = 2, startTokens = 0) annotation(
+  PNlib.Components.PD P1(enablingType = PNlib.Types.EnablingType.Probability, localSeedIn = 1, localSeedOut = 2, nIn = 1, nOut = 2, startTokens = 0) annotation(
     Placement(visible = true, transformation(extent = {{-30, -6}, {-10, 14}}, rotation = 0)));
   PNlib.Components.PD P2(localSeedIn = 3, localSeedOut = 4, nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {40, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PNlib.Components.TFD T1(nIn = 1, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {10, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.TD T3(nOut = 1)  annotation(
+  PNlib.Components.TD T3(nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {-44, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.TFD T2(nIn = 1, nOut = 1)  annotation(
+  PNlib.Components.TFD T2(nIn = 1, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {10, -24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.PD P3(localSeedIn = 5, localSeedOut = 6, nIn = 1)  annotation(
+  PNlib.Components.PD P3(localSeedIn = 5, localSeedOut = 6, nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {40, -24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(P1.outTransition[1], T1.inPlaces[1]) annotation(

@@ -1,4 +1,5 @@
 within PNlib.Examples.Models.FiliP;
+
 model Pflegekraft
   parameter Real Stelle = 1 "Was fuer eine Stelle" annotation(
     Dialog(enable = true, group = "Personaldaten"));
@@ -6,19 +7,21 @@ model Pflegekraft
   parameter Integer WEF = 1 "Welches Wochenende frei" annotation(
     Dialog(enable = true, group = "Personaldaten"),
     choices(choice = 1 "1. Wochenende", choice = 2 "2. Wochenende", choice = 3 "jedes Wochenende", __Dymola_radioButtons = true));
-  parameter Real UrlaubStartTermine[:] = {10,20,30} "number of input places"annotation(Dialog(enable = true, group = "Personal Daten"));
-  parameter Real UrlaubEndTermine[:] = {15,25,35} "number of input places"annotation(Dialog(enable = true, group = "Personal Daten"));
-  Real HatFruehDienst=IstImFruehDienst.t;
-  Real HatSpaetDienst=IstImSpaetDienst.t;
-  Real HatNachtDienst=IstImNachtDienst.t;
-  Boolean IstKrank=krankurlaub.Krank.fire;
-  Real HatUrlaubt=krankurlaub.ImUrlaub.t;
-  Real HatWochenende=ImWochenEnde.t;
-  Real HatRuhezeit=Ruhe.t;
-  Real Dienstfaehig=Dienstbereit.t;
-  Real ArbeitszeitKontingentPlanungsPeriode=ArbeitszeitKontingent.t;
-  Real GeleisteteArbeistzeitGesammt=GeleisteteArbeistzeit.t;
-  protected
+  parameter Real UrlaubStartTermine[:] = {10, 20, 30} "number of input places" annotation(
+    Dialog(enable = true, group = "Personal Daten"));
+  parameter Real UrlaubEndTermine[:] = {15, 25, 35} "number of input places" annotation(
+    Dialog(enable = true, group = "Personal Daten"));
+  Real HatFruehDienst = IstImFruehDienst.t;
+  Real HatSpaetDienst = IstImSpaetDienst.t;
+  Real HatNachtDienst = IstImNachtDienst.t;
+  Boolean IstKrank = krankurlaub.Krank.fire;
+  Real HatUrlaubt = krankurlaub.ImUrlaub.t;
+  Real HatWochenende = ImWochenEnde.t;
+  Real HatRuhezeit = Ruhe.t;
+  Real Dienstfaehig = Dienstbereit.t;
+  Real ArbeitszeitKontingentPlanungsPeriode = ArbeitszeitKontingent.t;
+  Real GeleisteteArbeistzeitGesammt = GeleisteteArbeistzeit.t;
+protected
   extends PNlib.Examples.Models.FiliP.AllgemeineParameter;
   PNlib.Components.PD IstImFruehDienst(nIn = 1, nOut = 1) annotation(
     Placement(transformation(extent = {{-10, 240}, {10, 260}})));
@@ -46,13 +49,13 @@ model Pflegekraft
     Placement(transformation(extent = {{-130, -88}, {-150, -68}})));
   PNlib.Components.TD RuheZeitEnde(nIn = 1, delay = 11/24, nOut = 1) annotation(
     Placement(transformation(extent = {{62, -90}, {42, -70}})));
-  PNlib.Components.PC ArbeitszeitKontingent( nIn = 1,nOut = 4, startMarks = if WEF == 2 then 57.75 * Stelle else 11 * Stelle) annotation(
+  PNlib.Components.PC ArbeitszeitKontingent(nIn = 1, nOut = 4, startMarks = if WEF == 2 then 57.75*Stelle else 11*Stelle) annotation(
     Placement(transformation(extent = {{-266, -84}, {-246, -64}})));
   PNlib.Interfaces.TransitionOut transitionOut[3] annotation(
     Placement(transformation(extent = {{-300, 154}, {-360, 252}})));
   PNlib.Interfaces.TransitionIn transitionIn[3] annotation(
     Placement(transformation(extent = {{360, 152}, {300, 250}})));
-  PNlib.Components.TT ArbeitszeitGeber(nOut = 1, tactIntervall = 14, tactStart = if WEF == 2 then 9 else 2, arcWeightOut = {2 * 38.5 * Stelle}, nIn = 1, arcWeightIn = {ArbeitszeitKontingent.t}) annotation(
+  PNlib.Components.TT ArbeitszeitGeber(nOut = 1, tactIntervall = 14, tactStart = if WEF == 2 then 9 else 2, arcWeightOut = {2*38.5*Stelle}, nIn = 1, arcWeightIn = {ArbeitszeitKontingent.t}) annotation(
     Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-256, -168})));
   PNlib.Components.TT WochenEndSignal(nOut = 1, tactIntervall = if WEF == 3 then 7 else 14, tactStart = if WEF == 2 then 9 else 2) annotation(
     Placement(transformation(extent = {{198, -278}, {178, -258}})));
@@ -70,7 +73,7 @@ model Pflegekraft
     Placement(transformation(extent = {{-58, -128}, {-38, -108}})));
   PNlib.Components.TD WEenderbeiKrank(nIn = 1, delay = 2) annotation(
     Placement(transformation(extent = {{102, -228}, {122, -208}})));
-  PNlib.Examples.Models.FiliP.KrankUrlaub krankurlaub (UrlaubEndTermine = UrlaubEndTermine, UrlaubStartTermine = UrlaubStartTermine)  annotation(
+  PNlib.Examples.Models.FiliP.KrankUrlaub krankurlaub(UrlaubEndTermine = UrlaubEndTermine, UrlaubStartTermine = UrlaubStartTermine) annotation(
     Placement(visible = true, transformation(origin = {-80, -78}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 protected
   outer PNlib.Components.Settings settings "global settings for animation and display";
@@ -95,20 +98,18 @@ equation
     Line(points = {{-79.2, 72}, {-10.8, 72}}, color = {0, 0, 0}, smooth = Smooth.None));
   connect(IstImNachtDienst.outTransition[1], NSE.inPlaces[1]) annotation(
     Line(points = {{10.8, 72}, {79.2, 72}}, color = {0, 0, 0}, smooth = Smooth.None));
-
-    connect(FSB.outPlaces[2], transitionOut[1]) annotation(
-      Line(points = {{-79.2, 250}, {-56, 250}, {-56, 294}, {-262, 294}, {-262, 203}, {-330, 203}}, color = {0, 0, 0}, smooth = Smooth.None));
-    connect(SSB.outPlaces[2], transitionOut[2]) annotation(
-      Line(points = {{-77.2, 160}, {-42, 160}, {-42, 298}, {-280, 298}, {-280, 203}, {-330, 203}}, color = {0, 0, 0}, smooth = Smooth.None));
-    connect(NSB.outPlaces[2], transitionOut[3]) annotation(
-      Line(points = {{-79.2, 72}, {-79.2, 54}, {-66, 54}, {-66, 276}, {-248, 276}, {-248, 203}, {-330, 203}}, color = {0, 0, 0}, smooth = Smooth.None));
-    connect(FSE.inPlaces[2], transitionIn[1]) annotation(
-      Line(points = {{79.2, 250}, {44, 250}, {44, 278}, {282, 278}, {282, 201}, {330, 201}}, color = {0, 0, 0}, smooth = Smooth.None));
-    connect(SSE.inPlaces[2], transitionIn[2]) annotation(
-      Line(points = {{79.2, 160}, {48, 160}, {48, 190}, {172, 190}, {172, 201}, {330, 201}}, color = {0, 0, 0}, smooth = Smooth.None));
-    connect(NSE.inPlaces[2], transitionIn[3]) annotation(
-      Line(points = {{79.2, 72}, {54, 72}, {54, 201}, {330, 201}}, color = {0, 0, 0}, smooth = Smooth.None));
-
+  connect(FSB.outPlaces[2], transitionOut[1]) annotation(
+    Line(points = {{-79.2, 250}, {-56, 250}, {-56, 294}, {-262, 294}, {-262, 203}, {-330, 203}}, color = {0, 0, 0}, smooth = Smooth.None));
+  connect(SSB.outPlaces[2], transitionOut[2]) annotation(
+    Line(points = {{-77.2, 160}, {-42, 160}, {-42, 298}, {-280, 298}, {-280, 203}, {-330, 203}}, color = {0, 0, 0}, smooth = Smooth.None));
+  connect(NSB.outPlaces[2], transitionOut[3]) annotation(
+    Line(points = {{-79.2, 72}, {-79.2, 54}, {-66, 54}, {-66, 276}, {-248, 276}, {-248, 203}, {-330, 203}}, color = {0, 0, 0}, smooth = Smooth.None));
+  connect(FSE.inPlaces[2], transitionIn[1]) annotation(
+    Line(points = {{79.2, 250}, {44, 250}, {44, 278}, {282, 278}, {282, 201}, {330, 201}}, color = {0, 0, 0}, smooth = Smooth.None));
+  connect(SSE.inPlaces[2], transitionIn[2]) annotation(
+    Line(points = {{79.2, 160}, {48, 160}, {48, 190}, {172, 190}, {172, 201}, {330, 201}}, color = {0, 0, 0}, smooth = Smooth.None));
+  connect(NSE.inPlaces[2], transitionIn[3]) annotation(
+    Line(points = {{79.2, 72}, {54, 72}, {54, 201}, {330, 201}}, color = {0, 0, 0}, smooth = Smooth.None));
   connect(Ruhe.outTransition[1], RuheZeitEnde.inPlaces[1]) annotation(
     Line(points = {{69.2, -80.5}, {56.8, -80}}, color = {0, 0, 0}, smooth = Smooth.None));
   connect(Ruhe.inTransition[1], NSE.outPlaces[1]) annotation(

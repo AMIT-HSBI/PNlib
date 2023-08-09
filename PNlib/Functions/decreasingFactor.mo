@@ -1,4 +1,5 @@
 within PNlib.Functions;
+
 function decreasingFactor "calculation of decreasing factors"
   parameter input Integer nIn "number of input transitions";
   parameter input Integer nOut "number of output transitions";
@@ -38,7 +39,7 @@ algorithm
   modSpeedIn := speedIn;
   modSpeedOut := speedOut;
   numFireOut := Functions.OddsAndEnds.numTrue(firingOut);
-  numFireIn:=Functions.OddsAndEnds.numTrue(firingIn);
+  numFireIn := Functions.OddsAndEnds.numTrue(firingIn);
   stop := false;
   maxSpeedSumIn := 0;
   maxSpeedSumOut := 0;
@@ -63,10 +64,10 @@ algorithm
     //     maxSpeedSumIn := maxSpeedSumIn + arcWeightIn[i]*maxSpeedIn[i];
     //   end if;
     // end for;
-    prelimSpeedSumIn := Functions.OddsAndEnds.conditionalSum(arcWeightIn .* prelimSpeedIn_, firingIn);
-    maxSpeedSumIn := Functions.OddsAndEnds.conditionalSum(arcWeightIn .* maxSpeedIn, firingIn);
+    prelimSpeedSumIn := Functions.OddsAndEnds.conditionalSum(arcWeightIn.*prelimSpeedIn_, firingIn);
+    maxSpeedSumIn := Functions.OddsAndEnds.conditionalSum(arcWeightIn.*maxSpeedIn, firingIn);
     if maxSpeedSumIn > 0 then
-      if not (t<maxMarks) and  speedOut<prelimSpeedSumIn then   // arcWeights can be zero and then is maxSpeedSumIn zero!!! and not maxSpeedSumIn<=0
+      if not (t < maxMarks) and speedOut < prelimSpeedSumIn then // arcWeights can be zero and then is maxSpeedSumIn zero!!! and not maxSpeedSumIn<=0
         prelimDecFactorIn := speedOut/maxSpeedSumIn;
         while not stop loop
           stop := true;
@@ -78,7 +79,7 @@ algorithm
               stop := false;
             end if;
           end for;
-          if  maxSpeedSumIn > 0 then
+          if maxSpeedSumIn > 0 then
             prelimDecFactorIn := modSpeedOut/maxSpeedSumIn;
           else
             prelimDecFactorIn := 1;
@@ -104,10 +105,10 @@ algorithm
   //decreasing factor of output transitions
   stop := false;
   if numFireOut > 1 and numFireIn > 0 then
-    prelimSpeedSumOut := Functions.OddsAndEnds.conditionalSum(arcWeightOut .* prelimSpeedOut_, firingOut);
-    maxSpeedSumOut := Functions.OddsAndEnds.conditionalSum(arcWeightOut .* maxSpeedOut, firingOut);
-    if maxSpeedSumOut>0 then
-      if not t>minMarks and speedIn<prelimSpeedSumOut then
+    prelimSpeedSumOut := Functions.OddsAndEnds.conditionalSum(arcWeightOut.*prelimSpeedOut_, firingOut);
+    maxSpeedSumOut := Functions.OddsAndEnds.conditionalSum(arcWeightOut.*maxSpeedOut, firingOut);
+    if maxSpeedSumOut > 0 then
+      if not t > minMarks and speedIn < prelimSpeedSumOut then
         prelimDecFactorOut := speedIn/maxSpeedSumOut;
         while not stop loop
           stop := true;

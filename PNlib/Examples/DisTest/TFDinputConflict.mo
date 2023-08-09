@@ -10,11 +10,11 @@ model TFDinputConflict
     Placement(visible = true, transformation(origin = {22, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PNlib.Components.TFD T1(nIn = 1, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {-2, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.TE T2(event = {1, 2.5, 3.8}, nOut = 1)  annotation(
+  PNlib.Components.TE T2(event = {1, 2.5, 3.8}, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {-50, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.TE T3(event = {1.8, 2.3, 3.9}, nIn = 1)  annotation(
+  PNlib.Components.TE T3(event = {1.8, 2.3, 3.9}, nIn = 1) annotation(
     Placement(visible = true, transformation(origin = {44, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PNlib.Components.TE T4(event = {1.5, 3.5}, nOut = 1)  annotation(
+  PNlib.Components.TE T4(event = {1.5, 3.5}, nOut = 1) annotation(
     Placement(visible = true, transformation(origin = {-2, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(T4.outPlaces[1], P2.inTransition[2]) annotation(
