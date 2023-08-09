@@ -24,9 +24,6 @@ jobs:
           libraries: |
             'Modelica 3.2.3'
 
-      - name: "Set OPENMODELICAHOME"
-        run: "export OPENMODELICAHOME=/usr"
-
       - name: "Test OpenModelica"
         run: "make -C Testing openmodelica"
 
