@@ -8,21 +8,23 @@ on:
 
 jobs:
   test:
-    #runs-on: 'ubuntu-latest'  currently not working because we don't have omc-diff on ubuntu
-    runs-on: 'windows-latest'
+    runs-on: 'ubuntu-latest'
+    env:
+      OPENMODELICAHOME: '/usr'
     timeout-minutes: 60
 
     steps:
       - uses: actions/checkout@v3
 
       - name: "Set up OpenModelica Compiler"
-        uses: AnHeuermann/setup-openmodelica@main
+        uses: AnHeuermann/setup-openmodelica@v0.6
         with:
           version: 'stable'
           packages: |
             omc
           libraries: |
-            'Modelica 3.2.3'
+            'Modelica 4.0.0'
+          omc-diff: true
 
       - name: "Test OpenModelica"
         run: "make -C Testing openmodelica"
@@ -30,6 +32,10 @@ jobs:
       - name: "Upload openmodelica.log"
         uses: actions/upload-artifact@v3
         with:
-          name: openmodelicar.-log
+          name: openmodelica.log
           path: Testing/openmodelica.log
 
+      - name: "Look for failing tests"
+        run: |
+          grep "\(^ - \)\|\(... equation mismatch\)" Testing/openmodelica.log | true
+          grep -i "^== 0 out of [0-9]* tests failed" Testing/openmodelica.log

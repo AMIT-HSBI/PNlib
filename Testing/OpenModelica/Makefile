@@ -72,7 +72,7 @@ PNlib.Examples.ExtTest.TDSuniform.mos \
 PNlib.Examples.ExtTest.TDStruncatednormal.mos \
 PNlib.Examples.ExtTest.TDSdiscrete.mos \
 PNlib.Examples.ExtTest.TFDStest.mos \
-PNlib.Examples.ExtTest.TEStest.mos \
+PNlib.Examples.ExtTest.TESTest.mos \
 PNlib.Examples.ExtTest.NoTokens.mos \
 PNlib.Examples.HybTest.ConflictPrio.mos \
 PNlib.Examples.HybTest.ConflictProb.mos \
@@ -113,8 +113,6 @@ CLEAN = `ls | grep -w -v -f deps.tmp`
 test:
 	@echo
 	@echo Running tests...
-	@echo
-	@echo "OPENMODELICAHOME = $(OPENMODELICAHOME)"
 	@$(TEST) $(TESTFILES)
 
 # Cleans all files that are not listed as dependencies
@@ -137,5 +135,4 @@ getdeps:
 failingtest:
 	@echo
 	@echo Running failing tests...
-	@echo
 	@$(TEST) $(FAILINGTESTFILES)

@@ -1,0 +1,12 @@
+# Source files
+*.bin
+*.c
+*.h
+*.json
+*.libs
+*.log
+*.o
+*.o.tmp
+*.makefile
+*.xml
+
