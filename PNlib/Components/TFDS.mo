@@ -11,7 +11,7 @@ model TFDS "Stochastic Transition with fire duration"
   parameter Real h = 1 "probability density" annotation(
     Dialog(enable = distributionType == PNlib.Types.DistributionType.Exponential, group = "Exponential distribution"));
   parameter Real a = 0 "Lower Limit" annotation(
-    Dialog(enable = iistributionType == PNlib.Types.DistributionType.Triangular or distributionType == PNlib.Types.DistributionType.Uniform or distributionType == PNlib.Types.DistributionType.TruncatedNormal, group = "Triangular, Uniform or Truncated normal distribution"));
+    Dialog(enable = distributionType == PNlib.Types.DistributionType.Triangular or distributionType == PNlib.Types.DistributionType.Uniform or distributionType == PNlib.Types.DistributionType.TruncatedNormal, group = "Triangular, Uniform or Truncated normal distribution"));
   parameter Real b = 1 "Upper Limit" annotation(
     Dialog(enable = distributionType == PNlib.Types.DistributionType.Triangular or distributionType == PNlib.Types.DistributionType.Uniform or distributionType == PNlib.Types.DistributionType.TruncatedNormal, group = "Triangular, Uniform or Truncated normal distribution"));
   parameter Real c = 0.5 "Most likely value" annotation(
