@@ -19,7 +19,7 @@ The main package PNlib is divided into the following sub-packages:
 ## Current release
 Download [PNlib v2.2 (2019-10-24)](../../archive/v2.2.zip)
 
-## Compatibility
+## Compatibility [![Test](https://github.com/AMIT-HSBI/PNlib/actions/workflows/Test.yml/badge.svg)](https://github.com/AMIT-HSBI/PNlib/actions/workflows/Test.yml)
 * Works in OpenModelica (latest release) ([trend](http://libraries.openmodelica.org/branches/history/master/PNlib.svg), [coverage](http://libraries.openmodelica.org/branches/master/PNlib/PNlib.html))
 * Works in Dymola 2017/2019/2020
 
