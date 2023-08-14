@@ -14,11 +14,11 @@ model Settings "Global Settings for Animation and Display"
   parameter Boolean animatePlace = true "animation of places" annotation(
     Dialog(enable = true, group = "Animation"));
   parameter Real scale = 1 "scale factor for place animation 0-100" annotation(
-    Dialog(enable = if animatePlace then true else false, group = "Animation"));
+    Dialog(enable = animatePlace, group = "Animation"));
   parameter Boolean animateTransition = true "animation of transitions" annotation(
     Dialog(enable = true, group = "Animation"));
   parameter Real timeFire = 0.3 "time of transition animation" annotation(
-    Dialog(enable = if animateTransition then true else false, group = "Animation"));
+    Dialog(enable = animateTransition, group = "Animation"));
   parameter Boolean animatePutFireTime = true "animation of putative fire time of stochastic transitions" annotation(
     Dialog(enable = true, group = "Animation"));
   parameter Boolean animateHazardFunc = true "animation of hazard functions of stochastic transitions" annotation(

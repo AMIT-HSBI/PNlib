@@ -20,19 +20,19 @@ model PD "Discrete Place"
   parameter PNlib.Types.EnablingType enablingType = PNlib.Types.EnablingType.Priority "resolution type of actual conflict (type-1-conflict)" annotation(
     Dialog(enable = true, group = "Enabling"));
   parameter Integer enablingPrioIn[nIn] = 1:nIn "enabling priorities of input transitions" annotation(
-    Dialog(enable = if enablingType == PNlib.Types.EnablingType.Priority then true else false, group = "Enabling"));
+    Dialog(enable = enablingType == PNlib.Types.EnablingType.Priority, group = "Enabling"));
   parameter Integer enablingPrioOut[nOut] = 1:nOut "enabling priorities of output transitions" annotation(
-    Dialog(enable = if enablingType == PNlib.Types.EnablingType.Priority then true else false, group = "Enabling"));
+    Dialog(enable = enablingType == PNlib.Types.EnablingType.Priority, group = "Enabling"));
   parameter Real enablingProbIn[nIn] = fill(1/nIn, nIn) "enabling probabilities of input transitions" annotation(
-    Dialog(enable = if enablingType == PNlib.Types.EnablingType.Probability then true else false, group = "Enabling"));
+    Dialog(enable = enablingType == PNlib.Types.EnablingType.Probability, group = "Enabling"));
   parameter Real enablingProbOut[nOut] = fill(1/nOut, nOut) "enabling probabilities of output transitions" annotation(
-    Dialog(enable = if enablingType == PNlib.Types.EnablingType.Probability then true else false, group = "Enabling"));
+    Dialog(enable = enablingType == PNlib.Types.EnablingType.Probability, group = "Enabling"));
   parameter Real enablingBeneIn[nIn] = 1:nIn "enabling benefit of input transitions" annotation(
-    Dialog(enable = if enablingType == PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
+    Dialog(enable = enablingType == PNlib.Types.EnablingType.Benefit, group = "Enabling"));
   parameter Real enablingBeneOut[nOut] = 1:nOut "enabling benefit of output transitions" annotation(
-    Dialog(enable = if enablingType == PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
+    Dialog(enable = enablingType == PNlib.Types.EnablingType.Benefit, group = "Enabling"));
   parameter PNlib.Types.BenefitType benefitType = PNlib.Types.BenefitType.Greedy "enabling strategy for benefit" annotation(
-    Dialog(enable = if enablingType == PNlib.Types.EnablingType.Benefit then true else false, group = "Enabling"));
+    Dialog(enable = enablingType == PNlib.Types.EnablingType.Benefit, group = "Enabling"));
   parameter Integer N = settings.N "N+1=amount of levels" annotation(
     Dialog(enable = true, group = "Level Concentrations"));
   //****MODIFIABLE PARAMETERS AND VARIABLES END****//

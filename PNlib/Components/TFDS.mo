@@ -9,21 +9,21 @@ model TFDS "Stochastic Transition with fire duration"
   parameter PNlib.Types.DistributionType distributionType = PNlib.Types.DistributionType.Exponential "distribution type of duration" annotation(
     Dialog(enable = true, group = "Distribution"));
   parameter Real h = 1 "probability density" annotation(
-    Dialog(enable = if distributionType == PNlib.Types.DistributionType.Exponential then true else false, group = "Exponential distribution"));
+    Dialog(enable = distributionType == PNlib.Types.DistributionType.Exponential, group = "Exponential distribution"));
   parameter Real a = 0 "Lower Limit" annotation(
-    Dialog(enable = if distributionType == PNlib.Types.DistributionType.Triangular or distributionType == PNlib.Types.DistributionType.Uniform or distributionType == PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Triangular, Uniform or Truncated normal distribution"));
+    Dialog(enable = distributionType == PNlib.Types.DistributionType.Triangular or distributionType == PNlib.Types.DistributionType.Uniform or distributionType == PNlib.Types.DistributionType.TruncatedNormal, group = "Triangular, Uniform or Truncated normal distribution"));
   parameter Real b = 1 "Upper Limit" annotation(
-    Dialog(enable = if distributionType == PNlib.Types.DistributionType.Triangular or distributionType == PNlib.Types.DistributionType.Uniform or distributionType == PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Triangular, Uniform or Truncated normal distribution"));
+    Dialog(enable = distributionType == PNlib.Types.DistributionType.Triangular or distributionType == PNlib.Types.DistributionType.Uniform or distributionType == PNlib.Types.DistributionType.TruncatedNormal, group = "Triangular, Uniform or Truncated normal distribution"));
   parameter Real c = 0.5 "Most likely value" annotation(
-    Dialog(enable = if distributionType == PNlib.Types.DistributionType.Triangular then true else false, group = "Triangular distribution"));
+    Dialog(enable = distributionType == PNlib.Types.DistributionType.Triangular, group = "Triangular distribution"));
   parameter Real mu = 0.5 "Expected value" annotation(
-    Dialog(enable = if distributionType == PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Truncated normal distribution"));
+    Dialog(enable = distributionType == PNlib.Types.DistributionType.TruncatedNormal, group = "Truncated normal distribution"));
   parameter Real sigma = 1/6 "Standard deviation" annotation(
-    Dialog(enable = if distributionType == PNlib.Types.DistributionType.TruncatedNormal then true else false, group = "Truncated normal distribution"));
+    Dialog(enable = distributionType == PNlib.Types.DistributionType.TruncatedNormal, group = "Truncated normal distribution"));
   parameter Real E[:] = {1, 2, 3, 4, 5, 6} "Events of Discrete Distribution" annotation(
-    Dialog(enable = if distributionType == PNlib.Types.DistributionType.Discrete then true else false, group = "Discrete Probability Distribution"));
+    Dialog(enable = distributionType == PNlib.Types.DistributionType.Discrete, group = "Discrete Probability Distribution"));
   parameter Real P[:] = {1/6, 1/6, 1/6, 1/6, 1/6, 1/6} "Probability of Discrete Distribution" annotation(
-    Dialog(enable = if distributionType == PNlib.Types.DistributionType.Discrete then true else false, group = "Discrete Probability Distribution"));
+    Dialog(enable = distributionType == PNlib.Types.DistributionType.Discrete, group = "Discrete Probability Distribution"));
   Real arcWeightIn[nIn] = fill(1, nIn) "arc weights of input places" annotation(
     Dialog(enable = true, group = "Arc Weights"));
   Real arcWeightOut[nOut] = fill(1, nOut) "arc weights of output places" annotation(
