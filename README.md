@@ -28,10 +28,10 @@ This Modelica package is free software and the use is completely at your own ris
 it can be redistributed and/or modified under the terms of the [Modelica License 2](https://modelica.org/licenses/ModelicaLicense2).
 
 ## Development and contribution
-    University of Applied Sciences Bielefeld
-    Department of engineering and mathematics
+    Bielefeld University of Applied Sciences and Arts (HSBI)
+    Faculty of Engineering and Mathematics
     33619 Bielefeld - Germany
-* Sabrina Pro&szlig;
+* Sabrina Proß
 * Lennart Ochel
 * Timo Lask
 * Bernhard Bachmann

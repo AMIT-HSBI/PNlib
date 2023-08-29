@@ -32,20 +32,20 @@ model Contact
      <tr>
        <td valign=top>
        <a>S. Proß</a><br>
-       <a>mailto: sabrina.pross@fh-bielefeld.de</a><br>
-       <td valign=top>University of Applied Sciences Bielefeld<br>
-         <a>Department of engineering and mathematics</a><br>
-         33609 Bielefeld<br>
+       <a>mailto: sabrina.pross@hsbi.de</a><br>
+       <td valign=top>Hochschule Bielefeld University of Applied Sciences and Arts (HSBI)<br>
+         <a>Faculty of Engineering and Mathematics</a><br>
+         33619 Bielefeld<br>
          Germany
        </td>
      </tr>
      <tr>
        <td valign=top>
        <a>B. Bachmann</a><br>
-       <a>mailto: bernhard.bachmann@fh-bielefeld.de</a><br>
-       <td valign=top>University of Applied Sciences Bielefeld<br>
-         <a>Department of engineering and mathematics</a><br>
-         33609 Bielefeld<br>
+       <a>mailto: bernhard.bachmann@hsbi.de</a><br>
+       <td valign=top>Hochschule Bielefeld University of Applied Sciences and Arts (HSBI)<br>
+         <a>Faculty of Engineering and Mathematics</a><br>
+         33619 Bielefeld<br>
          Germany
        </td>
      </tr>

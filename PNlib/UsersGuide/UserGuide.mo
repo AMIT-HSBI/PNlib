@@ -148,8 +148,8 @@ This conflict can be solved by prioritization of the transitions. If T1 takes pr
 <h1> PNlib: A Modelica Library for Modeling xHPN </h1>
 <p>Compatibility</p>
 <ul>
-<li>PNlib works with OpenModelica 1.9.4</li>
-<li>PNlib works with OpenModelica Dymola 2016</li>
+<li>PNlib works with OpenModelica 1.21.0</li>
+<li>PNlib works with Dymola 2017/2019/2020</li>
 </ul>
 <p>The advanced Petri Net library, called PNlib, enables the modeling of extended hybrid Petri Nets (xHPN).
 It comprises</p>
@@ -311,8 +311,8 @@ enablingProbOut={0.3, 0.25, 0.45}.</p>
 a connected transition. In the case of the discrete place model, this is realized by the
 discrete equation</p>
 <pre>
-<b>when</b> tokeninout <b>or<\b>  <b>pre</b>(reStart) <b>then</b>
-  t = <b>if</b> tokeninout <b>then</b> <b>pre</b>(t) + firingSumIn - firingSumOut <b>else<\b> reStartTokens;
+<b>when</b> tokeninout <b>or</b> <b>pre</b>(reStart) <b>then</b>
+  t = <b>if</b> tokeninout <b>then</b> <b>pre</b>(t) + firingSumIn - firingSumOut <b>else</b> reStartTokens;
 <b>end when</b>;
 </pre>
 <p>
@@ -325,9 +325,9 @@ The marking of continuous places can change continuously as well as discretely.
 This is implemented by the following construct
 </p>
 <pre>
-der(t) = conMarkChange;
+<b>der</b>(t) = conMarkChange;
 <b>when</b> disMarksInOut <b>then</b>
-  <b>reinit</b>(t, t+disMarkChange);
+  <b>reinit</b>(t, t + disMarkChange);
 <b>end when</b>;
 <b>when</b> reStart <b>then</b>
   <b>reinit</b>(t, reStartMarks);
@@ -421,7 +421,7 @@ arcWeightIn = {2*P1.t, 4} and arcWeightOut = {2, 1, 5*P1.t},
 whereby the expression P1.t accesses the current token number of P1. Thus, the weights of the arcs (P1-T1) and (T1-P5) are functions which depend on the token number of P1.
 Transitions can also be provided with additional conditions that have to be satisfied to permit the activation. The condition</p>
 <p>
-firingCon = time>9.7
+firingCon = time > 9.7
 </p>
 <p>
 causes that the transition cannot be activated as long as time is less than 9.7.
