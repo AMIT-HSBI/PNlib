@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 60
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: "Set up OpenModelica Compiler"
         uses: AnHeuermann/setup-openmodelica@v0.6
