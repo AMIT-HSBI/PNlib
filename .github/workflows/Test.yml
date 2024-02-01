@@ -37,7 +37,8 @@ jobs:
             Modelica 4.0.0
           omc-diff: true
 
-      - uses: OpenModelica/openmodelica-library-testing@v0.1.0
+      - name: openmodelica-library-testing
+        uses: OpenModelica/openmodelica-library-testing-action@v0.1.0
         with:
           library: 'PNlib'
           library-version: '2.2'
