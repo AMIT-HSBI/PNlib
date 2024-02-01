@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 60
     strategy:
       matrix:
-        omc-version: ['stable', 'nightly']
+        omc-version: ['stable']
       fail-fast: false
 
     steps:
@@ -38,7 +38,7 @@ jobs:
           omc-diff: true
 
       - name: openmodelica-library-testing
-        uses: OpenModelica/openmodelica-library-testing-action@main
+        uses: OpenModelica/openmodelica-library-testing-action@v0.1.0
         with:
           library: PNlib
           library-version: '2.2'
