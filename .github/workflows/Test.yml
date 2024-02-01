@@ -10,7 +10,7 @@ on:
     tags: 'v*'
 
 jobs:
-  linux:
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     strategy:
@@ -37,7 +37,7 @@ jobs:
             Modelica 4.0.0
           omc-diff: true
 
-      - uses: OpenModelica/openmodelica-library-testing@v0.1
+      - uses: OpenModelica/openmodelica-library-testing@v0.1.0
         with:
           library: 'PNlib'
           library-version: '2.2'
@@ -47,3 +47,28 @@ jobs:
           reference-files-extension: 'mat'
           reference-files-delimiter: '.'
           pages-root-url: 'https://anheuermann.github.io/pnlib/'
+
+  deploy:
+    needs: test
+    permissions:
+      contents: write
+    if: ${{ always() }}
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get HTML artifact
+        uses: actions/download-artifact@v4
+        with:
+          path: html-artifacts/
+          pattern: '*.html'
+          merge-multiple: true
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: html-artifacts/
+          branch: gh-pages
