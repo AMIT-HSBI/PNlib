@@ -30,7 +30,7 @@ jobs:
       - name: Setup OpenModelica
         uses: OpenModelica/setup-openmodelica@v1
         with:
-          version: stable
+          version: ${{ matrix.omc-version }}
           packages: |
             omc
           libraries: |
@@ -40,14 +40,14 @@ jobs:
       - name: openmodelica-library-testing
         uses: OpenModelica/openmodelica-library-testing-action@v0.1.0
         with:
-          library: 'PNlib'
+          library: PNlib
           library-version: '2.2'
-          modelica-file: 'PNlib/package.mo'
-          omc-version: 'stable'
-          reference-files-dir: 'ReferenceFiles'
-          reference-files-extension: 'mat'
-          reference-files-delimiter: '.'
-          pages-root-url: 'https://anheuermann.github.io/pnlib/'
+          modelica-file: PNlib/package.mo
+          omc-version: ${{ matrix.omc-version }}
+          reference-files-dir: ReferenceFiles
+          reference-files-extension: mat
+          reference-files-delimiter: .
+          pages-root-url: https://anheuermann.github.io/PNlib/
 
   deploy:
     needs: test
