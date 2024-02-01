@@ -33,8 +33,10 @@ Download [PNlib v2.2 (2019-10-24)][release-v-2-2]
 ## Compatibility
 
   * Works in OpenModelica (latest release)
-    ([trend][trend-img],
-    [coverage](http://libraries.openmodelica.org/branches/master/PNlib/PNlib.html))
+
+    ![Pnlib omc-master](https://libraries.openmodelica.org/branches/history/master/PNlib.svg)
+
+    Latest [Coverage][coverage-link] with OpenModelica.
   * Works in Dymola 2017/2019/2020
 
 ## License
@@ -60,6 +62,6 @@ You may report feedback, issues or feature-requests using
 [test-link]: https://github.com/AMIT-HSBI/PNlib/actions/workflows/Test.yml
 [pnlib-img]: PNlib/Resources/Images/iconsxHPN.png "xHPN: Extended Hybrid PetriNets"
 [release-v-2-2]: https://github.com/AMIT-HSBI/PNlib/releases/tag/v2.2
-[trend-img]: http://libraries.openmodelica.org/branches/history/master/PNlib.svg
+[coverage-link]: http://libraries.openmodelica.org/branches/master/PNlib/PNlib.html
 [license-link]: https://modelica.org/licenses/ModelicaLicense2
 [issues]: https://github.com/AMIT-HSBI/PNlib/issues
