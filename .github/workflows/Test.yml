@@ -47,7 +47,7 @@ jobs:
           reference-files-dir: ReferenceFiles
           reference-files-extension: mat
           reference-files-delimiter: .
-          pages-root-url: https://anheuermann.github.io/PNlib/
+          pages-root-url: https://amit-hsbi.github.io/PNlib/
 
   deploy:
     needs: test
