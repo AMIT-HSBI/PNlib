@@ -1,41 +1,49 @@
 name: Test
 
 on:
+  workflow_dispatch:
+  pull_request:
   push:
     branches:
-      - 'master'
-  pull_request:
+      - main
+      - 'releases/*'
+    tags: 'v*'
 
 jobs:
-  test:
-    runs-on: 'ubuntu-latest'
-    env:
-      OPENMODELICAHOME: '/usr'
+  linux:
+    runs-on: ubuntu-latest
     timeout-minutes: 60
+    strategy:
+      matrix:
+        omc-version: ['1.18', 'stable', 'nightly']
+      fail-fast: false
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: "Set up OpenModelica Compiler"
-        uses: AnHeuermann/setup-openmodelica@v0.6
+      - name: Setup Python 3
+        uses: actions/setup-python@v5
         with:
-          version: 'stable'
+          python-version: '3.10'
+
+      - name: Setup OpenModelica
+        uses: OpenModelica/setup-openmodelica@v1
+        with:
+          version: stable
           packages: |
             omc
           libraries: |
-            'Modelica 4.0.0'
+            Modelica 4.0.0
           omc-diff: true
 
-      - name: "Test OpenModelica"
-        run: "make -C Testing openmodelica"
-
-      - name: "Upload openmodelica.log"
-        uses: actions/upload-artifact@v3
+      - uses: OpenModelica/openmodelica-library-testing@v0.1
         with:
-          name: openmodelica.log
-          path: Testing/openmodelica.log
-
-      - name: "Look for failing tests"
-        run: |
-          grep "\(^ - \)\|\(... equation mismatch\)" Testing/openmodelica.log | true
-          grep -i "^== 0 out of [0-9]* tests failed" Testing/openmodelica.log
+          library: 'PNlib'
+          library-version: '2.2'
+          modelica-file: 'PNlib/package.mo'
+          omc-version: 'stable'
+          reference-files-dir: 'ReferenceFiles'
+          reference-files-extension: 'mat'
+          reference-files-delimiter: '.'
+          pages-root-url: 'https://anheuermann.github.io/pnlib/'
