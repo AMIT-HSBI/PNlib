@@ -48,28 +48,3 @@ jobs:
           reference-files-extension: mat
           reference-files-delimiter: .
           pages-root-url: https://amit-hsbi.github.io/PNlib/
-
-  deploy:
-    needs: test
-    permissions:
-      contents: write
-    if: ${{ always() }}
-    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Get HTML artifact
-        uses: actions/download-artifact@v4
-        with:
-          path: html-artifacts/
-          pattern: '*.html'
-          merge-multiple: true
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: html-artifacts/
-          branch: gh-pages
