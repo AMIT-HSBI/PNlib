@@ -1,12 +1,6 @@
-.PHONY : test clean openmodelica dymola
+.PHONY : test clean dymola
 
-test: openmodelica dymola
-
-openmodelica:
-	@make -C OpenModelica | tee openmodelica.log
-	@make -C OpenModelica clean
-	@echo ""
-	@grep == openmodelica.log
+test: dymola
 
 dymola:
 	@make -C Dymola | tee dymola.log
@@ -15,6 +9,5 @@ dymola:
 	@grep == dymola.log
 
 clean:
-	@make -C OpenModelica clean
 	@make -C Dymola clean
 	@rm *.log
