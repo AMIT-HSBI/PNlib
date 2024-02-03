@@ -1,0 +1,32 @@
+Environment - simulationEnvironment:
+startTime=0
+stopTime=5
+tolerance=1e-06
+numberOfIntervals=2500
+stepSize=0.002
+Regular simulation: ./PNlib_master_PNlib.Examples.DisTest.PDtoTDfunction  -abortSlowSimulation -alarm=480  -emit_protected -lv LOG_STATS
+LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.
+LOG_STATS         | info    | ### STATISTICS ###
+|                 | |       | | timer
+|                 | |       | | |   0.00256483s          reading init.xml
+|                 | |       | | |  0.000397091s          reading info.xml
+|                 | |       | | |  0.000169888s [  1.5%] pre-initialization
+|                 | |       | | |  0.000121757s [  1.1%] initialization
+|                 | |       | | |     8.61e-07s [  0.0%] steps
+|                 | |       | | |   3.9596e-05s [  0.4%] solver (excl. callbacks)
+|                 | |       | | |    0.0015688s [ 14.2%] creating output-file
+|                 | |       | | |  0.000561214s [  5.1%] event-handling
+|                 | |       | | |   0.00234041s [ 21.2%] overhead
+|                 | |       | | |    0.0062427s [ 56.5%] simulation
+|                 | |       | | |    0.0110452s [100.0%] total
+|                 | |       | | events
+|                 | |       | | |     8 state events
+|                 | |       | | |     0 time events
+|                 | |       | | solver: euler
+|                 | |       | | | 26244 steps taken
+|                 | |       | | | 26244 calls of functionODE
+|                 | |       | | |     0 evaluations of jacobian
+|                 | |       | | |     0 error test failures
+|                 | |       | | |     0 convergence test failures
+|                 | |       | | | 0s time of jacobian evaluation
+LOG_SUCCESS       | info    | The simulation finished successfully.

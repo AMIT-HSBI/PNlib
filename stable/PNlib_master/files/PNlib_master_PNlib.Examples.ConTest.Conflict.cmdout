@@ -1,0 +1,3 @@
+Result file HelloWorld_res.mat WAS NOT generated running: ./HelloWorld with flags [ -noemit -nls=newton]
+Result file HelloWorld_res.mat WAS NOT generated running: ./HelloWorld with flags [ -noemit -s=rungekutta]
+0.5845039640000209 0.6416386169999999 0.533312672

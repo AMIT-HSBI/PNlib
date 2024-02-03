@@ -1,0 +1,32 @@
+Environment - simulationEnvironment:
+startTime=0
+stopTime=10
+tolerance=1e-06
+numberOfIntervals=2500
+stepSize=0.004
+Regular simulation: ./PNlib_master_PNlib.Examples.HybTest.InputConflictProb  -abortSlowSimulation -alarm=480  -emit_protected -lv LOG_STATS
+LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.
+LOG_STATS         | info    | ### STATISTICS ###
+|                 | |       | | timer
+|                 | |       | | |   0.00905929s          reading init.xml
+|                 | |       | | |   0.00098627s          reading info.xml
+|                 | |       | | |  0.000348791s [  0.9%] pre-initialization
+|                 | |       | | |  0.000191147s [  0.5%] initialization
+|                 | |       | | |    4.508e-06s [  0.0%] steps
+|                 | |       | | |   0.00184131s [  4.8%] solver (excl. callbacks)
+|                 | |       | | |   0.00403026s [ 10.5%] creating output-file
+|                 | |       | | |   0.00925882s [ 24.0%] event-handling
+|                 | |       | | |   0.00315793s [  8.2%] overhead
+|                 | |       | | |    0.0197324s [ 51.2%] simulation
+|                 | |       | | |    0.0385651s [100.0%] total
+|                 | |       | | events
+|                 | |       | | |    18 state events
+|                 | |       | | |     0 time events
+|                 | |       | | solver: dassl
+|                 | |       | | |   352 steps taken
+|                 | |       | | |   352 calls of functionODE
+|                 | |       | | |   333 evaluations of jacobian
+|                 | |       | | |     0 error test failures
+|                 | |       | | |     0 convergence test failures
+|                 | |       | | | 8.8206e-05s time of jacobian evaluation
+LOG_SUCCESS       | info    | The simulation finished successfully.

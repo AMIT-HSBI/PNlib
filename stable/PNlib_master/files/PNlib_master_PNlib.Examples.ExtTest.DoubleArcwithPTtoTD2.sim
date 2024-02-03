@@ -1,0 +1,32 @@
+Environment - simulationEnvironment:
+startTime=0
+stopTime=10
+tolerance=1e-06
+numberOfIntervals=2500
+stepSize=0.004
+Regular simulation: ./PNlib_master_PNlib.Examples.ExtTest.DoubleArcwithPTtoTD2  -abortSlowSimulation -alarm=480  -emit_protected -lv LOG_STATS
+LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.
+LOG_STATS         | info    | ### STATISTICS ###
+|                 | |       | | timer
+|                 | |       | | |   0.00875283s          reading init.xml
+|                 | |       | | |  0.000836151s          reading info.xml
+|                 | |       | | |  0.000314777s [  1.5%] pre-initialization
+|                 | |       | | |  0.000196728s [  0.9%] initialization
+|                 | |       | | |    2.325e-06s [  0.0%] steps
+|                 | |       | | |   5.6992e-05s [  0.3%] solver (excl. callbacks)
+|                 | |       | | |   0.00337044s [ 16.1%] creating output-file
+|                 | |       | | |  0.000776896s [  3.7%] event-handling
+|                 | |       | | |   0.00311791s [ 14.9%] overhead
+|                 | |       | | |    0.0130393s [ 62.5%] simulation
+|                 | |       | | |    0.0208754s [100.0%] total
+|                 | |       | | events
+|                 | |       | | |     8 state events
+|                 | |       | | |     0 time events
+|                 | |       | | solver: euler
+|                 | |       | | | 15644 steps taken
+|                 | |       | | | 15644 calls of functionODE
+|                 | |       | | |     0 evaluations of jacobian
+|                 | |       | | |     0 error test failures
+|                 | |       | | |     0 convergence test failures
+|                 | |       | | | 0s time of jacobian evaluation
+LOG_SUCCESS       | info    | The simulation finished successfully.
