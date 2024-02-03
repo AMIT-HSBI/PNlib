@@ -5,7 +5,7 @@ on:
   pull_request:
   push:
     branches:
-      - main
+      - master
       - 'releases/*'
     tags: 'v*'
 
@@ -41,10 +41,34 @@ jobs:
         uses: OpenModelica/openmodelica-library-testing-action@v0.1.0
         with:
           library: PNlib
-          library-version: '2.2'
+          library-version: 'master'
           modelica-file: PNlib/package.mo
           omc-version: ${{ matrix.omc-version }}
           reference-files-dir: ReferenceFiles
           reference-files-extension: mat
           reference-files-delimiter: .
 
+  deploy:
+    needs: test
+    permissions:
+      contents: write
+    if: endsWith(github.ref, 'master')
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get HTML artifact
+        uses: actions/download-artifact@v4
+        with:
+          path: html-artifacts/
+          pattern: '*.html'
+          merge-multiple: true
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: html-artifacts/
+          branch: gh-pages
