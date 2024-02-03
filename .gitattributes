@@ -8,6 +8,9 @@
 *.order text eol=lf
 Testing/OpenModelica/rtest text eol=lf
 
+# Set linguist language to Modelica
+*.mo linguist-language=Modelica
+
 # Denote all files that are truly binary and should not be modified.
 *.jpg binary
 *.mat binary

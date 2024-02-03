@@ -1,4 +1,4 @@
-TEST = ./../OpenModelica/rtest -v
+TEST = ../rtest -v
 DYMOLA = Dymola
 
 TESTFILES = \
