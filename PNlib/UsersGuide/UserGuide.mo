@@ -148,7 +148,7 @@ This conflict can be solved by prioritization of the transitions. If T1 takes pr
 <h1> PNlib: A Modelica Library for Modeling xHPN </h1>
 <p>Compatibility</p>
 <ul>
-<li>PNlib works with OpenModelica 1.21.0</li>
+<li>PNlib works with OpenModelica 1.22</li>
 <li>PNlib works with Dymola 2017/2019/2020</li>
 </ul>
 <p>The advanced Petri Net library, called PNlib, enables the modeling of extended hybrid Petri Nets (xHPN).

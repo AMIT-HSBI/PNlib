@@ -26,6 +26,10 @@ The main package PNlib is divided into the following sub-packages:
     models.
   * _Examples_: contains several examples and unit tests.
 
+## Current release
+
+Download [PNlib v2.2 (2019-10-24)][release-v-2-2]
+
 ## Compatibility
 
   * Coverage with OpenModelica master and latest PNlib release:
@@ -41,12 +45,12 @@ The main package PNlib is divided into the following sub-packages:
 
 ## License
 
-This package is licensed with the [3-Clause BSD License][license-link].
+This package is licensed with the [3-Clause BSD License](./LICENSE).
 
 ## Development and contribution
 
 ```
-Hochschule Bielefeld – University of Applied Sciences and Arts (HSBI)
+Hochschule Bielefeld – University of Applied Sciences and Arts
 Faculty of Engineering and Mathematics
 ```
 
@@ -61,7 +65,8 @@ You may report feedback, issues or feature-requests using
 [test-badge]: https://github.com/AMIT-HSBI/PNlib/actions/workflows/Test.yml/badge.svg
 [test-link]: https://github.com/AMIT-HSBI/PNlib/actions/workflows/Test.yml
 [pnlib-img]: PNlib/Resources/Images/iconsxHPN.png "xHPN: Extended Hybrid PetriNets"
+[release-v-2-2]: https://github.com/AMIT-HSBI/PNlib/releases/tag/v2.2
 [coverage-link]: http://libraries.openmodelica.org/branches/master/PNlib/PNlib.html
-[license-link]: https://github.com/AMIT-HSBI/PNlib/blob/v3.0.0/LICENSE
+[license-link]: https://modelica.org/licenses/ModelicaLicense2
 [issues]: https://github.com/AMIT-HSBI/PNlib/issues
 [gh-pages-link]: https://amit-hsbi.github.io/PNlib/stable/PNlib_master/PNlib_master.html
