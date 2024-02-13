@@ -8,17 +8,17 @@ Regular simulation: ./PNlib_master_PNlib.Examples.ExtTest.DoubleArcwithPTtoTD2  
 LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.
 LOG_STATS         | info    | ### STATISTICS ###
 |                 | |       | | timer
-|                 | |       | | |   0.00846108s          reading init.xml
-|                 | |       | | |  0.000829028s          reading info.xml
-|                 | |       | | |  0.000303967s [  1.5%] pre-initialization
-|                 | |       | | |  0.000169507s [  0.8%] initialization
-|                 | |       | | |    2.325e-06s [  0.0%] steps
-|                 | |       | | |   3.9711e-05s [  0.2%] solver (excl. callbacks)
-|                 | |       | | |   0.00332033s [ 16.1%] creating output-file
-|                 | |       | | |  0.000802992s [  3.9%] event-handling
-|                 | |       | | |   0.00303623s [ 14.7%] overhead
-|                 | |       | | |    0.0129253s [ 62.7%] simulation
-|                 | |       | | |    0.0206004s [100.0%] total
+|                 | |       | | |    0.0083253s          reading init.xml
+|                 | |       | | |  0.000847731s          reading info.xml
+|                 | |       | | |  0.000278028s [  1.3%] pre-initialization
+|                 | |       | | |  0.000185236s [  0.9%] initialization
+|                 | |       | | |    2.365e-06s [  0.0%] steps
+|                 | |       | | |   3.9042e-05s [  0.2%] solver (excl. callbacks)
+|                 | |       | | |   0.00328536s [ 15.9%] creating output-file
+|                 | |       | | |  0.000841729s [  4.1%] event-handling
+|                 | |       | | |    0.0028565s [ 13.8%] overhead
+|                 | |       | | |    0.0131471s [ 63.7%] simulation
+|                 | |       | | |    0.0206354s [100.0%] total
 |                 | |       | | events
 |                 | |       | | |     8 state events
 |                 | |       | | |     0 time events

@@ -8,17 +8,17 @@ Regular simulation: ./PNlib_master_PNlib.Examples.DisTest.SingleTD  -abortSlowSi
 LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.
 LOG_STATS         | info    | ### STATISTICS ###
 |                 | |       | | timer
-|                 | |       | | |  0.000771169s          reading init.xml
-|                 | |       | | |    8.594e-05s          reading info.xml
-|                 | |       | | |  0.000119994s [  2.9%] pre-initialization
-|                 | |       | | |   6.4921e-05s [  1.6%] initialization
-|                 | |       | | |        4e-07s [  0.0%] steps
-|                 | |       | | |   3.8534e-05s [  0.9%] solver (excl. callbacks)
-|                 | |       | | |  0.000732488s [ 17.7%] creating output-file
-|                 | |       | | |            0s [  0.0%] event-handling
-|                 | |       | | |   0.00049113s [ 11.9%] overhead
-|                 | |       | | |   0.00268565s [ 64.9%] simulation
-|                 | |       | | |   0.00414869s [100.0%] total
+|                 | |       | | |  0.000689646s          reading init.xml
+|                 | |       | | |   8.2194e-05s          reading info.xml
+|                 | |       | | |  0.000108542s [  1.7%] pre-initialization
+|                 | |       | | |    5.344e-05s [  0.9%] initialization
+|                 | |       | | |     6.01e-07s [  0.0%] steps
+|                 | |       | | |   5.9174e-05s [  0.9%] solver (excl. callbacks)
+|                 | |       | | |   0.00105371s [ 16.9%] creating output-file
+|                 | |       | | |  0.000108477s [  1.7%] event-handling
+|                 | |       | | |  0.000963388s [ 15.5%] overhead
+|                 | |       | | |   0.00388177s [ 62.3%] simulation
+|                 | |       | | |   0.00622909s [100.0%] total
 |                 | |       | | events
 |                 | |       | | |     0 state events
 |                 | |       | | |     0 time events

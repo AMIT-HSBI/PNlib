@@ -9,70 +9,70 @@ Using package Complex with version 4.0.0 (/home/runner/.openmodelica/libraries/C
 Using package ModelicaServices with version 4.0.0 (/home/runner/.openmodelica/libraries/ModelicaServices 4.0.0+maint.om/package.mo)
 Running command: translateModel(PNlib.Examples.HybTest.PCtoTDfunction,tolerance=1e-06,outputFormat="mat",numberOfIntervals=5000,variableFilter="P1.t|T1.active|T1.fire|time",fileNamePrefix="PNlib_master_PNlib.Examples.HybTest.PCtoTDfunction")
 translateModel(PNlib.Examples.HybTest.PCtoTDfunction,tolerance=1e-06,outputFormat="mat",numberOfIntervals=5000,variableFilter="P1.t|T1.active|T1.fire|time",fileNamePrefix="PNlib_master_PNlib.Examples.HybTest.PCtoTDfunction")
-Notification: Performance of loadFile(/home/runner/.openmodelica/libraries/ModelicaServices 4.0.0+maint.om/package.mo): time 0.001254/0.001254, allocations: 98.14 kB / 15.6 MB, free: 5.277 MB / 13.93 MB
-Notification: Performance of loadFile(/home/runner/.openmodelica/libraries/Complex 4.0.0+maint.om/package.mo): time 0.001562/0.001562, allocations: 179.8 kB / 16.51 MB, free: 4.668 MB / 13.93 MB
-Notification: Performance of loadFile(/home/runner/.openmodelica/libraries/Modelica 4.0.0+maint.om/package.mo): time 1.686/1.686, allocations: 222.1 MB / 239.4 MB, free: 11.11 MB / 202.7 MB
-Notification: Performance of loadFile(/home/runner/work/PNlib/PNlib/PNlib/package.mo): time 0.09491/0.09491, allocations: 16.59 MB / 306.2 MB, free: 10.57 MB / 250.7 MB
-Notification: Performance of FrontEnd - loaded program: time 0.0004447/0.0004447, allocations: 15.05 kB / 370.6 MB, free: 44.84 MB / 298.7 MB
-Notification: Performance of FrontEnd - Absyn->SCode: time 0.07121/0.07167, allocations: 53.47 MB / 424.1 MB, free: 5.938 MB / 298.7 MB
-Notification: Performance of NFInst.instantiate(PNlib.Examples.HybTest.PCtoTDfunction): time 0.002833/0.07455, allocations: 1.965 MB / 426 MB, free: 3.965 MB / 298.7 MB
-Notification: Performance of NFInst.instExpressions: time 0.002364/0.07693, allocations: 1.568 MB / 427.6 MB, free: 2.398 MB / 298.7 MB
-Notification: Performance of NFInst.updateImplicitVariability: time 0.0002392/0.07719, allocations: 11.94 kB / 427.6 MB, free: 2.387 MB / 298.7 MB
-Notification: Performance of NFTyping.typeComponents: time 0.0002841/0.07748, allocations: 123 kB / 427.7 MB, free: 2.266 MB / 298.7 MB
-Notification: Performance of NFTyping.typeBindings: time 0.0003986/0.07789, allocations: 119 kB / 427.9 MB, free: 2.148 MB / 298.7 MB
-Notification: Performance of NFTyping.typeClassSections: time 0.001103/0.07901, allocations: 0.6498 MB / 428.5 MB, free: 1.5 MB / 298.7 MB
-Notification: Performance of NFFlatten.flatten: time 0.0009497/0.07997, allocations: 1.338 MB / 429.8 MB, free: 164 kB / 298.7 MB
-Notification: Performance of NFFlatten.resolveConnections: time 0.0002549/0.08024, allocations: 165.6 kB / 430 MB, free: 15.99 MB / 314.7 MB
-Notification: Performance of NFEvalConstants.evaluate: time 0.0005085/0.08076, allocations: 0.5024 MB / 430.5 MB, free: 15.49 MB / 314.7 MB
-Notification: Performance of NFSimplifyModel.simplify: time 0.0003725/0.08114, allocations: 342.3 kB / 430.8 MB, free: 15.15 MB / 314.7 MB
-Notification: Performance of NFPackage.collectConstants: time 0.0001555/0.08131, allocations: 84 kB / 430.9 MB, free: 15.07 MB / 314.7 MB
-Notification: Performance of NFFlatten.collectFunctions: time 0.0005211/0.08184, allocations: 423.5 kB / 431.3 MB, free: 14.66 MB / 314.7 MB
-Notification: Performance of NFScalarize.scalarize: time 0.0001566/0.08201, allocations: 175.4 kB / 431.5 MB, free: 14.48 MB / 314.7 MB
-Notification: Performance of NFVerifyModel.verify: time 0.0002988/0.08232, allocations: 378.3 kB / 431.9 MB, free: 14.11 MB / 314.7 MB
-Notification: Performance of NFConvertDAE.convert: time 0.001008/0.08333, allocations: 1.091 MB / 433 MB, free: 13.02 MB / 314.7 MB
-Notification: Performance of FrontEnd - DAE generated: time 3.637e-06/0.08335, allocations: 0 / 433 MB, free: 13.02 MB / 314.7 MB
-Notification: Performance of FrontEnd: time 1.473e-06/0.08336, allocations: 0 / 433 MB, free: 13.02 MB / 314.7 MB
-Notification: Performance of Transformations before backend: time 8.536e-06/0.08337, allocations: 0 / 433 MB, free: 13.02 MB / 314.7 MB
+Notification: Performance of loadFile(/home/runner/.openmodelica/libraries/ModelicaServices 4.0.0+maint.om/package.mo): time 0.0009304/0.0009305, allocations: 100.8 kB / 15.59 MB, free: 4.777 MB / 13.93 MB
+Notification: Performance of loadFile(/home/runner/.openmodelica/libraries/Complex 4.0.0+maint.om/package.mo): time 0.0009924/0.0009924, allocations: 173.7 kB / 16.5 MB, free: 4.348 MB / 13.93 MB
+Notification: Performance of loadFile(/home/runner/.openmodelica/libraries/Modelica 4.0.0+maint.om/package.mo): time 1.636/1.636, allocations: 222.1 MB / 239.4 MB, free: 11.07 MB / 202.7 MB
+Notification: Performance of loadFile(/home/runner/work/PNlib/PNlib/PNlib/package.mo): time 0.09436/0.09436, allocations: 16.59 MB / 306.2 MB, free: 10.54 MB / 250.7 MB
+Notification: Performance of FrontEnd - loaded program: time 0.0004808/0.0004808, allocations: 12.88 kB / 370.6 MB, free: 44.84 MB / 298.7 MB
+Notification: Performance of FrontEnd - Absyn->SCode: time 0.07592/0.07642, allocations: 53.47 MB / 424.1 MB, free: 5.898 MB / 298.7 MB
+Notification: Performance of NFInst.instantiate(PNlib.Examples.HybTest.PCtoTDfunction): time 0.002854/0.07932, allocations: 1.968 MB / 426 MB, free: 3.93 MB / 298.7 MB
+Notification: Performance of NFInst.instExpressions: time 0.002458/0.08179, allocations: 1.564 MB / 427.6 MB, free: 2.367 MB / 298.7 MB
+Notification: Performance of NFInst.updateImplicitVariability: time 0.0002133/0.08203, allocations: 8 kB / 427.6 MB, free: 2.359 MB / 298.7 MB
+Notification: Performance of NFTyping.typeComponents: time 0.0002842/0.08232, allocations: 127 kB / 427.7 MB, free: 2.234 MB / 298.7 MB
+Notification: Performance of NFTyping.typeBindings: time 0.0004091/0.08274, allocations: 123 kB / 427.9 MB, free: 2.113 MB / 298.7 MB
+Notification: Performance of NFTyping.typeClassSections: time 0.001125/0.08387, allocations: 0.6424 MB / 428.5 MB, free: 1.473 MB / 298.7 MB
+Notification: Performance of NFFlatten.flatten: time 0.0009721/0.08486, allocations: 1.33 MB / 429.8 MB, free: 144 kB / 298.7 MB
+Notification: Performance of NFFlatten.resolveConnections: time 0.0002658/0.08514, allocations: 172.8 kB / 430 MB, free: 15.96 MB / 314.7 MB
+Notification: Performance of NFEvalConstants.evaluate: time 0.0007508/0.0859, allocations: 0.5025 MB / 430.5 MB, free: 15.46 MB / 314.7 MB
+Notification: Performance of NFSimplifyModel.simplify: time 0.0003776/0.08629, allocations: 350.2 kB / 430.8 MB, free: 15.12 MB / 314.7 MB
+Notification: Performance of NFPackage.collectConstants: time 0.000122/0.08642, allocations: 84 kB / 430.9 MB, free: 15.04 MB / 314.7 MB
+Notification: Performance of NFFlatten.collectFunctions: time 0.0005706/0.087, allocations: 423.5 kB / 431.3 MB, free: 14.62 MB / 314.7 MB
+Notification: Performance of NFScalarize.scalarize: time 0.00172/0.08874, allocations: 171.4 kB / 431.5 MB, free: 14.45 MB / 314.7 MB
+Notification: Performance of NFVerifyModel.verify: time 0.0003032/0.08905, allocations: 386.2 kB / 431.9 MB, free: 14.07 MB / 314.7 MB
+Notification: Performance of NFConvertDAE.convert: time 0.001014/0.09008, allocations: 1.079 MB / 433 MB, free: 12.99 MB / 314.7 MB
+Notification: Performance of FrontEnd - DAE generated: time 6.081e-06/0.0901, allocations: 0 / 433 MB, free: 12.99 MB / 314.7 MB
+Notification: Performance of FrontEnd: time 1.433e-06/0.09011, allocations: 7.938 kB / 433 MB, free: 12.98 MB / 314.7 MB
+Notification: Performance of Transformations before backend: time 8.876e-06/0.09012, allocations: 0 / 433 MB, free: 12.98 MB / 314.7 MB
 Notification: Model statistics after passing the front-end and creating the data structures used by the back-end:
  * Number of equations: 178
  * Number of variables: 178
-Notification: Performance of Generate backend data structure: time 0.00169/0.08507, allocations: 1.302 MB / 434.3 MB, free: 11.6 MB / 314.7 MB
-Notification: Performance of prepare preOptimizeDAE: time 3.082e-05/0.08511, allocations: 19.48 kB / 434.3 MB, free: 11.59 MB / 314.7 MB
-Notification: Performance of preOpt normalInlineFunction (simulation): time 0.0007863/0.0859, allocations: 140 kB / 434.4 MB, free: 11.45 MB / 314.7 MB
-Notification: Performance of preOpt evaluateParameters (simulation): time 0.0005325/0.08645, allocations: 426.6 kB / 434.8 MB, free: 10.99 MB / 314.7 MB
-Notification: Performance of preOpt simplifyIfEquations (simulation): time 0.0001184/0.08658, allocations: 150.3 kB / 435 MB, free: 10.82 MB / 314.7 MB
-Notification: Performance of preOpt expandDerOperator (simulation): time 0.0001311/0.08672, allocations: 79.98 kB / 435.1 MB, free: 10.75 MB / 314.7 MB
-Notification: Performance of preOpt clockPartitioning (simulation): time 0.00207/0.08879, allocations: 1.272 MB / 436.3 MB, free: 9.418 MB / 314.7 MB
-Notification: Performance of preOpt findStateOrder (simulation): time 2.34e-05/0.08883, allocations: 3.938 kB / 436.3 MB, free: 9.414 MB / 314.7 MB
-Notification: Performance of preOpt replaceEdgeChange (simulation): time 0.0001006/0.08894, allocations: 35.98 kB / 436.4 MB, free: 9.379 MB / 314.7 MB
-Notification: Performance of preOpt inlineArrayEqn (simulation): time 0.000101/0.08905, allocations: 61.27 kB / 436.4 MB, free: 9.32 MB / 314.7 MB
-Notification: Performance of preOpt removeEqualRHS (simulation): time 0.001677/0.09073, allocations: 0.8872 MB / 437.3 MB, free: 8.434 MB / 314.7 MB
-Notification: Performance of preOpt removeSimpleEquations (simulation): time 0.003875/0.09462, allocations: 3.039 MB / 440.4 MB, free: 5.258 MB / 314.7 MB
-Notification: Performance of preOpt comSubExp (simulation): time 0.001597/0.09623, allocations: 1.271 MB / 441.6 MB, free: 3.941 MB / 314.7 MB
-Notification: Performance of preOpt resolveLoops (simulation): time 0.001114/0.09736, allocations: 1.05 MB / 442.7 MB, free: 2.883 MB / 314.7 MB
-Notification: Performance of preOpt evalFunc (simulation): time 0.002418/0.09979, allocations: 2.88 MB / 445.6 MB, free: 15.38 MB / 330.7 MB
-Notification: Performance of preOpt encapsulateWhenConditions (simulation): time 0.001483/0.1013, allocations: 0.7757 MB / 446.3 MB, free: 14.56 MB / 330.7 MB
-Notification: Performance of pre-optimization done (n=72): time 3.106e-06/0.1013, allocations: 0 / 446.3 MB, free: 14.56 MB / 330.7 MB
-Notification: Performance of matching and sorting (n=72): time 0.003641/0.105, allocations: 2.248 MB / 448.6 MB, free: 12.24 MB / 330.7 MB
-Notification: Performance of inlineWhenForInitialization (initialization): time 0.0001793/0.1052, allocations: 0.5983 MB / 449.2 MB, free: 11.53 MB / 330.7 MB
-Notification: Performance of selectInitializationVariablesDAE (initialization): time 0.0003608/0.1055, allocations: 413.1 kB / 449.6 MB, free: 11.11 MB / 330.7 MB
-Notification: Performance of collectPreVariables (initialization): time 8.166e-05/0.1056, allocations: 65.69 kB / 449.7 MB, free: 11.04 MB / 330.7 MB
-Notification: Performance of collectInitialEqns (initialization): time 0.0003236/0.106, allocations: 284 kB / 449.9 MB, free: 10.76 MB / 330.7 MB
-Notification: Performance of collectInitialBindings (initialization): time 0.0001416/0.1061, allocations: 185.9 kB / 450.1 MB, free: 10.57 MB / 330.7 MB
-Notification: Performance of simplifyInitialFunctions (initialization): time 0.0002982/0.1064, allocations: 226.5 kB / 450.3 MB, free: 10.34 MB / 330.7 MB
-Notification: Performance of setup shared object (initialization): time 7.4e-05/0.1065, allocations: 374.8 kB / 450.7 MB, free: 9.969 MB / 330.7 MB
-Notification: Performance of preBalanceInitialSystem (initialization): time 0.0007155/0.1072, allocations: 422 kB / 451.1 MB, free: 9.559 MB / 330.7 MB
-Notification: Performance of partitionIndependentBlocks (initialization): time 0.00101/0.1083, allocations: 0.799 MB / 451.9 MB, free: 8.594 MB / 330.7 MB
-Notification: Performance of analyzeInitialSystem (initialization): time 0.00282/0.1111, allocations: 2.467 MB / 454.4 MB, free: 5.797 MB / 330.7 MB
-Notification: Performance of solveInitialSystemEqSystem (initialization): time 8.306e-06/0.1111, allocations: 4 kB / 454.4 MB, free: 5.793 MB / 330.7 MB
-Notification: Performance of matching and sorting (n=142) (initialization): time 0.002596/0.1137, allocations: 1.796 MB / 456.2 MB, free: 3.922 MB / 330.7 MB
-Notification: Performance of prepare postOptimizeDAE: time 0.0001381/0.1139, allocations: 369.1 kB / 456.5 MB, free: 3.496 MB / 330.7 MB
-Notification: Performance of postOpt simplifyComplexFunction (initialization): time 0.001349/0.1152, allocations: 0.7998 MB / 457.3 MB, free: 2.672 MB / 330.7 MB
-Notification: Performance of postOpt tearingSystem (initialization): time 2.72e-05/0.1153, allocations: 20 kB / 457.4 MB, free: 2.652 MB / 330.7 MB
-Notification: Performance of postOpt solveSimpleEquations (initialization): time 0.000435/0.1157, allocations: 127.7 kB / 457.5 MB, free: 2.527 MB / 330.7 MB
-Notification: Performance of postOpt calculateStrongComponentJacobians (initialization): time 2.016e-05/0.1157, allocations: 27.86 kB / 457.5 MB, free: 2.5 MB / 330.7 MB
-Notification: Performance of postOpt simplifyAllExpressions (initialization): time 0.0005371/0.1163, allocations: 126.9 kB / 457.6 MB, free: 2.375 MB / 330.7 MB
-Notification: Performance of postOpt collapseArrayExpressions (initialization): time 9.559e-05/0.1164, allocations: 60.17 kB / 457.7 MB, free: 2.316 MB / 330.7 MB
+Notification: Performance of Generate backend data structure: time 0.001546/0.09167, allocations: 1.31 MB / 434.3 MB, free: 11.56 MB / 314.7 MB
+Notification: Performance of prepare preOptimizeDAE: time 0.0001975/0.09188, allocations: 8.031 kB / 434.3 MB, free: 11.55 MB / 314.7 MB
+Notification: Performance of preOpt normalInlineFunction (simulation): time 0.000803/0.09269, allocations: 136 kB / 434.4 MB, free: 11.42 MB / 314.7 MB
+Notification: Performance of preOpt evaluateParameters (simulation): time 0.0005362/0.09324, allocations: 434.6 kB / 434.8 MB, free: 10.95 MB / 314.7 MB
+Notification: Performance of preOpt simplifyIfEquations (simulation): time 0.000119/0.09337, allocations: 142.4 kB / 435 MB, free: 10.79 MB / 314.7 MB
+Notification: Performance of preOpt expandDerOperator (simulation): time 0.0001276/0.0935, allocations: 79.98 kB / 435.1 MB, free: 10.71 MB / 314.7 MB
+Notification: Performance of preOpt clockPartitioning (simulation): time 0.002095/0.09561, allocations: 1.272 MB / 436.3 MB, free: 9.387 MB / 314.7 MB
+Notification: Performance of preOpt findStateOrder (simulation): time 2.397e-05/0.09565, allocations: 0 / 436.3 MB, free: 9.387 MB / 314.7 MB
+Notification: Performance of preOpt replaceEdgeChange (simulation): time 9.919e-05/0.09575, allocations: 35.98 kB / 436.4 MB, free: 9.352 MB / 314.7 MB
+Notification: Performance of preOpt inlineArrayEqn (simulation): time 0.0001039/0.09586, allocations: 61.27 kB / 436.4 MB, free: 9.293 MB / 314.7 MB
+Notification: Performance of preOpt removeEqualRHS (simulation): time 0.001704/0.09757, allocations: 0.8944 MB / 437.3 MB, free: 8.402 MB / 314.7 MB
+Notification: Performance of preOpt removeSimpleEquations (simulation): time 0.003887/0.1015, allocations: 3.035 MB / 440.4 MB, free: 5.23 MB / 314.7 MB
+Notification: Performance of preOpt comSubExp (simulation): time 0.001536/0.103, allocations: 1.275 MB / 441.6 MB, free: 3.91 MB / 314.7 MB
+Notification: Performance of preOpt resolveLoops (simulation): time 0.001295/0.1043, allocations: 1.046 MB / 442.7 MB, free: 2.855 MB / 314.7 MB
+Notification: Performance of preOpt evalFunc (simulation): time 0.002277/0.1066, allocations: 2.876 MB / 445.6 MB, free: 15.35 MB / 330.7 MB
+Notification: Performance of preOpt encapsulateWhenConditions (simulation): time 0.001645/0.1083, allocations: 0.7835 MB / 446.3 MB, free: 14.53 MB / 330.7 MB
+Notification: Performance of pre-optimization done (n=72): time 2.384e-06/0.1083, allocations: 0 / 446.3 MB, free: 14.53 MB / 330.7 MB
+Notification: Performance of matching and sorting (n=72): time 0.003703/0.112, allocations: 2.255 MB / 448.6 MB, free: 12.21 MB / 330.7 MB
+Notification: Performance of inlineWhenForInitialization (initialization): time 0.0001819/0.1122, allocations: 0.5905 MB / 449.2 MB, free: 11.5 MB / 330.7 MB
+Notification: Performance of selectInitializationVariablesDAE (initialization): time 0.0003817/0.1126, allocations: 417.1 kB / 449.6 MB, free: 11.08 MB / 330.7 MB
+Notification: Performance of collectPreVariables (initialization): time 7.866e-05/0.1127, allocations: 65.69 kB / 449.7 MB, free: 11.01 MB / 330.7 MB
+Notification: Performance of collectInitialEqns (initialization): time 0.000146/0.1129, allocations: 280.3 kB / 449.9 MB, free: 10.73 MB / 330.7 MB
+Notification: Performance of collectInitialBindings (initialization): time 0.0003204/0.1132, allocations: 193.7 kB / 450.1 MB, free: 10.54 MB / 330.7 MB
+Notification: Performance of simplifyInitialFunctions (initialization): time 0.0002981/0.1135, allocations: 226.5 kB / 450.3 MB, free: 10.31 MB / 330.7 MB
+Notification: Performance of setup shared object (initialization): time 7.014e-05/0.1136, allocations: 366.8 kB / 450.7 MB, free: 9.941 MB / 330.7 MB
+Notification: Performance of preBalanceInitialSystem (initialization): time 0.0007116/0.1143, allocations: 430 kB / 451.1 MB, free: 9.523 MB / 330.7 MB
+Notification: Performance of partitionIndependentBlocks (initialization): time 0.0008448/0.1151, allocations: 0.8028 MB / 451.9 MB, free: 8.555 MB / 330.7 MB
+Notification: Performance of analyzeInitialSystem (initialization): time 0.003033/0.1182, allocations: 2.456 MB / 454.4 MB, free: 5.77 MB / 330.7 MB
+Notification: Performance of solveInitialSystemEqSystem (initialization): time 8.096e-06/0.1182, allocations: 4 kB / 454.4 MB, free: 5.766 MB / 330.7 MB
+Notification: Performance of matching and sorting (n=142) (initialization): time 0.002598/0.1208, allocations: 1.796 MB / 456.2 MB, free: 3.895 MB / 330.7 MB
+Notification: Performance of prepare postOptimizeDAE: time 0.000135/0.121, allocations: 366.1 kB / 456.5 MB, free: 3.473 MB / 330.7 MB
+Notification: Performance of postOpt simplifyComplexFunction (initialization): time 0.001199/0.1222, allocations: 0.8028 MB / 457.3 MB, free: 2.645 MB / 330.7 MB
+Notification: Performance of postOpt tearingSystem (initialization): time 3.014e-05/0.1222, allocations: 20 kB / 457.4 MB, free: 2.625 MB / 330.7 MB
+Notification: Performance of postOpt solveSimpleEquations (initialization): time 0.0006039/0.1228, allocations: 127.7 kB / 457.5 MB, free: 2.5 MB / 330.7 MB
+Notification: Performance of postOpt calculateStrongComponentJacobians (initialization): time 2.309e-05/0.1229, allocations: 27.92 kB / 457.5 MB, free: 2.473 MB / 330.7 MB
+Notification: Performance of postOpt simplifyAllExpressions (initialization): time 0.0005395/0.1234, allocations: 126.9 kB / 457.6 MB, free: 2.348 MB / 330.7 MB
+Notification: Performance of postOpt collapseArrayExpressions (initialization): time 9.965e-05/0.1235, allocations: 55.98 kB / 457.7 MB, free: 2.293 MB / 330.7 MB
 Warning: Assuming fixed start value for the following 21 variables:
          P1.enableOut.posTE:DISCRETE(fixed = true protected = true )  "possible enabled transition" type: Integer
          P1.enableOut.k:DISCRETE(fixed = true protected = true )  "iteration index" type: Integer
@@ -112,28 +112,28 @@ Notification: Strong component statistics for initialization (127):
  * Equation systems (not torn): 0
  * Torn equation systems: 0
  * Mixed (continuous/discrete) equation systems: 0
-Notification: Performance of prepare postOptimizeDAE: time 0.0006698/0.1171, allocations: 0.7587 MB / 458.5 MB, free: 1.496 MB / 330.7 MB
-Notification: Performance of postOpt lateInlineFunction (simulation): time 0.0002045/0.1173, allocations: 79.28 kB / 458.5 MB, free: 1.418 MB / 330.7 MB
-Notification: Performance of postOpt wrapFunctionCalls (simulation): time 0.003188/0.1205, allocations: 1.659 MB / 460.2 MB, free: 15.71 MB / 346.7 MB
-Notification: Performance of postOpt inlineArrayEqn (simulation): time 7.424e-06/0.1205, allocations: 4 kB / 460.2 MB, free: 15.71 MB / 346.7 MB
-Notification: Performance of postOpt constantLinearSystem (simulation): time 5.74e-06/0.1205, allocations: 4 kB / 460.2 MB, free: 15.71 MB / 346.7 MB
-Notification: Performance of postOpt simplifysemiLinear (simulation): time 6.613e-06/0.1205, allocations: 0 / 460.2 MB, free: 15.71 MB / 346.7 MB
-Notification: Performance of postOpt removeSimpleEquations (simulation): time 0.003875/0.1244, allocations: 2.615 MB / 462.8 MB, free: 13 MB / 346.7 MB
-Notification: Performance of postOpt simplifyComplexFunction (simulation): time 0.002545/0.127, allocations: 1.573 MB / 464.4 MB, free: 11.39 MB / 346.7 MB
-Notification: Performance of postOpt solveSimpleEquations (simulation): time 0.0001904/0.1272, allocations: 43.84 kB / 464.4 MB, free: 11.35 MB / 346.7 MB
-Notification: Performance of postOpt tearingSystem (simulation): time 4.098e-06/0.1272, allocations: 0 / 464.4 MB, free: 11.35 MB / 346.7 MB
-Notification: Performance of postOpt inputDerivativesUsed (simulation): time 9.546e-05/0.1273, allocations: 39.98 kB / 464.5 MB, free: 11.31 MB / 346.7 MB
-Notification: Performance of postOpt calculateStrongComponentJacobians (simulation): time 3.847e-06/0.1273, allocations: 4 kB / 464.5 MB, free: 11.3 MB / 346.7 MB
-Notification: Performance of postOpt calculateStateSetsJacobians (simulation): time 1.592e-06/0.1273, allocations: 0 / 464.5 MB, free: 11.3 MB / 346.7 MB
-Notification: Performance of postOpt symbolicJacobian (simulation): time 0.004259/0.1316, allocations: 2.82 MB / 467.3 MB, free: 8.398 MB / 346.7 MB
-Notification: Performance of postOpt removeConstants (simulation): time 6.968e-05/0.1317, allocations: 136.3 kB / 467.4 MB, free: 8.246 MB / 346.7 MB
-Notification: Performance of postOpt simplifyTimeIndepFuncCalls (simulation): time 0.0001896/0.1319, allocations: 63.98 kB / 467.5 MB, free: 8.184 MB / 346.7 MB
-Notification: Performance of postOpt simplifyAllExpressions (simulation): time 0.0005483/0.1324, allocations: 72 kB / 467.6 MB, free: 8.113 MB / 346.7 MB
-Notification: Performance of postOpt findZeroCrossings (simulation): time 0.0006755/0.1331, allocations: 303.2 kB / 467.9 MB, free: 7.82 MB / 346.7 MB
-Notification: Performance of postOpt collapseArrayExpressions (simulation): time 0.000134/0.1332, allocations: 47.91 kB / 467.9 MB, free: 7.773 MB / 346.7 MB
-Notification: Performance of sorting global known variables: time 0.0002141/0.1335, allocations: 243.2 kB / 468.1 MB, free: 7.543 MB / 346.7 MB
-Notification: Performance of sort global known variables: time 1.7e-07/0.1335, allocations: 0 / 468.1 MB, free: 7.543 MB / 346.7 MB
-Notification: Performance of remove unused functions: time 0.0009447/0.1344, allocations: 307.6 kB / 468.4 MB, free: 7.242 MB / 346.7 MB
+Notification: Performance of prepare postOptimizeDAE: time 0.0006668/0.1242, allocations: 0.75 MB / 458.4 MB, free: 1.473 MB / 330.7 MB
+Notification: Performance of postOpt lateInlineFunction (simulation): time 0.0002035/0.1244, allocations: 79.22 kB / 458.5 MB, free: 1.395 MB / 330.7 MB
+Notification: Performance of postOpt wrapFunctionCalls (simulation): time 0.00304/0.1275, allocations: 1.671 MB / 460.2 MB, free: 15.68 MB / 346.7 MB
+Notification: Performance of postOpt inlineArrayEqn (simulation): time 9.678e-06/0.1275, allocations: 4 kB / 460.2 MB, free: 15.68 MB / 346.7 MB
+Notification: Performance of postOpt constantLinearSystem (simulation): time 5.601e-06/0.1275, allocations: 0 / 460.2 MB, free: 15.68 MB / 346.7 MB
+Notification: Performance of postOpt simplifysemiLinear (simulation): time 9.037e-06/0.1275, allocations: 4 kB / 460.2 MB, free: 15.67 MB / 346.7 MB
+Notification: Performance of postOpt removeSimpleEquations (simulation): time 0.004094/0.1316, allocations: 2.604 MB / 462.8 MB, free: 12.98 MB / 346.7 MB
+Notification: Performance of postOpt simplifyComplexFunction (simulation): time 0.00271/0.1343, allocations: 1.589 MB / 464.4 MB, free: 11.35 MB / 346.7 MB
+Notification: Performance of postOpt solveSimpleEquations (simulation): time 0.0001917/0.1345, allocations: 35.91 kB / 464.4 MB, free: 11.32 MB / 346.7 MB
+Notification: Performance of postOpt tearingSystem (simulation): time 4.939e-06/0.1346, allocations: 4 kB / 464.4 MB, free: 11.31 MB / 346.7 MB
+Notification: Performance of postOpt inputDerivativesUsed (simulation): time 9.47e-05/0.1347, allocations: 39.97 kB / 464.5 MB, free: 11.27 MB / 346.7 MB
+Notification: Performance of postOpt calculateStrongComponentJacobians (simulation): time 3.416e-06/0.1347, allocations: 0 / 464.5 MB, free: 11.27 MB / 346.7 MB
+Notification: Performance of postOpt calculateStateSetsJacobians (simulation): time 2.544e-06/0.1347, allocations: 7.938 kB / 464.5 MB, free: 11.27 MB / 346.7 MB
+Notification: Performance of postOpt symbolicJacobian (simulation): time 0.004452/0.1391, allocations: 2.812 MB / 467.3 MB, free: 8.367 MB / 346.7 MB
+Notification: Performance of postOpt removeConstants (simulation): time 6.396e-05/0.1392, allocations: 128.3 kB / 467.4 MB, free: 8.223 MB / 346.7 MB
+Notification: Performance of postOpt simplifyTimeIndepFuncCalls (simulation): time 0.0001944/0.1394, allocations: 67.98 kB / 467.5 MB, free: 8.156 MB / 346.7 MB
+Notification: Performance of postOpt simplifyAllExpressions (simulation): time 0.0005656/0.14, allocations: 68 kB / 467.5 MB, free: 8.09 MB / 346.7 MB
+Notification: Performance of postOpt findZeroCrossings (simulation): time 0.0005283/0.1405, allocations: 303.7 kB / 467.8 MB, free: 7.793 MB / 346.7 MB
+Notification: Performance of postOpt collapseArrayExpressions (simulation): time 0.0001062/0.1407, allocations: 47.91 kB / 467.9 MB, free: 7.746 MB / 346.7 MB
+Notification: Performance of sorting global known variables: time 0.0003755/0.141, allocations: 243.2 kB / 468.1 MB, free: 7.516 MB / 346.7 MB
+Notification: Performance of sort global known variables: time 6.11e-07/0.141, allocations: 0 / 468.1 MB, free: 7.516 MB / 346.7 MB
+Notification: Performance of remove unused functions: time 0.0009284/0.142, allocations: 315.5 kB / 468.4 MB, free: 7.207 MB / 346.7 MB
 Notification: Model statistics after passing the back-end for simulation:
  * Number of independent subsystems: 4
  * Number of states: 1 (P1.t_)
@@ -151,17 +151,17 @@ Notification: Strong component statistics for simulation (36):
  * Equation systems (not torn): 0
  * Torn equation systems: 0
  * Mixed (continuous/discrete) equation systems: 0
-Notification: Performance of Backend phase and start with SimCode phase: time 0.0006827/0.1351, allocations: 336.7 kB / 468.8 MB, free: 6.91 MB / 346.7 MB
-Notification: Performance of simCode: created initialization part: time 0.002698/0.1378, allocations: 2.091 MB / 470.9 MB, free: 4.684 MB / 346.7 MB
-Notification: Performance of simCode: created event and clocks part: time 3.046e-06/0.1379, allocations: 4.062 kB / 470.9 MB, free: 4.68 MB / 346.7 MB
-Notification: Performance of simCode: created simulation system equations: time 0.002027/0.1399, allocations: 2.411 MB / 473.3 MB, free: 2.152 MB / 346.7 MB
-Notification: Performance of simCode: created of all other equations (e.g. parameter, nominal, assert, etc): time 0.0006094/0.1405, allocations: 93.03 kB / 473.4 MB, free: 2.062 MB / 346.7 MB
-Notification: Performance of simCode: created linear, non-linear and system jacobian parts: time 0.003269/0.1438, allocations: 1.51 MB / 474.9 MB, free: 0.5078 MB / 346.7 MB
-Notification: Performance of simCode: some other stuff during SimCode phase: time 0.0007269/0.1445, allocations: 0.9387 MB / 475.8 MB, free: 15.54 MB / 362.7 MB
-Notification: Performance of simCode: alias equations: time 0.0003804/0.1449, allocations: 124.8 kB / 475.9 MB, free: 15.42 MB / 362.7 MB
-Notification: Performance of simCode: all other stuff during SimCode phase: time 0.0001138/0.145, allocations: 43.42 kB / 476 MB, free: 15.38 MB / 362.7 MB
-Notification: Performance of SimCode: time 3.51e-07/0.1451, allocations: 3.938 kB / 476 MB, free: 15.37 MB / 362.7 MB
-Notification: Performance of Templates: time 0.01919/0.1642, allocations: 12.06 MB / 488 MB, free: 3.23 MB / 362.7 MB
+Notification: Performance of Backend phase and start with SimCode phase: time 0.00068/0.1427, allocations: 332 kB / 468.8 MB, free: 6.883 MB / 346.7 MB
+Notification: Performance of simCode: created initialization part: time 0.002717/0.1454, allocations: 2.103 MB / 470.9 MB, free: 4.645 MB / 346.7 MB
+Notification: Performance of simCode: created event and clocks part: time 3.066e-06/0.1454, allocations: 0 / 470.9 MB, free: 4.645 MB / 346.7 MB
+Notification: Performance of simCode: created simulation system equations: time 0.002153/0.1476, allocations: 2.414 MB / 473.3 MB, free: 2.113 MB / 346.7 MB
+Notification: Performance of simCode: created of all other equations (e.g. parameter, nominal, assert, etc): time 0.0006326/0.1482, allocations: 89.34 kB / 473.4 MB, free: 2.023 MB / 346.7 MB
+Notification: Performance of simCode: created linear, non-linear and system jacobian parts: time 0.003004/0.1512, allocations: 1.51 MB / 474.9 MB, free: 480 kB / 346.7 MB
+Notification: Performance of simCode: some other stuff during SimCode phase: time 0.0007299/0.152, allocations: 0.9309 MB / 475.8 MB, free: 15.51 MB / 362.7 MB
+Notification: Performance of simCode: alias equations: time 0.0004243/0.1524, allocations: 128.9 kB / 475.9 MB, free: 15.38 MB / 362.7 MB
+Notification: Performance of simCode: all other stuff during SimCode phase: time 0.0001167/0.1525, allocations: 47.42 kB / 476 MB, free: 15.34 MB / 362.7 MB
+Notification: Performance of SimCode: time 3.71e-07/0.1526, allocations: 4 kB / 476 MB, free: 15.33 MB / 362.7 MB
+Notification: Performance of Templates: time 0.01945/0.172, allocations: 12.06 MB / 488 MB, free: 3.188 MB / 362.7 MB
 make -j1 -f PNlib_master_PNlib.Examples.HybTest.PCtoTDfunction.makefile
 (rm -f PNlib_master_PNlib.Examples.HybTest.PCtoTDfunction.pipe ; mkfifo PNlib_master_PNlib.Examples.HybTest.PCtoTDfunction.pipe ; head -c 1048576 < PNlib_master_PNlib.Examples.HybTest.PCtoTDfunction.pipe >> ../files/PNlib_master_PNlib.Examples.HybTest.PCtoTDfunction.sim & ./PNlib_master_PNlib.Examples.HybTest.PCtoTDfunction  -abortSlowSimulation -alarm=480  -emit_protected -lv LOG_STATS > PNlib_master_PNlib.Examples.HybTest.PCtoTDfunction.pipe 2>&1)
 diffSimulationResults("PNlib_master_PNlib.Examples.HybTest.PCtoTDfunction_res.mat","/home/runner/work/PNlib/PNlib/ReferenceFiles/PNlib.Examples.HybTest.PCtoTDfunction.mat","../files/PNlib_master_PNlib.Examples.HybTest.PCtoTDfunction.diff",relTol=0.003,relTolDiffMinMax=0.003,rangeDelta=0.001)

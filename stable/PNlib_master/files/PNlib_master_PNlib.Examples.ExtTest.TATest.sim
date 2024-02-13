@@ -8,17 +8,17 @@ Regular simulation: ./PNlib_master_PNlib.Examples.ExtTest.TATest  -abortSlowSimu
 LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.
 LOG_STATS         | info    | ### STATISTICS ###
 |                 | |       | | timer
-|                 | |       | | |   0.00972162s          reading init.xml
-|                 | |       | | |  0.000824139s          reading info.xml
-|                 | |       | | |  0.000392443s [  0.2%] pre-initialization
-|                 | |       | | |  0.000426576s [  0.2%] initialization
-|                 | |       | | |   3.5787e-05s [  0.0%] steps
-|                 | |       | | |   0.00215125s [  0.9%] solver (excl. callbacks)
-|                 | |       | | |   0.00429349s [  1.8%] creating output-file
-|                 | |       | | |     0.111155s [ 46.2%] event-handling
-|                 | |       | | |   0.00375055s [  1.6%] overhead
-|                 | |       | | |     0.118373s [ 49.2%] simulation
-|                 | |       | | |     0.240578s [100.0%] total
+|                 | |       | | |   0.00951487s          reading init.xml
+|                 | |       | | |  0.000810432s          reading info.xml
+|                 | |       | | |  0.000365732s [  0.2%] pre-initialization
+|                 | |       | | |  0.000405897s [  0.2%] initialization
+|                 | |       | | |   3.4875e-05s [  0.0%] steps
+|                 | |       | | |    0.0021549s [  0.9%] solver (excl. callbacks)
+|                 | |       | | |   0.00432107s [  1.8%] creating output-file
+|                 | |       | | |     0.110262s [ 46.2%] event-handling
+|                 | |       | | |   0.00373421s [  1.6%] overhead
+|                 | |       | | |     0.117573s [ 49.2%] simulation
+|                 | |       | | |     0.238852s [100.0%] total
 |                 | |       | | events
 |                 | |       | | |    10 state events
 |                 | |       | | |     0 time events
@@ -28,5 +28,5 @@ LOG_STATS         | info    | ### STATISTICS ###
 |                 | |       | | |   107 evaluations of jacobian
 |                 | |       | | |     0 error test failures
 |                 | |       | | |     0 convergence test failures
-|                 | |       | | | 0.00456184s time of jacobian evaluation
+|                 | |       | | | 0.0044911s time of jacobian evaluation
 LOG_SUCCESS       | info    | The simulation finished successfully.

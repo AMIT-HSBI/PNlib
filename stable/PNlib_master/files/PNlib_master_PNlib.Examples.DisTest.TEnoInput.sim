@@ -8,17 +8,17 @@ Regular simulation: ./PNlib_master_PNlib.Examples.DisTest.TEnoInput  -abortSlowS
 LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.
 LOG_STATS         | info    | ### STATISTICS ###
 |                 | |       | | timer
-|                 | |       | | |   0.00248579s          reading init.xml
-|                 | |       | | |  0.000275635s          reading info.xml
-|                 | |       | | |  0.000164056s [  1.4%] pre-initialization
-|                 | |       | | |  0.000108803s [  0.9%] initialization
-|                 | |       | | |    1.363e-06s [  0.0%] steps
-|                 | |       | | |   3.9427e-05s [  0.3%] solver (excl. callbacks)
-|                 | |       | | |   0.00148694s [ 12.8%] creating output-file
-|                 | |       | | |   0.00023611s [  2.0%] event-handling
-|                 | |       | | |   0.00258981s [ 22.3%] overhead
-|                 | |       | | |   0.00700021s [ 60.2%] simulation
-|                 | |       | | |    0.0116267s [100.0%] total
+|                 | |       | | |   0.00251428s          reading init.xml
+|                 | |       | | |  0.000274782s          reading info.xml
+|                 | |       | | |  0.000147084s [  1.3%] pre-initialization
+|                 | |       | | |   0.00010169s [  0.9%] initialization
+|                 | |       | | |    1.293e-06s [  0.0%] steps
+|                 | |       | | |   3.8893e-05s [  0.4%] solver (excl. callbacks)
+|                 | |       | | |   0.00139056s [ 12.5%] creating output-file
+|                 | |       | | |  0.000160095s [  1.4%] event-handling
+|                 | |       | | |    0.0026074s [ 23.5%] overhead
+|                 | |       | | |   0.00665381s [ 59.9%] simulation
+|                 | |       | | |    0.0111008s [100.0%] total
 |                 | |       | | events
 |                 | |       | | |     5 state events
 |                 | |       | | |     0 time events

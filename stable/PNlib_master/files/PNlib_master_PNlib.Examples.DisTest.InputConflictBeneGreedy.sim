@@ -8,17 +8,17 @@ Regular simulation: ./PNlib_master_PNlib.Examples.DisTest.InputConflictBeneGreed
 LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.
 LOG_STATS         | info    | ### STATISTICS ###
 |                 | |       | | timer
-|                 | |       | | |   0.00847507s          reading init.xml
-|                 | |       | | |  0.000886074s          reading info.xml
-|                 | |       | | |  0.000264584s [  1.1%] pre-initialization
-|                 | |       | | |  0.000164407s [  0.7%] initialization
-|                 | |       | | |    2.564e-06s [  0.0%] steps
-|                 | |       | | |   3.9287e-05s [  0.2%] solver (excl. callbacks)
-|                 | |       | | |   0.00350931s [ 14.5%] creating output-file
-|                 | |       | | |   0.00153291s [  6.3%] event-handling
-|                 | |       | | |   0.00287963s [ 11.9%] overhead
-|                 | |       | | |     0.015841s [ 65.4%] simulation
-|                 | |       | | |    0.0242337s [100.0%] total
+|                 | |       | | |   0.00846441s          reading init.xml
+|                 | |       | | |  0.000907512s          reading info.xml
+|                 | |       | | |  0.000263161s [  1.1%] pre-initialization
+|                 | |       | | |  0.000179505s [  0.7%] initialization
+|                 | |       | | |    2.505e-06s [  0.0%] steps
+|                 | |       | | |   4.0264e-05s [  0.2%] solver (excl. callbacks)
+|                 | |       | | |   0.00351296s [ 14.4%] creating output-file
+|                 | |       | | |   0.00170692s [  7.0%] event-handling
+|                 | |       | | |   0.00283566s [ 11.6%] overhead
+|                 | |       | | |     0.015853s [ 65.0%] simulation
+|                 | |       | | |     0.024394s [100.0%] total
 |                 | |       | | events
 |                 | |       | | |    18 state events
 |                 | |       | | |     0 time events

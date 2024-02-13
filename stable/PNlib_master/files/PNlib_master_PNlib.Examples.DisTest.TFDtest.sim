@@ -8,17 +8,17 @@ Regular simulation: ./PNlib_master_PNlib.Examples.DisTest.TFDtest  -abortSlowSim
 LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.
 LOG_STATS         | info    | ### STATISTICS ###
 |                 | |       | | timer
-|                 | |       | | |   0.00436582s          reading init.xml
-|                 | |       | | |  0.000485156s          reading info.xml
-|                 | |       | | |  0.000207627s [  1.4%] pre-initialization
-|                 | |       | | |  0.000122268s [  0.8%] initialization
-|                 | |       | | |    1.233e-06s [  0.0%] steps
-|                 | |       | | |   3.9344e-05s [  0.3%] solver (excl. callbacks)
-|                 | |       | | |   0.00236525s [ 16.3%] creating output-file
-|                 | |       | | |  0.000571053s [  3.9%] event-handling
-|                 | |       | | |   0.00281078s [ 19.4%] overhead
-|                 | |       | | |   0.00838885s [ 57.8%] simulation
-|                 | |       | | |    0.0145064s [100.0%] total
+|                 | |       | | |    0.0043334s          reading init.xml
+|                 | |       | | |  0.000481729s          reading info.xml
+|                 | |       | | |  0.000200844s [  1.4%] pre-initialization
+|                 | |       | | |  0.000141424s [  1.0%] initialization
+|                 | |       | | |    1.222e-06s [  0.0%] steps
+|                 | |       | | |   3.9096e-05s [  0.3%] solver (excl. callbacks)
+|                 | |       | | |   0.00238952s [ 16.4%] creating output-file
+|                 | |       | | |  0.000547272s [  3.8%] event-handling
+|                 | |       | | |   0.00275857s [ 18.9%] overhead
+|                 | |       | | |   0.00849932s [ 58.3%] simulation
+|                 | |       | | |    0.0145773s [100.0%] total
 |                 | |       | | events
 |                 | |       | | |    15 state events
 |                 | |       | | |     0 time events

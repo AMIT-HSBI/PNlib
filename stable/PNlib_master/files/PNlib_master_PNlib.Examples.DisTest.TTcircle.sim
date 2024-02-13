@@ -8,17 +8,17 @@ Regular simulation: ./PNlib_master_PNlib.Examples.DisTest.TTcircle  -abortSlowSi
 LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.
 LOG_STATS         | info    | ### STATISTICS ###
 |                 | |       | | timer
-|                 | |       | | |   0.00624828s          reading init.xml
-|                 | |       | | |  0.000856713s          reading info.xml
-|                 | |       | | |  0.000207768s [  1.1%] pre-initialization
-|                 | |       | | |  0.000130464s [  0.7%] initialization
-|                 | |       | | |    1.893e-06s [  0.0%] steps
-|                 | |       | | |   3.9303e-05s [  0.2%] solver (excl. callbacks)
-|                 | |       | | |   0.00262053s [ 13.5%] creating output-file
-|                 | |       | | |  0.000930744s [  4.8%] event-handling
-|                 | |       | | |   0.00282599s [ 14.6%] overhead
-|                 | |       | | |    0.0126441s [ 65.2%] simulation
-|                 | |       | | |    0.0194008s [100.0%] total
+|                 | |       | | |   0.00644277s          reading init.xml
+|                 | |       | | |  0.000651966s          reading info.xml
+|                 | |       | | |  0.000223227s [  1.1%] pre-initialization
+|                 | |       | | |  0.000143738s [  0.7%] initialization
+|                 | |       | | |    1.883e-06s [  0.0%] steps
+|                 | |       | | |   4.0359e-05s [  0.2%] solver (excl. callbacks)
+|                 | |       | | |   0.00268022s [ 13.7%] creating output-file
+|                 | |       | | |  0.000960277s [  4.9%] event-handling
+|                 | |       | | |   0.00288275s [ 14.8%] overhead
+|                 | |       | | |    0.0126037s [ 64.5%] simulation
+|                 | |       | | |    0.0195362s [100.0%] total
 |                 | |       | | events
 |                 | |       | | |    11 state events
 |                 | |       | | |    16 time events

@@ -8,17 +8,17 @@ Regular simulation: ./PNlib_master_PNlib.Examples.ExtTest.TDSTestinterrupt  -abo
 LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.
 LOG_STATS         | info    | ### STATISTICS ###
 |                 | |       | | timer
-|                 | |       | | |   0.00717707s          reading init.xml
-|                 | |       | | |  0.000702712s          reading info.xml
-|                 | |       | | |  0.000281436s [  1.3%] pre-initialization
-|                 | |       | | |  0.000156121s [  0.7%] initialization
-|                 | |       | | |    2.735e-06s [  0.0%] steps
-|                 | |       | | |   3.9572e-05s [  0.2%] solver (excl. callbacks)
-|                 | |       | | |   0.00315111s [ 14.2%] creating output-file
-|                 | |       | | |  0.000881587s [  4.0%] event-handling
-|                 | |       | | |    0.0032669s [ 14.8%] overhead
-|                 | |       | | |    0.0143506s [ 64.8%] simulation
-|                 | |       | | |      0.02213s [100.0%] total
+|                 | |       | | |   0.00726398s          reading init.xml
+|                 | |       | | |  0.000712278s          reading info.xml
+|                 | |       | | |   0.00030038s [  1.4%] pre-initialization
+|                 | |       | | |  0.000173474s [  0.8%] initialization
+|                 | |       | | |    2.564e-06s [  0.0%] steps
+|                 | |       | | |   3.9657e-05s [  0.2%] solver (excl. callbacks)
+|                 | |       | | |   0.00345822s [ 15.6%] creating output-file
+|                 | |       | | |  0.000910765s [  4.1%] event-handling
+|                 | |       | | |   0.00330713s [ 15.0%] overhead
+|                 | |       | | |    0.0139136s [ 62.9%] simulation
+|                 | |       | | |    0.0221058s [100.0%] total
 |                 | |       | | events
 |                 | |       | | |    10 state events
 |                 | |       | | |     0 time events
