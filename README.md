@@ -28,7 +28,7 @@ The main package PNlib is divided into the following sub-packages:
 
 ## Current release
 
-Download [PNlib v2.2 (2019-10-24)][release-v-2-2]
+Download [PNlib v3.0.0 (2024-02-13)][release-v-3-0-0].
 
 ## Compatibility
 
@@ -65,7 +65,7 @@ You may report feedback, issues or feature-requests using
 [test-badge]: https://github.com/AMIT-HSBI/PNlib/actions/workflows/Test.yml/badge.svg
 [test-link]: https://github.com/AMIT-HSBI/PNlib/actions/workflows/Test.yml
 [pnlib-img]: PNlib/Resources/Images/iconsxHPN.png "xHPN: Extended Hybrid PetriNets"
-[release-v-2-2]: https://github.com/AMIT-HSBI/PNlib/releases/tag/v2.2
+[release-v-3-0-0]: https://github.com/AMIT-HSBI/PNlib/releases/tag/v3.0.0
 [coverage-link]: http://libraries.openmodelica.org/branches/master/PNlib/PNlib.html
 [license-link]: https://modelica.org/licenses/ModelicaLicense2
 [issues]: https://github.com/AMIT-HSBI/PNlib/issues
