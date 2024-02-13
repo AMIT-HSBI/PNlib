@@ -93,6 +93,19 @@ model RevisionHistory
       <li>Minor bug fixes</li>
     </ul></td>
   </tr>
+
+  <tr>
+    <td valign=\"top\">3.0.0</td>
+    <td valign=\"top\">2024-02-03</td>
+    <td valign=\"top\">Philip Hannebohm, Andreas Heuermann</td>
+    <td valign=\"top\"><ul>
+      <li>Updated to use Modelica 4.0.0</li>
+      <li>Removed unused functions</li>
+      <li>Updated Contact information</li>
+      <li>Changed to 3-Clause BSD license</li>
+      <li>Added Continuous Integration GitHub workflow</li>
+    </ul></td>
+  </tr>
 </table>
 </html>"));
 end RevisionHistory;

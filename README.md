@@ -54,7 +54,7 @@ Hochschule Bielefeld – University of Applied Sciences and Arts
 Faculty of Engineering and Mathematics
 ```
 
-  * Sabrina Pro&szlig;
+  * Sabrina Proß
   * Lennart Ochel
   * Timo Lask
   * Bernhard Bachmann
