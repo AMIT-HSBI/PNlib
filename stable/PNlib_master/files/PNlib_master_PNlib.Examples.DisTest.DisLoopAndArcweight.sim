@@ -8,17 +8,17 @@ Regular simulation: ./PNlib_master_PNlib.Examples.DisTest.DisLoopAndArcweight  -
 LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.
 LOG_STATS         | info    | ### STATISTICS ###
 |                 | |       | | timer
-|                 | |       | | |   0.00347845s          reading init.xml
-|                 | |       | | |  0.000357026s          reading info.xml
-|                 | |       | | |  0.000197649s [  1.5%] pre-initialization
-|                 | |       | | |  0.000124392s [  1.0%] initialization
-|                 | |       | | |    1.062e-06s [  0.0%] steps
-|                 | |       | | |   3.9592e-05s [  0.3%] solver (excl. callbacks)
-|                 | |       | | |   0.00164796s [ 12.6%] creating output-file
-|                 | |       | | |  0.000906943s [  6.9%] event-handling
-|                 | |       | | |   0.00294473s [ 22.5%] overhead
-|                 | |       | | |    0.0072225s [ 55.2%] simulation
-|                 | |       | | |    0.0130848s [100.0%] total
+|                 | |       | | |   0.00350943s          reading init.xml
+|                 | |       | | |  0.000360173s          reading info.xml
+|                 | |       | | |   0.00023578s [  1.8%] pre-initialization
+|                 | |       | | |   0.00012858s [  1.0%] initialization
+|                 | |       | | |    1.122e-06s [  0.0%] steps
+|                 | |       | | |   3.9641e-05s [  0.3%] solver (excl. callbacks)
+|                 | |       | | |   0.00179953s [ 13.4%] creating output-file
+|                 | |       | | |  0.000930461s [  6.9%] event-handling
+|                 | |       | | |   0.00269149s [ 20.0%] overhead
+|                 | |       | | |   0.00764285s [ 56.7%] simulation
+|                 | |       | | |    0.0134695s [100.0%] total
 |                 | |       | | events
 |                 | |       | | |    18 state events
 |                 | |       | | |     0 time events

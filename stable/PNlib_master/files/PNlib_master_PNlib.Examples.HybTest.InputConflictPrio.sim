@@ -8,17 +8,17 @@ Regular simulation: ./PNlib_master_PNlib.Examples.HybTest.InputConflictPrio  -ab
 LOG_SUCCESS       | info    | The initialization finished successfully without homotopy method.
 LOG_STATS         | info    | ### STATISTICS ###
 |                 | |       | | timer
-|                 | |       | | |   0.00930265s          reading init.xml
-|                 | |       | | |  0.000892145s          reading info.xml
-|                 | |       | | |  0.000389938s [  1.0%] pre-initialization
-|                 | |       | | |  0.000204361s [  0.5%] initialization
-|                 | |       | | |    4.528e-06s [  0.0%] steps
-|                 | |       | | |   0.00194853s [  5.0%] solver (excl. callbacks)
-|                 | |       | | |   0.00403948s [ 10.3%] creating output-file
-|                 | |       | | |   0.00895552s [ 22.9%] event-handling
-|                 | |       | | |   0.00349366s [  8.9%] overhead
-|                 | |       | | |    0.0201341s [ 51.4%] simulation
-|                 | |       | | |    0.0391701s [100.0%] total
+|                 | |       | | |    0.0136421s          reading init.xml
+|                 | |       | | |    0.0016316s          reading info.xml
+|                 | |       | | |  0.000467283s [  1.0%] pre-initialization
+|                 | |       | | |  0.000229649s [  0.5%] initialization
+|                 | |       | | |     5.03e-06s [  0.0%] steps
+|                 | |       | | |   0.00235408s [  5.1%] solver (excl. callbacks)
+|                 | |       | | |   0.00459796s [  9.9%] creating output-file
+|                 | |       | | |    0.0108742s [ 23.4%] event-handling
+|                 | |       | | |   0.00381708s [  8.2%] overhead
+|                 | |       | | |    0.0240677s [ 51.9%] simulation
+|                 | |       | | |     0.046413s [100.0%] total
 |                 | |       | | events
 |                 | |       | | |    18 state events
 |                 | |       | | |     0 time events
@@ -28,5 +28,5 @@ LOG_STATS         | info    | ### STATISTICS ###
 |                 | |       | | |   333 evaluations of jacobian
 |                 | |       | | |     0 error test failures
 |                 | |       | | |     0 convergence test failures
-|                 | |       | | | 8.5475e-05s time of jacobian evaluation
+|                 | |       | | | 9.4662e-05s time of jacobian evaluation
 LOG_SUCCESS       | info    | The simulation finished successfully.
